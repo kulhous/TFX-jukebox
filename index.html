@@ -100,6 +100,8 @@
   .dchip.rld{color:#10160c;background:#cdd7b2;border-color:#93a173}
   /* SCC: light text on dark screen, light border */
   .dchip.scc{color:#cdd7b2;background:#171c12;border-color:#b8c79b}
+  /* AdLib/OPL: yellowish FM tint (matches playhead/seeker --warn, slightly muted) */
+  .dchip.adl{color:#1a1205;background:#d8c63f;border-color:#a8970f}
   /* plasma scrollbar — lit phosphor bar */
   #sb{width:14px;background:#0e120a;position:relative;cursor:pointer;
     box-shadow:inset 1px 0 0 rgba(0,0,0,.5),inset -1px 0 0 rgba(115,129,90,.25)}
@@ -208,6 +210,7 @@
         <button class="fbtn on" data-f="ALL">ALL</button>
         <button class="fbtn" data-f="RLD"><span class="dchip rld">MT</span>MT-32</button>
         <button class="fbtn" data-f="SCC"><span class="dchip scc">SC</span>SCC</button>
+        <button class="fbtn" data-f="ADL"><span class="dchip adl">FM</span>AdLib</button>
       </div>
       <div id="listwrap">
         <div id="songlist"></div>
@@ -497,6 +500,33 @@ const Engine = {
 
   renderChunk(){
     const tReal=this.synthPos/this.rate;
+    // Sample-accurate backends (OPL) need register writes applied at their true
+    // sub-chunk sample position: a note-off and the following note-on can be <1
+    // chunk apart, and if both are dispatched before rendering the whole chunk the
+    // synth never "sees" the key-off->key-on edge and the re-attack is lost (rapid
+    // repeated notes get dropped). So for OPL we render the chunk in slices split
+    // at each event's time. MIDI synths (MT-32/SCC) sequence internally, so the
+    // simple "dispatch all due events then render" path is fine for them.
+    if(this.syn.oplWrite){
+      const base=this.syn.renderPtr>>1, rate=this.rate, speed=this.speed, t0=this.synthPos;
+      let done=0;
+      const slice=(count)=>{
+        if(count<=0) return;
+        const h=this.syn.render(count);
+        for(let i=0;i<count;i++){ this.chunkL[done+i]=h[base+i*2]/32768; this.chunkR[done+i]=h[base+i*2+1]/32768; }
+        done+=count;
+      };
+      while(done<CHUNK){
+        if(this.eventIdx<this.events.length){
+          const evSample=Math.round((this.events[this.eventIdx].tSec/speed)*rate)-t0;
+          if(evSample<=done){ this.dispatch(this.events[this.eventIdx]); this.eventIdx++; continue; }
+          slice(Math.min(CHUNK,evSample)-done);
+        } else { slice(CHUNK-done); }
+      }
+      this.chunkIdx=0;
+      if(this.eventIdx>=this.events.length && tReal>this.duration/this.speed) this.ended=true;
+      return;
+    }
     while(this.eventIdx<this.events.length && (this.events[this.eventIdx].tSec/this.speed)<=tReal){
       this.dispatch(this.events[this.eventIdx]); this.eventIdx++;
     }

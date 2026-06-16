@@ -563,5 +563,233 @@
     "hidden": true,
     "note": "found by exhaustive order-list scan (scan_all_sections.py); deep mission block beyond the order-29 theme; distinct interval fingerprint",
     "hiddenReason": "same as tune_44 Unused Mission (user-confirmed)"
+  },
+  {
+    "file": "tune_00_at03127a7_ADL_dec16006.module.dro",
+    "label": "15 - Unsuccessful Flight Home (ADL)",
+    "named": true,
+    "hidden": false,
+    "note": "user ID; top rhythm match flight-home family (complements tune_01=Victorious)"
+  },
+  {
+    "file": "tune_01_at0313256_ADL_dec20774.module.dro",
+    "label": "14 - Victorious Flight Home (ADL)",
+    "named": true,
+    "hidden": false,
+    "note": "rhythm IOI match vs RLD 1.000"
+  },
+  {
+    "file": "tune_02_at0314952_ADL_dec18328.module.dro",
+    "label": "24 - Jingle 4 - Good Kill (ADL)",
+    "named": true,
+    "hidden": false,
+    "note": "user ID; jingle-bank module, base start-0 render = Good Kill section"
+  },
+  {
+    "file": "tune_04_at0319155_ADL_dec18218.module.dro",
+    "label": "13 - The Battle (ADL)",
+    "named": true,
+    "hidden": false,
+    "note": "rhythm IOI match vs RLD 1.000"
+  },
+  {
+    "file": "tune_05_at0319fec_ADL_dec22710.module.dro",
+    "label": "09 - Air Superiority Mission (ADL)",
+    "named": true,
+    "hidden": false,
+    "note": "rhythm IOI match vs RLD 0.79 (alt 0.65 same song)"
+  },
+  {
+    "file": "tune_10_at0324ddd_ADL_dec13016.module.dro",
+    "label": "06 - Closeair Support Mission (ADL)",
+    "named": true,
+    "hidden": false,
+    "note": "user ID"
+  },
+  {
+    "file": "tune_11_at03259a8_ADL_dec9496.module.dro",
+    "label": "17 - Columbia (ADL)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_14_at0327a30_ADL_dec7092.module.dro",
+    "label": "16 - Death (ADL)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_17_at0329f1a_ADL_dec12492.module.dro",
+    "label": "07 - Defence Suppression Mission (ADL)",
+    "named": true,
+    "hidden": false,
+    "note": "rhythm IOI match vs RLD 0.68, gap to .37"
+  },
+  {
+    "file": "tune_19_at032af58_ADL_dec9842.module.dro",
+    "label": "Enrolment / Training (ADL)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_24_at032ed93_ADL_dec8278.module.dro",
+    "label": "AdLib tune_24 — ignition/engine SFX bank (near-silent)",
+    "named": false,
+    "hidden": true,
+    "hiddenReason": "ignition/engine SFX bank (near-silent)"
+  },
+  {
+    "file": "tune_26_at0330211_ADL_dec8462.module.dro",
+    "label": "03 - Intermission (ADL)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_29_at0331913_ADL_dec26294.module.dro",
+    "label": "05 - Interception Mission (ADL)",
+    "named": true,
+    "hidden": false,
+    "note": "rhythm IOI match vs RLD 0.79, gap to .09"
+  },
+  {
+    "file": "tune_32_at0336604_ADL_dec20498.module.dro",
+    "label": "Interdiction Mission (ADL)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_35_at033bac8_ADL_dec32262.module.dro",
+    "label": "02 - Intro ANARCHY (ADL)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_38_at034299b_ADL_dec18412.module.dro",
+    "label": "Unused Battle Theme (ADL)",
+    "named": true,
+    "hidden": false,
+    "note": "rhythm IOI match vs RLD bank 1.000"
+  },
+  {
+    "file": "tune_39_at03439a2_ADL_dec16138.module.dro",
+    "label": "19 - Libya (ADL)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_42_at0346677_ADL_dec4942.module.dro",
+    "label": "AdLib — tune_42 (unknown)",
+    "named": false,
+    "hidden": false,
+    "note": "user: unknown / unidentified"
+  },
+  {
+    "file": "tune_43_at0346e4e_ADL_dec31780.module.dro",
+    "label": "10 - Maritime (ADL)",
+    "named": true,
+    "hidden": false,
+    "note": "user ID"
+  },
+  {
+    "file": "tune_46_at034dde5_ADL_dec6488.module.dro",
+    "label": "04 - News Briefing (ADL)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_49_at034f53f_ADL_dec4160.module.dro",
+    "label": "11 - Ocean Mission (ADL)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_52_at0350572_ADL_dec21798.module.dro",
+    "label": "12 - Unused Mission (ADL)",
+    "named": true,
+    "hidden": false,
+    "note": "user ID (unused game track)"
+  },
+  {
+    "file": "tune_54_at0352551_ADL_dec8556.module.dro",
+    "label": "20 - Somalia (alt / = tune_55) (ADL)",
+    "named": true,
+    "hidden": true,
+    "hiddenReason": "byte-identical duplicate",
+    "note": "byte-identical dup of tune_55 = Somalia ADL"
+  },
+  {
+    "file": "tune_55_at0352e13_ADL_dec8556.module.dro",
+    "label": "20 - Somalia (ADL)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_71_at0362fd5_ADL_dec13014.module.dro",
+    "label": "18 - Yugoslavia (ADL)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_77_at03726d5_ADL_dec98959.module.dro",
+    "label": "15 - Unsuccessful Flight Home (ADL)",
+    "named": true,
+    "hidden": false,
+    "note": "user ID; 3-9tunes ADL bank, base start-0 render = Unsuccessful Flight Home intro section"
+  },
+  {
+    "file": "adl_jingle_sec03_ADL_bank.dro",
+    "label": "21 - Jingle 1 - Close to Death (short) (ADL)",
+    "named": true,
+    "hidden": false,
+    "note": "ADL jingle bank tune_02; section index inherited from verified SCC/RLD bank -> verify by ear"
+  },
+  {
+    "file": "adl_jingle_sec04_ADL_bank.dro",
+    "label": "21 - Jingle 1 - Close to Death (long) (ADL)",
+    "named": true,
+    "hidden": false,
+    "note": "ADL jingle bank tune_02; section index inherited from verified SCC/RLD bank -> verify by ear"
+  },
+  {
+    "file": "adl_jingle_sec07_ADL_bank.dro",
+    "label": "22 - Jingle 2 - Close to Winning (ADL)",
+    "named": true,
+    "hidden": false,
+    "note": "ADL jingle bank tune_02 sec07 (1340->2996 notes ~ SCC sec07 2854); inherited from verified SCC mapping -> verify by ear"
+  },
+  {
+    "file": "adl_jingle_sec05_ADL_bank.dro",
+    "label": "23 - Jingle 3 - Parachuting Thru The Clouds (ADL)",
+    "named": true,
+    "hidden": false,
+    "note": "ADL jingle bank tune_02 sec05 (1340 notes ~ SCC sec05 1280); inherited from verified SCC mapping -> verify by ear"
+  },
+  {
+    "file": "adl_jingle_sec00_ADL_bank.dro",
+    "label": "24 - Jingle 4 - Good Kill (ADL)",
+    "named": true,
+    "hidden": false,
+    "note": "ADL jingle bank tune_02; section index inherited from verified SCC/RLD bank -> verify by ear"
+  },
+  {
+    "file": "adl_jingle_sec01_ADL_bank.dro",
+    "label": "25 - Jingle 5 - Bad Kill (ADL)",
+    "named": true,
+    "hidden": false,
+    "note": "ADL jingle bank tune_02; section index inherited from verified SCC/RLD bank -> verify by ear"
+  },
+  {
+    "file": "adl_jingle_sec02_ADL_bank.dro",
+    "label": "26 - Jingle 6 - Wingman Down (ADL)",
+    "named": true,
+    "hidden": false,
+    "note": "ADL jingle bank tune_02; section index inherited from verified SCC/RLD bank -> verify by ear"
+  },
+  {
+    "file": "adl_jingle_sec08_ADL_bank.dro",
+    "label": "AdLib Jingle — separator (sec 8)",
+    "named": false,
+    "hidden": true,
+    "hiddenReason": "separator section, not a jingle"
   }
 ]
