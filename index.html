@@ -147,7 +147,7 @@
     border-bottom:1px solid var(--steel-dk);border-right:1px solid var(--steel-dk)}
   .dmeter b{color:#11140d}
   #speed{width:78px}
-  #speedV{display:inline-block;width:44px;text-align:right;font-variant-numeric:tabular-nums}
+  #speedV{display:inline-block;width:44px;text-align:right;margin-right:4px;font-variant-numeric:tabular-nums}
   .credit{margin-left:auto;display:flex;align-items:center;padding:0 12px;font-size:13px;
     color:var(--steel-emb);text-shadow:0 1px 0 rgba(255,255,255,.35);white-space:nowrap}
   .credit a{color:var(--steel-emb);text-decoration:none}
@@ -258,7 +258,17 @@ import { parseDro } from './opl-player.js';
 const CHUNK = 128;
 const $ = id => document.getElementById(id);
 
-const rdBin = f => fetch(f).then(r=>r.arrayBuffer()).then(b=>new Uint8Array(b));
+// Optional self-contained build: roms.embedded.js (gitignored) sets window.__TFX_ROMS
+// to a { filename: Uint8Array } map of the Roland ROMs so no separate ROM files are
+// fetched. Absent in the public repo -> we fall back to fetching ROM files from disk.
+await import('./roms.embedded.js').catch(()=>{});
+const rdBin = async f => {
+  const emb = (typeof window!=='undefined' && window.__TFX_ROMS) || null;
+  if(emb && emb[f]) return emb[f];
+  const r = await fetch(f);
+  if(!r.ok) throw new Error('missing ROM/data file: '+f+' ('+r.status+')');
+  return new Uint8Array(await r.arrayBuffer());
+};
 
 // ---------- Synth backends (MT-32 = Munt, SCC = Nuked-SC55) ----------
 // Each backend exposes: rate, M(odule), renderPtr, ready, boot(), reset(),
