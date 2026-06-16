@@ -23,7 +23,7 @@
   *{box-sizing:border-box}
   html,body{margin:0;height:100%;background:#1c2016;overflow:hidden}
   body{font-family:"TFX Pixel","Lucida Console","DejaVu Sans Mono",Consolas,monospace;
-    color:var(--mon-ink);text-transform:uppercase;letter-spacing:.12em;font-size:13px;
+    color:var(--mon-ink);text-transform:uppercase;letter-spacing:0;font-size:13px;
     -webkit-font-smoothing:none}
   /* steel chassis */
   #app{position:relative;display:flex;flex-direction:column;height:100%;gap:7px;padding:7px;
@@ -50,7 +50,7 @@
   /* ---- header ---- */
   header{padding:7px 12px 4px}
   .htop{display:flex;align-items:flex-end;gap:12px}
-  .logo{font-size:22px;font-weight:700;color:var(--mon-hi);letter-spacing:.14em;line-height:.9;
+  .logo{font-size:22px;font-weight:700;color:var(--mon-hi);letter-spacing:0;line-height:.9;
     text-shadow:0 0 7px rgba(190,210,120,.4)}
   .hline{flex:1;height:0;border-top:1px solid var(--mon-line);box-shadow:0 1px 0 rgba(0,0,0,.35);margin-bottom:5px}
   .hright{color:var(--mon-ink2);font-size:11px;margin-bottom:1px}
@@ -78,7 +78,7 @@
   .side-h b{color:var(--mon-hi);font-weight:400}
   .side-h .sp{flex:1}
   .filterbar{display:flex;gap:5px;padding:5px 9px;border-bottom:1px solid var(--mon-line)}
-  .fbtn{font:inherit;text-transform:uppercase;letter-spacing:.05em;font-size:13px;color:var(--mon-ink2);
+  .fbtn{font:inherit;text-transform:uppercase;letter-spacing:0;font-size:13px;color:var(--mon-ink2);
     background:transparent;border:1px solid var(--mon-line);padding:2px 8px;cursor:pointer;display:flex;align-items:center;gap:5px}
   .fbtn:hover{color:var(--mon-hi)}
   .fbtn.on{background:var(--mon-line);color:var(--screen)}
@@ -94,7 +94,7 @@
   .song.sel{background:var(--mon-line);color:var(--screen)}
   .song.playing{box-shadow:inset 3px 0 0 var(--warn)}
   /* driver icons / badges */
-  .dchip{flex:none;width:30px;box-sizing:border-box;font-size:13px;letter-spacing:.03em;padding:3px 4px;border-radius:2px;
+  .dchip{flex:none;width:30px;box-sizing:border-box;font-size:13px;letter-spacing:0;padding:3px 4px;border-radius:2px;
     border:1px solid;line-height:1;text-align:center}
   /* MT-32: dark ink on light phosphor */
   .dchip.rld{color:#10160c;background:#cdd7b2;border-color:#93a173}
@@ -135,7 +135,7 @@
   .ch.muted::before{opacity:.3}
   .ch.solo{color:#1a1d11;background:linear-gradient(180deg,#fff08a,#e7c81e);text-shadow:none}
   #transport{display:flex;align-items:stretch;gap:0}
-  .btn{font:inherit;text-transform:uppercase;letter-spacing:.06em;color:var(--steel-emb);
+  .btn{font:inherit;text-transform:uppercase;letter-spacing:0;color:var(--steel-emb);
     background:var(--steel-grad);padding:7px 14px;cursor:pointer;white-space:nowrap;text-shadow:0 1px 0 rgba(255,255,255,.35);
     border-top:1px solid var(--steel-lt);border-left:1px solid var(--steel-lt);
     border-right:1px solid var(--steel-dk);border-bottom:1px solid var(--steel-dk)}
@@ -148,8 +148,11 @@
     background:var(--steel-grad);border-top:1px solid var(--steel-lt);
     border-bottom:1px solid var(--steel-dk);border-right:1px solid var(--steel-dk)}
   .dmeter b{color:#11140d}
+  #meters{display:contents}
   #speed{width:78px}
   #speedV{display:inline-block;width:44px;text-align:right;margin-right:4px;font-variant-numeric:tabular-nums}
+  #volV{display:inline-block;width:38px;text-align:right;font-variant-numeric:tabular-nums}
+  .mlab{font-weight:400}
   .credit{margin-left:auto;display:flex;align-items:center;padding:0 12px;font-size:13px;
     color:var(--steel-emb);text-shadow:0 1px 0 rgba(255,255,255,.35);white-space:nowrap}
   .credit a{color:var(--steel-emb);text-decoration:none}
@@ -182,9 +185,57 @@
     background:#fffbe0;box-shadow:0 0 6px rgba(253,231,37,.9);border:0;cursor:pointer}
   #seektrack #seek::-moz-range-thumb{width:3px;height:16px;background:#fffbe0;border:0;cursor:pointer}
   #seektrack #seek:disabled{cursor:default}
+
+  /* ---- mobile tab toggle (notes <-> tracks) ---- */
+  #mtabs{display:none;gap:6px;padding:6px 12px 0}
+  .mtab{font:inherit;text-transform:uppercase;letter-spacing:0;font-size:13px;color:var(--mon-ink2);
+    background:transparent;border:1px solid var(--mon-line);padding:6px 14px;cursor:pointer;flex:1;text-align:center}
+  .mtab.on{background:var(--mon-line);color:var(--screen)}
+
+  /* ===================== MOBILE LAYOUT ===================== */
+  @media (max-width:720px){
+    body{font-size:12px;letter-spacing:0}
+    .logo{font-size:18px}
+    .hsub{gap:12px}
+    /* show the notes/tracks switcher and collapse the split view to one pane */
+    #mtabs{display:flex}
+    #main{padding:0 6px;gap:0}
+    #side{width:auto;flex:1;min-width:0}
+    /* roll: keys keep a real size and scroll left/right instead of squashing */
+    #rollWrap{flex:1;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;touch-action:pan-x}
+    body.mnotes #side{display:none}
+    body.mtracks #rollWrap{display:none}
+    /* hide the driver / notes / channels / synth status line */
+    .statline{display:none}
+    /* channel strip: one row, horizontal scroll; tap = mute, long-press = solo */
+    #chanstrip{gap:0;padding:3px 0 5px}
+    #chanstrip .lab{display:none}
+    #chans{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+      padding-bottom:2px;touch-action:pan-x}
+    #chans::-webkit-scrollbar{display:none}
+    .ch{width:38px}
+    /* transport: compact single-character playback buttons on the left, speed &
+       volume stacked vertically filling the rest of the row */
+    #dash{padding:6px}
+    #transport{flex-wrap:nowrap;gap:6px;align-items:stretch}
+    .credit{display:none}
+    #transport .btn{width:44px;padding:0;text-align:center;font-size:0;
+      display:flex;align-items:center;justify-content:center}
+    #transport .btn::before{font-family:"DejaVu Sans Mono",Consolas,monospace;font-size:16px;letter-spacing:0}
+    #play::before{content:"\25B6"}      /* ▶ */
+    #play.on::before{content:"\23F8"}   /* ⏸ */
+    #restart::before{content:"\21BA"}   /* ↺ */
+    #clear::before{content:"\2298"}     /* ⊘ */
+    #meters{display:flex;flex-direction:column;flex:1;gap:6px;min-width:0}
+    #meters .dmeter{flex:1;padding:4px 9px;font-size:11px}
+    #meters .dmeter input[type=range]{flex:1;width:auto;min-width:0}
+    /* compact label: SPEED -> SPD */
+    #spdLab{font-size:0}
+    #spdLab::before{content:"SPD";font-size:11px}
+  }
 </style>
 </head>
-<body>
+<body class="mnotes">
 <div id="app">
   <div id="screen">
   <header>
@@ -198,6 +249,11 @@
       <span>STATUS: <b id="status">LOADING</b></span>
     </div>
   </header>
+
+  <div id="mtabs">
+    <button class="mtab on" data-v="notes">NOTES</button>
+    <button class="mtab" data-v="tracks">TRACKS</button>
+  </div>
 
   <div id="main">
     <div id="rollWrap" class="ginset">
@@ -244,8 +300,10 @@
       <button id="play" class="btn" disabled>PLAY</button>
       <button id="restart" class="btn" disabled>RESTART</button>
       <button id="clear" class="btn" disabled>CLEAR M/S</button>
-      <span class="dmeter">SPEED <input id="speed" type="range" min="0.25" max="2" step="0.05" value="1"><b id="speedV">1.00x</b></span>
-      <span class="dmeter">VOL <input id="vol" type="range" min="0" max="1" step="0.02" value="0.85"></span>
+      <span id="meters">
+      <span class="dmeter"><b class="mlab" id="spdLab">SPEED</b> <input id="speed" type="range" min="0.25" max="2" step="0.05" value="1"><b id="speedV">100%</b></span>
+      <span class="dmeter"><b class="mlab">VOL</b> <input id="vol" type="range" min="0" max="1" step="0.02" value="0.85"><b id="volV">85%</b></span>
+      </span>
       <span class="credit"><a href="https://barryleitch.bandcamp.com/" target="_blank" rel="noopener">ALL MUSIC BY BARRY LEITCH</a></span>
     </div>
   </div>
@@ -598,11 +656,12 @@ const UI = {
       this.applyFilter();
     });
     this.applyFilter();
+    document.querySelectorAll('.mtab').forEach(b=>b.onclick=()=>this.setMobileView(b.dataset.v));
     $('play').onclick=()=>this.toggle();
     $('restart').onclick=()=>{ Engine.seekTo(0); if(!Engine.playing) this.draw(); };
     $('clear').onclick=()=>{ Engine.mute.clear(); Engine.solo.clear(); this.refreshChannels(); };
-    $('speed').oninput=e=>{ const t=Engine.songTime(); Engine.speed=+e.target.value; $('speedV').textContent=(+e.target.value).toFixed(2)+'x'; Engine.synthPos=Math.round((t/Engine.speed)*Engine.rate); Engine.frozenSong=t; Engine.anchored=false; };
-    $('vol').oninput=e=>Engine.vol=+e.target.value;
+    $('speed').oninput=e=>{ const t=Engine.songTime(); Engine.speed=+e.target.value; $('speedV').textContent=Math.round(+e.target.value*100)+'%'; Engine.synthPos=Math.round((t/Engine.speed)*Engine.rate); Engine.frozenSong=t; Engine.anchored=false; };
+    $('vol').oninput=e=>{ Engine.vol=+e.target.value; $('volV').textContent=Math.round(+e.target.value*100)+'%'; };
     $('seek').oninput=e=>{ const T=(+e.target.value/1000)*Engine.duration; Engine.seekTo(T); if(!Engine.playing) this.draw(); };
     list.onscroll=()=>this.syncScrollbar();
     window.addEventListener('keydown',e=>{ if(e.code==='Space'){e.preventDefault(); this.toggle();} });
@@ -617,9 +676,18 @@ const UI = {
     this.loop();
   },
 
-  resize(){ const r=$('rollWrap').getBoundingClientRect(); const dpr=devicePixelRatio||1;
-    this.canvas.width=r.width*dpr; this.canvas.height=r.height*dpr; this.W=r.width; this.H=r.height; this.cx.setTransform(dpr,0,0,dpr,0,0);
-    this.buildKeys(); this.syncScrollbar(); },
+  resize(){ const wrap=$('rollWrap'); const cw=wrap.clientWidth, ch=wrap.clientHeight; const dpr=devicePixelRatio||1;
+    // On mobile keep keys at a usable size and let the roll scroll horizontally
+    // rather than squashing all 52 white keys into the viewport.
+    let nW=0; for(let p=LOW;p<=HIGH;p++) if(isWhite(p)) nW++;
+    const minKeyW=this.isMobile()?22:0;
+    const fullW=Math.max(cw, nW*minKeyW);
+    this.canvas.style.width=fullW+'px'; this.canvas.style.height=ch+'px';
+    this.canvas.width=fullW*dpr; this.canvas.height=ch*dpr; this.W=fullW; this.H=ch; this.cx.setTransform(dpr,0,0,dpr,0,0);
+    this.buildKeys(); this.syncScrollbar();
+    if(this.isMobile() && this._lastFullW!==fullW){ this._lastFullW=fullW; this.centerRoll(); } },
+
+  centerRoll(){ const w=$('rollWrap'); if(w) w.scrollLeft=Math.max(0,(this.W-w.clientWidth)/2); },
 
   // piano key geometry: white keys full width, black keys narrower & between
   buildKeys(){
@@ -662,6 +730,7 @@ const UI = {
     $('st-ch').textContent=parsed.channels.length;
     $('seek').value=0;
     $('status').textContent='READY';
+    if(this.isMobile()) this.setMobileView('notes');
     this.draw();
   },
 
@@ -671,10 +740,28 @@ const UI = {
     parsed.channels.forEach(ch=>{
       const cell=document.createElement('div'); cell.className='ch'; cell.dataset.ch=ch;
       cell.style.setProperty('--swatch',CH_SWATCH[ch]);
-      cell.title=`Channel ${ch+1} — ${noteCount[ch]||0} notes · left-click mute · right-click solo`;
+      cell.title=`Channel ${ch+1} — ${noteCount[ch]||0} notes · tap/click mute · long-press or right-click solo`;
       cell.textContent=ch+1;
-      cell.onclick=()=>{ if(Engine.mute.has(ch)){Engine.mute.delete(ch);} else {Engine.mute.add(ch); Engine.cutChannel(ch);} this.refreshChannels(); };
-      cell.oncontextmenu=(e)=>{ e.preventDefault(); if(Engine.solo.has(ch)){Engine.solo.delete(ch);} else {Engine.solo.add(ch);} for(const c of parsed.channels) if(Engine.effMuted(c)) Engine.cutChannel(c); this.refreshChannels(); };
+      const doMute=()=>{ if(Engine.mute.has(ch)){Engine.mute.delete(ch);} else {Engine.mute.add(ch); Engine.cutChannel(ch);} this.refreshChannels(); };
+      const doSolo=()=>{ if(Engine.solo.has(ch)){Engine.solo.delete(ch);} else {Engine.solo.add(ch);} for(const c of parsed.channels) if(Engine.effMuted(c)) Engine.cutChannel(c); this.refreshChannels(); };
+      let timer=null, fired=false, moved=false, sx=0, sy=0;
+      cell.addEventListener('pointerdown',e=>{
+        fired=false; moved=false; sx=e.clientX; sy=e.clientY;
+        if(e.pointerType==='mouse' && e.button!==0) return;   // right-click solo handled by contextmenu
+        clearTimeout(timer);
+        timer=setTimeout(()=>{ fired=true; doSolo(); }, 450); // hold = solo
+      });
+      cell.addEventListener('pointermove',e=>{
+        if(Math.abs(e.clientX-sx)>8||Math.abs(e.clientY-sy)>8){ moved=true; clearTimeout(timer); } // scrolling the strip
+      });
+      cell.addEventListener('pointerup',e=>{
+        clearTimeout(timer);
+        if(fired||moved) return;                              // long-press or scroll: not a tap
+        if(e.pointerType==='mouse' && e.button!==0) return;
+        doMute();                                             // tap/click = mute
+      });
+      cell.addEventListener('pointercancel',()=>{ clearTimeout(timer); });
+      cell.oncontextmenu=e=>{ e.preventDefault(); if(!fired) doSolo(); }; // desktop right-click = solo
       box.appendChild(cell);
     });
     this.refreshChannels();
@@ -705,12 +792,22 @@ const UI = {
     [...document.querySelectorAll('.song')].forEach(r=>r.classList.toggle('playing',p&&+r.dataset.i===this.cur)); },
   onEnded(){ this.setPlayUI(false); },
 
+  isMobile(){ return window.matchMedia('(max-width:720px)').matches; },
+  setMobileView(v){
+    const tracks = v==='tracks';
+    document.body.classList.toggle('mtracks',tracks);
+    document.body.classList.toggle('mnotes',!tracks);
+    document.querySelectorAll('.mtab').forEach(x=>x.classList.toggle('on',x.dataset.v===v));
+    this.resize();
+  },
+
   fmt(s){ s=Math.max(0,s|0); return (s/60|0)+':'+String(s%60).padStart(2,'0'); },
 
   loop(){ this.draw(); this.raf=requestAnimationFrame(()=>this.loop()); },
   draw(){
     const cx=this.cx, W=this.W, H=this.H; if(!W||!this.keys) return;
     const kbH=Math.min(120,Math.max(78,H*0.20)), hit=H-kbH, look=3.0;
+    if(hit<=0) return;   // roll pane hidden/too short (e.g. mobile TRACKS view) — skip drawing
     cx.fillStyle='#13180f'; cx.fillRect(0,0,W,H);
     // radar arcs + grid backdrop
     cx.strokeStyle='rgba(115,129,90,.16)'; cx.lineWidth=1;
