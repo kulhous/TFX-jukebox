@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# Copyrighted Roland synth ROM images — NOT redistributable.
+# Drop your own copies into this folder to enable audio (see README).
+MT32_CONTROL.ROM
+MT32_PCM.ROM
+SC55_ROM1.bin
+SC55_ROM2.bin
+SC55_WAVE1.bin
+SC55_WAVE2.bin
+SC55_WAVE3.bin
+
+# Local working / backup dirs (not needed by the player)
+midis_live_rld_backup/
+dro/

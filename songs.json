@@ -1,0 +1,567 @@
+[
+  {
+    "file": "tune_37_at0340858_SCC_dec35902.mid",
+    "label": "02 - Intro ANARCHY (SCC)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_36_at033dc87_RLD_dec41088.mid",
+    "label": "02 - Intro ANARCHY (RLD)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_27_at0330a0e_RLD_dec8762.mid",
+    "label": "03 - Intermission (RLD)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_28_at03312b9_SCC_dec8100.mid",
+    "label": "03 - Intermission (SCC)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_47_at034e48d_RLD_dec9060.mid",
+    "label": "04 - News Briefing (RLD)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_48_at034ed72_SCC_dec8890.mid",
+    "label": "04 - News Briefing (SCC)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_31_at033538d_RLD_dec31198.mid",
+    "label": "05 - Interception Mission (RLD)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_66_at035d611_SCC_dec31354.mid",
+    "label": "05 - Interception Mission (SCC)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_65_at035c5cb_SCC_dec19364.mid",
+    "label": "06 - Closeair Support Mission (SCC)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_75_mission_RLD.mid",
+    "label": "06 - Closeair Support Mission (RLD)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_62_at035969a_SCC_dec21198.mid",
+    "label": "07 - Defence Suppression Mission (SCC)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_76_mission_RLD.mid",
+    "label": "07 - Defence Suppression Mission (RLD)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_68_at035fda7_SCC_dec17520.mid",
+    "label": "08 - Anti Armour Mission (SCC)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_80_mission_RLD.mid",
+    "label": "08 - Anti Armour Mission (RLD)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_30_mission_RLD.mid",
+    "label": "08 - Anti Armour Mission (part/variant) (RLD)",
+    "named": true,
+    "hidden": false,
+    "hiddenReason": "part/variant of Anti-Armour (= tune_80)"
+  },
+  {
+    "file": "tune_09_mission_RLD.mid",
+    "label": "09 - Air Superiority Mission (RLD)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_64_at035b364_SCC_dec24838.mid",
+    "label": "09 - Air Superiority Mission (SCC)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_03_mission_RLD.mid",
+    "label": "09 - Air Superiority Mission (alt) (RLD)",
+    "named": true,
+    "hidden": false,
+    "hiddenReason": "Air Superiority variant (= tune_09 family)"
+  },
+  {
+    "file": "tune_45_at034c884_RLD_dec36614.mid",
+    "label": "10 - Maritime Mission (RLD)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_44_mission_RLD.mid",
+    "label": "10 - Maritime Mission (alt) (RLD)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_61_at0358187_SCC_dec34422.mid",
+    "label": "10 - Maritime Mission (SCC)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_08_at032071f_RLD_dec6284.mid",
+    "label": "11 - Ocean Mission (RLD)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_51_at035007b_SCC_dec5782.mid",
+    "label": "11 - Ocean Mission (SCC)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_50_at034f9e5_RLD_dec6284.mid",
+    "label": "11 - Ocean Mission (alt) (RLD)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_53_at0351590_SCC_dec24400.mid",
+    "label": "12 - Unused Mission (SCC)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_07_at031f51d_RLD_dec23300.mid",
+    "label": "13 - The Battle (RLD)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_63_at035a560_SCC_dec20884.mid",
+    "label": "13 - The Battle (SCC)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_58_at0354b77_RLD_dec13770.mid",
+    "label": "14 - Victorious Flight Home (RLD)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_69_at0360df7_SCC_dec22418.mid",
+    "label": "14 - Victorious Flight Home (SCC)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_22_at032d617_RLD_dec19380.mid",
+    "label": "15 - Unsuccessful Flight Home (RLD)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_70_at0362574_SCC_dec16524.mid",
+    "label": "15 - Unsuccessful Flight Home (SCC)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_03_at0316016_RLD_dec57648.mid",
+    "label": "TFX 15 - Unsuccessful Flight Home (alt 2) [shared intro; mission theme is separate] (RLD)",
+    "named": true,
+    "hidden": true,
+    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate \"Mission Theme/named\" entry"
+  },
+  {
+    "file": "tune_34_at0338f1b_RLD_dec61214.mid",
+    "label": "15 - Unsuccessful Flight Home (alt 2) [shared intro; mission theme is separate] (RLD)",
+    "named": true,
+    "hidden": true,
+    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate \"Mission Theme/named\" entry"
+  },
+  {
+    "file": "tune_09_at0320db2_RLD_dec81994.mid",
+    "label": "15 - Unsuccessful Flight Home (alt 3) [shared intro; mission theme is separate] (RLD)",
+    "named": true,
+    "hidden": true,
+    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate \"Mission Theme/named\" entry"
+  },
+  {
+    "file": "tune_30_at0332cae_RLD_dec66166.mid",
+    "label": "TFX 15 - Unsuccessful Flight Home (alt 4) [shared intro; mission theme is separate] (RLD)",
+    "named": true,
+    "hidden": true,
+    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate \"Mission Theme/named\" entry"
+  },
+  {
+    "file": "tune_44_at0348477_RLD_dec106180.mid",
+    "label": "15 - Unsuccessful Flight Home (alt 4) [shared intro; mission theme is separate] (RLD)",
+    "named": true,
+    "hidden": true,
+    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate \"Mission Theme/named\" entry"
+  },
+  {
+    "file": "tune_74_at03663cc_RLD_dec81994.mid",
+    "label": "TFX 15 - Unsuccessful Flight Home (alt 5) [shared intro; mission theme is separate] (RLD)",
+    "named": true,
+    "hidden": true,
+    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate \"Mission Theme/named\" entry"
+  },
+  {
+    "file": "tune_15_at03284e1_RLD_dec10952.mid",
+    "label": "16 - Death (RLD)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_16_at0329398_SCC_dec10636.mid",
+    "label": "16 - Death (SCC)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_12_at032631c_RLD_dec12896.mid",
+    "label": "17 - Columbia (RLD)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_13_at0326fdc_SCC_dec14618.mid",
+    "label": "17 - Columbia (SCC)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_72_at0363dda_RLD_dec18512.mid",
+    "label": "18 - Yugoslavia (RLD)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_73_at03650a3_SCC_dec23642.mid",
+    "label": "18 - Yugoslavia (SCC)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_40_at0344624_RLD_dec17660.mid",
+    "label": "19 - Libya (RLD)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_41_at034573c_SCC_dec20536.mid",
+    "label": "19 - Libya (SCC)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_56_at03536da_RLD_dec9012.mid",
+    "label": "20 - Somalia (RLD)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_57_at0354202_SCC_dec8720.mid",
+    "label": "20 - Somalia (SCC)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_59_at0355a1c_SCC_dec20792.mid",
+    "label": "23 - Jingle 3 - Parachuting Thru The Clouds (SCC) [full bank]",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_60_at035716a_SCC_dec21084.mid",
+    "label": "Unused Battle Theme (SCC)",
+    "named": true,
+    "hidden": false,
+    "note": "was 'Boss Fight (SCC)'; user renamed to Unused Battle Theme (matches RLD tune_75/78/80 deep)"
+  },
+  {
+    "file": "tune_20_at032bbc1_RLD_dec12558.mid",
+    "label": "Enrolment / Training (RLD)",
+    "named": true,
+    "hidden": false,
+    "note": "not on album"
+  },
+  {
+    "file": "tune_21_at032c99a_SCC_dec11012.mid",
+    "label": "Enrolment / Training (SCC)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_33_at0337816_RLD_dec26582.mid",
+    "label": "Interdiction Mission (RLD)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_67_at035e99c_SCC_dec26598.mid",
+    "label": "Interdiction Mission (SCC)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_78_mission_RLD.mid",
+    "label": "Interdiction Mission (alt / = tune_33) (RLD)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "tune_34_mission_RLD.mid",
+    "label": "Interdiction Mission (subset/variant of tune_78) (RLD)",
+    "named": true,
+    "hidden": true,
+    "hiddenReason": "subset/variant of tune_78 Interdiction; differs mainly in CC7 master volume (note content same) -> fluke alt"
+  },
+  {
+    "file": "mt32_jingle_pos21_RLD.mid",
+    "label": "25 - Jingle 5 - Bad Kill (RLD)",
+    "named": true,
+    "hidden": false,
+    "hiddenReason": "MT-32 event jingle: order-section of background bank tune_74/76 family"
+  },
+  {
+    "file": "tune_59_at0355a1c_SCC_dec20792_sec01.mid",
+    "label": "25 - Jingle 5 - Bad Kill (SCC)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "mt32_jingle_pos24_RLD.mid",
+    "label": "21 - Jingle 1 - Close to Death (long) (RLD)",
+    "named": true,
+    "hidden": false,
+    "hiddenReason": "MT-32 event jingle: order-section of background bank tune_74/76 family"
+  },
+  {
+    "file": "tune_59_at0355a1c_SCC_dec20792_sec04.mid",
+    "label": "21 - Jingle 1 - Close to Death (long) (SCC)",
+    "named": true,
+    "hidden": false,
+    "hiddenReason": "offline-rendered jingle bank section (audition)"
+  },
+  {
+    "file": "mt32_jingle_pos23_RLD.mid",
+    "label": "21 - Jingle 1 - Close to Death (short) (RLD)",
+    "named": true,
+    "hidden": false,
+    "hiddenReason": "MT-32 event jingle: order-section of background bank tune_74/76 family"
+  },
+  {
+    "file": "tune_59_at0355a1c_SCC_dec20792_sec03.mid",
+    "label": "21 - Jingle 1 - Close to Death (short) (SCC)",
+    "named": true,
+    "hidden": false,
+    "hiddenReason": "offline-rendered jingle bank section (audition)"
+  },
+  {
+    "file": "tune_59_at0355a1c_SCC_dec20792_sec07.mid",
+    "label": "22 - Jingle 2 - Close to Winning (SCC)",
+    "named": true,
+    "hidden": false,
+    "hiddenReason": "offline-rendered jingle bank section (audition)"
+  },
+  {
+    "file": "mt32_jingle_pos20_RLD.mid",
+    "label": "24 - Jingle 4 - Good Kill (RLD)",
+    "named": true,
+    "hidden": false,
+    "hiddenReason": "MT-32 event jingle: order-section of background bank tune_74/76 family"
+  },
+  {
+    "file": "tune_59_at0355a1c_SCC_dec20792_sec00.mid",
+    "label": "24 - Jingle 4 - Good Kill (SCC)",
+    "named": true,
+    "hidden": false,
+    "hiddenReason": "offline-rendered jingle bank section (audition)"
+  },
+  {
+    "file": "mt32_pos25_RLD.mid",
+    "label": "23 - Jingle 3 - Parachuting Thru The Clouds (RLD)",
+    "named": true,
+    "hidden": false,
+    "hiddenReason": "candidate MT-32 looping jingle (order block 25-27, before mission theme)"
+  },
+  {
+    "file": "tune_59_at0355a1c_SCC_dec20792_sec05.mid",
+    "label": "23 - Jingle 3 - Parachuting Thru The Clouds (SCC)",
+    "named": true,
+    "hidden": false,
+    "hiddenReason": "offline-rendered jingle bank section (audition)"
+  },
+  {
+    "file": "mt32_pos26_RLD.mid",
+    "label": "23 - Jingle 3 - Parachuting Thru The Clouds (alt) (RLD)",
+    "named": true,
+    "hidden": false,
+    "hiddenReason": "candidate MT-32 looping jingle (order block 25-27, before mission theme)"
+  },
+  {
+    "file": "tune_59_at0355a1c_SCC_dec20792_sec06.mid",
+    "label": "23 - Jingle 3 - Parachuting Thru The Clouds (alt) (SCC)",
+    "named": true,
+    "hidden": false,
+    "hiddenReason": "offline-rendered jingle bank section (audition)"
+  },
+  {
+    "file": "mt32_jingle_pos28_RLD.mid",
+    "label": "Jingle - separator/sting (RLD)",
+    "named": true,
+    "hidden": false,
+    "hiddenReason": "MT-32 event jingle: order-section of background bank tune_74/76 family"
+  },
+  {
+    "file": "tune_59_at0355a1c_SCC_dec20792_sec08.mid",
+    "label": "Jingle - separator/sting (SCC)",
+    "named": true,
+    "hidden": false,
+    "hiddenReason": "offline-rendered jingle bank section (audition)"
+  },
+  {
+    "file": "mt32_pos27_RLD.mid",
+    "label": "Jingle - unknown extra (RLD)",
+    "named": true,
+    "hidden": false,
+    "hiddenReason": "candidate MT-32 looping jingle (order block 25-27, before mission theme)"
+  },
+  {
+    "file": "tune_59_at0355a1c_SCC_dec20792_sec09.mid",
+    "label": "Jingle - unknown extra (SCC)",
+    "named": true,
+    "hidden": false,
+    "hiddenReason": "offline-rendered jingle bank section (audition)"
+  },
+  {
+    "file": "mt32_jingle_pos22_RLD.mid",
+    "label": "26 - Jingle 6 - Wingman Down (RLD)",
+    "named": true,
+    "hidden": false,
+    "hiddenReason": "MT-32 event jingle: order-section of background bank tune_74/76 family"
+  },
+  {
+    "file": "tune_59_at0355a1c_SCC_dec20792_sec02.mid",
+    "label": "26 - Jingle 6 - Wingman Down (SCC)",
+    "named": true,
+    "hidden": false,
+    "hiddenReason": "offline-rendered jingle bank section (audition)"
+  },
+  {
+    "file": "tune_06_at031b396_RLD_dec84496.mid",
+    "label": "15 - Unsuccessful Flight Home (alt) (RLD)",
+    "named": true,
+    "hidden": true,
+    "hiddenReason": "same theme as tune_22 (interval-jac 0.83, not identical); kept as alt"
+  },
+  {
+    "file": "tune_23_at032e3e2_RLD_dec9736.mid",
+    "label": "Tune 23 (RLD) — near-silent in-game (1 notes)",
+    "named": false,
+    "hidden": false
+  },
+  {
+    "file": "tune_25_at032f600_RLD_dec12830.mid",
+    "label": "Tune 25 (RLD) — near-silent in-game (41 notes)",
+    "named": false,
+    "hidden": false
+  },
+  {
+    "file": "tune_75_at036a3f2_RLD_dec89212.mid",
+    "label": "Tune 75 (RLD) — shared flight-home intro (dup)",
+    "named": false,
+    "hidden": true,
+    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate mission entry"
+  },
+  {
+    "file": "tune_76_at036e5b4_RLD_dec85906.mid",
+    "label": "Tune 76 (RLD) — shared flight-home intro (dup)",
+    "named": false,
+    "hidden": true,
+    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate mission entry"
+  },
+  {
+    "file": "tune_78_at0376700_RLD_dec89454.mid",
+    "label": "Tune 78 (RLD) — shared flight-home intro (dup)",
+    "named": false,
+    "hidden": true,
+    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate mission entry"
+  },
+  {
+    "file": "tune_79_at037aa1e_RLD_dec104710.mid",
+    "label": "Tune 79 (RLD) — shared flight-home intro (dup)",
+    "named": false,
+    "hidden": true,
+    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate mission entry"
+  },
+  {
+    "file": "tune_80_at037edbe_RLD_dec84496.mid",
+    "label": "Tune 80 (RLD) — shared flight-home intro (dup)",
+    "named": false,
+    "hidden": true,
+    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate mission entry"
+  },
+  {
+    "file": "tune_80_deep_s65_RLD.mid",
+    "label": "Unused Battle Theme (alt) (RLD)",
+    "named": true,
+    "hidden": true,
+    "note": "found by exhaustive order-list scan (scan_all_sections.py); deep mission block beyond the order-29 theme; distinct interval fingerprint",
+    "hiddenReason": "same as tune_75 Unused Battle Theme (user-confirmed)"
+  },
+  {
+    "file": "tune_44_deep_s55_RLD.mid",
+    "label": "12 - Unused Mission (RLD)",
+    "named": true,
+    "hidden": false,
+    "note": "found by exhaustive order-list scan; deep mission block (order 55); user-identified Unused Mission"
+  },
+  {
+    "file": "tune_75_deep_s70_RLD.mid",
+    "label": "Unused Battle Theme (RLD)",
+    "named": true,
+    "hidden": false,
+    "note": "deep block (order 70); user-identified 'boss fight' -> Unused Battle Theme"
+  },
+  {
+    "file": "tune_78_deep_s62_RLD.mid",
+    "label": "Unused Battle Theme (alt) (RLD)",
+    "named": true,
+    "hidden": true,
+    "note": "found by exhaustive order-list scan (scan_all_sections.py); deep mission block beyond the order-29 theme; distinct interval fingerprint",
+    "hiddenReason": "same as tune_75 Unused Battle Theme (user-confirmed)"
+  },
+  {
+    "file": "tune_79_deep_s55_RLD.mid",
+    "label": "12 - Unused Mission (alt) (RLD)",
+    "named": true,
+    "hidden": true,
+    "note": "found by exhaustive order-list scan (scan_all_sections.py); deep mission block beyond the order-29 theme; distinct interval fingerprint",
+    "hiddenReason": "same as tune_44 Unused Mission (user-confirmed)"
+  }
+]
