@@ -79,7 +79,7 @@
   .side-h .sp{flex:1}
   .filterbar{display:flex;gap:5px;padding:5px 9px;border-bottom:1px solid var(--mon-line)}
   .fbtn{font:inherit;text-transform:uppercase;letter-spacing:0;font-size:13px;color:var(--mon-ink2);
-    background:transparent;border:1px solid var(--mon-line);padding:2px 8px;cursor:pointer;display:flex;align-items:center;gap:5px}
+    background:transparent;border:1px solid var(--mon-line);padding:2px 9px;cursor:pointer;display:flex;align-items:center;gap:6px}
   .fbtn:hover{color:var(--mon-hi)}
   .fbtn.on{background:var(--mon-line);color:var(--screen)}
   #listwrap{flex:1;display:flex;min-height:0}
@@ -94,7 +94,7 @@
   .song.sel{background:var(--mon-line);color:var(--screen)}
   .song.playing{box-shadow:inset 3px 0 0 var(--warn)}
   /* driver icons / badges */
-  .dchip{flex:none;width:30px;box-sizing:border-box;font-size:13px;letter-spacing:0;padding:3px 4px;border-radius:2px;
+  .dchip{flex:none;width:34px;box-sizing:border-box;font-size:13px;letter-spacing:0;padding:3px 6px;border-radius:2px;
     border:1px solid;line-height:1;text-align:center}
   /* MT-32: dark ink on light phosphor */
   .dchip.rld{color:#10160c;background:#cdd7b2;border-color:#93a173}
@@ -568,6 +568,8 @@ const Engine = {
     if(this.syn.oplWrite){
       const base=this.syn.renderPtr>>1, rate=this.rate, speed=this.speed, t0=this.synthPos;
       let done=0;
+      let sameSample=-1;
+      const sameSampleKeyOn=new Array(18).fill(null);
       const slice=(count)=>{
         if(count<=0) return;
         const h=this.syn.render(count);
@@ -577,7 +579,25 @@ const Engine = {
       while(done<CHUNK){
         if(this.eventIdx<this.events.length){
           const evSample=Math.round((this.events[this.eventIdx].tSec/speed)*rate)-t0;
-          if(evSample<=done){ this.dispatch(this.events[this.eventIdx]); this.eventIdx++; continue; }
+          if(evSample<=done){
+            const ev=this.events[this.eventIdx];
+            // Some AdLib jingles retrigger notes as key-off + key-on at the exact
+            // same timestamp on the same channel. If both writes are dispatched
+            // with no rendered sample between them, the re-attack can be lost.
+            // Insert a 1-sample gap only for same-sample off->on transitions.
+            if(evSample!==sameSample){
+              sameSample=evSample;
+              sameSampleKeyOn.fill(null);
+            }
+            const low=ev.reg&0xff;
+            if(ev.type==='opl' && low>=0xb0 && low<=0xb8 && ev.channel>=0 && ev.channel<18){
+              const newOn=(ev.val&0x20)!==0;
+              const prevOn=sameSampleKeyOn[ev.channel];
+              if(prevOn===false && newOn===true && done<CHUNK) slice(1);
+              sameSampleKeyOn[ev.channel]=newOn;
+            }
+            this.dispatch(ev); this.eventIdx++; continue;
+          }
           slice(Math.min(CHUNK,evSample)-done);
         } else { slice(CHUNK-done); }
       }
