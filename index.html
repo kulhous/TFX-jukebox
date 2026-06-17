@@ -273,10 +273,17 @@
     #dash{width:222px;flex:none;display:flex;flex-direction:column;gap:6px;padding:6px;overflow-y:auto;
       border-top:0;border-left:2px solid var(--steel-lt);
       box-shadow:inset 2px 0 0 rgba(255,255,255,.35),-4px 0 12px rgba(0,0,0,.45)}
-    #mtabs{display:flex;padding:0}
-    #transport{order:2;flex-wrap:wrap;gap:6px;align-items:stretch}
+    #mtabs{display:flex;padding:0;order:1;flex:none}
+    /* channels fill the middle, growing to push the playback controls to the
+       bottom; the empty area above is what gets populated as tracks load */
+    #chanstrip{order:2;flex:1 1 auto;gap:0;padding:0;align-items:flex-start}
+    #chanstrip .lab{display:none}
+    #chans{flex-wrap:wrap;gap:4px;overflow:visible;touch-action:auto;align-content:flex-start}
+    .ch{width:38px}
+    /* playback controls pinned to the bottom of the column, buttons spread to fit */
+    #transport{order:3;flex:none;flex-wrap:wrap;gap:6px;align-items:stretch;margin-top:auto}
     .credit{display:none}
-    #transport .btn{width:44px;padding:0;text-align:center;font-size:0;
+    #transport .btn{flex:1;min-width:0;padding:8px 0;text-align:center;font-size:0;
       display:flex;align-items:center;justify-content:center}
     #transport .btn::before{font-family:inherit;font-size:20px;line-height:1;letter-spacing:0}
     #play::before{content:"\25B6"}      /* ▶ */
@@ -289,11 +296,6 @@
     #meters #speedV,#meters #volV,#meters #mixV{width:auto;margin:0}
     #spdLab{font-size:0}
     #spdLab::before{content:"SPD";font-size:11px}
-    /* channel strip last; in the rotated right column it can wrap to multiple rows */
-    #chanstrip{order:3;gap:0;padding:0}
-    #chanstrip .lab{display:none}
-    #chans{flex-wrap:wrap;gap:4px;overflow:visible;touch-action:auto}
-    .ch{width:38px}
   }
 </style>
 </head>
