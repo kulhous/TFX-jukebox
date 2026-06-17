@@ -56,6 +56,9 @@
   .hright{color:var(--mon-ink2);font-size:11px;margin-bottom:1px}
   .hsub{display:flex;align-items:center;gap:18px;margin-top:4px;color:var(--mon-ink2);font-size:11px;flex-wrap:wrap}
   .hsub b{color:var(--mon-hi);font-weight:400}  .meter{display:flex;align-items:center;gap:7px}
+  /* marquee track: transparent on desktop (children flow in .hsub flex) */
+  .hmarquee{display:contents}
+  @keyframes hmarq{from{transform:translate3d(0,0,0)}to{transform:translate3d(-100%,0,0)}}
   input[type=range]{-webkit-appearance:none;appearance:none;height:9px;width:92px;background:var(--screen);
     border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);
     border-right:1px solid var(--steel-lt);border-bottom:1px solid var(--steel-lt)}
@@ -152,6 +155,7 @@
   #speed{width:78px}
   #speedV{display:inline-block;width:44px;text-align:right;margin-right:4px;font-variant-numeric:tabular-nums}
   #volV{display:inline-block;width:38px;text-align:right;font-variant-numeric:tabular-nums}
+  #mixV{display:inline-block;width:38px;text-align:right;font-variant-numeric:tabular-nums}
   .mlab{font-weight:400}
   .credit{margin-left:auto;display:flex;align-items:center;padding:0 12px;font-size:13px;
     color:var(--steel-emb);text-shadow:0 1px 0 rgba(255,255,255,.35);white-space:nowrap}
@@ -165,7 +169,7 @@
   #seekbar{display:flex;align-items:center;gap:11px;margin:0 12px;padding:8px 4px 11px;color:var(--mon-ink2);
     font-size:11px;font-variant-numeric:tabular-nums}
   #seekbar #t-cur{color:var(--mon-hi);min-width:34px}
-  #time{color:var(--mon-ink2);font-size:11px;min-width:96px;text-align:right;font-variant-numeric:tabular-nums}
+  #time{color:var(--mon-ink2);font-size:11px;min-width:34px;text-align:right;font-variant-numeric:tabular-nums}
   #seektrack{position:relative;flex:1;height:16px;background:var(--screen);overflow:hidden;
     box-shadow:inset 0 0 0 1px #0c0f08, inset 0 0 10px rgba(0,0,0,.55)}
   /* phosphor fill with a yellowish decay trailing behind the playhead */
@@ -221,17 +225,23 @@
     .credit{display:none}
     #transport .btn{width:44px;padding:0;text-align:center;font-size:0;
       display:flex;align-items:center;justify-content:center}
-    #transport .btn::before{font-family:"DejaVu Sans Mono",Consolas,monospace;font-size:16px;letter-spacing:0}
+    #transport .btn::before{font-family:inherit;font-size:20px;line-height:1;letter-spacing:0}
     #play::before{content:"\25B6"}      /* ▶ */
     #play.on::before{content:"\23F8"}   /* ⏸ */
     #restart::before{content:"\21BA"}   /* ↺ */
     #clear::before{content:"\2298"}     /* ⊘ */
     #meters{display:flex;flex-direction:column;flex:1;gap:6px;min-width:0}
-    #meters .dmeter{flex:1;padding:4px 9px;font-size:11px}
-    #meters .dmeter input[type=range]{flex:1;width:auto;min-width:0}
+    /* SPD / VOL / MIX rows share one grid template so all three sliders are the
+       exact same width regardless of label / percent text length */
+    #meters .dmeter{flex:1;display:grid;grid-template-columns:30px 1fr 40px;align-items:center;gap:6px;padding:4px 9px;font-size:11px}
+    #meters .dmeter input[type=range]{width:auto;min-width:0;margin:0}
+    #meters #speedV,#meters #volV,#meters #mixV{width:auto;margin:0}
     /* compact label: SPEED -> SPD */
     #spdLab{font-size:0}
     #spdLab::before{content:"SPD";font-size:11px}
+    /* condense the song-info header into one scrolling marquee line */
+    .hsub{flex-wrap:nowrap;overflow:hidden;white-space:nowrap;margin-top:2px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%)}
+    .hmarquee{display:inline-flex;gap:18px;padding-left:100%;animation:hmarq 24s linear infinite}
   }
 </style>
 </head>
@@ -245,12 +255,14 @@
       <span class="hright">TFX JUKEBOX</span>
     </div>
     <div class="hsub">
+      <div class="hmarquee">
       <span>TRACK: <b id="trackname">—</b></span>
       <span>STATUS: <b id="status">LOADING</b></span>
       <span>DRIVER: <b id="st-drv">—</b></span>
       <span>NOTES: <b id="st-notes">0</b></span>
       <span>CHANNELS: <b id="st-ch">0</b></span>
       <span>SYNTH: <b id="st-synth">MT-32 · CTRL v1.07 + PCM</b></span>
+      </div>
     </div>
   </header>
 
@@ -300,6 +312,7 @@
       <span id="meters">
       <span class="dmeter"><b class="mlab" id="spdLab">SPEED</b> <input id="speed" type="range" min="0.25" max="2" step="0.05" value="1"><b id="speedV">100%</b></span>
       <span class="dmeter"><b class="mlab">VOL</b> <input id="vol" type="range" min="0" max="1" step="0.02" value="0.85"><b id="volV">85%</b></span>
+      <span class="dmeter"><b class="mlab">MIX</b> <input id="mix" type="range" min="0" max="1" step="0.02" value="0" title="Blend L/R channels toward mono — easier on headphones"><b id="mixV">0%</b></span>
       </span>
       <span class="credit"><a href="https://barryleitch.bandcamp.com/" target="_blank" rel="noopener">ALL MUSIC BY BARRY LEITCH</a></span>
     </div>
@@ -457,7 +470,7 @@ const Engine = {
   syn:null, rate:32000, ctx:null, node:null,
   events:[], notes:[], duration:0, channels:[],
   eventIdx:0, synthPos:0,
-  speed:1, vol:0.85, playing:false, ended:false,
+  speed:1, vol:0.85, blend:0, playing:false, ended:false,
   ratio:1, frac:0, prevL:0,prevR:0,curL:0,curR:0,
   chunkL:new Float32Array(CHUNK),chunkR:new Float32Array(CHUNK),chunkIdx:CHUNK,chunkLen:CHUNK,
   mute:new Set(), solo:new Set(),
@@ -625,10 +638,14 @@ const Engine = {
     this.anchorPlay = (e.playbackTime!=null) ? e.playbackTime : (this.ctx.currentTime + n/this.ctx.sampleRate);
     this.anchorSong = (this.synthPos/this.rate)*this.speed;
     this.anchored = true;
-    const v=this.vol, ratio=this.ratio;
+    const v=this.vol, ratio=this.ratio, blend=this.blend;
     for(let i=0;i<n;i++){
-      outL[i]=(this.prevL+(this.curL-this.prevL)*this.frac)*v;
-      outR[i]=(this.prevR+(this.curR-this.prevR)*this.frac)*v;
+      let L=(this.prevL+(this.curL-this.prevL)*this.frac);
+      let R=(this.prevR+(this.curR-this.prevR)*this.frac);
+      // stereo blend: fold L/R toward their mono mid (0=full stereo, 1=mono)
+      if(blend>0){ const mid=(L+R)*0.5; L+=(mid-L)*blend; R+=(mid-R)*blend; }
+      outL[i]=L*v;
+      outR[i]=R*v;
       this.frac+=ratio;
       while(this.frac>=1){ this.frac-=1; this.prevL=this.curL; this.prevR=this.curR;
         const f=this.nextFrame(); this.curL=f[0]; this.curR=f[1]; }
@@ -679,6 +696,7 @@ const UI = {
     $('clear').onclick=()=>{ Engine.mute.clear(); Engine.solo.clear(); this.refreshChannels(); };
     $('speed').oninput=e=>{ const t=Engine.songTime(); Engine.speed=+e.target.value; $('speedV').textContent=Math.round(+e.target.value*100)+'%'; Engine.synthPos=Math.round((t/Engine.speed)*Engine.rate); Engine.frozenSong=t; Engine.anchored=false; };
     $('vol').oninput=e=>{ Engine.vol=+e.target.value; $('volV').textContent=Math.round(+e.target.value*100)+'%'; };
+    $('mix').oninput=e=>{ Engine.blend=+e.target.value; $('mixV').textContent=Math.round(+e.target.value*100)+'%'; };
     $('seek').oninput=e=>{ const T=(+e.target.value/1000)*Engine.duration; Engine.seekTo(T); if(!Engine.playing) this.draw(); };
     list.onscroll=()=>this.syncScrollbar();
     window.addEventListener('keydown',e=>{ if(e.code==='Space'){e.preventDefault(); this.toggle();} });
@@ -883,8 +901,8 @@ const UI = {
       cx.fillRect(k.x,hit,k.w,bkH);
       cx.strokeStyle='#000'; cx.strokeRect(k.x+0.5,hit+0.5,k.w-1,bkH);
     }
-    // readout
-    $('time').textContent=this.fmt(now)+' / '+this.fmt(Engine.duration);
+    // readout — left shows current time, right shows total only (no duplicate)
+    $('time').textContent=this.fmt(Engine.duration);
     $('t-cur').textContent=this.fmt(now);
     const pct=Math.min(100,(now/Engine.duration)*100||0);
     $('seekfill').style.width=pct+'%';
