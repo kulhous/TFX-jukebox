@@ -97,8 +97,8 @@
   .song.sel{background:var(--mon-line);color:var(--screen)}
   .song.playing{box-shadow:inset 3px 0 0 var(--warn)}
   /* driver icons / badges */
-  .dchip{flex:none;width:34px;box-sizing:border-box;font-size:13px;letter-spacing:0;padding:3px 5px 3px 7px;border-radius:2px;
-    border:1px solid;line-height:1;text-align:center}
+  .dchip{flex:none;width:34px;box-sizing:border-box;font-size:13px;letter-spacing:0;padding:3px 0;border-radius:2px;
+    border:1px solid;line-height:1;text-align:center;text-indent:1px}
   /* MT-32: dark ink on light phosphor */
   .dchip.rld{color:#10160c;background:#cdd7b2;border-color:#93a173}
   /* SCC: light text on dark screen, light border */
@@ -675,11 +675,10 @@ const UI = {
       a._tid-b._tid);
     const list=$('songlist');
     this.songs.forEach((s,i)=>{
-      const tid=(s.file.match(/tune_(\d+)/)||[,'?'])[1];
       const row=document.createElement('div'); row.className='song'; row.dataset.i=i; row.dataset.drv=s._drv;
       const DCH={RLD:['rld','MT','Roland MT-32 / LAPC-I'],SCC:['scc','SC','Sound Canvas / General MIDI'],ADL:['adl','FM','AdLib / OPL2 FM synthesis']};
       const [dc,dl,dtitle]=DCH[s._drv]||DCH.RLD;
-      row.innerHTML=`<span class="dchip ${dc}" title="${dtitle}">${dl}</span><span class="tid">${tid}</span><span class="nm">${s._name}</span>`;
+      row.innerHTML=`<span class="dchip ${dc}" title="${dtitle}">${dl}</span><span class="nm">${s._name}</span>`;
       row.onclick=()=>this.pick(i);
       list.appendChild(row);
     });
@@ -707,7 +706,16 @@ const UI = {
     try{ await Engine.boot(); }catch(err){ $('overlay').textContent='ENGINE ERROR: '+err.message; $('status').textContent='ERROR'; return; }
     $('overlay').classList.add('hidden'); $('status').textContent='READY';
     ['play','restart','clear','seek'].forEach(id=>$(id).disabled=false);
-    this.pick(0);
+    // restore the song named in the URL hash (so a refresh keeps the same track)
+    let startIdx=0;
+    const want=decodeURIComponent((location.hash||'').replace(/^#/,''));
+    if(want){ const j=this.songs.findIndex(s=>s.file===want); if(j>=0) startIdx=j; }
+    window.addEventListener('hashchange',()=>{
+      const w=decodeURIComponent((location.hash||'').replace(/^#/,''));
+      const j=this.songs.findIndex(s=>s.file===w);
+      if(j>=0 && j!==this.cur) this.pick(j);
+    });
+    this.pick(startIdx);
     this.loop();
   },
 
@@ -747,6 +755,7 @@ const UI = {
 
   async pick(i){
     this.cur=i; const s=this.songs[i];
+    history.replaceState(null,'','#'+encodeURIComponent(s.file));
     $('status').textContent='LOADING';
     [...document.querySelectorAll('.song')].forEach(r=>r.classList.toggle('sel',+r.dataset.i===i));
     const sel=document.querySelector('.song.sel'); if(sel) sel.scrollIntoView({block:'nearest'});
@@ -758,7 +767,7 @@ const UI = {
     Engine.mute.clear(); Engine.solo.clear();
     Engine.loadSong(parsed);
     this.buildChannels(parsed);
-    $('trackname').textContent=`(tune_${(s.file.match(/tune_(\d+)/)||[,'?'])[1]}) ${s._name}`;
+    $('trackname').textContent=s._name;
     $('st-drv').textContent={RLD:'MT-32',SCC:'SCC',ADL:'ADLIB'}[s._drv]||s._drv;
     $('st-synth').textContent={RLD:'MT-32 · CTRL v1.07 + PCM',SCC:'SC-55 v1.21',ADL:'OPL3 (Nuked, YMF262)'}[s._drv]||s._drv;
     $('st-notes').textContent=parsed.notes.length;
