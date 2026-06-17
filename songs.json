@@ -87,8 +87,8 @@
     "file": "tune_30_mission_RLD.mid",
     "label": "08 - Anti Armour Mission (part/variant) (RLD)",
     "named": true,
-    "hidden": false,
-    "hiddenReason": "part/variant of Anti-Armour (= tune_80)"
+    "hidden": true,
+    "hiddenReason": "mislabeled '08 Anti Armour'; deep section actually renders as 05 Interception (sim 1.00 to tune_31, already in player) -> redundant"
   },
   {
     "file": "tune_09_mission_RLD.mid",
@@ -293,7 +293,8 @@
     "file": "tune_59_at0355a1c_SCC_dec20792.mid",
     "label": "23 - Jingle 3 - Parachuting Thru The Clouds (SCC) [full bank]",
     "named": true,
-    "hidden": false
+    "hidden": true,
+    "hiddenReason": "confirmed correct content but full-bank dump; superseded by clean section renders (sec05/sec06)"
   },
   {
     "file": "tune_60_at035716a_SCC_dec21084.mid",
@@ -456,7 +457,8 @@
     "label": "Jingle - unknown extra (SCC)",
     "named": true,
     "hidden": false,
-    "hiddenReason": "offline-rendered jingle bank section (audition)"
+    "hiddenReason": "offline-rendered jingle bank section (audition)",
+    "note": "cold-start bug: driver set the real instruments at t=0 (ch2/3 Strings1, ch5 OrchHit, ch6 Timpani, ch4 FretlessBass) then a cold re-init RESET them to piano + spammed ch1 piano. Fixed via fix_cold_scc.py = keep each channel's first non-zero program (driver's own value), ch1->MusicBox from bank palette; notes unchanged. Cross-checked vs MT-32 mt32_pos27 roles."
   },
   {
     "file": "mt32_jingle_pos22_RLD.mid",
@@ -558,11 +560,11 @@
   },
   {
     "file": "tune_79_deep_s55_RLD.mid",
-    "label": "12 - Unused Mission (alt) (RLD)",
+    "label": "12 - Unused Mission (copy/alt) (RLD)",
     "named": true,
     "hidden": true,
-    "note": "found by exhaustive order-list scan (scan_all_sections.py); deep mission block beyond the order-29 theme; distinct interval fingerprint",
-    "hiddenReason": "same as tune_44 Unused Mission (user-confirmed)"
+    "note": "user ID: Unused Mission copy. (Byte-interval fingerprint diverged 0.19 from tune_44 deep but user confirms same composition.)",
+    "hiddenReason": "user ear ID 2026-06-17: a copy/variant of 12 Unused Mission (tune_44 deep); hidden as alt"
   },
   {
     "file": "tune_00_at03127a7_ADL_dec16006.module.dro",
@@ -633,10 +635,11 @@
   },
   {
     "file": "tune_24_at032ed93_ADL_dec8278.module.dro",
-    "label": "AdLib tune_24 — ignition/engine SFX bank (near-silent)",
+    "label": "AdLib tune_24 — full SFX bank (all patterns, noisy)",
     "named": false,
     "hidden": true,
-    "hiddenReason": "ignition/engine SFX bank (near-silent)"
+    "hiddenReason": "ignition/engine SFX bank (near-silent)",
+    "note": "base render plays all 33 SFX patterns linearly = noise; use the split stings below"
   },
   {
     "file": "tune_26_at0330211_ADL_dec8462.module.dro",
@@ -821,6 +824,13 @@
     "note": "ADL jingle bank tune_02 sec05 (1340 notes ~ SCC sec05 1280); inherited from verified SCC mapping -> verify by ear"
   },
   {
+    "file": "adl_jingle_sec06_ADL_bank.dro",
+    "label": "23 - Jingle 3 - Parachuting Thru The Clouds (alt) (ADL)",
+    "named": true,
+    "hidden": false,
+    "note": "ADL jingle bank tune_02 sec06 = Parachuting alt (distinct from sec05: 1345 vs 1340 notes, different note stream); mirrors SCC sec06 / RLD pos26."
+  },
+  {
     "file": "adl_jingle_sec00_ADL_bank.dro",
     "label": "24 - Jingle 4 - Good Kill (ADL)",
     "named": true,
@@ -843,10 +853,18 @@
   },
   {
     "file": "adl_jingle_sec08_ADL_bank.dro",
-    "label": "AdLib Jingle — separator (sec 8)",
-    "named": false,
-    "hidden": true,
-    "hiddenReason": "separator section, not a jingle"
+    "label": "Jingle - separator/sting (ADL)",
+    "named": true,
+    "hidden": false,
+    "hiddenReason": "separator section, not a jingle",
+    "note": "ADL jingle bank tune_02 sec08 (47 notes ~ SCC sec08 51); the separator/sting between jingles, mirrors SCC sec08 / RLD pos28."
+  },
+  {
+    "file": "adl_jingle_sec09_ADL_bank.dro",
+    "label": "Jingle - unknown extra (ADL)",
+    "named": true,
+    "hidden": false,
+    "note": "orphan pattern-0 (out-of-bounds order 9): cold-start left 7/9 OPL channels on the junk default patch. Fixed via fix_cold_adl.py = rewrote constant junk timbre regs to each voice's home instrument (2->7 distinct), volume envelope untouched, notes unchanged. NOTE: in-bounds MT-32 ref (mt32_pos27) shows voice 3 = Rock Organ, not percussion; the junk 'Thud' default just sounded percussive."
   },
   {
     "file": "tune_76_deep_s60_RLD.mid",
@@ -861,5 +879,59 @@
     "named": true,
     "hidden": true,
     "note": "user ID: second half of The Battle (=tune_07); bank tune_76 order65 section."
+  },
+  {
+    "file": "tune_77_sec20_ADL_bank.dro",
+    "label": "24 - Jingle 4 - Good Kill (3-9tunes bank section) (ADL)",
+    "named": true,
+    "hidden": true,
+    "note": "exhaustive scan: order pos 20 = Good Kill jingle region; dup of canonical ADL jingle bank tune_02",
+    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (bank-section completeness; cold-start timbres)"
+  },
+  {
+    "file": "tune_77_sec22_ADL_bank.dro",
+    "label": "26 - Jingle 6 - Wingman Down (3-9tunes bank section) (ADL)",
+    "named": true,
+    "hidden": true,
+    "note": "exhaustive scan: order pos 22 = Wingman Down jingle region; dup of canonical ADL jingle bank tune_02",
+    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (bank-section completeness; cold-start timbres)"
+  },
+  {
+    "file": "tune_77_sec23_ADL_bank.dro",
+    "label": "Jingle - Close to Death (3-9tunes bank section) (ADL)",
+    "named": true,
+    "hidden": true,
+    "note": "exhaustive scan: order pos 23 = Close-to-Death jingle region; dup of canonical ADL jingle bank tune_02",
+    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (bank-section completeness; cold-start timbres)"
+  },
+  {
+    "file": "tune_77_sec28_ADL_bank.dro",
+    "label": "Jingle separator (3-9tunes bank section) (ADL)",
+    "named": true,
+    "hidden": true,
+    "note": "exhaustive scan: order pos 28 = inter-jingle separator (sim 0.19 to canonical separator sec08)",
+    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (bank-section completeness; cold-start timbres)"
+  },
+  {
+    "file": "tune_77_sec50_ADL_bank.dro",
+    "label": "13 - The Battle (continuation) (3-9tunes bank section) (ADL)",
+    "named": true,
+    "hidden": true,
+    "note": "exhaustive scan: order pos 50 = The Battle 2nd half (pitch 4-gram 0.44 to sec44 The Battle); dup of standalone tune_04",
+    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (bank-section completeness; cold-start timbres)"
+  },
+  {
+    "file": "tune_24_engine_ADL_sfx.dro",
+    "label": "SFX — Engine Idle (ADL) [for fun]",
+    "hidden": false,
+    "named": false,
+    "note": "tune_24 order section 20: repeated FM 'ingnition/Air Hat' engine sting"
+  },
+  {
+    "file": "tune_24_motif_ADL_sfx.dro",
+    "label": "SFX — Alert Motif (ADL) [for fun]",
+    "hidden": false,
+    "named": false,
+    "note": "tune_24 order section 32: 4-note FM motif (43/49/54/55)"
   }
 ]
