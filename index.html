@@ -190,11 +190,15 @@
   #seektrack #seek::-moz-range-thumb{width:3px;height:16px;background:#fffbe0;border:0;cursor:pointer}
   #seektrack #seek:disabled{cursor:default}
 
-  /* ---- mobile tab toggle (notes <-> tracks) ---- */
-  #mtabs{display:none;gap:6px;padding:6px 12px 0}
-  .mtab{font:inherit;text-transform:uppercase;letter-spacing:0;font-size:13px;color:var(--mon-ink2);
-    background:transparent;border:1px solid var(--mon-line);padding:6px 14px;cursor:pointer;flex:1;text-align:center}
-  .mtab.on{background:var(--mon-line);color:var(--screen)}
+  /* ---- mobile tab toggle (notes <-> tracks) — lives in the bottom metal dash ---- */
+  #mtabs{display:none;gap:6px;padding:0 0 6px}
+  .mtab{font:inherit;text-transform:uppercase;letter-spacing:0;font-size:13px;cursor:pointer;flex:1;text-align:center;
+    color:var(--steel-emb);background:var(--steel-grad);padding:7px 14px;text-shadow:0 1px 0 rgba(255,255,255,.35);
+    border-top:1px solid var(--steel-lt);border-left:1px solid var(--steel-lt);
+    border-right:1px solid var(--steel-dk);border-bottom:1px solid var(--steel-dk)}
+  .mtab.on{color:#0c0e11;background:var(--steel-grad-dn);text-shadow:none;
+    border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);
+    border-right:1px solid var(--steel-lt);border-bottom:1px solid var(--steel-lt);box-shadow:inset 0 1px 3px rgba(0,0,0,.4)}
 
   /* ===================== MOBILE LAYOUT ===================== */
   @media (max-width:720px){
@@ -266,11 +270,6 @@
     </div>
   </header>
 
-  <div id="mtabs">
-    <button class="mtab on" data-v="notes">NOTES</button>
-    <button class="mtab" data-v="tracks">TRACKS</button>
-  </div>
-
   <div id="main">
     <div id="rollWrap" class="ginset">
       <canvas id="roll"></canvas>
@@ -301,6 +300,10 @@
   </div><!-- /screen -->
 
   <div id="dash">
+    <div id="mtabs">
+      <button class="mtab on" data-v="notes">NOTES</button>
+      <button class="mtab" data-v="tracks">TRACKS</button>
+    </div>
     <div id="chanstrip">
       <span class="lab">CHANNELS<br>L·MUTE<br>R·SOLO</span>
       <div id="chans"></div>
