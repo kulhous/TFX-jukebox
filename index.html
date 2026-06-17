@@ -289,12 +289,10 @@
     #meters #speedV,#meters #volV,#meters #mixV{width:auto;margin:0}
     #spdLab{font-size:0}
     #spdLab::before{content:"SPD";font-size:11px}
-    /* channel strip last, scrolling horizontally to save vertical room */
+    /* channel strip last; in the rotated right column it can wrap to multiple rows */
     #chanstrip{order:3;gap:0;padding:0}
     #chanstrip .lab{display:none}
-    #chans{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
-      padding-bottom:2px;touch-action:pan-x}
-    #chans::-webkit-scrollbar{display:none}
+    #chans{flex-wrap:wrap;gap:4px;overflow:visible;touch-action:auto}
     .ch{width:38px}
   }
 </style>
