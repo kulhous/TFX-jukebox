@@ -734,7 +734,63 @@
     "label": "15 - Unsuccessful Flight Home (ADL)",
     "named": true,
     "hidden": false,
-    "note": "user ID; 3-9tunes ADL bank, base start-0 render = Unsuccessful Flight Home intro section"
+    "note": "3-9tunes.adl BANK: bundles 7+ themes but ALL are duplicates of existing standalone ADL tracks (Victorious Flight, Parachuting x2, Interception, The Battle, Unused Battle). base render = flight-home intro. No NEW/missing song. Section renders tune_77_secNN below (hidden, cold-start timbres)."
+  },
+  {
+    "file": "tune_77_sec10_ADL_bank.dro",
+    "label": "14 - Victorious Flight Home (3-9tunes bank section) (ADL)",
+    "named": true,
+    "hidden": true,
+    "note": "user ID: Victorious Flight; bank-section alt of standalone tune_01; cold-start timbres imperfect",
+    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (kept for completeness; cold-start timbres)"
+  },
+  {
+    "file": "tune_77_sec17_ADL_bank.dro",
+    "label": "14 - Victorious Flight Home (continuation) (3-9tunes bank section) (ADL)",
+    "named": true,
+    "hidden": true,
+    "note": "user ID: continuation of Victorious Flight (sec10); bank-section, cold-start timbres imperfect",
+    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (kept for completeness; cold-start timbres)"
+  },
+  {
+    "file": "tune_77_sec25_ADL_bank.dro",
+    "label": "23 - Jingle 3 - Parachuting (3-9tunes bank section) (ADL)",
+    "named": true,
+    "hidden": true,
+    "note": "user ID: Parachuting; bank-section alt of the ADL Parachuting jingle; cold-start timbres imperfect",
+    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (kept for completeness; cold-start timbres)"
+  },
+  {
+    "file": "tune_77_sec27_ADL_bank.dro",
+    "label": "23 - Jingle 3 - Parachuting (alt) (3-9tunes bank section) (ADL)",
+    "named": true,
+    "hidden": true,
+    "note": "user ID: alternative Parachuting jingle; bank-section, cold-start timbres imperfect",
+    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (kept for completeness; cold-start timbres)"
+  },
+  {
+    "file": "tune_77_sec29_ADL_bank.dro",
+    "label": "05 - Interception Mission (3-9tunes bank section) (ADL)",
+    "named": true,
+    "hidden": true,
+    "note": "user ID: Interception; bank-section alt of standalone tune_29; cold-start timbres imperfect",
+    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (kept for completeness; cold-start timbres)"
+  },
+  {
+    "file": "tune_77_sec44_ADL_bank.dro",
+    "label": "13 - The Battle (3-9tunes bank section) (ADL)",
+    "named": true,
+    "hidden": true,
+    "note": "user ID: The Battle; bank-section alt of standalone tune_04; cold-start timbres imperfect",
+    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (kept for completeness; cold-start timbres)"
+  },
+  {
+    "file": "tune_77_sec57_ADL_bank.dro",
+    "label": "Unused Battle Theme (3-9tunes bank section) (ADL)",
+    "named": true,
+    "hidden": true,
+    "note": "user ID: Unused Battle; bank-section alt of standalone tune_38; cold-start timbres imperfect",
+    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (kept for completeness; cold-start timbres)"
   },
   {
     "file": "adl_jingle_sec03_ADL_bank.dro",
@@ -791,5 +847,19 @@
     "named": false,
     "hidden": true,
     "hiddenReason": "separator section, not a jingle"
+  },
+  {
+    "file": "tune_76_deep_s60_RLD.mid",
+    "label": "Hidden Mission Theme A — bank tune_76 @order60 (RLD) [audition]",
+    "named": false,
+    "hidden": false,
+    "note": "NEW deep theme found in banks tune_09/tune_76; distinct from the 2 known deep families (12 Unused Mission / Unused Battle Theme) and from The Battle. tune_09 carries a quieter volume-variant (CC7 ceiling 75 vs 85). Needs ear ID."
+  },
+  {
+    "file": "tune_76_deep_s65_RLD.mid",
+    "label": "Hidden Mission Theme B — bank tune_76 @order65 (RLD) [audition]",
+    "named": false,
+    "hidden": false,
+    "note": "NEW 2nd deep theme in tune_76 (order 65-70), distinct from Theme A (interval-jac 0.35), the 2 known deep families and The Battle. Not present in tune_09 (smaller order list). Needs ear ID."
   }
 ]
