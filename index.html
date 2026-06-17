@@ -247,6 +247,56 @@
     .hsub{flex-wrap:nowrap;overflow:hidden;white-space:nowrap;margin-top:2px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%)}
     .hmarquee{display:inline-flex;gap:18px;padding-left:100%;animation:hmarq 24s linear infinite}
   }
+
+  /* ============ MOBILE LANDSCAPE (rotated) — screen left, controls right ============ */
+  @media (orientation:landscape) and (max-height:540px){
+    body{font-size:12px;letter-spacing:0}
+    /* lay the chassis out horizontally: green screen on the left, the metal
+       control panel as a vertical strip down the right edge */
+    #app{flex-direction:row;gap:7px}
+    #screen{flex:1;min-width:0}
+    header{padding:5px 10px 3px}
+    .logo{font-size:16px}
+    /* condense song-info into a scrolling marquee */
+    .hsub{flex-wrap:nowrap;overflow:hidden;white-space:nowrap;margin-top:2px;
+      -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%);
+      mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%)}
+    .hmarquee{display:inline-flex;gap:18px;padding-left:100%;animation:hmarq 24s linear infinite}
+    /* single pane switched by the NOTES/TRACKS tabs */
+    #main{padding:0 6px;gap:0}
+    #side{width:auto;flex:1;min-width:0}
+    #rollWrap{flex:1}
+    body.mnotes #side{display:none}
+    body.mtracks #rollWrap{display:none}
+    .statline{display:none}
+    /* right-hand metal control column */
+    #dash{width:222px;flex:none;display:flex;flex-direction:column;gap:6px;padding:6px;overflow-y:auto;
+      border-top:0;border-left:2px solid var(--steel-lt);
+      box-shadow:inset 2px 0 0 rgba(255,255,255,.35),-4px 0 12px rgba(0,0,0,.45)}
+    #mtabs{display:flex;padding:0}
+    #transport{order:2;flex-wrap:wrap;gap:6px;align-items:stretch}
+    .credit{display:none}
+    #transport .btn{width:44px;padding:0;text-align:center;font-size:0;
+      display:flex;align-items:center;justify-content:center}
+    #transport .btn::before{font-family:inherit;font-size:20px;line-height:1;letter-spacing:0}
+    #play::before{content:"\25B6"}      /* ▶ */
+    #play.on::before{content:"\23F8"}   /* ⏸ */
+    #restart::before{content:"\21BA"}   /* ↺ */
+    #clear::before{content:"\2298"}     /* ⊘ */
+    #meters{flex:1 0 100%;display:flex;flex-direction:column;gap:6px;min-width:0}
+    #meters .dmeter{display:grid;grid-template-columns:30px 1fr 40px;align-items:center;gap:6px;padding:4px 9px;font-size:11px}
+    #meters .dmeter input[type=range]{width:auto;min-width:0;margin:0}
+    #meters #speedV,#meters #volV,#meters #mixV{width:auto;margin:0}
+    #spdLab{font-size:0}
+    #spdLab::before{content:"SPD";font-size:11px}
+    /* channel strip last, scrolling horizontally to save vertical room */
+    #chanstrip{order:3;gap:0;padding:0}
+    #chanstrip .lab{display:none}
+    #chans{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+      padding-bottom:2px;touch-action:pan-x}
+    #chans::-webkit-scrollbar{display:none}
+    .ch{width:38px}
+  }
 </style>
 </head>
 <body class="mnotes">
