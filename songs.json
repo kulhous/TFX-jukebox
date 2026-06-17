@@ -850,16 +850,16 @@
   },
   {
     "file": "tune_76_deep_s60_RLD.mid",
-    "label": "Hidden Mission Theme A — bank tune_76 @order60 (RLD) [audition]",
-    "named": false,
-    "hidden": false,
-    "note": "NEW deep theme found in banks tune_09/tune_76; distinct from the 2 known deep families (12 Unused Mission / Unused Battle Theme) and from The Battle. tune_09 carries a quieter volume-variant (CC7 ceiling 75 vs 85). Needs ear ID."
+    "label": "13 - The Battle (first half) (RLD)",
+    "named": true,
+    "hidden": true,
+    "note": "user ID: first half of The Battle (=tune_07); bank tune_76 order60 section. tune_09 carries a quieter volume variant."
   },
   {
     "file": "tune_76_deep_s65_RLD.mid",
-    "label": "Hidden Mission Theme B — bank tune_76 @order65 (RLD) [audition]",
-    "named": false,
-    "hidden": false,
-    "note": "NEW 2nd deep theme in tune_76 (order 65-70), distinct from Theme A (interval-jac 0.35), the 2 known deep families and The Battle. Not present in tune_09 (smaller order list). Needs ear ID."
+    "label": "13 - The Battle (second half) (RLD)",
+    "named": true,
+    "hidden": true,
+    "note": "user ID: second half of The Battle (=tune_07); bank tune_76 order65 section."
   }
 ]
