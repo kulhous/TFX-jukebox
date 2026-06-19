@@ -1,0 +1,5113 @@
+{
+  "games": {
+    "DEAN": [
+      {
+        "name": "BALLAD",
+        "devices": {
+          "RLD": {
+            "file": "DEAN/BALLAD_RLD.mid",
+            "src": "LAPMUSIC/DEAN/BALLAD.RLD",
+            "notes": 4326,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "CAK",
+        "devices": {
+          "RLD": {
+            "file": "DEAN/CAK_RLD.mid",
+            "src": "LAPMUSIC/DEAN/CAK.SNS",
+            "notes": 7025,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "CHEESE",
+        "devices": {
+          "RLD": {
+            "file": "DEAN/CHEESE_RLD.mid",
+            "src": "LAPMUSIC/DEAN/CHEESE.SNS",
+            "notes": 9138,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "DENNIS",
+        "devices": {
+          "RLD": {
+            "file": "DEAN/DENNIS_RLD.mid",
+            "src": "LAPMUSIC/DEAN/DENNIS.RLD",
+            "notes": 6750,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "DREAMY",
+        "devices": {
+          "RLD": {
+            "file": "DEAN/DREAMY_RLD.mid",
+            "src": "LAPMUSIC/DEAN/DREAMY.RLD",
+            "notes": 5215,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "DREAMY2",
+        "devices": {
+          "RLD": {
+            "file": "DEAN/DREAMY2_RLD.mid",
+            "src": "LAPMUSIC/DEAN/DREAMY2.RLD",
+            "notes": 6973,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "FLOYDISH",
+        "devices": {
+          "SCC": {
+            "file": "DEAN/FLOYDISH_SCC.mid",
+            "src": "LAPMUSIC/DEAN/FLOYDISH.SC1",
+            "notes": 956,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "GALLEON",
+        "devices": {
+          "RLD": {
+            "file": "DEAN/GALLEON_RLD.mid",
+            "src": "LAPMUSIC/DEAN/GALLEON.RLD",
+            "notes": 2882,
+            "alts": []
+          },
+          "SCC": {
+            "file": "DEAN/GALLEON_SCC.mid",
+            "src": "LAPMUSIC/DEAN/GALLEON.SCC",
+            "notes": 2882,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "GITTEST",
+        "devices": {
+          "RLD": {
+            "file": "DEAN/GITTEST_RLD.mid",
+            "src": "LAPMUSIC/DEAN/GITTEST.RLD",
+            "notes": 7757,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "JINGLE",
+        "devices": {
+          "RLD": {
+            "file": "DEAN/JINGLE_RLD.mid",
+            "src": "LAPMUSIC/DEAN/JINGLE.RLD",
+            "notes": 405,
+            "alts": []
+          },
+          "ADL": {
+            "file": "DEAN/JINGLE_ADL.dro",
+            "src": "LAPMUSIC/DEAN/JINGLE.ADL",
+            "notes": 14914,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "JUNGLE2",
+        "devices": {
+          "SCC": {
+            "file": "DEAN/JUNGLE2_SCC.mid",
+            "src": "LAPMUSIC/DEAN/JUNGLE2.SC1",
+            "notes": 2820,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "MELLOW",
+        "devices": {
+          "RLD": {
+            "file": "DEAN/MELLOW_RLD.mid",
+            "src": "LAPMUSIC/DEAN/MELLOW.RLD",
+            "notes": 5937,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "MENU",
+        "devices": {
+          "RLD": {
+            "file": "DEAN/MENU_RLD.mid",
+            "src": "LAPMUSIC/DEAN/MENU.ADL",
+            "notes": 4508,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "MENU (2)",
+        "devices": {
+          "RLD": {
+            "file": "DEAN/MENU_RLD_2.mid",
+            "src": "LAPMUSIC/DEAN/MENU.RLD",
+            "notes": 5212,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "OPERA",
+        "devices": {
+          "RLD": {
+            "file": "DEAN/OPERA_RLD.mid",
+            "src": "LAPMUSIC/DEAN/OPERA.RLD",
+            "notes": 5785,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "SPOOKY",
+        "devices": {
+          "RLD": {
+            "file": "DEAN/SPOOKY_RLD.mid",
+            "src": "LAPMUSIC/DEAN/SPOOKY.RLD",
+            "notes": 2905,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "TEST",
+        "devices": {
+          "RLD": {
+            "file": "DEAN/TEST_RLD.mid",
+            "src": "LAPMUSIC/DEAN/TEST.SNS",
+            "notes": 9138,
+            "alts": []
+          }
+        }
+      }
+    ],
+    "INFERNO": [
+      {
+        "name": "9CU760U",
+        "devices": {
+          "RLD": {
+            "file": "INFERNO/9CU760U_RLD.mid",
+            "src": "INFERNO/LAPC1/@9CU760U.SAV",
+            "notes": 1948,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "9K16M08",
+        "devices": {
+          "ADL": {
+            "file": "INFERNO/9K16M08_ADL.dro",
+            "src": "INFERNO/ADLIB/@9K16M08.SAV",
+            "notes": 57496,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "9KF6604",
+        "devices": {
+          "ADL": {
+            "file": "INFERNO/9KF6604_ADL.dro",
+            "src": "INFERNO/ADLIB/@9KF6604.SAV",
+            "notes": 147353,
+            "alts": [
+              "INFERNO/ADLIB/SPACE2.ADL"
+            ]
+          }
+        }
+      },
+      {
+        "name": "BADNEWS",
+        "devices": {
+          "RLD": {
+            "file": "INFERNO/BADNEWS_RLD.mid",
+            "src": "INFERNO/LAPC1/BADNEWS.LAP",
+            "notes": 3844,
+            "alts": []
+          },
+          "SCC": {
+            "file": "INFERNO/BADNEWS_SCC.mid",
+            "src": "INFERNO/SCC1/BADNEWS.SCC",
+            "notes": 3685,
+            "alts": []
+          },
+          "ADL": {
+            "file": "INFERNO/BADNEWS_ADL.dro",
+            "src": "INFERNO/ADLIB/BADNEWS.ADL",
+            "notes": 171715,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "DEATH",
+        "devices": {
+          "RLD": {
+            "file": "INFERNO/DEATH_RLD.mid",
+            "src": "INFERNO/LAPC1/DEATH.LAP",
+            "notes": 3283,
+            "alts": []
+          },
+          "SCC": {
+            "file": "INFERNO/DEATH_SCC.mid",
+            "src": "INFERNO/SCC1/DEATH.SCC",
+            "notes": 3367,
+            "alts": []
+          },
+          "ADL": {
+            "file": "INFERNO/DEATH_ADL.dro",
+            "src": "INFERNO/ADLIB/DEATH.ADL",
+            "notes": 139774,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "DRAMATIC",
+        "devices": {
+          "RLD": {
+            "file": "INFERNO/DRAMATIC_RLD.mid",
+            "src": "INFERNO/LAPC1/DRAMATIC.LAP",
+            "notes": 879,
+            "alts": []
+          },
+          "SCC": {
+            "file": "INFERNO/DRAMATIC_SCC.mid",
+            "src": "INFERNO/SCC1/DRAMATIC.SCC",
+            "notes": 399,
+            "alts": []
+          },
+          "ADL": {
+            "file": "INFERNO/DRAMATIC_ADL.dro",
+            "src": "INFERNO/ADLIB/DRAMATIC.ADL",
+            "notes": 92141,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "HAPFINAL",
+        "devices": {
+          "RLD": {
+            "file": "INFERNO/HAPFINAL_RLD.mid",
+            "src": "INFERNO/LAPC1/HAPFINAL.LAP",
+            "notes": 1948,
+            "alts": []
+          },
+          "SCC": {
+            "file": "INFERNO/HAPFINAL_SCC.mid",
+            "src": "INFERNO/SCC1/HAPFINAL.SCC",
+            "notes": 8034,
+            "alts": []
+          },
+          "ADL": {
+            "file": "INFERNO/HAPFINAL_ADL.dro",
+            "src": "INFERNO/ADLIB/HAPFINAL.ADL",
+            "notes": 57496,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "HAPPY",
+        "devices": {
+          "RLD": {
+            "file": "INFERNO/HAPPY_RLD.mid",
+            "src": "INFERNO/LAPC1/HAPPY.LAP",
+            "notes": 4421,
+            "alts": []
+          },
+          "SCC": {
+            "file": "INFERNO/HAPPY_SCC.mid",
+            "src": "INFERNO/SCC1/HAPPY.SCC",
+            "notes": 4675,
+            "alts": []
+          },
+          "ADL": {
+            "file": "INFERNO/HAPPY_ADL.dro",
+            "src": "INFERNO/ADLIB/HAPPY.ADL",
+            "notes": 163427,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "HUMAN",
+        "devices": {
+          "RLD": {
+            "file": "INFERNO/HUMAN_RLD.mid",
+            "src": "INFERNO/LAPC1/HUMAN.LAP",
+            "notes": 6190,
+            "alts": []
+          },
+          "SCC": {
+            "file": "INFERNO/HUMAN_SCC.mid",
+            "src": "INFERNO/SCC1/HUMAN.SCC",
+            "notes": 6520,
+            "alts": []
+          },
+          "ADL": {
+            "file": "INFERNO/HUMAN_ADL.dro",
+            "src": "INFERNO/ADLIB/HUMAN.ADL",
+            "notes": 204244,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "HUMATMOS",
+        "devices": {
+          "RLD": {
+            "file": "INFERNO/HUMATMOS_RLD.mid",
+            "src": "INFERNO/LAPC1/HUMATMOS.LAP",
+            "notes": 4283,
+            "alts": []
+          },
+          "SCC": {
+            "file": "INFERNO/HUMATMOS_SCC.mid",
+            "src": "INFERNO/SCC1/HUMATMOS.SCC",
+            "notes": 4276,
+            "alts": []
+          },
+          "ADL": {
+            "file": "INFERNO/HUMATMOS_ADL.dro",
+            "src": "INFERNO/ADLIB/HUMATMOS.ADL",
+            "notes": 161280,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "MOON",
+        "devices": {
+          "RLD": {
+            "file": "INFERNO/MOON_RLD.mid",
+            "src": "INFERNO/LAPC1/MOON.LAP",
+            "notes": 2700,
+            "alts": []
+          },
+          "SCC": {
+            "file": "INFERNO/MOON_SCC.mid",
+            "src": "INFERNO/SCC1/MOON.SCC",
+            "notes": 2636,
+            "alts": []
+          },
+          "ADL": {
+            "file": "INFERNO/MOON_ADL.dro",
+            "src": "INFERNO/ADLIB/MOON.ADL",
+            "notes": 143438,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "PLANET1",
+        "devices": {
+          "RLD": {
+            "file": "INFERNO/PLANET1_RLD.mid",
+            "src": "INFERNO/LAPC1/PLANET1.LAP",
+            "notes": 6496,
+            "alts": []
+          },
+          "SCC": {
+            "file": "INFERNO/PLANET1_SCC.mid",
+            "src": "INFERNO/SCC1/PLANET1.SCC",
+            "notes": 6665,
+            "alts": []
+          },
+          "ADL": {
+            "file": "INFERNO/PLANET1_ADL.dro",
+            "src": "INFERNO/ADLIB/PLANET1.ADL",
+            "notes": 206614,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "PLANET2",
+        "devices": {
+          "RLD": {
+            "file": "INFERNO/PLANET2_RLD.mid",
+            "src": "INFERNO/LAPC1/PLANET2.LAP",
+            "notes": 7737,
+            "alts": []
+          },
+          "SCC": {
+            "file": "INFERNO/PLANET2_SCC.mid",
+            "src": "INFERNO/SCC1/PLANET2.SCC",
+            "notes": 8591,
+            "alts": []
+          },
+          "ADL": {
+            "file": "INFERNO/PLANET2_ADL.dro",
+            "src": "INFERNO/ADLIB/PLANET2.ADL",
+            "notes": 237717,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "REXATMOS",
+        "devices": {
+          "RLD": {
+            "file": "INFERNO/REXATMOS_RLD.mid",
+            "src": "INFERNO/LAPC1/REXATMOS.LAP",
+            "notes": 4890,
+            "alts": []
+          },
+          "SCC": {
+            "file": "INFERNO/REXATMOS_SCC.mid",
+            "src": "INFERNO/SCC1/REXATMOS.SCC",
+            "notes": 1732,
+            "alts": []
+          },
+          "ADL": {
+            "file": "INFERNO/REXATMOS_ADL.dro",
+            "src": "INFERNO/ADLIB/REXATMOS.ADL",
+            "notes": 144262,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "REXXON",
+        "devices": {
+          "RLD": {
+            "file": "INFERNO/REXXON_RLD.mid",
+            "src": "INFERNO/LAPC1/REXXON.LAP",
+            "notes": 5935,
+            "alts": []
+          },
+          "SCC": {
+            "file": "INFERNO/REXXON_SCC.mid",
+            "src": "INFERNO/SCC1/REXXON.SCC",
+            "notes": 5533,
+            "alts": []
+          },
+          "ADL": {
+            "file": "INFERNO/REXXON_ADL.dro",
+            "src": "INFERNO/ADLIB/REXXON.ADL",
+            "notes": 175556,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "SADFINAL",
+        "devices": {
+          "RLD": {
+            "file": "INFERNO/SADFINAL_RLD.mid",
+            "src": "INFERNO/LAPC1/SADFINAL.LAP",
+            "notes": 3199,
+            "alts": []
+          },
+          "SCC": {
+            "file": "INFERNO/SADFINAL_SCC.mid",
+            "src": "INFERNO/SCC1/SADFINAL.SCC",
+            "notes": 3047,
+            "alts": []
+          },
+          "ADL": {
+            "file": "INFERNO/SADFINAL_ADL.dro",
+            "src": "INFERNO/ADLIB/SADFINAL.ADL",
+            "notes": 128143,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "SPACE1",
+        "devices": {
+          "RLD": {
+            "file": "INFERNO/SPACE1_RLD.mid",
+            "src": "INFERNO/LAPC1/SPACE1.RLD",
+            "notes": 4822,
+            "alts": []
+          },
+          "SCC": {
+            "file": "INFERNO/SPACE1_SCC.mid",
+            "src": "INFERNO/SCC1/SPACE1.SCC",
+            "notes": 4818,
+            "alts": []
+          },
+          "ADL": {
+            "file": "INFERNO/SPACE1_ADL.dro",
+            "src": "INFERNO/ADLIB/SPACE1.ADL",
+            "notes": 168260,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "SPACE2",
+        "devices": {
+          "RLD": {
+            "file": "INFERNO/SPACE2_RLD.mid",
+            "src": "INFERNO/LAPC1/SPACE2.LAP",
+            "notes": 2681,
+            "alts": []
+          },
+          "SCC": {
+            "file": "INFERNO/SPACE2_SCC.mid",
+            "src": "INFERNO/SCC1/SPACE2.SCC",
+            "notes": 2697,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "TAKEOFF",
+        "devices": {
+          "RLD": {
+            "file": "INFERNO/TAKEOFF_RLD.mid",
+            "src": "INFERNO/LAPC1/TAKEOFF.LAP",
+            "notes": 3390,
+            "alts": []
+          },
+          "SCC": {
+            "file": "INFERNO/TAKEOFF_SCC.mid",
+            "src": "INFERNO/SCC1/TAKEOFF.SCC",
+            "notes": 1177,
+            "alts": []
+          },
+          "ADL": {
+            "file": "INFERNO/TAKEOFF_ADL.dro",
+            "src": "INFERNO/ADLIB/TAKEOFF.ADL",
+            "notes": 149843,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "TITLE",
+        "devices": {
+          "RLD": {
+            "file": "INFERNO/TITLE_RLD.mid",
+            "src": "INFERNO/LAPC1/TITLE.LAP",
+            "notes": 5155,
+            "alts": []
+          },
+          "SCC": {
+            "file": "INFERNO/TITLE_SCC.mid",
+            "src": "INFERNO/TITLE.SCC",
+            "notes": 4989,
+            "alts": [
+              "INFERNO/SCC1/TITLE.SCC"
+            ]
+          },
+          "ADL": {
+            "file": "INFERNO/TITLE_ADL.dro",
+            "src": "INFERNO/ADLIB/TITLE.ADL",
+            "notes": 168500,
+            "alts": []
+          }
+        }
+      }
+    ],
+    "MISC": [
+      {
+        "name": "ACDC",
+        "devices": {
+          "SCC": {
+            "file": "MISC/ACDC_SCC.mid",
+            "src": "SCC1MUSI/ACDC.SCC",
+            "notes": 5313,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "ALL",
+        "devices": {
+          "RLD": {
+            "file": "MISC/ALL_RLD.mid",
+            "src": "ALL.LAP",
+            "notes": 5891,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "BILLY",
+        "devices": {
+          "SCC": {
+            "file": "MISC/BILLY_SCC.mid",
+            "src": "SCC1MUSI/BILLY.SCC",
+            "notes": 3037,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "BLACK",
+        "devices": {
+          "SCC": {
+            "file": "MISC/BLACK_SCC.mid",
+            "src": "SCC1MUSI/BLACK.SCC",
+            "notes": 3608,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "BLOODY",
+        "devices": {
+          "SCC": {
+            "file": "MISC/BLOODY_SCC.mid",
+            "src": "SCC1MUSI/BLOODY.SCC",
+            "notes": 5333,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "CAVES",
+        "devices": {
+          "SCC": {
+            "file": "MISC/CAVES_SCC.mid",
+            "src": "CAVES.SCC",
+            "notes": 2277,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "DEATH",
+        "devices": {
+          "SCC": {
+            "file": "MISC/DEATH_SCC.mid",
+            "src": "SCC1MUSI/DEATH.SCC",
+            "notes": 3051,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "DENVER",
+        "devices": {
+          "SCC": {
+            "file": "MISC/DENVER_SCC.mid",
+            "src": "SCC1MUSI/DENVER.SCC",
+            "notes": 1992,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "FAWLTY",
+        "devices": {
+          "SCC": {
+            "file": "MISC/FAWLTY_SCC.mid",
+            "src": "SCC1MUSI/FAWLTY.SCC",
+            "notes": 624,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "GUITAR",
+        "devices": {
+          "SCC": {
+            "file": "MISC/GUITAR_SCC.mid",
+            "src": "GUITAR.SCC",
+            "notes": 1465,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "GUITAR (2)",
+        "devices": {
+          "SCC": {
+            "file": "MISC/GUITAR_SCC_2.mid",
+            "src": "SCC1MUSI/GUITAR.SCC",
+            "notes": 1128,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "HELLS",
+        "devices": {
+          "SCC": {
+            "file": "MISC/HELLS_SCC.mid",
+            "src": "SCC1MUSI/HELLS.SCC",
+            "notes": 920,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INTER",
+        "devices": {
+          "SCC": {
+            "file": "MISC/INTER_SCC.mid",
+            "src": "SCC1MUSI/INTER.SCC",
+            "notes": 2942,
+            "alts": [
+              "SCC1MUSI/TFX/INTER.SCC"
+            ]
+          }
+        }
+      },
+      {
+        "name": "INTERCPT",
+        "devices": {
+          "SCC": {
+            "file": "MISC/INTERCPT_SCC.mid",
+            "src": "SCC1MUSI/INTERCPT.RLD",
+            "notes": 2526,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "JAMIE",
+        "devices": {
+          "SCC": {
+            "file": "MISC/JAMIE_SCC.mid",
+            "src": "SCC1MUSI/JAMIE.SCC",
+            "notes": 1265,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "JUNGLE",
+        "devices": {
+          "RLD": {
+            "file": "MISC/JUNGLE_RLD.mid",
+            "src": "LAPMUSIC/JUNGLE.RLD",
+            "notes": 3767,
+            "alts": []
+          },
+          "SCC": {
+            "file": "MISC/JUNGLE_SCC.mid",
+            "src": "SCC1MUSI/JUNGLE.RLD",
+            "notes": 3807,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "JUNGLE2",
+        "devices": {
+          "SCC": {
+            "file": "MISC/JUNGLE2_SCC.mid",
+            "src": "SCC1MUSI/JUNGLE2.RLD",
+            "notes": 2807,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "JURFX",
+        "devices": {
+          "SCC": {
+            "file": "MISC/JURFX_SCC.mid",
+            "src": "SCC1MUSI/JURFX.SCC",
+            "notes": 1,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "OD1",
+        "devices": {
+          "ADL": {
+            "file": "MISC/OD1_ADL.dro",
+            "src": "ADLMUSIC/OD1.ALB",
+            "notes": 214294,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "REGREV",
+        "devices": {
+          "SCC": {
+            "file": "MISC/REGREV_SCC.mid",
+            "src": "SCC1MUSI/REGREV.SCC",
+            "notes": 592,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "SAVAGE",
+        "devices": {
+          "SCC": {
+            "file": "MISC/SAVAGE_SCC.mid",
+            "src": "SAVAGE.SCC",
+            "notes": 2441,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "TEST",
+        "devices": {
+          "RLD": {
+            "file": "MISC/TEST_RLD.mid",
+            "src": "TEST.LAP",
+            "notes": 5713,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "TUNNELS",
+        "devices": {
+          "RLD": {
+            "file": "MISC/TUNNELS_RLD.mid",
+            "src": "SCC1MUSI/TUNNELS.AP",
+            "notes": 1984,
+            "alts": []
+          },
+          "SCC": {
+            "file": "MISC/TUNNELS_SCC.mid",
+            "src": "SCC1MUSI/TUNNELS.SC1",
+            "notes": 1981,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "ULTIMISH",
+        "devices": {
+          "SCC": {
+            "file": "MISC/ULTIMISH_SCC.mid",
+            "src": "ULTIMISH.SCC",
+            "notes": 1928,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "UNTITLED",
+        "devices": {
+          "SCC": {
+            "file": "MISC/UNTITLED_SCC.mid",
+            "src": "SCC1MUSI/UNTITLED.MED",
+            "notes": 3874,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "WC2FUNE",
+        "devices": {
+          "SCC": {
+            "file": "MISC/WC2FUNE_SCC.mid",
+            "src": "WC2FUNE.SCC",
+            "notes": 1954,
+            "alts": []
+          }
+        }
+      }
+    ],
+    "ODYSSEY": [
+      {
+        "name": "ASFP1",
+        "devices": {
+          "RLD": {
+            "file": "ODYSSEY/ASFP1_RLD.mid",
+            "src": "LAPMUSIC/ODYSSEY/ASFP1.RLD",
+            "notes": 3679,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "ASFP1B",
+        "devices": {
+          "RLD": {
+            "file": "ODYSSEY/ASFP1B_RLD.mid",
+            "src": "LAPMUSIC/ODYSSEY/ASFP1B.RLD",
+            "notes": 5155,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "DEATH",
+        "devices": {
+          "RLD": {
+            "file": "ODYSSEY/DEATH_RLD.mid",
+            "src": "LAPMUSIC/ODYSSEY/DEATH.RLD",
+            "notes": 1024,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "FX",
+        "devices": {
+          "RLD": {
+            "file": "ODYSSEY/FX_RLD.mid",
+            "src": "LAPMUSIC/ODYSSEY/FX.LAP",
+            "notes": 1,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INGAME1",
+        "devices": {
+          "RLD": {
+            "file": "ODYSSEY/INGAME1_RLD.mid",
+            "src": "LAPMUSIC/ODYSSEY/INGAME1.RLD",
+            "notes": 186,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "LOGO",
+        "devices": {
+          "RLD": {
+            "file": "ODYSSEY/LOGO_RLD.mid",
+            "src": "LAPMUSIC/ODYSSEY/LOGO.RLD",
+            "notes": 67,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "LOGO2",
+        "devices": {
+          "ADL": {
+            "file": "ODYSSEY/LOGO2_ADL.dro",
+            "src": "LAPMUSIC/ODYSSEY/LOGO2.RLD",
+            "notes": 5704,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "TITLE",
+        "devices": {
+          "RLD": {
+            "file": "ODYSSEY/TITLE_RLD.mid",
+            "src": "LAPMUSIC/ODYSSEY/TITLE.RLD",
+            "notes": 3980,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "TITLE2",
+        "devices": {
+          "RLD": {
+            "file": "ODYSSEY/TITLE2_RLD.mid",
+            "src": "LAPMUSIC/ODYSSEY/TITLE2.RLD",
+            "notes": 2160,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "TITLEX",
+        "devices": {
+          "RLD": {
+            "file": "ODYSSEY/TITLEX_RLD.mid",
+            "src": "LAPMUSIC/ODYSSEY/TITLEX.RLD",
+            "notes": 711,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "WEIRD",
+        "devices": {
+          "RLD": {
+            "file": "ODYSSEY/WEIRD_RLD.mid",
+            "src": "LAPMUSIC/ODYSSEY/WEIRD.RLD",
+            "notes": 5191,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "X",
+        "devices": {
+          "RLD": {
+            "file": "ODYSSEY/X_RLD.mid",
+            "src": "LAPMUSIC/ODYSSEY/X.RLD",
+            "notes": 8071,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "X (2)",
+        "devices": {
+          "RLD": {
+            "file": "ODYSSEY/X_RLD_2.mid",
+            "src": "LAPMUSIC/ODYSSEY/X.X",
+            "notes": 7338,
+            "alts": []
+          }
+        }
+      }
+    ],
+    "SAVAGE": [
+      {
+        "name": "BOSCBMT",
+        "devices": {
+          "SCC": {
+            "file": "SAVAGE/BOSCBMT_SCC.mid",
+            "src": "SAVAGE/BOSCBMT.SCC",
+            "notes": 8078,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "CAVES",
+        "devices": {
+          "SCC": {
+            "file": "SAVAGE/CAVES_SCC.mid",
+            "src": "SAVAGE/CAVES.SCC",
+            "notes": 2564,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "CAVES2",
+        "devices": {
+          "SCC": {
+            "file": "SAVAGE/CAVES2_SCC.mid",
+            "src": "SAVAGE/CAVES2.SCC",
+            "notes": 2726,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "COMP",
+        "devices": {
+          "SCC": {
+            "file": "SAVAGE/COMP_SCC.mid",
+            "src": "SAVAGE/COMP.SCC",
+            "notes": 3832,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "DEAT",
+        "devices": {
+          "SCC": {
+            "file": "SAVAGE/DEAT_SCC.mid",
+            "src": "SAVAGE/DEAT.SCC",
+            "notes": 2254,
+            "alts": [
+              "SAVAGE/DEAT2.SCC"
+            ]
+          }
+        }
+      },
+      {
+        "name": "DEATH",
+        "devices": {
+          "SCC": {
+            "file": "SAVAGE/DEATH_SCC.mid",
+            "src": "SAVAGE/DEATH.SCC",
+            "notes": 2410,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INSIDE",
+        "devices": {
+          "SCC": {
+            "file": "SAVAGE/INSIDE_SCC.mid",
+            "src": "SAVAGE/INSIDE.SCC",
+            "notes": 3167,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INSIDE2",
+        "devices": {
+          "SCC": {
+            "file": "SAVAGE/INSIDE2_SCC.mid",
+            "src": "SAVAGE/INSIDE2.SCC",
+            "notes": 2842,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INSIDE3",
+        "devices": {
+          "SCC": {
+            "file": "SAVAGE/INSIDE3_SCC.mid",
+            "src": "SAVAGE/INSIDE3.SCC",
+            "notes": 3384,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INSODE5",
+        "devices": {
+          "SCC": {
+            "file": "SAVAGE/INSODE5_SCC.mid",
+            "src": "SAVAGE/INSODE5.SCC",
+            "notes": 3814,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INTRO",
+        "devices": {
+          "SCC": {
+            "file": "SAVAGE/INTRO_SCC.mid",
+            "src": "SAVAGE/INTRO.SCC",
+            "notes": 2197,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "KTOL",
+        "devices": {
+          "SCC": {
+            "file": "SAVAGE/KTOL_SCC.mid",
+            "src": "SAVAGE/KTOL.SCC",
+            "notes": 2584,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "REGCMB",
+        "devices": {
+          "SCC": {
+            "file": "SAVAGE/REGCMB_SCC.mid",
+            "src": "SAVAGE/REGCMB.SCC",
+            "notes": 6041,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "TITL",
+        "devices": {
+          "SCC": {
+            "file": "SAVAGE/TITL_SCC.mid",
+            "src": "SAVAGE/TITL.SCC",
+            "notes": 6524,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "WALK4",
+        "devices": {
+          "SCC": {
+            "file": "SAVAGE/WALK4_SCC.mid",
+            "src": "SAVAGE/WALK4.SCC",
+            "notes": 3248,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "WALKIN2",
+        "devices": {
+          "SCC": {
+            "file": "SAVAGE/WALKIN2_SCC.mid",
+            "src": "SAVAGE/WALKIN2.SCC",
+            "notes": 4360,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "WALKIN3",
+        "devices": {
+          "SCC": {
+            "file": "SAVAGE/WALKIN3_SCC.mid",
+            "src": "SAVAGE/WALKIN3.SCC",
+            "notes": 814,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "WALKING",
+        "devices": {
+          "SCC": {
+            "file": "SAVAGE/WALKING_SCC.mid",
+            "src": "SAVAGE/WALKING.SCC",
+            "notes": 995,
+            "alts": []
+          }
+        }
+      }
+    ],
+    "SHUTIT": [
+      {
+        "name": "1",
+        "devices": {
+          "RLD": {
+            "file": "SHUTIT/1_RLD.mid",
+            "src": "LAPMUSIC/SHUTIT/1.ALB",
+            "notes": 10753,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "1 (2)",
+        "devices": {
+          "RLD": {
+            "file": "SHUTIT/1_RLD_2.mid",
+            "src": "LAPMUSIC/SHUTIT/1.RLD",
+            "notes": 10763,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "2",
+        "devices": {
+          "RLD": {
+            "file": "SHUTIT/2_RLD.mid",
+            "src": "LAPMUSIC/SHUTIT/2.RLD",
+            "notes": 2992,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "3",
+        "devices": {
+          "RLD": {
+            "file": "SHUTIT/3_RLD.mid",
+            "src": "LAPMUSIC/SHUTIT/3.RLD",
+            "notes": 2986,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "4",
+        "devices": {
+          "RLD": {
+            "file": "SHUTIT/4_RLD.mid",
+            "src": "LAPMUSIC/SHUTIT/4.RLD",
+            "notes": 7633,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "BAZ",
+        "devices": {
+          "ADL": {
+            "file": "SHUTIT/BAZ_ADL.dro",
+            "src": "ADLMUSIC/SHUTIT/BAZ.ALB",
+            "notes": 218235,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INGAME3",
+        "devices": {
+          "RLD": {
+            "file": "SHUTIT/INGAME3_RLD.mid",
+            "src": "LAPMUSIC/SHUTIT/INGAME3.RLD",
+            "notes": 10337,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INGAME6",
+        "devices": {
+          "RLD": {
+            "file": "SHUTIT/INGAME6_RLD.mid",
+            "src": "LAPMUSIC/SHUTIT/INGAME6.RLD",
+            "notes": 9089,
+            "alts": []
+          }
+        }
+      }
+    ],
+    "SHUT_IT": [
+      {
+        "name": "GAME_7",
+        "devices": {
+          "RLD": {
+            "file": "SHUT_IT/GAME_7_RLD.mid",
+            "src": "LAPMUSIC/SHUT_IT/GAME_7.ADL",
+            "notes": 18575,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "GAME_7 (2)",
+        "devices": {
+          "RLD": {
+            "file": "SHUT_IT/GAME_7_RLD_2.mid",
+            "src": "LAPMUSIC/SHUT_IT/GAME_7.RLD",
+            "notes": 14189,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "GAME_9",
+        "devices": {
+          "RLD": {
+            "file": "SHUT_IT/GAME_9_RLD.mid",
+            "src": "LAPMUSIC/SHUT_IT/GAME_9.ADL",
+            "notes": 6700,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "GAME_9 (2)",
+        "devices": {
+          "RLD": {
+            "file": "SHUT_IT/GAME_9_RLD_2.mid",
+            "src": "LAPMUSIC/SHUT_IT/GAME_9.RLD",
+            "notes": 6352,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INGAME1",
+        "devices": {
+          "RLD": {
+            "file": "SHUT_IT/INGAME1_RLD.mid",
+            "src": "LAPMUSIC/SHUT_IT/INGAME1.RLD",
+            "notes": 10761,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INGAME2",
+        "devices": {
+          "RLD": {
+            "file": "SHUT_IT/INGAME2_RLD.mid",
+            "src": "LAPMUSIC/SHUT_IT/INGAME2.ADL",
+            "notes": 5908,
+            "alts": [
+              "ADLMUSIC/SHUTIT/INGAME2.ADL"
+            ]
+          }
+        }
+      },
+      {
+        "name": "INGAME2 (2)",
+        "devices": {
+          "RLD": {
+            "file": "SHUT_IT/INGAME2_RLD_2.mid",
+            "src": "LAPMUSIC/SHUT_IT/INGAME2.RLD",
+            "notes": 7902,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INGAME3",
+        "devices": {
+          "RLD": {
+            "file": "SHUT_IT/INGAME3_RLD.mid",
+            "src": "LAPMUSIC/SHUT_IT/INGAME3.ADL",
+            "notes": 5053,
+            "alts": [
+              "ADLMUSIC/SHUTIT/INGAME3.ADL"
+            ]
+          }
+        }
+      },
+      {
+        "name": "INGAME3 (2)",
+        "devices": {
+          "RLD": {
+            "file": "SHUT_IT/INGAME3_RLD_2.mid",
+            "src": "LAPMUSIC/SHUT_IT/INGAME3.RLD",
+            "notes": 6449,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INGAME4",
+        "devices": {
+          "RLD": {
+            "file": "SHUT_IT/INGAME4_RLD.mid",
+            "src": "LAPMUSIC/SHUT_IT/INGAME4.ADL",
+            "notes": 10507,
+            "alts": [
+              "ADLMUSIC/SHUTIT/INGAME4.ADL"
+            ]
+          }
+        }
+      },
+      {
+        "name": "INGAME4 (2)",
+        "devices": {
+          "RLD": {
+            "file": "SHUT_IT/INGAME4_RLD_2.mid",
+            "src": "LAPMUSIC/SHUT_IT/INGAME4.RLD",
+            "notes": 7603,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INGAME6",
+        "devices": {
+          "RLD": {
+            "file": "SHUT_IT/INGAME6_RLD.mid",
+            "src": "LAPMUSIC/SHUT_IT/INGAME6.ADL",
+            "notes": 7174,
+            "alts": [
+              "ADLMUSIC/SHUTIT/INGAME6.ADL"
+            ]
+          }
+        }
+      },
+      {
+        "name": "INGAME6 (2)",
+        "devices": {
+          "RLD": {
+            "file": "SHUT_IT/INGAME6_RLD_2.mid",
+            "src": "LAPMUSIC/SHUT_IT/INGAME6.RLD",
+            "notes": 6483,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "TITLE",
+        "devices": {
+          "RLD": {
+            "file": "SHUT_IT/TITLE_RLD.mid",
+            "src": "LAPMUSIC/SHUT_IT/TITLE.ADL",
+            "notes": 7859,
+            "alts": [
+              "ADLMUSIC/SHUTIT/TITLE.ADL"
+            ]
+          }
+        }
+      },
+      {
+        "name": "TITLE (2)",
+        "devices": {
+          "RLD": {
+            "file": "SHUT_IT/TITLE_RLD_2.mid",
+            "src": "LAPMUSIC/SHUT_IT/TITLE.RLD",
+            "notes": 7343,
+            "alts": []
+          }
+        }
+      }
+    ],
+    "SLEEP": [
+      {
+        "name": "AMIGA",
+        "devices": {
+          "SCC": {
+            "file": "SLEEP/AMIGA_SCC.mid",
+            "src": "SCC1MUSI/SLEEP/AMIGA.SCC",
+            "notes": 2374,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "AMIGA2",
+        "devices": {
+          "SCC": {
+            "file": "SLEEP/AMIGA2_SCC.mid",
+            "src": "SCC1MUSI/SLEEP/AMIGA2.SCC",
+            "notes": 2490,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "BUILD2",
+        "devices": {
+          "SCC": {
+            "file": "SLEEP/BUILD2_SCC.mid",
+            "src": "SCC1MUSI/SLEEP/BUILD2.SCC",
+            "notes": 7468,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "BUILD3",
+        "devices": {
+          "SCC": {
+            "file": "SLEEP/BUILD3_SCC.mid",
+            "src": "SCC1MUSI/SLEEP/BUILD3.SCC",
+            "notes": 2830,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "BUILDING",
+        "devices": {
+          "SCC": {
+            "file": "SLEEP/BUILDING_SCC.mid",
+            "src": "SCC1MUSI/SLEEP/BUILDING.SCC",
+            "notes": 4466,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "CHEESY",
+        "devices": {
+          "SCC": {
+            "file": "SLEEP/CHEESY_SCC.mid",
+            "src": "SCC1MUSI/SLEEP/CHEESY.SCC",
+            "notes": 4795,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "DEAN",
+        "devices": {
+          "SCC": {
+            "file": "SLEEP/DEAN_SCC.mid",
+            "src": "SCC1MUSI/SLEEP/DEAN.SCC",
+            "notes": 4582,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "FACTORY",
+        "devices": {
+          "SCC": {
+            "file": "SLEEP/FACTORY_SCC.mid",
+            "src": "SCC1MUSI/SLEEP/FACTORY.SCC",
+            "notes": 4772,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "FACTORY2",
+        "devices": {
+          "SCC": {
+            "file": "SLEEP/FACTORY2_SCC.mid",
+            "src": "SCC1MUSI/SLEEP/FACTORY2.SCC",
+            "notes": 4761,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "LUULL",
+        "devices": {
+          "SCC": {
+            "file": "SLEEP/LUULL_SCC.mid",
+            "src": "SCC1MUSI/SLEEP/LUULL.SCC",
+            "notes": 5053,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "SPOOK",
+        "devices": {
+          "SCC": {
+            "file": "SLEEP/SPOOK_SCC.mid",
+            "src": "SCC1MUSI/SLEEP/SPOOK.SC",
+            "notes": 4233,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "SPOOK (2)",
+        "devices": {
+          "SCC": {
+            "file": "SLEEP/SPOOK_SCC_2.mid",
+            "src": "SCC1MUSI/SLEEP/SPOOK.SCC",
+            "notes": 4233,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "TOWN",
+        "devices": {
+          "SCC": {
+            "file": "SLEEP/TOWN_SCC.mid",
+            "src": "SCC1MUSI/SLEEP/TOWN.SC1",
+            "notes": 6811,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "TOWN2",
+        "devices": {
+          "SCC": {
+            "file": "SLEEP/TOWN2_SCC.mid",
+            "src": "SCC1MUSI/SLEEP/TOWN2.SC1",
+            "notes": 5038,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "TOWN3",
+        "devices": {
+          "SCC": {
+            "file": "SLEEP/TOWN3_SCC.mid",
+            "src": "SCC1MUSI/SLEEP/TOWN3.SC1",
+            "notes": 4856,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "UNTITLED",
+        "devices": {
+          "SCC": {
+            "file": "SLEEP/UNTITLED_SCC.mid",
+            "src": "SCC1MUSI/SLEEP/UNTITLED.MED",
+            "notes": 1268,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "ZOO",
+        "devices": {
+          "SCC": {
+            "file": "SLEEP/ZOO_SCC.mid",
+            "src": "SCC1MUSI/SLEEP/ZOO.RLD",
+            "notes": 5476,
+            "alts": []
+          }
+        }
+      }
+    ],
+    "TFX": [
+      {
+        "name": "1UNSUC",
+        "devices": {
+          "ADL": {
+            "file": "TFX/1UNSUC_ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/1UNSUC.ADL",
+            "notes": 208786,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "2SUCC",
+        "devices": {
+          "ADL": {
+            "file": "TFX/2SUCC_ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/2SUCC.ADL",
+            "notes": 211103,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "3_9TUNES",
+        "devices": {
+          "ADL": {
+            "file": "TFX/3_9TUNES_ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/3-9TUNES.ADL",
+            "notes": 187501,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "AIR",
+        "devices": {
+          "RLD": {
+            "file": "TFX/AIR_RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/AIR.RLD",
+            "notes": 6025,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "AIR (2)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/AIR_RLD_2.mid",
+            "src": "LAPMUSIC/INFERNO/SEPARATE/AIR.RLD",
+            "notes": 6024,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "AIRBATLE",
+        "devices": {
+          "ADL": {
+            "file": "TFX/AIRBATLE_ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/AIRBATLE.ADL",
+            "notes": 319592,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "AIRSUPER",
+        "devices": {
+          "ADL": {
+            "file": "TFX/AIRSUPER_ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/AIRSUPER.ADL",
+            "notes": 238678,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "ALL",
+        "devices": {
+          "RLD": {
+            "file": "TFX/ALL_RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/MARITIME/ALL.LAP",
+            "notes": 6023,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "ALL (2)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/ALL_RLD_2.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/CLOSEAIR/ALL.LAP",
+            "notes": 5891,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "ALL (3)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/ALL_RLD_3.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/ALL.LAP",
+            "notes": 6026,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "ALL (4)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/ALL_RLD_4.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/AIRSUPER/ALL.LAP",
+            "notes": 6022,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "ALL (5)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/ALL_RLD_5.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/INTERDIC/ALL.LAP",
+            "notes": 6026,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "ALL (6)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/ALL_RLD_6.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/ANTIARMR/ALL.LAP",
+            "notes": 6026,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "ALL (7)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/ALL_RLD_7.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/DEFSSUPR/ALL.LAP",
+            "notes": 5891,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "ALL2",
+        "devices": {
+          "RLD": {
+            "file": "TFX/ALL2_RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/CLOSEAIR/ALL2.LAP",
+            "notes": 5891,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "ALL2 (2)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/ALL2_RLD_2.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/AIRSUPER/ALL2.LAP",
+            "notes": 6022,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "ALL2 (3)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/ALL2_RLD_3.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/DEFSSUPR/ALL2.LAP",
+            "notes": 5891,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "ANARCHY",
+        "devices": {
+          "SCC": {
+            "file": "TFX/ANARCHY_SCC.mid",
+            "src": "SCC1MUSI/TFX/ANARCHY.RLD",
+            "notes": 1986,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "ANTIARMR",
+        "devices": {
+          "ADL": {
+            "file": "TFX/ANTIARMR_ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/ANTIARMR.ADL",
+            "notes": 217688,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "BALLAD",
+        "devices": {
+          "RLD": {
+            "file": "TFX/BALLAD_RLD.mid",
+            "src": "LAPMUSIC/INFERNO/BALLAD.RLD",
+            "notes": 4148,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "BANK1",
+        "devices": {
+          "RLD": {
+            "file": "TFX/BANK1_RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/ANTIARMR/BANK1.LAP",
+            "notes": 6026,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "BANK1 (2)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/BANK1_RLD_2.mid",
+            "src": "LAPMUSIC/INFERNO/BANK1.RLD",
+            "notes": 5997,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "BANK2",
+        "devices": {
+          "RLD": {
+            "file": "TFX/BANK2_RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/ANTIARMR/BANK2.LAP",
+            "notes": 5271,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "BASIC",
+        "devices": {
+          "RLD": {
+            "file": "TFX/BASIC_RLD.mid",
+            "src": "LAPMUSIC/INFERNO/BASIC.RLD",
+            "notes": 6033,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "BATTLE",
+        "devices": {
+          "RLD": {
+            "file": "TFX/BATTLE_RLD.mid",
+            "src": "LAPMUSIC/TFX/FLYING/BATTLE.RLD",
+            "notes": 13672,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "BATTLE (2)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/BATTLE_RLD_2.mid",
+            "src": "LAPMUSIC/INFERNO/SEPARATE/BATTLE.RLD",
+            "notes": 13672,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "BATTLE2",
+        "devices": {
+          "RLD": {
+            "file": "TFX/BATTLE2_RLD.mid",
+            "src": "LAPMUSIC/INFERNO/SEPARATE/BATTLE2.RLD",
+            "notes": 13672,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "BLOCK1",
+        "devices": {
+          "RLD": {
+            "file": "TFX/BLOCK1_RLD.mid",
+            "src": "LAPMUSIC/INFERNO/BLOCK1.RLD",
+            "notes": 6033,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "BLOCK1 (2)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/BLOCK1_RLD_2.mid",
+            "src": "LAPMUSIC/INFERNO/SEPARATE/BLOCK1.LAP",
+            "notes": 6024,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "BRIEFING",
+        "devices": {
+          "RLD": {
+            "file": "TFX/BRIEFING_RLD.mid",
+            "src": "LAPMUSIC/INFERNO/BRIEFING.RLD",
+            "notes": 2970,
+            "alts": [
+              "LAPMUSIC/TFX-FINA/OTHER/INTER.RLD"
+            ]
+          }
+        }
+      },
+      {
+        "name": "BRIEFING (2)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/BRIEFING_RLD_2.mid",
+            "src": "LAPMUSIC/INFERNO/FINAL/BRIEFING.RLD",
+            "notes": 3812,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "CLOSEAIR",
+        "devices": {
+          "ADL": {
+            "file": "TFX/CLOSEAIR_ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/CLOSEAIR.ADL",
+            "notes": 199337,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "COLIN",
+        "devices": {
+          "RLD": {
+            "file": "TFX/COLIN_RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/ANTIARMR/COLIN.LAP",
+            "notes": 6026,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "COLIN2",
+        "devices": {
+          "RLD": {
+            "file": "TFX/COLIN2_RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/ANTIARMR/COLIN2.LAP",
+            "notes": 6026,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "COLUMBIA",
+        "devices": {
+          "RLD": {
+            "file": "TFX/COLUMBIA_RLD.mid",
+            "src": "LAPMUSIC/TFX/COLUMBIA.RLD",
+            "notes": 8618,
+            "alts": [
+              "LAPMUSIC/INFERNO/FINAL/COLUMBIA.RLD"
+            ]
+          },
+          "SCC": {
+            "file": "TFX/COLUMBIA_SCC.mid",
+            "src": "SCC1MUSI/TFX/COLUMBIA.SCC",
+            "notes": 7845,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX/COLUMBIA_ADL.dro",
+            "src": "ADLMUSIC/TFX/COLUMBIA.ADL",
+            "notes": 272249,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "COLUMBIA (2)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/COLUMBIA_RLD_2.mid",
+            "src": "LAPMUSIC/TFX/OTHER/COLUMBIA.RLD",
+            "notes": 8146,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "DEATH",
+        "devices": {
+          "RLD": {
+            "file": "TFX/DEATH_RLD.mid",
+            "src": "LAPMUSIC/TFX/OTHER/DEATH.RLD",
+            "notes": 3243,
+            "alts": []
+          },
+          "SCC": {
+            "file": "TFX/DEATH_SCC.mid",
+            "src": "SCC1MUSI/TFX/DEATH.SCC",
+            "notes": 3108,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX/DEATH_ADL.dro",
+            "src": "ADLMUSIC/TFX/DEATH.RLD",
+            "notes": 160489,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "DEATH (2)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/DEATH_RLD_2.mid",
+            "src": "LAPMUSIC/INFERNO/DEATH.RLD",
+            "notes": 3253,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "DEATH2",
+        "devices": {
+          "RLD": {
+            "file": "TFX/DEATH2_RLD.mid",
+            "src": "LAPMUSIC/INFERNO/DEATH2.RLD",
+            "notes": 1703,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "DEFSUPP",
+        "devices": {
+          "ADL": {
+            "file": "TFX/DEFSUPP_ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/DEFSUPP.ADL",
+            "notes": 204208,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "ENROL",
+        "devices": {
+          "RLD": {
+            "file": "TFX/ENROL_RLD.mid",
+            "src": "LAPMUSIC/TFX/ENROL.RLD",
+            "notes": 5424,
+            "alts": []
+          },
+          "SCC": {
+            "file": "TFX/ENROL_SCC.mid",
+            "src": "SCC1MUSI/TFX/ENROL.SCC",
+            "notes": 5069,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX/ENROL_ADL.dro",
+            "src": "ADLMUSIC/TFX/ENROL.ADL",
+            "notes": 205807,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "FAILED",
+        "devices": {
+          "RLD": {
+            "file": "TFX/FAILED_RLD.mid",
+            "src": "LAPMUSIC/TFX/FAILED.RLD",
+            "notes": 6051,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "FAILED (2)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/FAILED_RLD_2.mid",
+            "src": "LAPMUSIC/TFX/FLYING/FAILED.RLD",
+            "notes": 6053,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "FAILED (3)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/FAILED_RLD_3.mid",
+            "src": "LAPMUSIC/INFERNO/SEPARATE/FAILED.RLD",
+            "notes": 6033,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "FIXED",
+        "devices": {
+          "RLD": {
+            "file": "TFX/FIXED_RLD.mid",
+            "src": "LAPMUSIC/INFERNO/SEPARATE/FIXED.L2",
+            "notes": 6033,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "FIXED (2)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/FIXED_RLD_2.mid",
+            "src": "LAPMUSIC/INFERNO/SEPARATE/FIXED.LAP",
+            "notes": 6033,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "FLYING1",
+        "devices": {
+          "RLD": {
+            "file": "TFX/FLYING1_RLD.mid",
+            "src": "LAPMUSIC/INFERNO/FLYING1.RLD",
+            "notes": 6203,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "FLYING2",
+        "devices": {
+          "RLD": {
+            "file": "TFX/FLYING2_RLD.mid",
+            "src": "LAPMUSIC/INFERNO/FLYING2.RLD",
+            "notes": 5999,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "FLYING3",
+        "devices": {
+          "RLD": {
+            "file": "TFX/FLYING3_RLD.mid",
+            "src": "LAPMUSIC/INFERNO/FLYING3.RLD",
+            "notes": 5997,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "FLYING4",
+        "devices": {
+          "RLD": {
+            "file": "TFX/FLYING4_RLD.mid",
+            "src": "LAPMUSIC/INFERNO/FLYING4.RLD",
+            "notes": 5997,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "FX",
+        "devices": {
+          "RLD": {
+            "file": "TFX/FX_RLD.mid",
+            "src": "LAPMUSIC/TFX/FX.RLD",
+            "notes": 1,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "FXONLY",
+        "devices": {
+          "ADL": {
+            "file": "TFX/FXONLY_ADL.dro",
+            "src": "ADLMUSIC/TFX/FXONLY.ADL",
+            "notes": 605,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "GROUND2",
+        "devices": {
+          "RLD": {
+            "file": "TFX/GROUND2_RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/GROUND2.LAP",
+            "notes": 6023,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "GROUND3",
+        "devices": {
+          "RLD": {
+            "file": "TFX/GROUND3_RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/GROUND3.LAP",
+            "notes": 6023,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INTER",
+        "devices": {
+          "ADL": {
+            "file": "TFX/INTER_ADL.dro",
+            "src": "ADLMUSIC/TFX/INTER.ADL",
+            "notes": 147427,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INTERCEP",
+        "devices": {
+          "RLD": {
+            "file": "TFX/INTERCEP_RLD.mid",
+            "src": "LAPMUSIC/INFERNO/SEPARATE/INTERCEP.RLD",
+            "notes": 8539,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX/INTERCEP_ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/INTERCEP.ADL",
+            "notes": 221451,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INTERCPT",
+        "devices": {
+          "RLD": {
+            "file": "TFX/INTERCPT_RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/INTERCPT.LAP",
+            "notes": 5997,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INTERCPT (2)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/INTERCPT_RLD_2.mid",
+            "src": "LAPMUSIC/TFX/FLYING/INTERCPT.RLD",
+            "notes": 8352,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INTERDCT",
+        "devices": {
+          "RLD": {
+            "file": "TFX/INTERDCT_RLD.mid",
+            "src": "LAPMUSIC/TFX/FLYING/INTERDCT.RLD",
+            "notes": 7295,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX/INTERDCT_ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/INTERDCT.ADL",
+            "notes": 209293,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INTERDIC",
+        "devices": {
+          "RLD": {
+            "file": "TFX/INTERDIC_RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/INTERDIC.LAP",
+            "notes": 5997,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INTERDIC (2)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/INTERDIC_RLD_2.mid",
+            "src": "LAPMUSIC/INFERNO/SEPARATE/INTERDIC.RLD",
+            "notes": 7295,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INTRO",
+        "devices": {
+          "RLD": {
+            "file": "TFX/INTRO_RLD.mid",
+            "src": "LAPMUSIC/TFX/OTHER/INTRO.RLD",
+            "notes": 6568,
+            "alts": []
+          },
+          "SCC": {
+            "file": "TFX/INTRO_SCC.mid",
+            "src": "SCC1MUSI/TFX/INTRO.SCC",
+            "notes": 7712,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX/INTRO_ADL.dro",
+            "src": "ADLMUSIC/TFX/INTRO.ADL",
+            "notes": 256950,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INTRO (2)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/INTRO_RLD_2.mid",
+            "src": "LAPMUSIC/INFERNO/INTRO.LAP",
+            "notes": 6559,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX/INTRO_ADL_2.dro",
+            "src": "ADLMUSIC/TFX/INTRO.RLD",
+            "notes": 237096,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INTRO (3)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/INTRO_RLD_3.mid",
+            "src": "LAPMUSIC/INFERNO/FINAL/INTRO.LAP",
+            "notes": 6568,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX/INTRO_ADL_3.dro",
+            "src": "ADLMUSIC/TFX/INTRO.SCC",
+            "notes": 236410,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "LANDBATL",
+        "devices": {
+          "ADL": {
+            "file": "TFX/LANDBATL_ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/LANDBATL.ADL",
+            "notes": 233844,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "LIBYA",
+        "devices": {
+          "RLD": {
+            "file": "TFX/LIBYA_RLD.mid",
+            "src": "LAPMUSIC/TFX/LIBYA.RLD",
+            "notes": 8092,
+            "alts": []
+          },
+          "SCC": {
+            "file": "TFX/LIBYA_SCC.mid",
+            "src": "SCC1MUSI/TFX/LIBYA.SCC",
+            "notes": 8645,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX/LIBYA_ADL.dro",
+            "src": "ADLMUSIC/TFX/LIBYA.RLD",
+            "notes": 250879,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "LIBYA (2)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/LIBYA_RLD_2.mid",
+            "src": "LAPMUSIC/TFX/OTHER/LIBYA.RLD",
+            "notes": 8092,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "MARITIME",
+        "devices": {
+          "RLD": {
+            "file": "TFX/MARITIME_RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/MARITIME.LAP",
+            "notes": 6023,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX/MARITIME_ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/MARITIME.ADL",
+            "notes": 201739,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "MARITME",
+        "devices": {
+          "RLD": {
+            "file": "TFX/MARITME_RLD.mid",
+            "src": "LAPMUSIC/TFX/MARITME.RLD",
+            "notes": 6348,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "MARITME (2)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/MARITME_RLD_2.mid",
+            "src": "LAPMUSIC/TFX/FLYING/MARITME.RLD",
+            "notes": 6360,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "MARITME (3)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/MARITME_RLD_3.mid",
+            "src": "LAPMUSIC/INFERNO/SEPARATE/MARITME.RLD",
+            "notes": 6348,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "NEWS",
+        "devices": {
+          "RLD": {
+            "file": "TFX/NEWS_RLD.mid",
+            "src": "LAPMUSIC/TFX/NEWS.RLD",
+            "notes": 3590,
+            "alts": []
+          },
+          "SCC": {
+            "file": "TFX/NEWS_SCC.mid",
+            "src": "SCC1MUSI/TFX/NEWS.SCC",
+            "notes": 3526,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX/NEWS_ADL.dro",
+            "src": "ADLMUSIC/TFX/NEWS.ADL",
+            "notes": 134206,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "NEWS (2)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/NEWS_RLD_2.mid",
+            "src": "LAPMUSIC/TFX/OTHER/NEWS.RLD",
+            "notes": 3590,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "NEWS2",
+        "devices": {
+          "RLD": {
+            "file": "TFX/NEWS2_RLD.mid",
+            "src": "LAPMUSIC/TFX/NEWS2.RLD",
+            "notes": 2594,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "NOFLY",
+        "devices": {
+          "RLD": {
+            "file": "TFX/NOFLY_RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/NOFLY.RLD",
+            "notes": 6023,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "NOINSTS",
+        "devices": {
+          "RLD": {
+            "file": "TFX/NOINSTS_RLD.mid",
+            "src": "LAPMUSIC/INFERNO/SEPARATE/NOINSTS.LAP",
+            "notes": 6022,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "OCEAN",
+        "devices": {
+          "RLD": {
+            "file": "TFX/OCEAN_RLD.mid",
+            "src": "LAPMUSIC/TFX/OTHER/OCEAN.RLD",
+            "notes": 3618,
+            "alts": []
+          },
+          "SCC": {
+            "file": "TFX/OCEAN_SCC.mid",
+            "src": "SCC1MUSI/TFX/OCEAN.SCC",
+            "notes": 3715,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX/OCEAN_ADL.dro",
+            "src": "ADLMUSIC/TFX/OCEAN.RLD",
+            "notes": 147340,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "SEABATLE",
+        "devices": {
+          "SCC": {
+            "file": "TFX/SEABATLE_SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/SEABATLE.SCC",
+            "notes": 8767,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX/SEABATLE_ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/SEABATLE.ADL",
+            "notes": 226062,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "SOMALIA",
+        "devices": {
+          "RLD": {
+            "file": "TFX/SOMALIA_RLD.mid",
+            "src": "LAPMUSIC/TFX/SOMALIA.RLD",
+            "notes": 2442,
+            "alts": []
+          },
+          "SCC": {
+            "file": "TFX/SOMALIA_SCC.mid",
+            "src": "SCC1MUSI/TFX/SOMALIA.SCC",
+            "notes": 2467,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX/SOMALIA_ADL.dro",
+            "src": "ADLMUSIC/TFX/SOMALIA.RLD",
+            "notes": 139047,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "SOMALIA (2)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/SOMALIA_RLD_2.mid",
+            "src": "LAPMUSIC/TFX/OTHER/SOMALIA.RLD",
+            "notes": 2445,
+            "alts": [
+              "LAPMUSIC/TFX-FINA/OTHER/SOMALIA.RLD"
+            ]
+          }
+        }
+      },
+      {
+        "name": "SUCCESS",
+        "devices": {
+          "RLD": {
+            "file": "TFX/SUCCESS_RLD.mid",
+            "src": "LAPMUSIC/TFX/SUCCESS.RLD",
+            "notes": 6746,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "SUCCESS (2)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/SUCCESS_RLD_2.mid",
+            "src": "LAPMUSIC/TFX/FLYING/SUCCESS.RLD",
+            "notes": 6746,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "SUCCESS (3)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/SUCCESS_RLD_3.mid",
+            "src": "LAPMUSIC/INFERNO/SEPARATE/SUCCESS.RLD",
+            "notes": 6736,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "XANDBATL",
+        "devices": {
+          "SCC": {
+            "file": "TFX/XANDBATL_SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XANDBATL.SCC",
+            "notes": 9600,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "XARITIME",
+        "devices": {
+          "SCC": {
+            "file": "TFX/XARITIME_SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XARITIME.SCC",
+            "notes": 6320,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "XEFSUPP",
+        "devices": {
+          "SCC": {
+            "file": "TFX/XEFSUPP_SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XEFSUPP.SCC",
+            "notes": 8843,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "XIRBATTL",
+        "devices": {
+          "SCC": {
+            "file": "TFX/XIRBATTL_SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XIRBATTL.SCC",
+            "notes": 13033,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "XIRSUPER",
+        "devices": {
+          "SCC": {
+            "file": "TFX/XIRSUPER_SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XIRSUPER.SCC",
+            "notes": 7070,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "XLOSEAIR",
+        "devices": {
+          "SCC": {
+            "file": "TFX/XLOSEAIR_SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XLOSEAIR.SCC",
+            "notes": 7763,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "XNTERCEP",
+        "devices": {
+          "SCC": {
+            "file": "TFX/XNTERCEP_SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XNTERCEP.SCC",
+            "notes": 7227,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "XNTERDCT",
+        "devices": {
+          "SCC": {
+            "file": "TFX/XNTERDCT_SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XNTERDCT.SCC",
+            "notes": 6720,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "XNTIARMR",
+        "devices": {
+          "SCC": {
+            "file": "TFX/XNTIARMR_SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XNTIARMR.SCC",
+            "notes": 6734,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "XSUCC",
+        "devices": {
+          "SCC": {
+            "file": "TFX/XSUCC_SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XSUCC.SCC",
+            "notes": 6424,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "XUNSUC",
+        "devices": {
+          "SCC": {
+            "file": "TFX/XUNSUC_SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XUNSUC.SCC",
+            "notes": 6202,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "X_9TUNES",
+        "devices": {
+          "SCC": {
+            "file": "TFX/X_9TUNES_SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/X-9TUNES.SCC",
+            "notes": 4099,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "YUGO",
+        "devices": {
+          "RLD": {
+            "file": "TFX/YUGO_RLD.mid",
+            "src": "LAPMUSIC/TFX/YUGO.RLD",
+            "notes": 6910,
+            "alts": []
+          },
+          "SCC": {
+            "file": "TFX/YUGO_SCC.mid",
+            "src": "SCC1MUSI/TFX/YUGO.SCC",
+            "notes": 6878,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX/YUGO_ADL.dro",
+            "src": "ADLMUSIC/TFX/YUGO.RLD",
+            "notes": 182955,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "YUGO (2)",
+        "devices": {
+          "RLD": {
+            "file": "TFX/YUGO_RLD_2.mid",
+            "src": "LAPMUSIC/TFX/OTHER/YUGO.RLD",
+            "notes": 6910,
+            "alts": [
+              "LAPMUSIC/TFX-FINA/OTHER/YUGO.RLD"
+            ]
+          }
+        }
+      }
+    ],
+    "TFX-FINA": [
+      {
+        "name": "B9LC70J",
+        "devices": {
+          "RLD": {
+            "file": "TFX-FINA/B9LC70J_RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@B9LC70J.SAV",
+            "notes": 6017,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "BHLC702",
+        "devices": {
+          "RLD": {
+            "file": "TFX-FINA/BHLC702_RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BHLC702.SAV",
+            "notes": 6017,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "BPLC70Q",
+        "devices": {
+          "RLD": {
+            "file": "TFX-FINA/BPLC70Q_RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BPLC70Q.SAV",
+            "notes": 6017,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "CLEAN",
+        "devices": {
+          "RLD": {
+            "file": "TFX-FINA/CLEAN_RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/CLEAN.LAP",
+            "notes": 6017,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "CLEAN (2)",
+        "devices": {
+          "RLD": {
+            "file": "TFX-FINA/CLEAN_RLD_2.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/CLOSEAIR/CLEAN.LAP",
+            "notes": 6050,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "CLEAN (3)",
+        "devices": {
+          "RLD": {
+            "file": "TFX-FINA/CLEAN_RLD_3.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/INTERCEP/CLEAN.LAP",
+            "notes": 6023,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "CLEAN (4)",
+        "devices": {
+          "RLD": {
+            "file": "TFX-FINA/CLEAN_RLD_4.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/AIRSUPER/CLEAN.LAP",
+            "notes": 6040,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "CLEAN (5)",
+        "devices": {
+          "RLD": {
+            "file": "TFX-FINA/CLEAN_RLD_5.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/INTERDIC/CLEAN.LAP",
+            "notes": 6026,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "CLEAN (6)",
+        "devices": {
+          "RLD": {
+            "file": "TFX-FINA/CLEAN_RLD_6.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/DEFSSUPR/CLEAN.LAP",
+            "notes": 6044,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "COLUMBIA",
+        "devices": {
+          "RLD": {
+            "file": "TFX-FINA/COLUMBIA_RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/OTHER/COLUMBIA.RLD",
+            "notes": 8146,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "DEATH",
+        "devices": {
+          "RLD": {
+            "file": "TFX-FINA/DEATH_RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/OTHER/DEATH.RLD",
+            "notes": 3243,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "FX",
+        "devices": {
+          "RLD": {
+            "file": "TFX-FINA/FX_RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/FX.RLD",
+            "notes": 1,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "FXONLY",
+        "devices": {
+          "RLD": {
+            "file": "TFX-FINA/FXONLY_RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/FXONLY.RLD",
+            "notes": 1,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "FX_MUS",
+        "devices": {
+          "RLD": {
+            "file": "TFX-FINA/FX_MUS_RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/FX&MUS.RLD",
+            "notes": 1,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "INTRO",
+        "devices": {
+          "RLD": {
+            "file": "TFX-FINA/INTRO_RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/OTHER/INTRO.RLD",
+            "notes": 6568,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "LIBYA",
+        "devices": {
+          "RLD": {
+            "file": "TFX-FINA/LIBYA_RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/OTHER/LIBYA.RLD",
+            "notes": 8092,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "NEWS",
+        "devices": {
+          "RLD": {
+            "file": "TFX-FINA/NEWS_RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/OTHER/NEWS.RLD",
+            "notes": 3590,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "OCEAN",
+        "devices": {
+          "RLD": {
+            "file": "TFX-FINA/OCEAN_RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/OTHER/OCEAN.RLD",
+            "notes": 3618,
+            "alts": []
+          }
+        }
+      }
+    ],
+    "TFX-INPROGRESS": [
+      {
+        "name": "39tunes_s00",
+        "devices": {
+          "ADL": {
+            "file": "TFX-INPROGRESS/39tunes_s00__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/3-9TUNES.ADL",
+            "notes": 121,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "39tunes_s01",
+        "devices": {
+          "ADL": {
+            "file": "TFX-INPROGRESS/39tunes_s01__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/3-9TUNES.ADL",
+            "notes": 236,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "39tunes_s02",
+        "devices": {
+          "ADL": {
+            "file": "TFX-INPROGRESS/39tunes_s02__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/3-9TUNES.ADL",
+            "notes": 134,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "39tunes_s03",
+        "devices": {
+          "ADL": {
+            "file": "TFX-INPROGRESS/39tunes_s03__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/3-9TUNES.ADL",
+            "notes": 225,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "39tunes_s04",
+        "devices": {
+          "ADL": {
+            "file": "TFX-INPROGRESS/39tunes_s04__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/3-9TUNES.ADL",
+            "notes": 225,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "39tunes_s05",
+        "devices": {
+          "ADL": {
+            "file": "TFX-INPROGRESS/39tunes_s05__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/3-9TUNES.ADL",
+            "notes": 182,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "39tunes_s06",
+        "devices": {
+          "ADL": {
+            "file": "TFX-INPROGRESS/39tunes_s06__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/3-9TUNES.ADL",
+            "notes": 3884,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "39tunes_s07",
+        "devices": {
+          "ADL": {
+            "file": "TFX-INPROGRESS/39tunes_s07__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/3-9TUNES.ADL",
+            "notes": 8557,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "39tunes_s08",
+        "devices": {
+          "ADL": {
+            "file": "TFX-INPROGRESS/39tunes_s08__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/3-9TUNES.ADL",
+            "notes": 47,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "airbattl",
+        "devices": {
+          "SCC": {
+            "file": "TFX-INPROGRESS/airbattl__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XIRBATTL.SCC",
+            "notes": 13033,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/airbattl__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/AIRBATLE.ADL",
+            "notes": 11592,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "airsuper",
+        "devices": {
+          "SCC": {
+            "file": "TFX-INPROGRESS/airsuper__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XIRSUPER.SCC",
+            "notes": 7070,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/airsuper__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/AIRSUPER.ADL",
+            "notes": 6996,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "airsuper_s02",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/airsuper_s02__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/AIRSUPER/CLEAN.LAP",
+            "notes": 188,
+            "alts": [
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@B9LC70J.SAV#s20",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BHLC702.SAV#s20",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BPLC70Q.SAV#s20"
+            ]
+          }
+        }
+      },
+      {
+        "name": "airsuper_s09",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/airsuper_s09__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/AIRSUPER/CLEAN.LAP",
+            "notes": 8459,
+            "alts": [
+              "LAPMUSIC/TFX/BLOCKS/SEP/AIRSUPER/ALL.LAP#s27",
+              "LAPMUSIC/TFX/BLOCKS/SEP/AIRSUPER/ALL2.LAP#s27"
+            ]
+          }
+        }
+      },
+      {
+        "name": "anarchy_s00",
+        "devices": {
+          "SCC": {
+            "file": "TFX-INPROGRESS/anarchy_s00__SCC.mid",
+            "src": "SCC1MUSI/TFX/ANARCHY.RLD",
+            "notes": 1986,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "anarchy_s01",
+        "devices": {
+          "SCC": {
+            "file": "TFX-INPROGRESS/anarchy_s01__SCC.mid",
+            "src": "SCC1MUSI/TFX/ANARCHY.RLD",
+            "notes": 921,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "anarchy_s02",
+        "devices": {
+          "SCC": {
+            "file": "TFX-INPROGRESS/anarchy_s02__SCC.mid",
+            "src": "SCC1MUSI/TFX/ANARCHY.RLD",
+            "notes": 396,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "antiarm",
+        "devices": {
+          "SCC": {
+            "file": "TFX-INPROGRESS/antiarm__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XNTIARMR.SCC",
+            "notes": 6734,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/antiarm__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/ANTIARMR.ADL",
+            "notes": 6232,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "antiarm_s05",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/antiarm_s05__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/ANTIARMR/ALL.LAP",
+            "notes": 7489,
+            "alts": [
+              "LAPMUSIC/TFX/BLOCKS/SEP/ANTIARMR/COLIN.LAP#s27"
+            ]
+          }
+        }
+      },
+      {
+        "name": "antiarm_s06",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/antiarm_s06__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/ANTIARMR/ALL.LAP",
+            "notes": 7756,
+            "alts": [
+              "LAPMUSIC/TFX/BLOCKS/SEP/ANTIARMR/COLIN.LAP#s63"
+            ]
+          }
+        }
+      },
+      {
+        "name": "b9lc70j_s04",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/b9lc70j_s04__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@B9LC70J.SAV",
+            "notes": 214,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "ballad",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/ballad__RLD.mid",
+            "src": "LAPMUSIC/INFERNO/BALLAD.RLD",
+            "notes": 4148,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "battle",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/battle__RLD.mid",
+            "src": "LAPMUSIC/TFX/FLYING/BATTLE.RLD",
+            "notes": 13672,
+            "alts": [
+              "LAPMUSIC/TFX/BLOCKS/INTERDIC.LAP#s11",
+              "LAPMUSIC/INFERNO/FLYING2.RLD#s11",
+              "LAPMUSIC/INFERNO/FLYING3.RLD#s11",
+              "LAPMUSIC/INFERNO/FLYING4.RLD#s11",
+              "LAPMUSIC/INFERNO/SEPARATE/BATTLE.RLD",
+              "LAPMUSIC/INFERNO/SEPARATE/BATTLE2.RLD"
+            ]
+          }
+        }
+      },
+      {
+        "name": "blocks_s00",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/blocks_s00__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/AIR.RLD",
+            "notes": 6025,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "blocks_s02",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/blocks_s02__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/AIR.RLD",
+            "notes": 5272,
+            "alts": [
+              "LAPMUSIC/TFX/BLOCKS/MARITIME.LAP#s20",
+              "LAPMUSIC/INFERNO/BLOCK1.RLD#s21",
+              "LAPMUSIC/INFERNO/SEPARATE/AIR.RLD#s21",
+              "LAPMUSIC/INFERNO/SEPARATE/FIXED.LAP#s21",
+              "LAPMUSIC/INFERNO/SEPARATE/BLOCK1.LAP#s21",
+              "LAPMUSIC/TFX/BLOCKS/SEP/NOFLY.RLD#s20",
+              "LAPMUSIC/TFX/BLOCKS/SEP/MARITIME/ALL.LAP#s20",
+              "LAPMUSIC/TFX/BLOCKS/SEP/CLOSEAIR/ALL.LAP#s20",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/ALL.LAP#s20",
+              "LAPMUSIC/TFX/BLOCKS/SEP/AIRSUPER/ALL.LAP#s20",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERDIC/ALL.LAP#s20",
+              "LAPMUSIC/TFX/BLOCKS/SEP/ANTIARMR/ALL.LAP#s20",
+              "LAPMUSIC/TFX/BLOCKS/SEP/DEFSSUPR/ALL.LAP#s20",
+              "LAPMUSIC/TFX/BLOCKS/SEP/CLOSEAIR/ALL2.LAP#s20",
+              "LAPMUSIC/TFX/BLOCKS/SEP/AIRSUPER/ALL2.LAP#s20",
+              "LAPMUSIC/TFX/BLOCKS/SEP/DEFSSUPR/ALL2.LAP#s20",
+              "LAPMUSIC/TFX/BLOCKS/SEP/ANTIARMR/COLIN.LAP#s20",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/GROUND2.LAP#s20",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/GROUND3.LAP#s20"
+            ]
+          }
+        }
+      },
+      {
+        "name": "blocks_s03",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/blocks_s03__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/AIR.RLD",
+            "notes": 5359,
+            "alts": [
+              "LAPMUSIC/TFX/BLOCKS/MARITIME.LAP#s24",
+              "LAPMUSIC/INFERNO/BLOCK1.RLD#s25",
+              "LAPMUSIC/INFERNO/SEPARATE/AIR.RLD#s25",
+              "LAPMUSIC/INFERNO/SEPARATE/FIXED.LAP#s25",
+              "LAPMUSIC/INFERNO/SEPARATE/BLOCK1.LAP#s25",
+              "LAPMUSIC/TFX/BLOCKS/SEP/NOFLY.RLD#s24",
+              "LAPMUSIC/TFX/BLOCKS/SEP/MARITIME/ALL.LAP#s24",
+              "LAPMUSIC/TFX/BLOCKS/SEP/CLOSEAIR/ALL.LAP#s24",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/ALL.LAP#s24",
+              "LAPMUSIC/TFX/BLOCKS/SEP/AIRSUPER/ALL.LAP#s24",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERDIC/ALL.LAP#s24",
+              "LAPMUSIC/TFX/BLOCKS/SEP/ANTIARMR/ALL.LAP#s24",
+              "LAPMUSIC/TFX/BLOCKS/SEP/DEFSSUPR/ALL.LAP#s24",
+              "LAPMUSIC/TFX/BLOCKS/SEP/CLOSEAIR/ALL2.LAP#s24",
+              "LAPMUSIC/TFX/BLOCKS/SEP/AIRSUPER/ALL2.LAP#s24",
+              "LAPMUSIC/TFX/BLOCKS/SEP/DEFSSUPR/ALL2.LAP#s24",
+              "LAPMUSIC/TFX/BLOCKS/SEP/ANTIARMR/COLIN.LAP#s24",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/GROUND2.LAP#s24",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/GROUND3.LAP#s24"
+            ]
+          }
+        }
+      },
+      {
+        "name": "blocks_s05",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/blocks_s05__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/AIR.RLD",
+            "notes": 5980,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "briefing",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/briefing__RLD.mid",
+            "src": "LAPMUSIC/INFERNO/BRIEFING.RLD",
+            "notes": 2970,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "briefing_v2",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/briefing_v2__RLD.mid",
+            "src": "LAPMUSIC/INFERNO/FINAL/BRIEFING.RLD",
+            "notes": 3812,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "closeair",
+        "devices": {
+          "SCC": {
+            "file": "TFX-INPROGRESS/closeair__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XLOSEAIR.SCC",
+            "notes": 7763,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/closeair__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/CLOSEAIR.ADL",
+            "notes": 5770,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "closeair_s00",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/closeair_s00__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/CLOSEAIR/CLEAN.LAP",
+            "notes": 6050,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "closeair_s03",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/closeair_s03__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/CLOSEAIR/CLEAN.LAP",
+            "notes": 301,
+            "alts": [
+              "LAPMUSIC/TFX-FINA/BLOCKS/INTERDIC/CLEAN.LAP#s21",
+              "LAPMUSIC/TFX-FINA/BLOCKS/DEFSSUPR/CLEAN.LAP#s21"
+            ]
+          }
+        }
+      },
+      {
+        "name": "closeair_s05",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/closeair_s05__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/CLOSEAIR/ALL.LAP",
+            "notes": 6725,
+            "alts": [
+              "LAPMUSIC/TFX/BLOCKS/SEP/CLOSEAIR/ALL2.LAP#s27"
+            ]
+          }
+        }
+      },
+      {
+        "name": "closeair_s06",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/closeair_s06__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/CLOSEAIR/ALL.LAP",
+            "notes": 7439,
+            "alts": [
+              "LAPMUSIC/TFX/BLOCKS/SEP/CLOSEAIR/ALL2.LAP#s67"
+            ]
+          }
+        }
+      },
+      {
+        "name": "closeair_s09",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/closeair_s09__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/CLOSEAIR/CLEAN.LAP",
+            "notes": 6533,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "closeair_s11",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/closeair_s11__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/CLOSEAIR/CLEAN.LAP",
+            "notes": 10297,
+            "alts": [
+              "LAPMUSIC/TFX/BLOCKS/SEP/CLOSEAIR/ALL.LAP#s70",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/ALL.LAP#s57",
+              "LAPMUSIC/TFX/BLOCKS/SEP/DEFSSUPR/ALL.LAP#s73",
+              "LAPMUSIC/TFX/BLOCKS/SEP/CLOSEAIR/ALL2.LAP#s70",
+              "LAPMUSIC/TFX/BLOCKS/SEP/DEFSSUPR/ALL2.LAP#s73"
+            ]
+          }
+        }
+      },
+      {
+        "name": "columbia",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/columbia__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/OTHER/COLUMBIA.RLD",
+            "notes": 8146,
+            "alts": [
+              "LAPMUSIC/TFX/OTHER/COLUMBIA.RLD"
+            ]
+          },
+          "SCC": {
+            "file": "TFX-INPROGRESS/columbia__SCC.mid",
+            "src": "SCC1MUSI/TFX/COLUMBIA.SCC",
+            "notes": 7845,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/columbia__ADL.dro",
+            "src": "ADLMUSIC/TFX/COLUMBIA.ADL",
+            "notes": 8549,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "columbia_v2",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/columbia_v2__RLD.mid",
+            "src": "LAPMUSIC/TFX/COLUMBIA.RLD",
+            "notes": 8618,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "death",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/death__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/OTHER/DEATH.RLD",
+            "notes": 3243,
+            "alts": [
+              "LAPMUSIC/TFX/OTHER/DEATH.RLD",
+              "LAPMUSIC/INFERNO/DEATH.RLD"
+            ]
+          },
+          "SCC": {
+            "file": "TFX-INPROGRESS/death__SCC.mid",
+            "src": "SCC1MUSI/TFX/DEATH.SCC",
+            "notes": 3108,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/death__ADL.dro",
+            "src": "ADLMUSIC/TFX/DEATH.RLD",
+            "notes": 3027,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "death2",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/death2__RLD.mid",
+            "src": "LAPMUSIC/INFERNO/DEATH2.RLD",
+            "notes": 1703,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "defsupp",
+        "devices": {
+          "SCC": {
+            "file": "TFX-INPROGRESS/defsupp__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XEFSUPP.SCC",
+            "notes": 8843,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/defsupp__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/DEFSUPP.ADL",
+            "notes": 5752,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "defsupp_s00",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/defsupp_s00__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/DEFSSUPR/CLEAN.LAP",
+            "notes": 6044,
+            "alts": [
+              "LAPMUSIC/TFX-FINA/BLOCKS/DEFSSUPR/CLEAN.LAP#s73"
+            ]
+          }
+        }
+      },
+      {
+        "name": "defsupp_s05",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/defsupp_s05__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/DEFSSUPR/ALL.LAP",
+            "notes": 8006,
+            "alts": [
+              "LAPMUSIC/TFX/BLOCKS/SEP/DEFSSUPR/ALL2.LAP#s27"
+            ]
+          }
+        }
+      },
+      {
+        "name": "defsupp_s06",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/defsupp_s06__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/DEFSSUPR/ALL.LAP",
+            "notes": 9315,
+            "alts": [
+              "LAPMUSIC/TFX/BLOCKS/SEP/DEFSSUPR/ALL2.LAP#s70"
+            ]
+          }
+        }
+      },
+      {
+        "name": "defsupp_s09",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/defsupp_s09__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/DEFSSUPR/CLEAN.LAP",
+            "notes": 8027,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "enrol",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/enrol__RLD.mid",
+            "src": "LAPMUSIC/TFX/ENROL.RLD",
+            "notes": 5424,
+            "alts": []
+          },
+          "SCC": {
+            "file": "TFX-INPROGRESS/enrol__SCC.mid",
+            "src": "SCC1MUSI/TFX/ENROL.SCC",
+            "notes": 5069,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "enrol_s00",
+        "devices": {
+          "ADL": {
+            "file": "TFX-INPROGRESS/enrol_s00__ADL.dro",
+            "src": "ADLMUSIC/TFX/ENROL.ADL",
+            "notes": 4850,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "enrol_s01",
+        "devices": {
+          "ADL": {
+            "file": "TFX-INPROGRESS/enrol_s01__ADL.dro",
+            "src": "ADLMUSIC/TFX/ENROL.ADL",
+            "notes": 5559,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "flying1_s00",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/flying1_s00__RLD.mid",
+            "src": "LAPMUSIC/INFERNO/FLYING1.RLD",
+            "notes": 6203,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "flying1_s01",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/flying1_s01__RLD.mid",
+            "src": "LAPMUSIC/INFERNO/FLYING1.RLD",
+            "notes": 9890,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "flying1_s02",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/flying1_s02__RLD.mid",
+            "src": "LAPMUSIC/INFERNO/FLYING1.RLD",
+            "notes": 9358,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "flying2_s03",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/flying2_s03__RLD.mid",
+            "src": "LAPMUSIC/INFERNO/FLYING2.RLD",
+            "notes": 6422,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "inferno_s00",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/inferno_s00__RLD.mid",
+            "src": "LAPMUSIC/INFERNO/BASIC.RLD",
+            "notes": 6033,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "inferno_s01",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/inferno_s01__RLD.mid",
+            "src": "LAPMUSIC/INFERNO/BANK1.RLD",
+            "notes": 6730,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "inferno_s02",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/inferno_s02__RLD.mid",
+            "src": "LAPMUSIC/INFERNO/BASIC.RLD",
+            "notes": 5288,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "inferno_s02_v2",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/inferno_s02_v2__RLD.mid",
+            "src": "LAPMUSIC/INFERNO/BANK1.RLD",
+            "notes": 7211,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "inferno_s03",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/inferno_s03__RLD.mid",
+            "src": "LAPMUSIC/INFERNO/BANK1.RLD",
+            "notes": 10391,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "inter",
+        "devices": {
+          "SCC": {
+            "file": "TFX-INPROGRESS/inter__SCC.mid",
+            "src": "SCC1MUSI/TFX/INTER.SCC",
+            "notes": 2942,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/inter__ADL.dro",
+            "src": "ADLMUSIC/TFX/INTER.ADL",
+            "notes": 2499,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "intercep",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/intercep__RLD.mid",
+            "src": "LAPMUSIC/TFX/FLYING/INTERCPT.RLD",
+            "notes": 8352,
+            "alts": [
+              "LAPMUSIC/TFX/BLOCKS/INTERCPT.LAP#s24",
+              "LAPMUSIC/INFERNO/FLYING2.RLD#s24",
+              "LAPMUSIC/INFERNO/FLYING3.RLD#s24",
+              "LAPMUSIC/INFERNO/FLYING4.RLD#s24",
+              "LAPMUSIC/INFERNO/SEPARATE/INTERCEP.RLD"
+            ]
+          }
+        }
+      },
+      {
+        "name": "intercep_s00",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/intercep_s00__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/INTERCPT.LAP",
+            "notes": 5997,
+            "alts": [
+              "LAPMUSIC/TFX/BLOCKS/INTERDIC.LAP#s0",
+              "LAPMUSIC/INFERNO/BANK1.RLD#s0",
+              "LAPMUSIC/INFERNO/FLYING2.RLD#s0",
+              "LAPMUSIC/INFERNO/FLYING3.RLD#s0",
+              "LAPMUSIC/INFERNO/FLYING4.RLD#s0"
+            ]
+          },
+          "SCC": {
+            "file": "TFX-INPROGRESS/intercep_s00__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XNTERCEP.SCC",
+            "notes": 7227,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/intercep_s00__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/INTERCEP.ADL",
+            "notes": 5873,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "intercep_s00_v2",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/intercep_s00_v2__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/GROUND2.LAP",
+            "notes": 6023,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "intercep_s00_v3",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/intercep_s00_v3__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/GROUND3.LAP",
+            "notes": 6023,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "intercep_s01",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/intercep_s01__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/INTERCPT.LAP",
+            "notes": 13771,
+            "alts": []
+          },
+          "SCC": {
+            "file": "TFX-INPROGRESS/intercep_s01__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XNTERCEP.SCC",
+            "notes": 7323,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/intercep_s01__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/INTERCEP.ADL",
+            "notes": 5821,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "intercep_s02",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/intercep_s02__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/INTERCEP/CLEAN.LAP",
+            "notes": 489,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "intercep_s05",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/intercep_s05__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/ALL.LAP",
+            "notes": 8089,
+            "alts": [
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/GROUND2.LAP#s27",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/GROUND3.LAP#s27"
+            ]
+          }
+        }
+      },
+      {
+        "name": "intercep_s06",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/intercep_s06__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/ALL.LAP",
+            "notes": 8190,
+            "alts": [
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/GROUND2.LAP#s36",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/GROUND3.LAP#s36"
+            ]
+          }
+        }
+      },
+      {
+        "name": "intercep_s07",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/intercep_s07__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/GROUND2.LAP",
+            "notes": 7855,
+            "alts": [
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/GROUND3.LAP#s44"
+            ]
+          }
+        }
+      },
+      {
+        "name": "intercep_s08",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/intercep_s08__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/INTERCEP/CLEAN.LAP",
+            "notes": 8211,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "intercep_s09",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/intercep_s09__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/INTERCEP/CLEAN.LAP",
+            "notes": 7966,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "intercep_s11",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/intercep_s11__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/INTERCEP/CLEAN.LAP",
+            "notes": 10277,
+            "alts": [
+              "LAPMUSIC/TFX-FINA/BLOCKS/INTERDIC/CLEAN.LAP#s62"
+            ]
+          }
+        }
+      },
+      {
+        "name": "interdct",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/interdct__RLD.mid",
+            "src": "LAPMUSIC/TFX/FLYING/INTERDCT.RLD",
+            "notes": 7295,
+            "alts": [
+              "LAPMUSIC/TFX/BLOCKS/INTERDIC.LAP#s24",
+              "LAPMUSIC/INFERNO/FLYING3.RLD#s45",
+              "LAPMUSIC/INFERNO/FLYING4.RLD#s45",
+              "LAPMUSIC/INFERNO/SEPARATE/INTERDIC.RLD"
+            ]
+          },
+          "SCC": {
+            "file": "TFX-INPROGRESS/interdct__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XNTERDCT.SCC",
+            "notes": 6720,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/interdct__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/INTERDCT.ADL",
+            "notes": 5499,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "interdct_s05",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/interdct_s05__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/INTERDIC/ALL.LAP",
+            "notes": 9626,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "interdct_s06",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/interdct_s06__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/INTERDIC/ALL.LAP",
+            "notes": 7842,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "interdct_s07",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/interdct_s07__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/INTERDIC/ALL.LAP",
+            "notes": 6289,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "interdct_s09",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/interdct_s09__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/INTERDIC/CLEAN.LAP",
+            "notes": 7155,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "intro_s00",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/intro_s00__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/OTHER/INTRO.RLD",
+            "notes": 6568,
+            "alts": [
+              "LAPMUSIC/TFX/OTHER/INTRO.RLD#s0",
+              "LAPMUSIC/INFERNO/INTRO.LAP#s0",
+              "LAPMUSIC/INFERNO/FINAL/INTRO.LAP#s0"
+            ]
+          },
+          "SCC": {
+            "file": "TFX-INPROGRESS/intro_s00__SCC.mid",
+            "src": "SCC1MUSI/TFX/INTRO.SCC",
+            "notes": 7712,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/intro_s00__ADL.dro",
+            "src": "ADLMUSIC/TFX/INTRO.ADL",
+            "notes": 7332,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "intro_s00_v2",
+        "devices": {
+          "ADL": {
+            "file": "TFX-INPROGRESS/intro_s00_v2__ADL.dro",
+            "src": "ADLMUSIC/TFX/INTRO.RLD",
+            "notes": 6181,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "intro_s00_v3",
+        "devices": {
+          "ADL": {
+            "file": "TFX-INPROGRESS/intro_s00_v3__ADL.dro",
+            "src": "ADLMUSIC/TFX/INTRO.SCC",
+            "notes": 6104,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "intro_s01",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/intro_s01__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/OTHER/INTRO.RLD",
+            "notes": 10860,
+            "alts": [
+              "LAPMUSIC/TFX/OTHER/INTRO.RLD#s21",
+              "LAPMUSIC/INFERNO/INTRO.LAP#s21",
+              "LAPMUSIC/INFERNO/FINAL/INTRO.LAP#s21"
+            ]
+          },
+          "SCC": {
+            "file": "TFX-INPROGRESS/intro_s01__SCC.mid",
+            "src": "SCC1MUSI/TFX/INTRO.SCC",
+            "notes": 12071,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/intro_s01__ADL.dro",
+            "src": "ADLMUSIC/TFX/INTRO.SCC",
+            "notes": 8289,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "intro_s01_v2",
+        "devices": {
+          "ADL": {
+            "file": "TFX-INPROGRESS/intro_s01_v2__ADL.dro",
+            "src": "ADLMUSIC/TFX/INTRO.ADL",
+            "notes": 11010,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "intro_s01_v3",
+        "devices": {
+          "ADL": {
+            "file": "TFX-INPROGRESS/intro_s01_v3__ADL.dro",
+            "src": "ADLMUSIC/TFX/INTRO.RLD",
+            "notes": 10121,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "intro_s02",
+        "devices": {
+          "ADL": {
+            "file": "TFX-INPROGRESS/intro_s02__ADL.dro",
+            "src": "ADLMUSIC/TFX/INTRO.SCC",
+            "notes": 9809,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "intro_s03",
+        "devices": {
+          "ADL": {
+            "file": "TFX-INPROGRESS/intro_s03__ADL.dro",
+            "src": "ADLMUSIC/TFX/INTRO.SCC",
+            "notes": 8943,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "landbattl",
+        "devices": {
+          "ADL": {
+            "file": "TFX-INPROGRESS/landbattl__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/LANDBATL.ADL",
+            "notes": 7724,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "libya",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/libya__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/OTHER/LIBYA.RLD",
+            "notes": 8092,
+            "alts": [
+              "LAPMUSIC/TFX/OTHER/LIBYA.RLD",
+              "LAPMUSIC/TFX/LIBYA.RLD"
+            ]
+          },
+          "SCC": {
+            "file": "TFX-INPROGRESS/libya__SCC.mid",
+            "src": "SCC1MUSI/TFX/LIBYA.SCC",
+            "notes": 8645,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/libya__ADL.dro",
+            "src": "ADLMUSIC/TFX/LIBYA.RLD",
+            "notes": 7981,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "maritime_s00",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/maritime_s00__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/CLEAN.LAP",
+            "notes": 6017,
+            "alts": [
+              "LAPMUSIC/TFX-FINA/BLOCKS/INTERCEP/CLEAN.LAP#s0",
+              "LAPMUSIC/TFX-FINA/BLOCKS/AIRSUPER/CLEAN.LAP#s0",
+              "LAPMUSIC/TFX-FINA/BLOCKS/INTERDIC/CLEAN.LAP#s0",
+              "LAPMUSIC/TFX/FLYING/FAILED.RLD",
+              "LAPMUSIC/TFX/FAILED.RLD",
+              "LAPMUSIC/TFX/BLOCKS/MARITIME.LAP#s0",
+              "LAPMUSIC/INFERNO/BLOCK1.RLD#s0",
+              "LAPMUSIC/INFERNO/SEPARATE/FIXED.LAP#s0",
+              "LAPMUSIC/INFERNO/SEPARATE/FAILED.RLD",
+              "LAPMUSIC/TFX/BLOCKS/SEP/NOFLY.RLD#s0",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@B9LC70J.SAV#s0",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BHLC702.SAV#s0",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BPLC70Q.SAV#s0",
+              "LAPMUSIC/TFX/BLOCKS/SEP/MARITIME/ALL.LAP#s0",
+              "LAPMUSIC/TFX/BLOCKS/SEP/CLOSEAIR/ALL.LAP#s0",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/ALL.LAP#s0",
+              "LAPMUSIC/TFX/BLOCKS/SEP/AIRSUPER/ALL.LAP#s0",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERDIC/ALL.LAP#s0",
+              "LAPMUSIC/TFX/BLOCKS/SEP/ANTIARMR/ALL.LAP#s0",
+              "LAPMUSIC/TFX/BLOCKS/SEP/DEFSSUPR/ALL.LAP#s0",
+              "LAPMUSIC/TFX/BLOCKS/SEP/CLOSEAIR/ALL2.LAP#s0",
+              "LAPMUSIC/TFX/BLOCKS/SEP/AIRSUPER/ALL2.LAP#s0",
+              "LAPMUSIC/TFX/BLOCKS/SEP/DEFSSUPR/ALL2.LAP#s0",
+              "LAPMUSIC/TFX/BLOCKS/SEP/ANTIARMR/COLIN.LAP#s0"
+            ]
+          },
+          "SCC": {
+            "file": "TFX-INPROGRESS/maritime_s00__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XARITIME.SCC",
+            "notes": 6320,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/maritime_s00__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/MARITIME.ADL",
+            "notes": 4373,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "maritime_s01",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/maritime_s01__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/CLEAN.LAP",
+            "notes": 6545,
+            "alts": [
+              "LAPMUSIC/TFX-FINA/BLOCKS/CLOSEAIR/CLEAN.LAP#s10",
+              "LAPMUSIC/TFX-FINA/BLOCKS/INTERCEP/CLEAN.LAP#s10",
+              "LAPMUSIC/TFX-FINA/BLOCKS/AIRSUPER/CLEAN.LAP#s10",
+              "LAPMUSIC/TFX-FINA/BLOCKS/INTERDIC/CLEAN.LAP#s10",
+              "LAPMUSIC/TFX-FINA/BLOCKS/DEFSSUPR/CLEAN.LAP#s10",
+              "LAPMUSIC/TFX/FLYING/SUCCESS.RLD",
+              "LAPMUSIC/TFX/SUCCESS.RLD",
+              "LAPMUSIC/TFX/BLOCKS/AIR.RLD#s11",
+              "LAPMUSIC/TFX/BLOCKS/MARITIME.LAP#s10",
+              "LAPMUSIC/INFERNO/BASIC.RLD#s11",
+              "LAPMUSIC/INFERNO/BLOCK1.RLD#s11",
+              "LAPMUSIC/INFERNO/SEPARATE/AIR.RLD#s11",
+              "LAPMUSIC/INFERNO/SEPARATE/FIXED.LAP#s11",
+              "LAPMUSIC/INFERNO/SEPARATE/BLOCK1.LAP#s11",
+              "LAPMUSIC/INFERNO/SEPARATE/SUCCESS.RLD",
+              "LAPMUSIC/TFX/BLOCKS/SEP/NOFLY.RLD#s10",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@B9LC70J.SAV#s10",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BHLC702.SAV#s10",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BPLC70Q.SAV#s10",
+              "LAPMUSIC/TFX/BLOCKS/SEP/MARITIME/ALL.LAP#s10",
+              "LAPMUSIC/TFX/BLOCKS/SEP/CLOSEAIR/ALL.LAP#s10",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/ALL.LAP#s10",
+              "LAPMUSIC/TFX/BLOCKS/SEP/AIRSUPER/ALL.LAP#s10",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERDIC/ALL.LAP#s10",
+              "LAPMUSIC/TFX/BLOCKS/SEP/ANTIARMR/ALL.LAP#s10",
+              "LAPMUSIC/TFX/BLOCKS/SEP/DEFSSUPR/ALL.LAP#s10",
+              "LAPMUSIC/TFX/BLOCKS/SEP/CLOSEAIR/ALL2.LAP#s10",
+              "LAPMUSIC/TFX/BLOCKS/SEP/AIRSUPER/ALL2.LAP#s10",
+              "LAPMUSIC/TFX/BLOCKS/SEP/DEFSSUPR/ALL2.LAP#s10",
+              "LAPMUSIC/TFX/BLOCKS/SEP/ANTIARMR/COLIN.LAP#s10",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/GROUND2.LAP#s10",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/GROUND3.LAP#s10"
+            ]
+          },
+          "SCC": {
+            "file": "TFX-INPROGRESS/maritime_s01__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XARITIME.SCC",
+            "notes": 7566,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/maritime_s01__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/MARITIME.ADL",
+            "notes": 4862,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "maritime_s02",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/maritime_s02__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/CLEAN.LAP",
+            "notes": 188,
+            "alts": [
+              "LAPMUSIC/TFX-FINA/BLOCKS/CLOSEAIR/CLEAN.LAP#s20",
+              "LAPMUSIC/TFX-FINA/BLOCKS/INTERDIC/CLEAN.LAP#s20",
+              "LAPMUSIC/TFX-FINA/BLOCKS/DEFSSUPR/CLEAN.LAP#s20"
+            ]
+          }
+        }
+      },
+      {
+        "name": "maritime_s03",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/maritime_s03__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/CLEAN.LAP",
+            "notes": 301,
+            "alts": [
+              "LAPMUSIC/TFX-FINA/BLOCKS/AIRSUPER/CLEAN.LAP#s21",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@B9LC70J.SAV#s21",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BHLC702.SAV#s21",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BPLC70Q.SAV#s21"
+            ]
+          }
+        }
+      },
+      {
+        "name": "maritime_s04",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/maritime_s04__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/CLEAN.LAP",
+            "notes": 214,
+            "alts": [
+              "LAPMUSIC/TFX-FINA/BLOCKS/CLOSEAIR/CLEAN.LAP#s22",
+              "LAPMUSIC/TFX-FINA/BLOCKS/INTERCEP/CLEAN.LAP#s22",
+              "LAPMUSIC/TFX-FINA/BLOCKS/AIRSUPER/CLEAN.LAP#s22",
+              "LAPMUSIC/TFX-FINA/BLOCKS/INTERDIC/CLEAN.LAP#s22",
+              "LAPMUSIC/TFX-FINA/BLOCKS/DEFSSUPR/CLEAN.LAP#s22",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BHLC702.SAV#s22",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BPLC70Q.SAV#s22"
+            ]
+          }
+        }
+      },
+      {
+        "name": "maritime_s04_v2",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/maritime_s04_v2__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/MARITIME.LAP",
+            "notes": 5362,
+            "alts": [
+              "LAPMUSIC/TFX/BLOCKS/SEP/NOFLY.RLD#s26",
+              "LAPMUSIC/TFX/BLOCKS/SEP/MARITIME/ALL.LAP#s26",
+              "LAPMUSIC/TFX/BLOCKS/SEP/CLOSEAIR/ALL.LAP#s26",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/ALL.LAP#s26",
+              "LAPMUSIC/TFX/BLOCKS/SEP/AIRSUPER/ALL.LAP#s26",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERDIC/ALL.LAP#s26",
+              "LAPMUSIC/TFX/BLOCKS/SEP/ANTIARMR/ALL.LAP#s26",
+              "LAPMUSIC/TFX/BLOCKS/SEP/DEFSSUPR/ALL.LAP#s26",
+              "LAPMUSIC/TFX/BLOCKS/SEP/CLOSEAIR/ALL2.LAP#s26",
+              "LAPMUSIC/TFX/BLOCKS/SEP/AIRSUPER/ALL2.LAP#s26",
+              "LAPMUSIC/TFX/BLOCKS/SEP/DEFSSUPR/ALL2.LAP#s26",
+              "LAPMUSIC/TFX/BLOCKS/SEP/ANTIARMR/COLIN.LAP#s26",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/GROUND2.LAP#s26",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/GROUND3.LAP#s26"
+            ]
+          }
+        }
+      },
+      {
+        "name": "maritime_s05",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/maritime_s05__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/CLEAN.LAP",
+            "notes": 7033,
+            "alts": [
+              "LAPMUSIC/TFX-FINA/BLOCKS/CLOSEAIR/CLEAN.LAP#s23",
+              "LAPMUSIC/TFX-FINA/BLOCKS/INTERCEP/CLEAN.LAP#s23",
+              "LAPMUSIC/TFX-FINA/BLOCKS/AIRSUPER/CLEAN.LAP#s23",
+              "LAPMUSIC/TFX-FINA/BLOCKS/INTERDIC/CLEAN.LAP#s23",
+              "LAPMUSIC/TFX-FINA/BLOCKS/DEFSSUPR/CLEAN.LAP#s23",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@B9LC70J.SAV#s23",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BHLC702.SAV#s23",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BPLC70Q.SAV#s23"
+            ]
+          }
+        }
+      },
+      {
+        "name": "maritime_s05_v2",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/maritime_s05_v2__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/MARITIME.LAP",
+            "notes": 6128,
+            "alts": [
+              "LAPMUSIC/TFX/BLOCKS/SEP/MARITIME/ALL.LAP#s27"
+            ]
+          }
+        }
+      },
+      {
+        "name": "maritime_s06",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/maritime_s06__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/CLEAN.LAP",
+            "notes": 5299,
+            "alts": [
+              "LAPMUSIC/TFX-FINA/BLOCKS/CLOSEAIR/CLEAN.LAP#s25",
+              "LAPMUSIC/TFX-FINA/BLOCKS/INTERCEP/CLEAN.LAP#s25",
+              "LAPMUSIC/TFX-FINA/BLOCKS/AIRSUPER/CLEAN.LAP#s25",
+              "LAPMUSIC/TFX-FINA/BLOCKS/INTERDIC/CLEAN.LAP#s25",
+              "LAPMUSIC/TFX-FINA/BLOCKS/DEFSSUPR/CLEAN.LAP#s25",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@B9LC70J.SAV#s25",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BHLC702.SAV#s25",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BPLC70Q.SAV#s25"
+            ]
+          }
+        }
+      },
+      {
+        "name": "maritime_s06_v2",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/maritime_s06_v2__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/MARITIME.LAP",
+            "notes": 10107,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "maritime_s07",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/maritime_s07__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/CLEAN.LAP",
+            "notes": 11066,
+            "alts": [
+              "LAPMUSIC/TFX-FINA/BLOCKS/CLOSEAIR/CLEAN.LAP#s27",
+              "LAPMUSIC/TFX-FINA/BLOCKS/INTERCEP/CLEAN.LAP#s27",
+              "LAPMUSIC/TFX-FINA/BLOCKS/AIRSUPER/CLEAN.LAP#s27",
+              "LAPMUSIC/TFX-FINA/BLOCKS/INTERDIC/CLEAN.LAP#s27",
+              "LAPMUSIC/TFX-FINA/BLOCKS/DEFSSUPR/CLEAN.LAP#s27",
+              "LAPMUSIC/TFX/BLOCKS/AIR.RLD#s28",
+              "LAPMUSIC/INFERNO/BLOCK1.RLD#s28",
+              "LAPMUSIC/INFERNO/SEPARATE/AIR.RLD#s28",
+              "LAPMUSIC/INFERNO/SEPARATE/FIXED.LAP#s28",
+              "LAPMUSIC/INFERNO/SEPARATE/BLOCK1.LAP#s28",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@B9LC70J.SAV#s27",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BHLC702.SAV#s27",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BPLC70Q.SAV#s27"
+            ]
+          }
+        }
+      },
+      {
+        "name": "maritime_s08",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/maritime_s08__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/CLEAN.LAP",
+            "notes": 63,
+            "alts": [
+              "LAPMUSIC/TFX-FINA/BLOCKS/CLOSEAIR/CLEAN.LAP#s28",
+              "LAPMUSIC/TFX-FINA/BLOCKS/INTERCEP/CLEAN.LAP#s28",
+              "LAPMUSIC/TFX-FINA/BLOCKS/AIRSUPER/CLEAN.LAP#s28",
+              "LAPMUSIC/TFX-FINA/BLOCKS/INTERDIC/CLEAN.LAP#s28",
+              "LAPMUSIC/TFX-FINA/BLOCKS/DEFSSUPR/CLEAN.LAP#s28",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@B9LC70J.SAV#s28",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BHLC702.SAV#s28",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BPLC70Q.SAV#s28"
+            ]
+          }
+        }
+      },
+      {
+        "name": "maritime_s09",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/maritime_s09__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/CLEAN.LAP",
+            "notes": 6159,
+            "alts": [
+              "LAPMUSIC/TFX/FLYING/MARITME.RLD",
+              "LAPMUSIC/TFX/MARITME.RLD",
+              "LAPMUSIC/INFERNO/BLOCK1.RLD#s29",
+              "LAPMUSIC/INFERNO/SEPARATE/AIR.RLD#s29",
+              "LAPMUSIC/INFERNO/SEPARATE/FIXED.LAP#s29",
+              "LAPMUSIC/INFERNO/SEPARATE/BLOCK1.LAP#s29",
+              "LAPMUSIC/INFERNO/SEPARATE/MARITME.RLD",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@B9LC70J.SAV#s29",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BHLC702.SAV#s29",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BPLC70Q.SAV#s29"
+            ]
+          }
+        }
+      },
+      {
+        "name": "maritime_s10",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/maritime_s10__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/CLEAN.LAP",
+            "notes": 10107,
+            "alts": [
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@B9LC70J.SAV#s55",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BHLC702.SAV#s55",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BPLC70Q.SAV#s55",
+              "LAPMUSIC/TFX/BLOCKS/SEP/MARITIME/ALL.LAP#s55"
+            ]
+          }
+        }
+      },
+      {
+        "name": "maritime_s11",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/maritime_s11__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/CLEAN.LAP",
+            "notes": 13637,
+            "alts": [
+              "LAPMUSIC/TFX-FINA/BLOCKS/CLOSEAIR/CLEAN.LAP#s57",
+              "LAPMUSIC/TFX-FINA/BLOCKS/INTERCEP/CLEAN.LAP#s44",
+              "LAPMUSIC/TFX-FINA/BLOCKS/AIRSUPER/CLEAN.LAP#s49",
+              "LAPMUSIC/TFX-FINA/BLOCKS/INTERDIC/CLEAN.LAP#s49",
+              "LAPMUSIC/TFX-FINA/BLOCKS/DEFSSUPR/CLEAN.LAP#s60",
+              "LAPMUSIC/TFX/BLOCKS/MARITIME.LAP#s76",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@B9LC70J.SAV#s76",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BHLC702.SAV#s76",
+              "LAPMUSIC/TFX-FINA/BLOCKS/MARITIME/@BPLC70Q.SAV#s76",
+              "LAPMUSIC/TFX/BLOCKS/SEP/MARITIME/ALL.LAP#s76",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/ALL.LAP#s44",
+              "LAPMUSIC/TFX/BLOCKS/SEP/AIRSUPER/ALL.LAP#s49",
+              "LAPMUSIC/TFX/BLOCKS/SEP/AIRSUPER/ALL2.LAP#s49"
+            ]
+          }
+        }
+      },
+      {
+        "name": "news2",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/news2__RLD.mid",
+            "src": "LAPMUSIC/TFX/NEWS2.RLD",
+            "notes": 2594,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "news_s00",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/news_s00__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/OTHER/NEWS.RLD",
+            "notes": 3590,
+            "alts": [
+              "LAPMUSIC/TFX/OTHER/NEWS.RLD#s0",
+              "LAPMUSIC/TFX/NEWS.RLD#s0"
+            ]
+          },
+          "SCC": {
+            "file": "TFX-INPROGRESS/news_s00__SCC.mid",
+            "src": "SCC1MUSI/TFX/NEWS.SCC",
+            "notes": 3526,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/news_s00__ADL.dro",
+            "src": "ADLMUSIC/TFX/NEWS.ADL",
+            "notes": 3392,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "news_s01",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/news_s01__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/OTHER/NEWS.RLD",
+            "notes": 2461,
+            "alts": [
+              "LAPMUSIC/TFX/OTHER/NEWS.RLD#s5",
+              "LAPMUSIC/TFX/NEWS.RLD#s5"
+            ]
+          },
+          "SCC": {
+            "file": "TFX-INPROGRESS/news_s01__SCC.mid",
+            "src": "SCC1MUSI/TFX/NEWS.SCC",
+            "notes": 2488,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/news_s01__ADL.dro",
+            "src": "ADLMUSIC/TFX/NEWS.ADL",
+            "notes": 2489,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "news_s02",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/news_s02__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/OTHER/NEWS.RLD",
+            "notes": 2418,
+            "alts": [
+              "LAPMUSIC/TFX/OTHER/NEWS.RLD#s7",
+              "LAPMUSIC/TFX/NEWS.RLD#s7"
+            ]
+          },
+          "SCC": {
+            "file": "TFX-INPROGRESS/news_s02__SCC.mid",
+            "src": "SCC1MUSI/TFX/NEWS.SCC",
+            "notes": 2110,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/news_s02__ADL.dro",
+            "src": "ADLMUSIC/TFX/NEWS.ADL",
+            "notes": 2400,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "news_s03",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/news_s03__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/OTHER/NEWS.RLD",
+            "notes": 2314,
+            "alts": [
+              "LAPMUSIC/TFX/OTHER/NEWS.RLD#s8",
+              "LAPMUSIC/TFX/NEWS.RLD#s8"
+            ]
+          },
+          "SCC": {
+            "file": "TFX-INPROGRESS/news_s03__SCC.mid",
+            "src": "SCC1MUSI/TFX/NEWS.SCC",
+            "notes": 1998,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/news_s03__ADL.dro",
+            "src": "ADLMUSIC/TFX/NEWS.ADL",
+            "notes": 2282,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "ocean",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/ocean__RLD.mid",
+            "src": "LAPMUSIC/TFX-FINA/OTHER/OCEAN.RLD",
+            "notes": 3618,
+            "alts": [
+              "LAPMUSIC/TFX/OTHER/OCEAN.RLD"
+            ]
+          },
+          "SCC": {
+            "file": "TFX-INPROGRESS/ocean__SCC.mid",
+            "src": "SCC1MUSI/TFX/OCEAN.SCC",
+            "notes": 3715,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/ocean__ADL.dro",
+            "src": "ADLMUSIC/TFX/OCEAN.RLD",
+            "notes": 3090,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "seabattl",
+        "devices": {
+          "SCC": {
+            "file": "TFX-INPROGRESS/seabattl__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/SEABATLE.SCC",
+            "notes": 8767,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/seabattl__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/SEABATLE.ADL",
+            "notes": 6678,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "sep_s05",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/sep_s05__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/NOFLY.RLD",
+            "notes": 8588,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "sep_s06",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/sep_s06__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/NOFLY.RLD",
+            "notes": 8491,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "sep_s07",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/sep_s07__RLD.mid",
+            "src": "LAPMUSIC/TFX/BLOCKS/SEP/NOFLY.RLD",
+            "notes": 6071,
+            "alts": [
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/GROUND2.LAP#s56",
+              "LAPMUSIC/TFX/BLOCKS/SEP/INTERCEP/GROUND3.LAP#s56"
+            ]
+          }
+        }
+      },
+      {
+        "name": "separate_s00",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/separate_s00__RLD.mid",
+            "src": "LAPMUSIC/INFERNO/SEPARATE/AIR.RLD",
+            "notes": 6024,
+            "alts": [
+              "LAPMUSIC/INFERNO/SEPARATE/BLOCK1.LAP#s0"
+            ]
+          }
+        }
+      },
+      {
+        "name": "separate_s06",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/separate_s06__RLD.mid",
+            "src": "LAPMUSIC/INFERNO/SEPARATE/FIXED.L2",
+            "notes": 5725,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "separate_s06_v2",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/separate_s06_v2__RLD.mid",
+            "src": "LAPMUSIC/INFERNO/SEPARATE/FIXED.LAP",
+            "notes": 5725,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "somalia",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/somalia__RLD.mid",
+            "src": "LAPMUSIC/TFX/OTHER/SOMALIA.RLD",
+            "notes": 2445,
+            "alts": [
+              "LAPMUSIC/TFX/SOMALIA.RLD"
+            ]
+          },
+          "SCC": {
+            "file": "TFX-INPROGRESS/somalia__SCC.mid",
+            "src": "SCC1MUSI/TFX/SOMALIA.SCC",
+            "notes": 2467,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/somalia__ADL.dro",
+            "src": "ADLMUSIC/TFX/SOMALIA.RLD",
+            "notes": 2639,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "successful",
+        "devices": {
+          "SCC": {
+            "file": "TFX-INPROGRESS/successful__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XSUCC.SCC",
+            "notes": 6424,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/successful__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/2SUCC.ADL",
+            "notes": 5782,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "unsuccessful",
+        "devices": {
+          "SCC": {
+            "file": "TFX-INPROGRESS/unsuccessful__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XUNSUC.SCC",
+            "notes": 6202,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/unsuccessful__ADL.dro",
+            "src": "ADLMUSIC/TFX/FLYING/1UNSUC.ADL",
+            "notes": 5661,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "x9tunes_s00",
+        "devices": {
+          "SCC": {
+            "file": "TFX-INPROGRESS/x9tunes_s00__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/X-9TUNES.SCC",
+            "notes": 177,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "x9tunes_s01",
+        "devices": {
+          "SCC": {
+            "file": "TFX-INPROGRESS/x9tunes_s01__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/X-9TUNES.SCC",
+            "notes": 291,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "x9tunes_s02",
+        "devices": {
+          "SCC": {
+            "file": "TFX-INPROGRESS/x9tunes_s02__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/X-9TUNES.SCC",
+            "notes": 168,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "x9tunes_s03",
+        "devices": {
+          "SCC": {
+            "file": "TFX-INPROGRESS/x9tunes_s03__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/X-9TUNES.SCC",
+            "notes": 225,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "x9tunes_s04",
+        "devices": {
+          "SCC": {
+            "file": "TFX-INPROGRESS/x9tunes_s04__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/X-9TUNES.SCC",
+            "notes": 225,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "x9tunes_s05",
+        "devices": {
+          "SCC": {
+            "file": "TFX-INPROGRESS/x9tunes_s05__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/X-9TUNES.SCC",
+            "notes": 182,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "x9tunes_s06",
+        "devices": {
+          "SCC": {
+            "file": "TFX-INPROGRESS/x9tunes_s06__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/X-9TUNES.SCC",
+            "notes": 3884,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "x9tunes_s07",
+        "devices": {
+          "SCC": {
+            "file": "TFX-INPROGRESS/x9tunes_s07__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/X-9TUNES.SCC",
+            "notes": 8557,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "x9tunes_s08",
+        "devices": {
+          "SCC": {
+            "file": "TFX-INPROGRESS/x9tunes_s08__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/X-9TUNES.SCC",
+            "notes": 51,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "xandbatl",
+        "devices": {
+          "SCC": {
+            "file": "TFX-INPROGRESS/xandbatl__SCC.mid",
+            "src": "SCC1MUSI/TFX/FLYING/XANDBATL.SCC",
+            "notes": 9600,
+            "alts": []
+          }
+        }
+      },
+      {
+        "name": "yugo",
+        "devices": {
+          "RLD": {
+            "file": "TFX-INPROGRESS/yugo__RLD.mid",
+            "src": "LAPMUSIC/TFX/OTHER/YUGO.RLD",
+            "notes": 6910,
+            "alts": [
+              "LAPMUSIC/TFX/YUGO.RLD"
+            ]
+          },
+          "SCC": {
+            "file": "TFX-INPROGRESS/yugo__SCC.mid",
+            "src": "SCC1MUSI/TFX/YUGO.SCC",
+            "notes": 6878,
+            "alts": []
+          },
+          "ADL": {
+            "file": "TFX-INPROGRESS/yugo__ADL.dro",
+            "src": "ADLMUSIC/TFX/YUGO.RLD",
+            "notes": 4871,
+            "alts": []
+          }
+        }
+      }
+    ]
+  }
+}

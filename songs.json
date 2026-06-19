@@ -84,6 +84,13 @@
     "hidden": false
   },
   {
+    "file": "antiarm_inprog_ADL_.dro",
+    "label": "08 - Anti Armour Mission (ADL)",
+    "named": true,
+    "hidden": false,
+    "note": "TFX-INPROGRESS ADL/FM render from medit source ADLMUSIC/TFX/FLYING/ANTIARMR.ADL (6232 notes) — the AdLib Anti-Armour theme (previously unmapped in ADL)."
+  },
+  {
     "file": "tune_30_mission_RLD.mid",
     "label": "08 - Anti Armour Mission (part/variant) (RLD)",
     "named": true,
@@ -147,15 +154,16 @@
   },
   {
     "file": "tune_53_at0351590_SCC_dec24400.mid",
-    "label": "12 - Unused Mission (SCC)",
+    "label": "Land Battle (SCC)",
     "named": true,
     "hidden": false
   },
   {
     "file": "tune_07_at031f51d_RLD_dec23300.mid",
-    "label": "13 - The Battle (RLD)",
+    "label": "13 - The Battle (alt) (RLD)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "user ID by ear: this standalone render is the ALT arrangement of The Battle (the version whose back-half diverges). Canonical 'The Battle (RLD)' = bank 6 @52 render."
   },
   {
     "file": "tune_63_at035a560_SCC_dec20884.mid",
@@ -266,16 +274,18 @@
     "hidden": false
   },
   {
-    "file": "tune_40_at0344624_RLD_dec17660.mid",
+    "file": "libya_inprog_RLD_.mid",
     "label": "19 - Libya (RLD)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "Replaced 2026-06-19 with the TFX-INPROGRESS render from medit source LAPMUSIC/TFX-FINA/OTHER/LIBYA.RLD (8092 notes) — fuller MT-32 arrangement than the prior savestate capture (6268 notes)."
   },
   {
-    "file": "tune_41_at034573c_SCC_dec20536.mid",
+    "file": "libya_inprog_SCC_.mid",
     "label": "19 - Libya (SCC)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "Replaced 2026-06-19 with the TFX-INPROGRESS render from medit source SCC1MUSI/TFX/LIBYA.SCC (8645 notes)."
   },
   {
     "file": "tune_56_at03536da_RLD_dec9012.mid",
@@ -418,20 +428,6 @@
     "hiddenReason": "offline-rendered jingle bank section (audition)"
   },
   {
-    "file": "mt32_pos26_RLD.mid",
-    "label": "23 - Jingle 3 - Parachuting Thru The Clouds (alt) (RLD)",
-    "named": true,
-    "hidden": false,
-    "hiddenReason": "candidate MT-32 looping jingle (order block 25-27, before mission theme)"
-  },
-  {
-    "file": "tune_59_at0355a1c_SCC_dec20792_sec06.mid",
-    "label": "23 - Jingle 3 - Parachuting Thru The Clouds (alt) (SCC)",
-    "named": true,
-    "hidden": false,
-    "hiddenReason": "offline-rendered jingle bank section (audition)"
-  },
-  {
     "file": "mt32_jingle_pos28_RLD.mid",
     "label": "Jingle - separator/sting (RLD)",
     "named": true,
@@ -439,26 +435,27 @@
     "hiddenReason": "MT-32 event jingle: order-section of background bank tune_74/76 family"
   },
   {
-    "file": "tune_59_at0355a1c_SCC_dec20792_sec08.mid",
+    "file": "x9tunes_sep_medit_SCC_o8.mid",
     "label": "Jingle - separator/sting (SCC)",
     "named": true,
     "hidden": false,
-    "hiddenReason": "offline-rendered jingle bank section (audition)"
+    "hiddenReason": "separator/sting between jingles",
+    "note": "Clean render from original composer source medit/SCC1MUSI/TFX/FLYING/X-9TUNES.SCC (order entry 8, --orderspan=1). Note content identical to the old runtime sec08 (J=1.0); isolated single sting."
   },
   {
     "file": "mt32_pos27_RLD.mid",
-    "label": "Jingle - unknown extra (RLD)",
+    "label": "23 - Jingle 3 - Parachuting Thru The Clouds (alt) (RLD)",
     "named": true,
     "hidden": false,
-    "hiddenReason": "candidate MT-32 looping jingle (order block 25-27, before mission theme)"
+    "note": "User ID: the MT-32 'unknown extra' (order block 27) is an alternate take of Jingle 3 Parachuting."
   },
   {
-    "file": "tune_59_at0355a1c_SCC_dec20792_sec09.mid",
-    "label": "Jingle - unknown extra (SCC)",
+    "file": "x9tunes_extra_medit_SCC_o9.mid",
+    "label": "23 - Jingle 3 - Parachuting Thru The Clouds (alt) (SCC)",
     "named": true,
     "hidden": false,
-    "hiddenReason": "offline-rendered jingle bank section (audition)",
-    "note": "cold-start bug: driver set the real instruments at t=0 (ch2/3 Strings1, ch5 OrchHit, ch6 Timpani, ch4 FretlessBass) then a cold re-init RESET them to piano + spammed ch1 piano. Fixed via fix_cold_scc.py = keep each channel's first non-zero program (driver's own value), ch1->MusicBox from bank palette; notes unchanged. Cross-checked vs MT-32 mt32_pos27 roles."
+    "hiddenReason": "alternate Parachuting jingle (X-9TUNES order 9)",
+    "note": "Clean isolated render from medit/SCC1MUSI/TFX/FLYING/X-9TUNES.SCC (order entry 9, --orderspan=1): one jingle (255 notes/13.6s) instead of the bloated ~83s runtime window. Cold-start piano channels restored to the verified palette (MusicBox/Strings1/Strings1/FretlessBass/OrchHit/Timpani)."
   },
   {
     "file": "mt32_jingle_pos22_RLD.mid",
@@ -538,10 +535,10 @@
   },
   {
     "file": "tune_44_deep_s55_RLD.mid",
-    "label": "12 - Unused Mission (RLD)",
+    "label": "Land Battle (RLD)",
     "named": true,
     "hidden": false,
-    "note": "found by exhaustive order-list scan; deep mission block (order 55); user-identified Unused Mission"
+    "note": "found by exhaustive order-list scan; deep mission block (order 55); user-identified as Land Battle (formerly labeled Unused Mission)"
   },
   {
     "file": "tune_75_deep_s70_RLD.mid",
@@ -560,11 +557,11 @@
   },
   {
     "file": "tune_79_deep_s55_RLD.mid",
-    "label": "12 - Unused Mission (copy/alt) (RLD)",
+    "label": "Land Battle (copy/alt) (RLD)",
     "named": true,
     "hidden": true,
-    "note": "user ID: Unused Mission copy. (Byte-interval fingerprint diverged 0.19 from tune_44 deep but user confirms same composition.)",
-    "hiddenReason": "user ear ID 2026-06-17: a copy/variant of 12 Unused Mission (tune_44 deep); hidden as alt"
+    "note": "user ID: Land Battle copy. (Byte-interval fingerprint diverged 0.19 from tune_44 deep but user confirms same composition.)",
+    "hiddenReason": "user ear ID 2026-06-17: a copy/variant of Land Battle (tune_44 deep); hidden as alt"
   },
   {
     "file": "tune_00_at03127a7_ADL_dec16006.module.dro",
@@ -674,10 +671,11 @@
     "note": "rhythm IOI match vs RLD bank 1.000"
   },
   {
-    "file": "tune_39_at03439a2_ADL_dec16138.module.dro",
+    "file": "libya_inprog_ADL_.dro",
     "label": "19 - Libya (ADL)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "Replaced 2026-06-19 with the TFX-INPROGRESS render from medit source ADLMUSIC/TFX/LIBYA.RLD (7981 notes)."
   },
   {
     "file": "tune_42_at0346677_ADL_dec4942.module.dro",
@@ -707,10 +705,10 @@
   },
   {
     "file": "tune_52_at0350572_ADL_dec21798.module.dro",
-    "label": "12 - Unused Mission (ADL)",
+    "label": "Land Battle (ADL)",
     "named": true,
     "hidden": false,
-    "note": "user ID (unused game track)"
+    "note": "user ID: Land Battle (formerly labeled Unused Mission)"
   },
   {
     "file": "tune_54_at0352551_ADL_dec8556.module.dro",
@@ -824,11 +822,11 @@
     "note": "ADL jingle bank tune_02 sec05 (1340 notes ~ SCC sec05 1280); inherited from verified SCC mapping -> verify by ear"
   },
   {
-    "file": "adl_jingle_sec06_ADL_bank.dro",
+    "file": "parachuting_alt_39tunes_s07_ADL_.dro",
     "label": "23 - Jingle 3 - Parachuting Thru The Clouds (alt) (ADL)",
     "named": true,
     "hidden": false,
-    "note": "ADL jingle bank tune_02 sec06 = Parachuting alt (distinct from sec05: 1345 vs 1340 notes, different note stream); mirrors SCC sec06 / RLD pos26."
+    "note": "Replaced 2026-06-19 with TFX-INPROGRESS 39tunes_s07 (ADLMUSIC/TFX/FLYING/3-9TUNES.ADL start 7, 8557 notes, 6 channels, OPL3)."
   },
   {
     "file": "adl_jingle_sec00_ADL_bank.dro",
@@ -858,13 +856,6 @@
     "hidden": false,
     "hiddenReason": "separator section, not a jingle",
     "note": "ADL jingle bank tune_02 sec08 (47 notes ~ SCC sec08 51); the separator/sting between jingles, mirrors SCC sec08 / RLD pos28."
-  },
-  {
-    "file": "adl_jingle_sec09_ADL_bank.dro",
-    "label": "Jingle - unknown extra (ADL)",
-    "named": true,
-    "hidden": false,
-    "note": "orphan pattern-0 (out-of-bounds order 9): cold-start left 7/9 OPL channels on the junk default patch. Fixed via fix_cold_adl.py = rewrote constant junk timbre regs to each voice's home instrument (2->7 distinct), volume envelope untouched, notes unchanged. NOTE: in-bounds MT-32 ref (mt32_pos27) shows voice 3 = Rock Organ, not percussion; the junk 'Thud' default just sounded percussive."
   },
   {
     "file": "tune_76_deep_s60_RLD.mid",
@@ -921,17 +912,58 @@
     "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (bank-section completeness; cold-start timbres)"
   },
   {
-    "file": "tune_24_engine_ADL_sfx.dro",
-    "label": "SFX — Engine Idle (ADL) [for fun]",
+    "file": "tune_06_battle_RLD_s52.mid",
+    "label": "13 - The Battle (RLD)",
+    "named": true,
     "hidden": false,
-    "named": false,
-    "note": "tune_24 order section 20: repeated FM 'ingnition/Air Hat' engine sting"
+    "note": "user ID by ear: canonical The Battle (RLD); rendered from bank tune_06 order-start 52. tune_07 standalone is the (alt)."
   },
   {
-    "file": "tune_24_motif_ADL_sfx.dro",
-    "label": "SFX — Alert Motif (ADL) [for fun]",
-    "hidden": false,
-    "named": false,
-    "note": "tune_24 order section 32: 4-note FM motif (43/49/54/55)"
+    "file": "tune_09_battle_RLD_s49.mid",
+    "label": "13 - The Battle · bank 9 @49 (RLD)",
+    "named": true,
+    "hidden": true,
+    "note": "BATTLE-COMPARE (temp): same composition rendered from each bank's Battle order-start; for A/B listening",
+    "hiddenReason": "duplicate Battle render (same composition as canonical bank6/standalone); kept hidden after A/B comparison"
+  },
+  {
+    "file": "tune_74_battle_RLD_s49.mid",
+    "label": "13 - The Battle · bank 74 @49 =bank9 dup (RLD)",
+    "named": true,
+    "hidden": true,
+    "note": "BATTLE-COMPARE (temp): same composition rendered from each bank's Battle order-start; for A/B listening",
+    "hiddenReason": "duplicate Battle render (same composition as canonical bank6/standalone); kept hidden after A/B comparison"
+  },
+  {
+    "file": "tune_30_battle_RLD_s11.mid",
+    "label": "13 - The Battle · bank 30 @11 (RLD)",
+    "named": true,
+    "hidden": true,
+    "note": "BATTLE-COMPARE (temp): same composition rendered from each bank's Battle order-start; for A/B listening",
+    "hiddenReason": "duplicate Battle render (same composition as canonical bank6/standalone); kept hidden after A/B comparison"
+  },
+  {
+    "file": "tune_75_battle_RLD_s57.mid",
+    "label": "13 - The Battle · bank 75 @57 (RLD)",
+    "named": true,
+    "hidden": true,
+    "note": "BATTLE-COMPARE (temp): same composition rendered from each bank's Battle order-start; for A/B listening",
+    "hiddenReason": "duplicate Battle render (same composition as canonical bank6/standalone); kept hidden after A/B comparison"
+  },
+  {
+    "file": "tune_76_battle_RLD_s60.mid",
+    "label": "13 - The Battle · bank 76 @60 (RLD)",
+    "named": true,
+    "hidden": true,
+    "note": "BATTLE-COMPARE (temp): same composition rendered from each bank's Battle order-start; for A/B listening",
+    "hiddenReason": "duplicate Battle render (same composition as canonical bank6/standalone); kept hidden after A/B comparison"
+  },
+  {
+    "file": "tune_77_battle_ADL_s44.dro",
+    "label": "13 - The Battle · bank 77 @44 (ADL)",
+    "named": true,
+    "hidden": true,
+    "note": "BATTLE-COMPARE (temp): same composition rendered from each bank's Battle order-start; for A/B listening",
+    "hiddenReason": "duplicate Battle render (same composition as canonical bank6/standalone); kept hidden after A/B comparison"
   }
 ]

@@ -54,6 +54,10 @@
     text-shadow:0 0 7px rgba(190,210,120,.4)}
   .hline{flex:1;height:0;border-top:1px solid var(--mon-line);box-shadow:0 1px 0 rgba(0,0,0,.35);margin-bottom:5px}
   .hright{color:var(--mon-ink2);font-size:11px;margin-bottom:1px}
+  .xlink{color:var(--screen);background:var(--mon-ink2);text-decoration:none;
+    padding:2px 8px;border:1px solid var(--mon-line);font-size:11px;letter-spacing:1px;
+    margin-right:10px;white-space:nowrap}
+  .xlink:hover{background:var(--mon-hi)}
   .hsub{display:flex;align-items:center;gap:18px;margin-top:4px;color:var(--mon-ink2);font-size:11px;flex-wrap:wrap}
   .hsub b{color:var(--mon-hi);font-weight:400}  .meter{display:flex;align-items:center;gap:7px}
   /* marquee track: transparent on desktop (children flow in .hsub flex) */
@@ -199,6 +203,37 @@
   .mtab.on{color:#0c0e11;background:var(--steel-grad-dn);text-shadow:none;
     border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);
     border-right:1px solid var(--steel-lt);border-bottom:1px solid var(--steel-lt);box-shadow:inset 0 1px 3px rgba(0,0,0,.4)}
+  /* smaller INFO tab on mobile — doesn't claim an equal third of the row */
+  .minfo{flex:0 0 auto;padding-left:13px;padding-right:13px}
+
+  /* ---- desktop INFO button: sits by the Barry Leitch credit, far right ---- */
+  .infobtn{margin-left:auto;font-size:13px}
+  .infobtn + .credit{margin-left:10px;padding-left:0}
+
+  /* ---- ABOUT panel: embedded in the green monitor, replaces roll + list ---- */
+  /* sits inside #screen (inset:0) and uses the TFX Pixel font like everything
+     else on the monitor; only the body scrolls — the chassis never does */
+  #infoModal{position:absolute;inset:0;z-index:40;display:none;flex-direction:column;
+    background:var(--bg)}
+  #infoModal.show{display:flex}
+  .imodal{position:relative;flex:1;min-height:0;display:flex;flex-direction:column;background:transparent}
+  .imodal-h{display:flex;align-items:center;gap:10px;padding:7px 12px;color:var(--mon-ink2);
+    border-bottom:1px solid var(--mon-line)}
+  .imodal-h .t{font-size:14px;letter-spacing:1px;color:var(--mon-hi);
+    text-shadow:0 0 7px rgba(190,210,120,.4)}
+  .imodal-body{flex:1;min-height:0;overflow-y:auto;padding:16px 22px 22px;color:var(--mon-ink);
+    font-size:13px;line-height:1.7;
+    background:radial-gradient(130% 120% at 50% 0%,rgba(115,129,90,.10),transparent 60%)}
+  .imodal-body h2{font-size:15px;line-height:1.45;color:var(--mon-hi);margin:24px 0 10px;
+    text-shadow:0 0 8px rgba(190,210,120,.3)}
+  .imodal-body h2:first-child{margin-top:0}
+  .imodal-body p{margin:0 0 11px}
+  .imodal-body strong{color:var(--mon-hi)}
+  .imodal-body .ichain{display:flex;flex-direction:column;gap:3px;margin:0 0 14px;padding:12px 14px;
+    background:rgba(0,0,0,.32);color:var(--mon-ink2);
+    border-left:3px solid var(--mon-line);font-size:12px;line-height:1.6}
+  .imodal-body .ichain span:first-child{color:var(--mon-hi)}
+  .imodal-body .sig{margin-top:20px;color:var(--mon-ink2)}
 
   /* ===================== MOBILE LAYOUT ===================== */
   @media (max-width:720px){
@@ -227,6 +262,7 @@
     #dash{padding:6px}
     #transport{flex-wrap:nowrap;gap:6px;align-items:stretch}
     .credit{display:none}
+    .infobtn{display:none}
     #transport .btn{width:44px;padding:0;text-align:center;font-size:0;
       display:flex;align-items:center;justify-content:center}
     #transport .btn::before{font-family:inherit;font-size:20px;line-height:1;letter-spacing:0}
@@ -283,6 +319,7 @@
     /* playback controls pinned to the bottom of the column, buttons spread to fit */
     #transport{order:3;flex:none;flex-wrap:wrap;gap:6px;align-items:stretch;margin-top:auto}
     .credit{display:none}
+    .infobtn{display:none}
     #transport .btn{flex:1;min-width:0;padding:8px 0;text-align:center;font-size:0;
       display:flex;align-items:center;justify-content:center;order:2}
     #transport .btn::before{font-family:inherit;font-size:20px;line-height:1;letter-spacing:0}
@@ -307,6 +344,7 @@
     <div class="htop">
       <span class="logo">TFX</span>
       <span class="hline"></span>
+      <a class="xlink" href="inferno.html" title="Switch to the Inferno soundtrack — TFX's sister Ocean game">INFERNO &gt;</a>
       <span class="hright">TFX JUKEBOX</span>
     </div>
     <div class="hsub">
@@ -348,12 +386,93 @@
     </div>
     <span id="time">0:00 / 0:00</span>
   </div>
+
+  <div id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
+    <div class="imodal">
+      <div class="imodal-h">
+        <span class="t" id="infoTitle">ABOUT -- MT-32 / SCC / ADLIB</span>
+      </div>
+      <div class="imodal-body">
+        <h2>MT-32 was not merely one option. It was the intended TFX sound.</h2>
+        <p>It would be easy to tell a neat technological story here:</p>
+        <p>MT-32 first, then Sound Canvas, then more realistic instruments, more ROM, more polyphony, more standardization.</p>
+        <p>That story is broadly true for PC sound hardware. But it is not the right story for TFX.</p>
+        <p>For TFX, the <strong>Roland MT-32 version is the version the music was written for</strong>.</p>
+        <p>That matters more than whether another device has a larger sound bank, more polished samples, or better General MIDI compatibility. The MT-32's patch structure, metallic attacks, synthetic pads, unusual percussion, and slightly alien timbres are not accidental limitations around the music. They are part of the music.</p>
+        <p>The SCC / Sound Canvas version is interesting because it shows how the material was translated into the newer General MIDI world. It may sound fuller in places, and its instruments may be more conventionally recognisable. But it does not have the same authority.</p>
+        <p>The MT-32 version has the strange digital atmosphere that belongs to TFX: a future imagined before everything became cinematically realistic. It is a little artificial, a little cold, occasionally metallic, and much more distinctive for it.</p>
+        <p>The clear winner is MT-32.</p>
+        <p>Not because it is objectively the most advanced synthesizer ever made, but because it is where the composition, the arrangement, and the sound design line up.</p>
+        <p>It is the version where the soundtrack sounds like it knows exactly what game it belongs to.</p>
+
+        <h2>Sound Canvas: technically newer, but not necessarily more right</h2>
+        <p>The Roland SCC-1 and SC-55 family represent a different idea of PC music.</p>
+        <p>They brought General MIDI conventions, PCM instrument samples, more familiar orchestral colors, and a much more standardized sound world. Their sound banks were larger -- around 3 MB for the SC-55/SCC-1 class, covering hundreds of patches and drum sounds -- and their instruments could sound more immediately recognisable than the MT-32's deliberately synthetic voices.</p>
+        <p>But "newer" and "more standard" are not the same as "better for this soundtrack."</p>
+        <p>The SCC version of TFX is best understood as a translation.</p>
+        <p>It takes the musical structure of TFX and maps it into a more conventional General MIDI palette. Some things survive well. Some become smoother. Some become more obviously instrumental. But something is lost too: the particular tension between melody, synthetic texture, and slightly strange sound design that makes the MT-32 score feel native to the game.</p>
+        <p>The Sound Canvas is a fascinating alternate interpretation.</p>
+        <p>The MT-32 is TFX.</p>
+
+        <h2>AdLib: not the definitive version, but the one I remember</h2>
+        <p>And then there is AdLib.</p>
+        <p>The AdLib version is not the version that Barry Leitch was primarily writing toward. It cannot reproduce the full MT-32 arrangements, the layered patches, or the particular timbral logic of the original score.</p>
+        <p>But it is the version I remember.</p>
+        <p>That is a different kind of truth.</p>
+        <p>My childhood TFX experience was connected to AdLib / Sound Blaster FM music: a Yamaha OPL chip with a tiny number of voices, no large sample bank, and almost no room for luxury.</p>
+        <p>The original AdLib OPL2 chip had only nine melodic channels, built from eighteen small FM operators. In rhythm mode, some of those channels had to be repurposed for percussion. There was no sampled orchestra waiting in memory. No lush string section. No realistic piano. No studio-quality reverb. No huge sound design toolkit.</p>
+        <p>Just oscillators, envelopes, modulation, feedback, frequency ratios, and a few carefully chosen tricks.</p>
+        <p>At a technical level, FM synthesis is almost brutally minimal.</p>
+        <p>One oscillator creates a simple waveform. Another modulates it. The result produces extra harmonics. With the right ratios, levels, envelopes, and feedback, a few sine waves become something that our ears interpret as a bell, a bass, a metallic hit, an electric piano, a brass-like sound, a drum, or an alarm from the future.</p>
+        <p>With the wrong settings, they become electrical noise.</p>
+        <p>And that boundary is part of the charm.</p>
+        <p>AdLib music often sits close to that edge: a few mathematical oscillators trying very hard to become music. The result can be thin, sharp, synthetic, and strangely deep. It has an 8-bit-like emotional texture -- not because OPL music is literally an 8-bit audio stream, but because it carries the same sense of radical compression, directness, and vivid abstraction.</p>
+        <p>A few channels. A few envelopes. A few modulated waveforms.</p>
+        <p>And somehow: atmosphere.</p>
+        <p>The arrangement has to be clever because there is nowhere to hide. Every note competes for one of a handful of voices. Every drum hit costs resources. Every sustained chord makes the next melodic decision harder. The composer and programmer have to think in terms of scarcity.</p>
+        <p>That is why these soundtracks can feel so concentrated.</p>
+        <p>Modern music production can use a hundred tracks, gigabytes of samples, convolution reverbs, layered synths, and unlimited automation. AdLib had a small chip that could create beauty or noise depending on a few register values.</p>
+        <p>The soundtrack is therefore not merely compressed.</p>
+        <p>It is distilled.</p>
+
+        <h2>A browser is now emulating a machine that was already emulating instruments</h2>
+        <p>The strangest part of this project is the chain of abstractions.</p>
+        <p>The original TFX music was not stored as finished audio. It was stored as compact musical instructions: timing, note events, patch changes, volume, panning, pitch bends, and other control data.</p>
+        <p>Those instructions were designed to drive old hardware.</p>
+        <p>That hardware then tried to create instruments.</p>
+        <p>The MT-32 combined small PCM attacks with synthetic partials to create pads, brass, percussion, and imaginary instruments. The Sound Canvas used a compressed sample bank to approximate an orchestra. The AdLib chip used a handful of oscillators and modulation paths to persuade the ear that mathematics could be music.</p>
+        <p>And now, decades later, JavaScript is running in a browser, scheduling those reconstructed musical events, while WebAssembly emulates the old synthesizer hardware, which then recreates its approximation of instruments.</p>
+        <p>The chain is almost comically indirect:</p>
+        <div class="ichain"><span>1993 game data</span><span>-&gt; extracted music events</span><span>-&gt; MIDI-style sequencing</span><span>-&gt; JavaScript timing</span><span>-&gt; WebAssembly emulation</span><span>-&gt; emulated MT-32, Sound Canvas, or OPL chip</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
+        <p>A browser tab is now effectively hosting a miniature museum of old sound hardware.</p>
+        <p>And the remarkable thing is that this did not require a huge engineering team or months of bespoke low-level work. Modern emulators, browser audio, WebAssembly, and AI-assisted development made it possible to assemble this in roughly twenty hours.</p>
+        <p>That is the science-fiction part.</p>
+        <p>But it is not the reason the project matters.</p>
+
+        <h2>The technical work is only the path back</h2>
+        <p>All of this can sound extremely geeky.</p>
+        <p>Custom data formats. MIDI events. OPL operators. LA synthesis. ISA cards. PCM ROMs. General MIDI mappings. WebAssembly. Browser scheduling. Synthesizer state restoration.</p>
+        <p>And yes, it is geeky.</p>
+        <p>But the point is much simpler.</p>
+        <p>As a child, I would sometimes leave TFX on the intro screen, or sit after a landing, or delay the next click in a menu, simply because I wanted the music to continue.</p>
+        <p>I was not analyzing MIDI channels.</p>
+        <p>I was not thinking about FM operators or waveform ROM sizes.</p>
+        <p>I just liked the feeling.</p>
+        <p>The MT-32 version now shows me what the soundtrack was truly designed to be: the rich, synthetic, slightly alien sound world that belongs to TFX itself.</p>
+        <p>The AdLib version gives me something else: the smaller, harsher, more compressed sound world that belongs to my own memory of playing it.</p>
+        <p>The jukebox holds both.</p>
+        <p>The technically "right" version, and the emotionally right one.</p>
+        <p class="sig">-- Voyta</p>
+      </div>
+    </div>
+  </div>
   </div><!-- /screen -->
 
   <div id="dash">
     <div id="mtabs">
       <button class="mtab on" data-v="notes">NOTES</button>
       <button class="mtab" data-v="tracks">TRACKS</button>
+      <button class="mtab minfo" id="minfo" title="About this jukebox">INFO</button>
     </div>
     <div id="chanstrip">
       <span class="lab">CHANNELS<br>L·MUTE<br>R·SOLO</span>
@@ -368,6 +487,7 @@
       <span class="dmeter"><b class="mlab">VOL</b> <input id="vol" type="range" min="0" max="1" step="0.02" value="0.85"><b id="volV">85%</b></span>
       <span class="dmeter"><b class="mlab">MIX</b> <input id="mix" type="range" min="0" max="1" step="0.02" value="0" title="Blend L/R channels toward mono — easier on headphones"><b id="mixV">0%</b></span>
       </span>
+      <button id="infoBtn" class="btn infobtn" title="About this jukebox — why MT-32, SCC and AdLib">INFO</button>
       <span class="credit"><a href="https://barryleitch.bandcamp.com/" target="_blank" rel="noopener">ALL MUSIC BY BARRY LEITCH</a></span>
     </div>
   </div>
@@ -377,336 +497,10 @@
 <script src="sc55.js"></script>
 <script src="opl3.js"></script>
 <script type="module">
-import { parseMidi } from './midi.js';
-import { parseDro } from './opl-player.js';
-
-const CHUNK = 128;
-const $ = id => document.getElementById(id);
-
-// Optional self-contained build: roms.embedded.js (gitignored) sets window.__TFX_ROMS
-// to a { filename: Uint8Array } map of the Roland ROMs so no separate ROM files are
-// fetched. Absent in the public repo -> we fall back to fetching ROM files from disk.
-await import('./roms.embedded.js').catch(()=>{});
-const rdBin = async f => {
-  const emb = (typeof window!=='undefined' && window.__TFX_ROMS) || null;
-  if(emb && emb[f]) return emb[f];
-  const r = await fetch(f);
-  if(!r.ok) throw new Error('missing ROM/data file: '+f+' ('+r.status+')');
-  return new Uint8Array(await r.arrayBuffer());
-};
-
-// ---------- Synth backends (MT-32 = Munt, SCC = Nuked-SC55) ----------
-// Each backend exposes: rate, M(odule), renderPtr, ready, boot(), reset(),
-// msg(raw32), sysex(uint8), render(frames) -> fills HEAP16 at renderPtr.
-const MT32Backend = {
-  key:'RLD', label:'MT-32', rate:32000, M:null, renderPtr:0, sysexPtr:0, sysexCap:0, ready:false,
-  async boot(){
-    if(this.ready) return;
-    this.M = await MT32Module();
-    const [ctrl,pcm] = await Promise.all([rdBin('MT32_CONTROL.ROM'), rdBin('MT32_PCM.ROM')]);
-    const cp=this.M._malloc(ctrl.length); this.M.HEAPU8.set(ctrl,cp);
-    const pp=this.M._malloc(pcm.length);  this.M.HEAPU8.set(pcm,pp);
-    const sr=this.M._mt32_init(cp,ctrl.length,pp,pcm.length);
-    this.M._free(cp); this.M._free(pp);
-    if(sr!==this.rate && sr<=0) throw new Error('MT-32 init failed ('+sr+')');
-    this.renderPtr = this.M._malloc(CHUNK*2*2);
-    this.ready=true;
-  },
-  reset(){ this.M._mt32_reset(); },
-  sysex(u8){
-    if(u8.length>this.sysexCap){ if(this.sysexPtr) this.M._free(this.sysexPtr); this.sysexPtr=this.M._malloc(u8.length); this.sysexCap=u8.length; }
-    this.M.HEAPU8.set(u8, this.sysexPtr); this.M._mt32_play_sysex(this.sysexPtr, u8.length);
-  },
-  msg(raw32){ this.M._mt32_play_msg(raw32); },
-  render(frames){ this.M._mt32_render(this.renderPtr, frames); return this.M.HEAP16; },
-};
-
-const SC55Backend = {
-  key:'SCC', label:'SC-55', rate:64000, M:null, renderPtr:0, ready:false, _f:null,
-  async boot(){
-    if(this.ready) return;
-    this.M = await SC55Module();
-    const f = {
-      rom1:this.M.cwrap('sc55_set_rom1',null,['number','number']),
-      rom2:this.M.cwrap('sc55_set_rom2',null,['number','number']),
-      wave:this.M.cwrap('sc55_set_waverom',null,['number','number','number']),
-      start:this.M.cwrap('sc55_start','number',['number']),
-      gs:this.M.cwrap('sc55_reset_gs',null,[]),
-      midi:this.M.cwrap('sc55_write_midi',null,['number']),
-      render:this.M.cwrap('sc55_render','number',['number','number']),
-    };
-    this._f=f;
-    const load=async(fn,file,...extra)=>{ const b=await rdBin(file); const p=this.M._malloc(b.length); this.M.HEAPU8.set(b,p); fn(...extra,p,b.length); this.M._free(p); };
-    await load((p,l)=>f.rom1(p,l),'SC55_ROM1.bin');
-    await load((p,l)=>f.rom2(p,l),'SC55_ROM2.bin');
-    for(let i=1;i<=3;i++) await load((p,l)=>f.wave(i,p,l),'SC55_WAVE'+i+'.bin');
-    f.start(0); // model 0 = SC-55 v1.21
-    this.renderPtr = this.M._malloc(CHUNK*2*2);
-    // run ~3s emulated boot self-test so the synth is ready (discard audio)
-    const scratch=this.M._malloc(4096*2*2);
-    for(let n=0;n<Math.ceil(this.rate*3/4096);n++) f.render(scratch,4096);
-    this.M._free(scratch);
-    f.gs();
-    this.ready=true;
-  },
-  reset(){ this._f.gs(); },
-  sysex(u8){ for(let i=0;i<u8.length;i++) this._f.midi(u8[i]); },
-  msg(raw32){
-    const st=raw32&0xff, hi=st&0xf0;
-    this._f.midi(st); this._f.midi((raw32>>8)&0x7f);
-    if(hi!==0xC0 && hi!==0xD0) this._f.midi((raw32>>16)&0x7f);
-  },
-  render(frames){ this._f.render(this.renderPtr, frames); return this.M.HEAP16; },
-};
-
-// AdLib / OPL3 (Nuked-OPL3). Driven by raw OPL register writes from .dro, not MIDI.
-const OPLBackend = {
-  key:'ADL', label:'AdLib', rate:49716, M:null, renderPtr:0, ready:false, _f:null,
-  async boot(){
-    if(this.ready) return;
-    this.M = await OPL3Module();
-    this._f = {
-      init:this.M.cwrap('opl_init',null,['number']),
-      reset:this.M.cwrap('opl_reset',null,[]),
-      write:this.M.cwrap('opl_write',null,['number','number']),
-      render:this.M.cwrap('opl_render',null,['number','number']),
-    };
-    this._f.init(this.rate);
-    this.renderPtr = this.M._malloc(CHUNK*2*2);
-    this.ready=true;
-  },
-  reset(){ this._f.reset(); },
-  sysex(){},                         // OPL has no sysex
-  msg(){},                           // not MIDI-driven
-  oplWrite(reg,val){ this._f.write(reg&0x1ff, val&0xff); },
-  oplCut(ch){ const bank=ch>8?0x100:0, n=ch%9; this._f.write(bank|(0xb0+n), 0); }, // clear key-on
-  render(frames){ this._f.render(this.renderPtr, frames); return this.M.HEAP16; },
-};
-const BACKENDS = { RLD:MT32Backend, SCC:SC55Backend, ADL:OPLBackend };
-
-// channel colors: MONOCHROME phosphor display palette — 5 shades spanning the full
-// dynamic range from near-black to near-white. With 16 channels the 5 shades repeat,
-// so each GROUP of 5 channels gets a stripe orientation: ch 0-4 solid, 5-9 horizontal,
-// 10-14 vertical, 15 diagonal. shade × orientation = every channel unique & legible.
-const CH_SHADES=['#10160c','#52613b','#8fa06f','#c2d0a4','#f4f9e6'];
-const CH_ORDER=[0,4,1,3,2];
-// per channel: base shade cycles within each group; orientation steps every 5 channels
-const CH_DEF=Array.from({length:16},(_,i)=>({
-  shade:CH_SHADES[CH_ORDER[i%CH_ORDER.length]], pat:Math.floor(i/5) }));
-const CH_COLORS=CH_DEF.map(d=>d.shade);
-// contrasting stripe color (50% toward black for light shades, toward white for dark)
-function chStripe(hex){
-  const n=parseInt(hex.slice(1),16),r=n>>16,g=(n>>8)&255,b=n&255;
-  const lum=0.299*r+0.587*g+0.114*b, t=lum>110?0:255, m=(c)=>Math.round(c+(t-c)*0.5);
-  return `rgb(${m(r)},${m(g)},${m(b)})`;
-}
-// CSS swatch background per channel (gradient stripes)
-const CH_SWATCH=CH_DEF.map(d=>{
-  const s=chStripe(d.shade);
-  if(d.pat===1) return `repeating-linear-gradient(0deg,${d.shade} 0 2px,${s} 2px 4px)`;
-  if(d.pat===2) return `repeating-linear-gradient(90deg,${d.shade} 0 2px,${s} 2px 4px)`;
-  if(d.pat===3) return `repeating-linear-gradient(45deg,${d.shade} 0 2px,${s} 2px 4px)`;
-  return d.shade;
-});
-// 8×8 canvas tiles for the falling notes (seamlessly tileable stripe patterns)
-const CH_TILE=CH_DEF.map(d=>{
-  const c=document.createElement('canvas'); c.width=c.height=8; const g=c.getContext('2d');
-  g.fillStyle=d.shade; g.fillRect(0,0,8,8);
-  g.strokeStyle=chStripe(d.shade); g.lineWidth=1.6;
-  if(d.pat===1){ for(let y=2;y<8;y+=4){ g.beginPath(); g.moveTo(0,y+0.5); g.lineTo(8,y+0.5); g.stroke(); } }
-  else if(d.pat===2){ for(let x=2;x<8;x+=4){ g.beginPath(); g.moveTo(x+0.5,0); g.lineTo(x+0.5,8); g.stroke(); } }
-  else if(d.pat===3){ for(let o=-8;o<8;o+=4){ g.beginPath(); g.moveTo(o,0); g.lineTo(o+8,8); g.stroke(); } }
-  return c;
-});
-
-// ---------- Synth engine ----------
-const Engine = {
-  syn:null, rate:32000, ctx:null, node:null,
-  events:[], notes:[], duration:0, channels:[],
-  eventIdx:0, synthPos:0,
-  speed:1, vol:0.85, blend:0, playing:false, ended:false,
-  ratio:1, frac:0, prevL:0,prevR:0,curL:0,curR:0,
-  chunkL:new Float32Array(CHUNK),chunkR:new Float32Array(CHUNK),chunkIdx:CHUNK,chunkLen:CHUNK,
-  mute:new Set(), solo:new Set(),
-  anchored:false, anchorPlay:0, anchorSong:0, frozenSong:0,
-
-  async boot(){ await this.useDevice('RLD'); },
-
-  // Switch active synth (booting it on first use). Returns when ready.
-  async useDevice(drv){
-    const b = BACKENDS[drv] || BACKENDS.RLD;
-    await b.boot();
-    this.syn = b; this.rate = b.rate;
-    if(this.ctx) this.ratio = this.rate/this.ctx.sampleRate;
-  },
-
-  ensureAudio(){
-    if(this.ctx) return;
-    const C = window.AudioContext||window.webkitAudioContext;
-    let ctx; try{ ctx=new C({sampleRate:48000}); }catch(e){ ctx=new C(); }
-    this.ctx=ctx; this.ratio=this.rate/ctx.sampleRate;
-    const node=ctx.createScriptProcessor(8192,0,2);
-    node.onaudioprocess=e=>this.process(e);
-    node.connect(ctx.destination); this.node=node;
-  },
-
-  loadSong(parsed){
-    this.events=parsed.events; this.notes=parsed.notes;
-    this.duration=parsed.durationSec; this.channels=parsed.channels;
-    this.seekTo(0,true);
-  },
-
-  effMuted(ch){ return this.solo.size ? !this.solo.has(ch) : this.mute.has(ch); },
-
-  dispatch(ev, allowNoteOn=true){
-    if(ev.type==='sysex'){ this.syn.sysex(ev.sysex); return; }
-    if(ev.type==='opl'){
-      let val=ev.val;
-      if(ev.keyon && ev.channel>=0 && this.effMuted(ev.channel)) val &= ~0x20; // force key-off for muted ch
-      this.syn.oplWrite(ev.reg, val);
-      return;
-    }
-    if(ev.hi===0x90 && ev.d2>0){
-      if(!allowNoteOn || this.effMuted(ev.channel)) return;
-    }
-    this.syn.msg(ev.raw32);
-  },
-
-  seekTo(T, full){
-    this.syn.reset();
-    this.eventIdx=0; this.ended=false;
-    this.frac=0; this.chunkIdx=CHUNK; this.chunkLen=CHUNK; this.prevL=this.prevR=this.curL=this.curR=0;
-
-    // 1) Replay every state-affecting message strictly BEFORE T to rebuild the
-    //    synth's controller/patch state. Note-ons are suppressed (nothing is
-    //    re-attacked here); events exactly at T are left for normal playback so
-    //    the target's own programs/notes fire in their natural order.
-    const prog=new Int16Array(16).fill(-1);
-    while(this.eventIdx<this.events.length && this.events[this.eventIdx].tSec<T){
-      const ev=this.events[this.eventIdx];
-      this.dispatch(ev, false);
-      if(ev.type==='chan' && ev.hi===0xC0) prog[ev.channel]=ev.d1;   // track active patch
-      this.eventIdx++;
-    }
-
-    // 2) Re-assert each channel's most-recent program change so the correct
-    //    timbre is guaranteed selected before any note sounds; otherwise a seek
-    //    can land a note on a stale/default patch (wrong instrument). Then let
-    //    the synth apply the restored patch/sysex state (output discarded).
-    for(let ch=0;ch<16;ch++) if(prog[ch]>=0) this.syn.msg((0xC0|ch)|(prog[ch]<<8));
-    this.syn.render(CHUNK);
-
-    this.synthPos = Math.round((T/this.speed)*this.rate);
-    this.curL=this.curR=0;
-    this.anchored=false; this.frozenSong=T;
-
-    // 3) Re-attack notes that should still be ringing at T so the seek target
-    //    isn't silent until the next note-on. (msg() is a no-op for the OPL
-    //    backend, which restores voices via its own register replay above.)
-    if(T>0){
-      for(const n of this.notes){
-        if(n.startSec>=T) break;                 // notes are sorted by startSec
-        if(n.endSec>T && !this.effMuted(n.channel))
-          this.syn.msg((0x90|n.channel)|(n.pitch<<8)|((n.vel||96)<<16));
-      }
-    }
-  },
-
-  songTime(){
-    if(!this.ctx || !this.playing || !this.anchored) return this.frozenSong;
-    let t = this.anchorSong + (this.ctx.currentTime - this.anchorPlay)*this.speed;
-    if(t<0) t=0; else if(t>this.duration) t=this.duration;
-    this.frozenSong = t; return t;
-  },
-  cutChannel(ch){ if(this.syn.oplCut){ this.syn.oplCut(ch); return; } this.syn.msg(0xB0|ch|(120<<8)); this.syn.msg(0xB0|ch|(123<<8)); },
-
-  renderChunk(){
-    const tReal=this.synthPos/this.rate;
-    // Sample-accurate backends (OPL) need register writes applied at their true
-    // sub-chunk sample position: a note-off and the following note-on can be <1
-    // chunk apart, and if both are dispatched before rendering the whole chunk the
-    // synth never "sees" the key-off->key-on edge and the re-attack is lost (rapid
-    // repeated notes get dropped). So for OPL we render the chunk in slices split
-    // at each event's time. MIDI synths (MT-32/SCC) sequence internally, so the
-    // simple "dispatch all due events then render" path is fine for them.
-    if(this.syn.oplWrite){
-      const base=this.syn.renderPtr>>1, rate=this.rate, speed=this.speed, t0=this.synthPos;
-      let done=0;
-      let sameSample=-1;
-      const sameSampleKeyOn=new Array(18).fill(null);
-      const slice=(count)=>{
-        if(count<=0) return;
-        const h=this.syn.render(count);
-        for(let i=0;i<count;i++){ this.chunkL[done+i]=h[base+i*2]/32768; this.chunkR[done+i]=h[base+i*2+1]/32768; }
-        done+=count;
-      };
-      while(done<CHUNK){
-        if(this.eventIdx<this.events.length){
-          const evSample=Math.round((this.events[this.eventIdx].tSec/speed)*rate)-t0;
-          if(evSample<=done){
-            const ev=this.events[this.eventIdx];
-            // Some AdLib jingles retrigger notes as key-off + key-on at the exact
-            // same timestamp on the same channel. If both writes are dispatched
-            // with no rendered sample between them, the re-attack can be lost.
-            // Insert a 1-sample gap only for same-sample off->on transitions.
-            if(evSample!==sameSample){
-              sameSample=evSample;
-              sameSampleKeyOn.fill(null);
-            }
-            const low=ev.reg&0xff;
-            if(ev.type==='opl' && low>=0xb0 && low<=0xb8 && ev.channel>=0 && ev.channel<18){
-              const newOn=(ev.val&0x20)!==0;
-              const prevOn=sameSampleKeyOn[ev.channel];
-              if(prevOn===false && newOn===true && done<CHUNK) slice(1);
-              sameSampleKeyOn[ev.channel]=newOn;
-            }
-            this.dispatch(ev); this.eventIdx++; continue;
-          }
-          slice(Math.min(CHUNK,evSample)-done);
-        } else { slice(CHUNK-done); }
-      }
-      this.chunkIdx=0;
-      if(this.eventIdx>=this.events.length && tReal>this.duration/this.speed) this.ended=true;
-      return;
-    }
-    while(this.eventIdx<this.events.length && (this.events[this.eventIdx].tSec/this.speed)<=tReal){
-      this.dispatch(this.events[this.eventIdx]); this.eventIdx++;
-    }
-    const h=this.syn.render(CHUNK);
-    const base=this.syn.renderPtr>>1;
-    for(let i=0;i<CHUNK;i++){ this.chunkL[i]=h[base+i*2]/32768; this.chunkR[i]=h[base+i*2+1]/32768; }
-    this.chunkIdx=0;
-    if(this.eventIdx>=this.events.length && tReal>this.duration/this.speed) this.ended=true;
-  },
-  nextFrame(){
-    if(this.chunkIdx>=this.chunkLen) this.renderChunk();
-    const L=this.chunkL[this.chunkIdx], R=this.chunkR[this.chunkIdx];
-    this.chunkIdx++; this.synthPos++;
-    return [L,R];
-  },
-
-  process(e){
-    const outL=e.outputBuffer.getChannelData(0), outR=e.outputBuffer.getChannelData(1);
-    const n=outL.length;
-    if(!this.playing){ outL.fill(0); outR.fill(0); return; }
-    this.anchorPlay = (e.playbackTime!=null) ? e.playbackTime : (this.ctx.currentTime + n/this.ctx.sampleRate);
-    this.anchorSong = (this.synthPos/this.rate)*this.speed;
-    this.anchored = true;
-    const v=this.vol, ratio=this.ratio, blend=this.blend;
-    for(let i=0;i<n;i++){
-      let L=(this.prevL+(this.curL-this.prevL)*this.frac);
-      let R=(this.prevR+(this.curR-this.prevR)*this.frac);
-      // stereo blend: fold L/R toward their mono mid (0=full stereo, 1=mono)
-      if(blend>0){ const mid=(L+R)*0.5; L+=(mid-L)*blend; R+=(mid-R)*blend; }
-      outL[i]=L*v;
-      outR[i]=R*v;
-      this.frac+=ratio;
-      while(this.frac>=1){ this.frac-=1; this.prevL=this.curL; this.prevR=this.curR;
-        const f=this.nextFrame(); this.curL=f[0]; this.curR=f[1]; }
-    }
-    if(this.ended){ this.playing=false; UI.onEnded(); }
-  },
-};
+import { $, Engine, parseMidi, parseDro, CH_SWATCH, CH_TILE } from './player-engine.js';
+// CHUNK, rdBin, the synth backends and BACKENDS now live in
+// player-engine.js, shared with the other player so the render engine
+// (MT-32 / SC-55 / OPL3 backends + Engine) never diverges between pages.
 
 // ---------- UI ----------
 const LOW=21, HIGH=108;                 // A0..C8 — full piano
@@ -743,19 +537,29 @@ const UI = {
       this.applyFilter();
     });
     this.applyFilter();
-    document.querySelectorAll('.mtab').forEach(b=>b.onclick=()=>this.setMobileView(b.dataset.v));
+    document.querySelectorAll('.mtab[data-v]').forEach(b=>b.onclick=()=>this.setMobileView(b.dataset.v));
+    const infoModal=$('infoModal');
+    const setInfo=show=>{ infoModal.classList.toggle('show',show); document.querySelectorAll('#infoBtn,#minfo').forEach(b=>b.classList.toggle('on',show)); if(show) infoModal.querySelector('.imodal-body').scrollTop=0; };
+    const toggleInfo=()=>setInfo(!infoModal.classList.contains('show'));
+    const closeInfo=()=>setInfo(false);
+    $('infoBtn').onclick=toggleInfo;
+    $('minfo').onclick=toggleInfo;
     $('play').onclick=()=>this.toggle();
     $('restart').onclick=()=>{ Engine.seekTo(0); if(!Engine.playing) this.draw(); };
     $('clear').onclick=()=>{ Engine.mute.clear(); Engine.solo.clear(); this.refreshChannels(); };
     $('speed').oninput=e=>{ const t=Engine.songTime(); Engine.speed=+e.target.value; $('speedV').textContent=Math.round(+e.target.value*100)+'%'; Engine.synthPos=Math.round((t/Engine.speed)*Engine.rate); Engine.frozenSong=t; Engine.anchored=false; };
     $('vol').oninput=e=>{ Engine.vol=+e.target.value; $('volV').textContent=Math.round(+e.target.value*100)+'%'; };
     $('mix').oninput=e=>{ Engine.blend=+e.target.value; $('mixV').textContent=Math.round(+e.target.value*100)+'%'; };
-    $('seek').oninput=e=>{ const T=(+e.target.value/1000)*Engine.duration; Engine.seekTo(T); if(!Engine.playing) this.draw(); };
+    $('seek').oninput=e=>{ const T=(+e.target.value/1000)*Engine.duration; Engine.seekTo(T); $('seekfill').style.width=(+e.target.value/10)+'%'; $('t-cur').textContent=this.fmt(T); if(!Engine.playing) this.draw(); };
     list.onscroll=()=>this.syncScrollbar();
-    window.addEventListener('keydown',e=>{ if(e.code==='Space'){e.preventDefault(); this.toggle();} });
+    window.addEventListener('keydown',e=>{
+      if($('infoModal').classList.contains('show')){ if(e.code==='Escape') closeInfo(); return; }
+      if(e.code==='Space'){e.preventDefault(); this.toggle();}
+    });
     this.canvas=$('roll'); this.cx=this.canvas.getContext('2d');
     new ResizeObserver(()=>this.resize()).observe($('rollWrap')); this.resize();
-    window.addEventListener('resize',()=>this.syncScrollbar());
+    window.addEventListener('resize',()=>{ this.syncScrollbar(); this.tuneMarquee(); });
+    if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>this.tuneMarquee());
 
     try{ await Engine.boot(); }catch(err){ $('overlay').textContent='ENGINE ERROR: '+err.message; $('status').textContent='ERROR'; return; }
     $('overlay').classList.add('hidden'); $('status').textContent='READY';
@@ -769,6 +573,9 @@ const UI = {
       const j=this.songs.findIndex(s=>s.file===w);
       if(j>=0 && j!==this.cur) this.pick(j);
     });
+    this.setupMedia();
+    Engine.onEnded=()=>this.onEnded();
+    document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible' && Engine.playing) this.requestWake(); });
     this.pick(startIdx);
     this.loop();
   },
@@ -821,13 +628,14 @@ const UI = {
     Engine.mute.clear(); Engine.solo.clear();
     Engine.loadSong(parsed);
     this.buildChannels(parsed);
-    $('trackname').textContent=s._name;
+    $('trackname').textContent=s._name; this.updateMediaMeta(s);
     $('st-drv').textContent={RLD:'MT-32',SCC:'SCC',ADL:'ADLIB'}[s._drv]||s._drv;
     $('st-synth').textContent={RLD:'MT-32 · CTRL v1.07 + PCM',SCC:'SC-55 v1.21',ADL:'OPL3 (Nuked, YMF262)'}[s._drv]||s._drv;
     $('st-notes').textContent=parsed.notes.length;
     $('st-ch').textContent=parsed.channels.length;
     $('seek').value=0;
     $('status').textContent='READY';
+    this.tuneMarquee();
     if(this.isMobile()) this.setMobileView('notes');
     this.draw();
   },
@@ -872,6 +680,18 @@ const UI = {
     });
   },
 
+  // Quantise the header marquee so it scrolls in whole TFX font-pixels (one
+  // glyph pixel = font-size * 0.2, since the bitmap font is 5px tall in a 1000
+  // upm em). steps(n) makes the slide jump exactly one font-pixel per step.
+  tuneMarquee(){
+    const m=document.querySelector('.hmarquee'); if(!m) return;
+    const cs=getComputedStyle(m);
+    if(cs.animationName!=='hmarq'){ m.style.animationTimingFunction=''; return; } // desktop: flows in flex, no marquee
+    const fpx=Math.max(1,Math.round(parseFloat(cs.fontSize)*0.2));
+    const steps=Math.max(1,Math.round(m.scrollWidth/fpx));
+    m.style.animationTimingFunction='steps('+steps+')';
+  },
+
   syncScrollbar(){
     const l=$('songlist'), thumb=$('sbthumb'), sb=$('sb'); if(!sb) return;
     const trackH=sb.clientHeight; const ratio=l.clientHeight/l.scrollHeight;
@@ -887,8 +707,50 @@ const UI = {
     Engine.anchored=false; Engine.playing=!Engine.playing; this.setPlayUI(Engine.playing);
   },
   setPlayUI(p){ const b=$('play'); b.textContent=p?'PAUSE':'PLAY'; b.classList.toggle('on',p);
-    [...document.querySelectorAll('.song')].forEach(r=>r.classList.toggle('playing',p&&+r.dataset.i===this.cur)); },
+    [...document.querySelectorAll('.song')].forEach(r=>r.classList.toggle('playing',p&&+r.dataset.i===this.cur));
+    if('mediaSession' in navigator){ try{ navigator.mediaSession.playbackState=p?'playing':'paused'; }catch(e){} }
+    if(p) this.requestWake(); else this.releaseWake();
+    this.updatePositionState(); },
   onEnded(){ this.setPlayUI(false); },
+
+  // ---- Media Session (lockscreen / Bluetooth / wired-headset transport) ----
+  setupMedia(){
+    if(!('mediaSession' in navigator)) return;
+    const ms=navigator.mediaSession, set=(a,fn)=>{ try{ ms.setActionHandler(a,fn); }catch(e){} };
+    set('play', ()=>{ if(!Engine.playing) this.toggle(); });
+    set('pause', ()=>{ if(Engine.playing) this.toggle(); });
+    set('stop', ()=>{ Engine.playing=false; Engine.seekTo(0); this.setPlayUI(false); this.draw(); });
+    set('previoustrack', ()=>this.step(-1));
+    set('nexttrack', ()=>this.step(1));
+    set('seekbackward', d=>{ const t=Math.max(0,Engine.songTime()-((d&&d.seekOffset)||10)); Engine.seekTo(t); if(!Engine.playing) this.draw(); });
+    set('seekforward', d=>{ const t=Math.min(Engine.duration,Engine.songTime()+((d&&d.seekOffset)||10)); Engine.seekTo(t); if(!Engine.playing) this.draw(); });
+    set('seekto', d=>{ if(d&&d.seekTime!=null){ Engine.seekTo(d.seekTime); if(!Engine.playing) this.draw(); } });
+  },
+  visibleIdx(){ return [...document.querySelectorAll('.song')].filter(r=>r.style.display!=='none').map(r=>+r.dataset.i); },
+  step(dir){
+    const vis=this.visibleIdx(); if(!vis.length) return;
+    let k=vis.indexOf(this.cur); if(k<0) k=0;
+    k=(k+dir+vis.length)%vis.length;
+    const wasPlaying=Engine.playing;
+    Promise.resolve(this.pick(vis[k])).then(()=>{ if(wasPlaying && !Engine.playing) this.toggle(); });
+  },
+  updateMediaMeta(s){
+    if(!('mediaSession' in navigator) || typeof MediaMetadata==='undefined') return;
+    const dev={RLD:'Roland MT-32',SCC:'Roland SC-55',ADL:'AdLib OPL3 FM'}[s._drv]||s._drv;
+    try{ navigator.mediaSession.metadata=new MediaMetadata({ title:s._name, artist:dev, album:'TFX — Team17 / DID (Barry Leitch)' }); }catch(e){}
+  },
+  updatePositionState(){
+    if(!('mediaSession' in navigator) || !navigator.mediaSession.setPositionState) return;
+    const dur=Engine.duration||0; if(dur<=0) return;
+    let pos=Engine.songTime(); if(pos<0) pos=0; else if(pos>dur) pos=dur;
+    try{ navigator.mediaSession.setPositionState({duration:dur, position:pos, playbackRate:Engine.speed||1}); }catch(e){}
+  },
+  // ---- Screen Wake Lock: keep the phone awake while music is playing ----
+  async requestWake(){
+    if(!('wakeLock' in navigator) || this._wake || document.visibilityState!=='visible') return;
+    try{ this._wake=await navigator.wakeLock.request('screen'); this._wake.addEventListener('release',()=>{ this._wake=null; }); }catch(e){ this._wake=null; }
+  },
+  releaseWake(){ try{ if(this._wake) this._wake.release(); }catch(e){} this._wake=null; },
 
   isMobile(){ return window.matchMedia('(max-width:720px)').matches; },
   setMobileView(v){
@@ -901,7 +763,9 @@ const UI = {
 
   fmt(s){ s=Math.max(0,s|0); return (s/60|0)+':'+String(s%60).padStart(2,'0'); },
 
-  loop(){ this.draw(); this.raf=requestAnimationFrame(()=>this.loop()); },
+  loop(){ this.draw();
+    const now=performance.now(); if(!this._posT||now-this._posT>500){ this._posT=now; this.updatePositionState(); }
+    this.raf=requestAnimationFrame(()=>this.loop()); },
   draw(){
     const cx=this.cx, W=this.W, H=this.H; if(!W||!this.keys) return;
     const kbH=Math.min(120,Math.max(78,H*0.20)), hit=H-kbH, look=3.0;
