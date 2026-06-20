@@ -9,6 +9,15 @@ import { parseDro } from './opl-player.js';
 const CHUNK = 128;
 const $ = id => document.getElementById(id);
 
+// Mobile/low-power devices can't afford the 8-tap Lanczos resampler running
+// per-sample on the main thread (it stutters). Detect them so the engine can
+// fall back to cheap linear interpolation. Desktop keeps the hi-fi path.
+const IS_MOBILE = (typeof navigator!=='undefined') && (
+  /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent||'') ||
+  (navigator.maxTouchPoints>1 && /Mac/.test(navigator.platform||'')) ||
+  (typeof window!=='undefined' && window.matchMedia && window.matchMedia('(pointer:coarse)').matches)
+);
+
 // Optional self-contained build: roms.embedded.js (gitignored) sets window.__TFX_ROMS
 // to a { filename: Uint8Array } map of the Roland ROMs so no separate ROM files are
 // fetched. Absent in the public repo -> we fall back to fetching ROM files from disk.
@@ -181,6 +190,9 @@ const Engine = {
   eventIdx:0, synthPos:0,
   speed:1, vol:0.85, blend:0, playing:false, ended:false,
   ratio:1, frac:0, prevL:0,prevR:0,curL:0,curR:0,
+  // hifi=true -> 8-tap Lanczos polyphase resampler (desktop). hifi=false ->
+  // cheap 2-tap linear interpolation (mobile, avoids main-thread stutter).
+  hifi:!IS_MOBILE,
   // Lanczos polyphase resampler: ring of recent source frames + continuous read position.
   rsL:new Float32Array(16), rsR:new Float32Array(16), rsHead:0, rsPos:3, rsTbl:null, rsTblRatio:0,
   chunkL:new Float32Array(CHUNK),chunkR:new Float32Array(CHUNK),chunkIdx:CHUNK,chunkLen:CHUNK,
@@ -352,21 +364,36 @@ const Engine = {
     this.anchorSong = (this.synthPos/this.rate)*this.speed;
     this.anchored = true;
     const v=this.vol, ratio=this.ratio, blend=this.blend;
-    if(this.rsTblRatio!==ratio){ this.rsTbl=buildPolyphase(ratio); this.rsTblRatio=ratio; }
+    if(this.hifi && this.rsTblRatio!==ratio){ this.rsTbl=buildPolyphase(ratio); this.rsTblRatio=ratio; }
     const tbl=this.rsTbl, rsL=this.rsL, rsR=this.rsR;
-    for(let i=0;i<n;i++){
-      // pull source frames until the 8-tap window around rsPos is available
-      const need=(this.rsPos|0)+4;
-      while(this.rsHead<=need){ const fr=this.nextFrame(); const m=this.rsHead&15; rsL[m]=fr[0]; rsR[m]=fr[1]; this.rsHead++; }
-      const i0=this.rsPos|0, frac=this.rsPos-i0;
-      const b=((frac*512)|0)*8, o=i0-3;
-      let L=0,R=0;
-      for(let k=0;k<8;k++){ const m=(o+k)&15, w=tbl[b+k]; L+=w*rsL[m]; R+=w*rsR[m]; }
-      // stereo blend: fold L/R toward their mono mid (0=full stereo, 1=mono)
-      if(blend>0){ const mid=(L+R)*0.5; L+=(mid-L)*blend; R+=(mid-R)*blend; }
-      outL[i]=L*v;
-      outR[i]=R*v;
-      this.rsPos+=ratio;
+    if(this.hifi){
+      for(let i=0;i<n;i++){
+        // pull source frames until the 8-tap window around rsPos is available
+        const need=(this.rsPos|0)+4;
+        while(this.rsHead<=need){ const fr=this.nextFrame(); const m=this.rsHead&15; rsL[m]=fr[0]; rsR[m]=fr[1]; this.rsHead++; }
+        const i0=this.rsPos|0, frac=this.rsPos-i0;
+        const b=((frac*512)|0)*8, o=i0-3;
+        let L=0,R=0;
+        for(let k=0;k<8;k++){ const m=(o+k)&15, w=tbl[b+k]; L+=w*rsL[m]; R+=w*rsR[m]; }
+        // stereo blend: fold L/R toward their mono mid (0=full stereo, 1=mono)
+        if(blend>0){ const mid=(L+R)*0.5; L+=(mid-L)*blend; R+=(mid-R)*blend; }
+        outL[i]=L*v;
+        outR[i]=R*v;
+        this.rsPos+=ratio;
+      }
+    } else {
+      // Cheap 2-tap linear interpolation (mobile). ~4x less per-sample work than
+      // the Lanczos path, which keeps low-power CPUs from underrunning the buffer.
+      for(let i=0;i<n;i++){
+        const i0=this.rsPos|0, need=i0+1;
+        while(this.rsHead<=need){ const fr=this.nextFrame(); const m=this.rsHead&15; rsL[m]=fr[0]; rsR[m]=fr[1]; this.rsHead++; }
+        const frac=this.rsPos-i0, a=i0&15, b2=(i0+1)&15;
+        let L=rsL[a]+(rsL[b2]-rsL[a])*frac, R=rsR[a]+(rsR[b2]-rsR[a])*frac;
+        if(blend>0){ const mid=(L+R)*0.5; L+=(mid-L)*blend; R+=(mid-R)*blend; }
+        outL[i]=L*v;
+        outR[i]=R*v;
+        this.rsPos+=ratio;
+      }
     }
     if(this.ended){ this.playing=false; if(this.onEnded) this.onEnded(); }
   },
