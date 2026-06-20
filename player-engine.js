@@ -213,7 +213,11 @@ const Engine = {
     if(this.ctx) return;
     const C = window.AudioContext||window.webkitAudioContext;
     // latencyHint:'playback' lets the UA choose larger, glitch-resistant buffers (ideal for a music player).
-    let ctx; try{ ctx=new C({sampleRate:48000,latencyHint:'playback'}); }catch(e){ try{ ctx=new C({latencyHint:'playback'}); }catch(e2){ ctx=new C(); } }
+    // But on mobile those big hardware buffers make ctx.currentTime advance in coarse steps, which makes the
+    // rAF-driven falling-notes clock (songTime() reads ctx.currentTime) stutter. Use 'interactive' on mobile
+    // so the clock ticks finely and the roll animates smoothly.
+    const hint = IS_MOBILE ? 'interactive' : 'playback';
+    let ctx; try{ ctx=new C({sampleRate:48000,latencyHint:hint}); }catch(e){ try{ ctx=new C({latencyHint:hint}); }catch(e2){ ctx=new C(); } }
     this.ctx=ctx; this.ratio=this.rate/ctx.sampleRate;
     const node=ctx.createScriptProcessor(8192,0,2);
     node.onaudioprocess=e=>this.process(e);
