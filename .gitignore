@@ -5,6 +5,8 @@
 # Drop your own copies into this folder to enable audio (see README).
 MT32_CONTROL.ROM
 MT32_PCM.ROM
+CM32L_CONTROL.ROM
+CM32L_PCM.ROM
 SC55_ROM1.bin
 SC55_ROM2.bin
 SC55_WAVE1.bin

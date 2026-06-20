@@ -31,21 +31,24 @@ then open <http://localhost:8777/> (Chrome works best).
 
 ## 🎹 Synth ROMs are required (not included)
 
-The Roland **MT-32** and **SC-55** ROM images are copyrighted by Roland and are
+The Roland **CM-32L / LAPC-I** and **SC-55** ROM images are copyrighted by Roland and are
 **not distributed here**. To enable audio, drop your own legally-obtained copies into
 this folder:
 
 | File                | Synth | Notes |
 |---------------------|-------|-------|
-| `MT32_CONTROL.ROM`  | MT-32 | Control ROM (v1.07) |
-| `MT32_PCM.ROM`      | MT-32 | PCM ROM |
+| `CM32L_CONTROL.ROM` | CM-32L / LAPC-I | Control ROM (v1.02) |
+| `CM32L_PCM.ROM`     | CM-32L / LAPC-I | PCM ROM (1 MB, MT-32 superset + effects) |
 | `SC55_ROM1.bin`     | SC-55 | Program ROM 1 |
 | `SC55_ROM2.bin`     | SC-55 | Program ROM 2 |
 | `SC55_WAVE1.bin`    | SC-55 | Wave ROM 1 |
 | `SC55_WAVE2.bin`    | SC-55 | Wave ROM 2 |
 | `SC55_WAVE3.bin`    | SC-55 | Wave ROM 3 |
 
-Without these the page loads but stays on the "initialising" overlay.
+The CM-32L is the MT-32's superset (same LA synthesis plus the extra PCM
+sound-effect timbres), so MT-32-targeted scores sound identical while
+CM-32L/LAPC-I-aware ones gain the extra effects. Without these ROMs the page
+loads but stays on the "initialising" overlay.
 
 ## 🎛️ Controls
 

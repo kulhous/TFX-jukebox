@@ -38,7 +38,10 @@ const MT32Backend = {
   async boot(){
     if(this.ready) return;
     this.M = await MT32Module();
-    const [ctrl,pcm] = await Promise.all([rdBin('MT32_CONTROL.ROM'), rdBin('MT32_PCM.ROM')]);
+    // Roland CM-32L / LAPC-I ROMs: the MT-32's LA-synth superset, adding the
+    // extra PCM sound-effect timbres. A strict superset of the MT-32, so MT-32-
+    // targeted scores sound identical while CM-32L-aware ones gain the extras.
+    const [ctrl,pcm] = await Promise.all([rdBin('CM32L_CONTROL.ROM'), rdBin('CM32L_PCM.ROM')]);
     const cp=this.M._malloc(ctrl.length); this.M.HEAPU8.set(ctrl,cp);
     const pp=this.M._malloc(pcm.length);  this.M.HEAPU8.set(pcm,pp);
     const sr=this.M._mt32_init(cp,ctrl.length,pp,pcm.length);

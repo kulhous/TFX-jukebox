@@ -1,0 +1,452 @@
+[
+  {
+    "file": "00_Geoscape1_RLD.mid",
+    "label": "02 - Geoscape",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "01_nowt_RLD.mid",
+    "label": "Geoscape (take 2)",
+    "named": true,
+    "hidden": true,
+    "note": "near-dup of Geoscape — placeholder 'nowt'"
+  },
+  {
+    "file": "02_Intercept_RLD.mid",
+    "label": "04 - Interception",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "03_defend_RLD.mid",
+    "label": "06 - Base Defense",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "04_defend_RLD.mid",
+    "label": "Base Defense",
+    "named": true,
+    "hidden": true,
+    "note": "byte-dup of 03"
+  },
+  {
+    "file": "05_nowt_RLD.mid",
+    "label": "Geoscape (nowt)",
+    "named": true,
+    "hidden": true,
+    "note": "byte-dup of 01"
+  },
+  {
+    "file": "06_Enemy_Base_RLD.mid",
+    "label": "07 - Alien Base Assault",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "07_Enemy_Base_RLD.mid",
+    "label": "Alien Base Assault",
+    "named": true,
+    "hidden": true,
+    "note": "byte-dup of 06"
+  },
+  {
+    "file": "08_Mars_RLD.mid",
+    "label": "08 - Mars / Cydonia",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "09_Mars_again_RLD.mid",
+    "label": "09 - Mars (alternate)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "10_Lose_RLD.mid",
+    "label": "12 - Game Over",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "11_Win_RLD.mid",
+    "label": "11 - Victory",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "12_Story_RLD.mid",
+    "label": "10 - Story / Briefing",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "13_Nowt_RLD.mid",
+    "label": "Mars (nowt)",
+    "named": true,
+    "hidden": true,
+    "note": "placeholder 'Nowt' — variant of Mars alt"
+  },
+  {
+    "file": "14_Nowt_RLD.mid",
+    "label": "Mars (nowt)",
+    "named": true,
+    "hidden": true,
+    "note": "byte-dup of 13"
+  },
+  {
+    "file": "15_Nowt_RLD.mid",
+    "label": "Mars (nowt)",
+    "named": true,
+    "hidden": true,
+    "note": "byte-dup of 13"
+  },
+  {
+    "file": "16_Nowt_RLD.mid",
+    "label": "Mars (nowt)",
+    "named": true,
+    "hidden": true,
+    "note": "byte-dup of 13"
+  },
+  {
+    "file": "17_Tactical_section_RLD.mid",
+    "label": "05 - Tactical Combat",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "18_Geoscape_alternative_RLD.mid",
+    "label": "03 - Geoscape (alternate)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "19_Intro1_RLD.mid",
+    "label": "Intro, Part 1",
+    "named": true,
+    "hidden": true,
+    "note": "joined into the combined Intro"
+  },
+  {
+    "file": "20_Intro2_RLD.mid",
+    "label": "Intro, Part 2",
+    "named": true,
+    "hidden": true,
+    "note": "joined into the combined Intro"
+  },
+  {
+    "file": "21_Intro3_RLD.mid",
+    "label": "Intro, Part 3",
+    "named": true,
+    "hidden": true,
+    "note": "joined into the combined Intro"
+  },
+  {
+    "file": "00_Geoscape1_GM.mid",
+    "label": "02 - Geoscape",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "00_Geoscape1_ADL.dro",
+    "label": "02 - Geoscape",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "01_nowt_GM.mid",
+    "label": "Geoscape (take 2)",
+    "named": true,
+    "hidden": true,
+    "note": "near-dup of Geoscape — placeholder 'nowt'"
+  },
+  {
+    "file": "01_nowt_ADL.dro",
+    "label": "Geoscape (take 2)",
+    "named": true,
+    "hidden": true,
+    "note": "near-dup of Geoscape — placeholder 'nowt'"
+  },
+  {
+    "file": "02_Intercept_GM.mid",
+    "label": "04 - Interception",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "02_Intercept_ADL.dro",
+    "label": "04 - Interception",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "03_defend_GM.mid",
+    "label": "06 - Base Defense",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "03_defend_ADL.dro",
+    "label": "06 - Base Defense",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "04_defend_GM.mid",
+    "label": "Base Defense",
+    "named": true,
+    "hidden": true,
+    "note": "byte-dup of 03"
+  },
+  {
+    "file": "04_defend_ADL.dro",
+    "label": "Base Defense",
+    "named": true,
+    "hidden": true,
+    "note": "byte-dup of 03"
+  },
+  {
+    "file": "05_nowt_GM.mid",
+    "label": "Geoscape (nowt)",
+    "named": true,
+    "hidden": true,
+    "note": "byte-dup of 01"
+  },
+  {
+    "file": "05_nowt_ADL.dro",
+    "label": "Geoscape (nowt)",
+    "named": true,
+    "hidden": true,
+    "note": "byte-dup of 01"
+  },
+  {
+    "file": "06_Enemy_Base_GM.mid",
+    "label": "07 - Alien Base Assault",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "06_Enemy_Base_ADL.dro",
+    "label": "07 - Alien Base Assault",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "07_Enemy_Base_GM.mid",
+    "label": "Alien Base Assault",
+    "named": true,
+    "hidden": true,
+    "note": "byte-dup of 06"
+  },
+  {
+    "file": "07_Enemy_Base_ADL.dro",
+    "label": "Alien Base Assault",
+    "named": true,
+    "hidden": true,
+    "note": "byte-dup of 06"
+  },
+  {
+    "file": "08_Mars_GM.mid",
+    "label": "08 - Mars / Cydonia",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "08_Mars_ADL.dro",
+    "label": "08 - Mars / Cydonia",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "09_Mars_again_GM.mid",
+    "label": "09 - Mars (alternate)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "09_Mars_again_ADL.dro",
+    "label": "09 - Mars (alternate)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "10_Lose_GM.mid",
+    "label": "12 - Game Over",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "10_Lose_ADL.dro",
+    "label": "12 - Game Over",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "11_Win_GM.mid",
+    "label": "11 - Victory",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "11_Win_ADL.dro",
+    "label": "11 - Victory",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "12_Story_GM.mid",
+    "label": "10 - Story / Briefing",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "12_Story_ADL.dro",
+    "label": "10 - Story / Briefing",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "13_Nowt_GM.mid",
+    "label": "Mars (nowt)",
+    "named": true,
+    "hidden": true,
+    "note": "placeholder 'Nowt' — variant of Mars alt"
+  },
+  {
+    "file": "13_Nowt_ADL.dro",
+    "label": "Mars (nowt)",
+    "named": true,
+    "hidden": true,
+    "note": "placeholder 'Nowt' — variant of Mars alt"
+  },
+  {
+    "file": "14_Nowt_GM.mid",
+    "label": "Mars (nowt)",
+    "named": true,
+    "hidden": true,
+    "note": "byte-dup of 13"
+  },
+  {
+    "file": "14_Nowt_ADL.dro",
+    "label": "Mars (nowt)",
+    "named": true,
+    "hidden": true,
+    "note": "byte-dup of 13"
+  },
+  {
+    "file": "15_Nowt_GM.mid",
+    "label": "Mars (nowt)",
+    "named": true,
+    "hidden": true,
+    "note": "byte-dup of 13"
+  },
+  {
+    "file": "15_Nowt_ADL.dro",
+    "label": "Mars (nowt)",
+    "named": true,
+    "hidden": true,
+    "note": "byte-dup of 13"
+  },
+  {
+    "file": "16_Nowt_GM.mid",
+    "label": "Mars (nowt)",
+    "named": true,
+    "hidden": true,
+    "note": "byte-dup of 13"
+  },
+  {
+    "file": "16_Nowt_ADL.dro",
+    "label": "Mars (nowt)",
+    "named": true,
+    "hidden": true,
+    "note": "byte-dup of 13"
+  },
+  {
+    "file": "17_Tactical_section_GM.mid",
+    "label": "05 - Tactical Combat",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "17_Tactical_section_ADL.dro",
+    "label": "05 - Tactical Combat",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "18_Geoscape_alternative_GM.mid",
+    "label": "03 - Geoscape (alternate)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "18_Geoscape_alternative_ADL.dro",
+    "label": "03 - Geoscape (alternate)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "19_Intro1_GM.mid",
+    "label": "Intro, Part 1",
+    "named": true,
+    "hidden": true,
+    "note": "joined into the combined Intro"
+  },
+  {
+    "file": "19_Intro1_ADL.dro",
+    "label": "Intro, Part 1",
+    "named": true,
+    "hidden": true,
+    "note": "joined into the combined Intro"
+  },
+  {
+    "file": "20_Intro2_GM.mid",
+    "label": "Intro, Part 2",
+    "named": true,
+    "hidden": true,
+    "note": "joined into the combined Intro"
+  },
+  {
+    "file": "20_Intro2_ADL.dro",
+    "label": "Intro, Part 2",
+    "named": true,
+    "hidden": true,
+    "note": "joined into the combined Intro"
+  },
+  {
+    "file": "21_Intro3_GM.mid",
+    "label": "Intro, Part 3",
+    "named": true,
+    "hidden": true,
+    "note": "joined into the combined Intro"
+  },
+  {
+    "file": "21_Intro3_ADL.dro",
+    "label": "Intro, Part 3",
+    "named": true,
+    "hidden": true,
+    "note": "joined into the combined Intro"
+  },
+  {
+    "file": "Intro_full_RLD.mid",
+    "label": "01 - Intro",
+    "named": true,
+    "hidden": false,
+    "note": "Intro Parts 1+2+3 joined into one continuous cue"
+  },
+  {
+    "file": "Intro_full_GM.mid",
+    "label": "01 - Intro",
+    "named": true,
+    "hidden": false,
+    "note": "Intro Parts 1+2+3 joined into one continuous cue"
+  },
+  {
+    "file": "Intro_full_ADL.dro",
+    "label": "01 - Intro",
+    "named": true,
+    "hidden": false,
+    "note": "Intro Parts 1+2+3 joined into one continuous cue"
+  }
+]

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>INFERNO · MT-32 / SC-55 / AdLib</title>
+<title>X-COM: UFO Defense · MT-32 / General MIDI / AdLib</title>
 <style>
   @font-face{
     font-family:"TFX Pixel";
@@ -11,9 +11,9 @@
     font-weight:normal;font-style:normal;font-display:block;
   }
   :root{
-    /* red thermal phosphor monitor (Parallax NAVICOM tint) */
-    --bg:#340f0b; --mon:#2a0c09; --mon-ink:#f0573f; --mon-ink2:#b23a2a; --mon-line:#6e241a; --mon-hi:#ff8f73;
-    --screen:#120402;
+    /* phosphor monitor */
+    --bg:#45503c; --mon:#3e4936; --mon-ink:#cdd7b2; --mon-ink2:#93a173; --mon-line:#73815a; --mon-hi:#e9efce;
+    --screen:#171c12;
     /* real brushed steel */
     --steel:#9498a0; --steel-lt:#e2e5e9; --steel-dk:#2c2f35; --steel-emb:#15171b; --steel-ink:#eef0f2;
     --steel-grad:linear-gradient(180deg,#c4c8cd 0%,#9a9ea6 46%,#6b7078 100%);
@@ -51,7 +51,7 @@
   header{padding:7px 12px 4px}
   .htop{display:flex;align-items:flex-end;gap:12px}
   .logo{font-size:22px;font-weight:700;color:var(--mon-hi);letter-spacing:0;line-height:.9;
-    text-shadow:0 0 7px rgba(255,90,60,.45)}
+    text-shadow:0 0 7px rgba(190,210,120,.4)}
   .hline{flex:1;height:0;border-top:1px solid var(--mon-line);box-shadow:0 1px 0 rgba(0,0,0,.35);margin-bottom:5px}
   .hright{color:var(--mon-ink2);font-size:11px;margin-bottom:1px}
   .xlink{color:var(--screen);background:var(--mon-ink2);text-decoration:none;
@@ -86,7 +86,7 @@
   #rollWrap{flex:1;position:relative;min-width:0;background:var(--screen)}
   canvas{display:block;width:100%;height:100%;image-rendering:pixelated}
   #overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-    background:rgba(26,7,5,.92);color:var(--mon-ink2);text-align:center;padding:20px;font-size:12px;z-index:5}
+    background:rgba(20,24,16,.92);color:var(--mon-ink2);text-align:center;padding:20px;font-size:12px;z-index:5}
   #overlay.hidden{display:none}
 
   #side{width:420px;display:flex;flex-direction:column;min-height:0;background:var(--mon)}
@@ -95,16 +95,6 @@
   .side-h b{color:var(--mon-hi);font-weight:400}
   .side-h .sp{flex:1}
   .filterbar{display:flex;gap:5px;padding:5px 9px;border-bottom:1px solid var(--mon-line)}
-  .gamesel{font:inherit;text-transform:uppercase;letter-spacing:0;font-size:13px;
-    color:var(--mon-hi);background:var(--screen);border:1px solid var(--mon-line);
-    padding:2px 4px;cursor:pointer;margin-right:4px;max-width:150px}
-  .gamehdr{display:flex;align-items:center;gap:8px;height:22px;padding:0 10px;
-    color:var(--screen);background:var(--mon-ink2);font-size:12px;letter-spacing:1px;
-    position:sticky;top:0;z-index:2;border-bottom:1px solid var(--mon-line)}
-  /* single game (INFERNO) — the per-game grouping header is redundant */
-  .gamehdr{display:none}
-  .gamehdr b{color:var(--screen);font-weight:700}
-  .gamehdr .cnt{margin-left:auto;opacity:.8;font-size:11px}
   .fbtn{font:inherit;text-transform:uppercase;letter-spacing:0;font-size:13px;color:var(--mon-ink2);
     background:transparent;border:1px solid var(--mon-line);padding:2px 9px;cursor:pointer;display:flex;align-items:center;gap:6px}
   .fbtn:hover{color:var(--mon-hi)}
@@ -113,33 +103,28 @@
   #songlist{overflow-y:auto;flex:1;scrollbar-width:none}
   #songlist::-webkit-scrollbar{display:none}
   .song{display:flex;align-items:center;gap:9px;height:24px;padding:0 10px;cursor:pointer;color:var(--mon-ink);
-    border-bottom:1px solid rgba(180,60,45,.18);font-size:13px;line-height:1;white-space:nowrap;overflow:hidden}
+    border-bottom:1px solid rgba(115,129,90,.16);font-size:13px;line-height:1;white-space:nowrap;overflow:hidden}
   .song .nm{overflow:hidden;text-overflow:ellipsis}
-  .song.renamed .nm{color:var(--warn);font-weight:600}
-  .song .nm-edit{flex:1;min-width:0;font:inherit;font-size:13px;line-height:1;
-    color:var(--screen);background:#0d1108;border:1px solid var(--warn);border-radius:3px;
-    padding:2px 4px;outline:none}
-  .song .src{flex:none;margin-left:auto;font-size:10px;opacity:.45;font-variant-numeric:tabular-nums}
   .song .tid{flex:none;width:30px;box-sizing:border-box;font-size:13px;line-height:1;color:var(--screen);background:var(--mon-line);
     border-radius:3px;padding:3px 4px;opacity:.85;font-variant-numeric:tabular-nums;text-align:center}
-  .song:hover{background:rgba(180,60,45,.18)}
+  .song:hover{background:rgba(115,129,90,.16)}
   .song.sel{background:var(--mon-line);color:var(--screen)}
   .song.playing{box-shadow:inset 3px 0 0 var(--warn)}
   /* driver icons / badges */
   .dchip{flex:none;width:34px;box-sizing:border-box;font-size:13px;letter-spacing:0;padding:3px 0;border-radius:2px;
     border:1px solid;line-height:1;text-align:center;text-indent:1px}
-  /* MT-32: dark ink on hot red phosphor */
-  .dchip.rld{color:#1a0805;background:#f0573f;border-color:#b23a2a}
-  /* SCC: light red text on dark screen */
-  .dchip.scc{color:#ff8f73;background:#160503;border-color:#c0392a}
-  /* AdLib/OPL: amber FM tint (kept distinct from the red device set) */
+  /* MT-32: dark ink on light phosphor */
+  .dchip.rld{color:#10160c;background:#cdd7b2;border-color:#93a173}
+  /* SCC: light text on dark screen, light border */
+  .dchip.scc{color:#cdd7b2;background:#171c12;border-color:#b8c79b}
+  /* AdLib/OPL: yellowish FM tint (matches playhead/seeker --warn, slightly muted) */
   .dchip.adl{color:#1a1205;background:#d8c63f;border-color:#a8970f}
   /* plasma scrollbar — lit phosphor bar */
-  #sb{width:14px;background:#120402;position:relative;cursor:pointer;
-    box-shadow:inset 1px 0 0 rgba(0,0,0,.5),inset -1px 0 0 rgba(180,60,45,.25)}
+  #sb{width:14px;background:#0e120a;position:relative;cursor:pointer;
+    box-shadow:inset 1px 0 0 rgba(0,0,0,.5),inset -1px 0 0 rgba(115,129,90,.25)}
   #sbthumb{position:absolute;left:2px;right:2px;min-height:18px;border-radius:1px;
     background:linear-gradient(90deg,var(--mon-ink2) 0%,var(--mon-hi) 50%,var(--mon-ink2) 100%);
-    box-shadow:0 0 6px rgba(255,110,80,.6),0 0 2px rgba(255,150,120,.9),inset 0 0 0 1px rgba(255,150,120,.4)}
+    box-shadow:0 0 6px rgba(205,215,178,.6),0 0 2px rgba(233,239,206,.9),inset 0 0 0 1px rgba(233,239,206,.4)}
 
   /* ---- bottom steel dashboard ---- */
   #dash{padding:7px 9px 9px;
@@ -228,6 +213,37 @@
   .mtab.on{color:#0c0e11;background:var(--steel-grad-dn);text-shadow:none;
     border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);
     border-right:1px solid var(--steel-lt);border-bottom:1px solid var(--steel-lt);box-shadow:inset 0 1px 3px rgba(0,0,0,.4)}
+  /* smaller INFO tab on mobile — doesn't claim an equal third of the row */
+  .minfo{flex:0 0 auto;padding-left:13px;padding-right:13px}
+
+  /* ---- desktop INFO button: sits by the Barry Leitch credit, far right ---- */
+  .infobtn{margin-left:auto;font-size:13px}
+  .infobtn + .credit{margin-left:10px;padding-left:0}
+
+  /* ---- ABOUT panel: embedded in the green monitor, replaces roll + list ---- */
+  /* sits inside #screen (inset:0) and uses the TFX Pixel font like everything
+     else on the monitor; only the body scrolls — the chassis never does */
+  #infoModal{position:absolute;inset:0;z-index:40;display:none;flex-direction:column;
+    background:var(--bg)}
+  #infoModal.show{display:flex}
+  .imodal{position:relative;flex:1;min-height:0;display:flex;flex-direction:column;background:transparent}
+  .imodal-h{display:flex;align-items:center;gap:10px;padding:7px 12px;color:var(--mon-ink2);
+    border-bottom:1px solid var(--mon-line)}
+  .imodal-h .t{font-size:14px;letter-spacing:1px;color:var(--mon-hi);
+    text-shadow:0 0 7px rgba(190,210,120,.4)}
+  .imodal-body{flex:1;min-height:0;overflow-y:auto;padding:16px 22px 22px;color:var(--mon-ink);
+    font-size:13px;line-height:1.7;
+    background:radial-gradient(130% 120% at 50% 0%,rgba(115,129,90,.10),transparent 60%)}
+  .imodal-body h2{font-size:15px;line-height:1.45;color:var(--mon-hi);margin:24px 0 10px;
+    text-shadow:0 0 8px rgba(190,210,120,.3)}
+  .imodal-body h2:first-child{margin-top:0}
+  .imodal-body p{margin:0 0 11px}
+  .imodal-body strong{color:var(--mon-hi)}
+  .imodal-body .ichain{display:flex;flex-direction:column;gap:3px;margin:0 0 14px;padding:12px 14px;
+    background:rgba(0,0,0,.32);color:var(--mon-ink2);
+    border-left:3px solid var(--mon-line);font-size:12px;line-height:1.6}
+  .imodal-body .ichain span:first-child{color:var(--mon-hi)}
+  .imodal-body .sig{margin-top:20px;color:var(--mon-ink2)}
 
   /* ===================== MOBILE LAYOUT ===================== */
   @media (max-width:720px){
@@ -256,6 +272,7 @@
     #dash{padding:6px}
     #transport{flex-wrap:nowrap;gap:6px;align-items:stretch}
     .credit{display:none}
+    #transport .btn.infobtn{display:none}
     #transport .btn{width:44px;padding:0;text-align:center;font-size:0;
       display:flex;align-items:center;justify-content:center}
     #transport .btn::before{font-family:inherit;font-size:20px;line-height:1;letter-spacing:0}
@@ -312,6 +329,7 @@
     /* playback controls pinned to the bottom of the column, buttons spread to fit */
     #transport{order:3;flex:none;flex-wrap:wrap;gap:6px;align-items:stretch;margin-top:auto}
     .credit{display:none}
+    #transport .btn.infobtn{display:none}
     #transport .btn{flex:1;min-width:0;padding:8px 0;text-align:center;font-size:0;
       display:flex;align-items:center;justify-content:center;order:2}
     #transport .btn::before{font-family:inherit;font-size:20px;line-height:1;letter-spacing:0}
@@ -334,14 +352,14 @@
   <div id="screen">
   <header>
     <div class="htop">
-      <span class="logo">INFERNO</span>
+      <span class="logo">X-COM</span>
       <span class="hline"></span>
       <span class="gamenav"><select class="gamesel" aria-label="Select soundtrack" title="Switch jukebox" onchange="if(this.value)location.href=this.value">
         <option value="index.html">TFX</option>
-        <option value="inferno.html" selected>INFERNO</option>
-        <option value="ufo.html">X-COM</option>
+        <option value="inferno.html">INFERNO</option>
+        <option value="ufo.html" selected>X-COM</option>
       </select></span>
-      <span class="hright">INFERNO &middot; OCEAN (1994)</span>
+      <span class="hright">UFO: ENEMY UNKNOWN JUKEBOX</span>
     </div>
     <div class="hsub">
       <div class="hmarquee">
@@ -351,6 +369,7 @@
       <span>NOTES: <b id="st-notes">0</b></span>
       <span>CHANNELS: <b id="st-ch">0</b></span>
       <span>SYNTH: <b id="st-synth">CM-32L / LAPC-I · v1.02 + PCM</b></span>
+      <span>SOURCE: <b id="st-src">ROLAND.CAT (MT-32)</b></span>
       </div>
     </div>
   </header>
@@ -358,16 +377,15 @@
   <div id="main">
     <div id="rollWrap" class="ginset">
       <canvas id="roll"></canvas>
-      <div id="overlay">INITIALISING MT-32 SYNTHESIS &mdash; HARDWARE &amp; ROM IMAGES&hellip;</div>
+      <div id="overlay">INITIALISING SYNTHESIS &mdash; HARDWARE &amp; ROM IMAGES&hellip;</div>
     </div>
     <div id="side" class="graise">
       <div class="side-h">TRACK SELECT<span class="sp"></span><b id="trackcount">0</b></div>
       <div class="filterbar" id="filterbar">
         <button class="fbtn on" data-f="ALL">ALL</button>
         <button class="fbtn" data-f="RLD"><span class="dchip rld">MT</span>MT-32</button>
-        <button class="fbtn" data-f="SCC"><span class="dchip scc">SC</span>SCC</button>
+        <button class="fbtn" data-f="SCC"><span class="dchip scc">GM</span>Gen MIDI</button>
         <button class="fbtn" data-f="ADL"><span class="dchip adl">FM</span>AdLib</button>
-        <button class="fbtn" id="exportBtn" style="display:none" title="Download your renames as JSON (double-click a track name to rename)">⭳ EXPORT <b id="renameCount">0</b></button>
       </div>
       <div id="listwrap">
         <div id="songlist"></div>
@@ -383,12 +401,41 @@
     </div>
     <span id="time">0:00 / 0:00</span>
   </div>
+
+  <div id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
+    <div class="imodal">
+      <div class="imodal-h">
+        <span class="t" id="infoTitle">ABOUT -- X-COM MUSIC / MT-32 / GENERAL MIDI / ADLIB</span>
+      </div>
+      <div class="imodal-body">
+        <h2>The authentic scores for the alien war.</h2>
+        <p>X-COM: UFO Defense (released in Europe as UFO: Enemy Unknown, MicroProse / Mythos Games, 1994) shipped its music as compact event data, not as recorded audio. This jukebox plays three of the period sound devices side by side: the <strong>Roland MT-32 / LAPC-I</strong> arrangement from ROLAND.CAT, the <strong>General MIDI</strong> arrangement from GM.CAT (on a Roland SC-55 / SCC-1 Sound Canvas), and the <strong>AdLib / Sound Blaster (OPL2 FM)</strong> arrangement from ADLIB.CAT. Use the <strong>MT-32 / Gen MIDI / AdLib</strong> filter to switch between them.</p>
+
+        <h2>MT-32: the strange, synthetic original</h2>
+        <p>The MT-32 version is built from the device's LA synthesis -- small PCM attacks layered over synthetic partials. Its pads are cold and metallic, its percussion is unusual, and its overall character is a little alien. For a game about an alien invasion that suits the material perfectly: tense, atmospheric, and unmistakably a product of early-90s PC sound hardware. Each cue is fully multi-timbral, spreading melody, bass, harmony and percussion across the MT-32's parts.</p>
+
+        <h2>General MIDI: the Sound Canvas mix</h2>
+        <p>The GM.CAT build targets a General-MIDI device -- here a <strong>Roland SC-55 / SCC-1</strong>, the Sound Canvas that defined the GM sound of the mid-90s. It is a fully multi-timbral arrangement, one part per MIDI channel with standard GM instruments and a dedicated drum channel, so it sounds cleaner and more orchestral than the FM version while staying faithful to the original score.</p>
+
+        <h2>AdLib: nine-voice FM</h2>
+        <p>The AdLib version drives a Yamaha <strong>OPL2 (YM3812)</strong> -- the same two-operator FM chip in the original AdLib and Sound Blaster cards. It is the sound most players actually heard in 1994: punchy, buzzy and bright, with the music's own custom FM patches and up to nine simultaneous voices. We faithfully re-run the game's AdLib driver and capture its raw OPL register writes, then play them through a cycle-accurate Nuked-OPL3 emulator.</p>
+
+        <h2>How this works</h2>
+        <p>The <strong>ROLAND.CAT</strong> and <strong>GM.CAT</strong> archives store each cue as parallel delay-prefixed, running-status MIDI tracks; a converter (a port of the X-COM GMCat reader) turns those back into Standard MIDI Files for the MT-32 and SC-55. The <strong>ADLIB.CAT</strong> archive stores an OPL instrument table plus the driver's own per-voice event stream; we emulate that driver to a DOSBox raw-OPL (DRO) log. All three are then played in your browser:</p>
+        <div class="ichain"><span>1994 X-COM ROLAND.CAT / GM.CAT / ADLIB.CAT</span><span>-&gt; MIDI tracks / OPL register log</span><span>-&gt; SMF / DRO</span><span>-&gt; JavaScript timing</span><span>-&gt; WebAssembly Munt (MT-32) / Nuked-SC55 (GM) / Nuked-OPL3 (AdLib)</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
+        <p>The synthesis engine, ROM images and UI are shared with the sister TFX jukebox -- only the music converters and this page are new.</p>
+        <p class="sig">-- a companion to the TFX jukebox</p>
+      </div>
+    </div>
+  </div>
   </div><!-- /screen -->
 
   <div id="dash">
     <div id="mtabs">
       <button class="mtab on" data-v="notes">NOTES</button>
       <button class="mtab" data-v="tracks">TRACKS</button>
+      <button class="mtab minfo" id="minfo" title="About this jukebox">INFO</button>
+      <button class="mtab minfo" id="mlp" title="Low-performance mode: lighter audio resampling if playback stutters">LOW-PERF</button>
     </div>
     <div id="chanstrip">
       <span class="lab">CHANNELS<br>L·MUTE<br>R·SOLO</span>
@@ -403,7 +450,9 @@
       <span class="dmeter"><b class="mlab">VOL</b> <input id="vol" type="range" min="0" max="1" step="0.02" value="0.85"><b id="volV">85%</b></span>
       <span class="dmeter"><b class="mlab">MIX</b> <input id="mix" type="range" min="0" max="1" step="0.02" value="0" title="Blend L/R channels toward mono — easier on headphones"><b id="mixV">0%</b></span>
       </span>
-      <span class="credit"><a href="https://barryleitch.bandcamp.com/" target="_blank" rel="noopener">ALL MUSIC BY BARRY LEITCH</a></span>
+      <button id="lpBtn" class="btn infobtn" title="Low-performance mode: use lighter audio resampling if playback stutters on slow devices">LOW-PERF</button>
+      <button id="infoBtn" class="btn infobtn" title="About this jukebox — why MT-32, SCC and AdLib">INFO</button>
+      <span class="credit"><a href="https://www.ufopaedia.org/index.php/Music" target="_blank" rel="noopener">MUSIC BY JOHN BROOMHALL · MICROPROSE 1994</a></span>
     </div>
   </div>
 </div>
@@ -412,13 +461,10 @@
 <script src="sc55.js"></script>
 <script src="opl3.js"></script>
 <script type="module">
-import { $, Engine, parseMidi, parseDro, CH_SWATCH, CH_TILE, setChannelPalette } from './player-engine.js';
+import { $, Engine, parseMidi, parseDro, CH_SWATCH, CH_TILE } from './player-engine.js';
 // CHUNK, rdBin, the synth backends and BACKENDS now live in
 // player-engine.js, shared with the other player so the render engine
 // (MT-32 / SC-55 / OPL3 backends + Engine) never diverges between pages.
-// Re-tint the shared channel swatches/note tiles to inferno's red phosphor
-// (the default ramp is green for the index/medit monitors).
-setChannelPalette(['#170604','#5f241b','#a8483a','#dd8b75','#f7e2d9']);
 
 // ---------- UI ----------
 const LOW=21, HIGH=108;                 // A0..C8 — full piano
@@ -428,63 +474,70 @@ const isWhite=p=>WHITE.includes(((p%12)+12)%12);
 const UI = {
   songs:[], cur:null, raf:0,
   async init(){
-    // MEdit catalog: games -> compositions -> per-device renditions.
-    const cat = await fetch('medit/medit_songs.json').then(r=>r.json());
-    // user renames persist locally; keyed by game + original composition name so
-    // renaming one device's row names the whole composition (all 3 devices).
-    this.renames = JSON.parse(localStorage.getItem('tfxRenames')||'{}');
-    // INFERNO only — TFX's sister Ocean game (the rest of the MEdit archive is hidden).
-    const GAME='INFERNO';
-    this.songs=[];
-    const comps=(cat.games[GAME]||[]).slice().sort((a,b)=>
-      a.name.localeCompare(b.name,undefined,{sensitivity:'base',numeric:true}));
-    for(const comp of comps){
-      for(const drv of ['RLD','SCC','ADL']){
-        const d=comp.devices[drv]; if(!d) continue;
-        this.songs.push({file:d.file,_drv:drv,_name:comp.name,_game:GAME,
-                         notes:d.notes,alts:d.alts||[]});
-      }
-    }
-    this.game='ALL';
+    this.songs = (await fetch('ufo_songs.json').then(r=>r.json())).filter(s=>!s.hidden);
+    const DRVORD={RLD:0,SCC:1,ADL:2};
+    this.songs.forEach(s=>{
+      // UFO ships ROLAND.CAT (MT-32), GM.CAT (General MIDI) and ADLIB.CAT (OPL2 FM);
+      // the filename token picks the backend (_RLD. -> Munt MT-32, _GM. -> SC-55,
+      // _ADL. -> Nuked-OPL3). GM rides the shared SC-55 (SCC) backend.
+      const tok=(/_(RLD|GM|ADL)\./.exec(s.file)||[,'RLD'])[1];
+      s._drv={GM:'SCC',RLD:'RLD',ADL:'ADL'}[tok];
+      s._dev={RLD:'MT-32',SCC:'General MIDI',ADL:'AdLib'}[s._drv]||s._drv;
+      s._name=s.label.replace(/\s*\((?:GM|RLD|ADL)\)\s*$/,'');
+      s._tid=+(s.label.match(/^(\d+)/)||[,1e9])[1];
+    });
+    this.songs.sort((a,b)=>
+      a._name.localeCompare(b._name,undefined,{sensitivity:'base',numeric:true}) ||
+      (DRVORD[a._drv]??9)-(DRVORD[b._drv]??9) ||
+      a._tid-b._tid);
     const list=$('songlist');
-    const DCH={RLD:['rld','MT','Roland MT-32 / LAPC-I'],SCC:['scc','SC','Sound Canvas / General MIDI'],ADL:['adl','FM','AdLib / OPL2 FM synthesis']};
-    let curGame=null;
     this.songs.forEach((s,i)=>{
-      if(s._game!==curGame){
-        curGame=s._game;
-        const h=document.createElement('div'); h.className='gamehdr'; h.dataset.game=curGame;
-        const n=this.songs.filter(x=>x._game===curGame).length;
-        h.innerHTML=`<b>${curGame}</b><span class="cnt">${n}</span>`;
-        list.appendChild(h);
-      }
-      const row=document.createElement('div'); row.className='song'; row.dataset.i=i;
-      row.dataset.drv=s._drv; row.dataset.game=s._game;
+      const row=document.createElement('div'); row.className='song'; row.dataset.i=i; row.dataset.drv=s._drv;
+      const DCH={RLD:['rld','MT','Roland MT-32 / LAPC-I (ROLAND.CAT)'],
+                 SCC:['scc','GM','General MIDI — Roland SC-55 / SCC-1 (GM.CAT)'],
+                 ADL:['adl','FM','AdLib / OPL2 FM — YM3812 (ADLIB.CAT)']};
       const [dc,dl,dtitle]=DCH[s._drv]||DCH.RLD;
-      row.innerHTML=`<span class="dchip ${dc}" title="${dtitle}">${dl}</span><span class="nm"></span><span class="src">${s.notes||''}</span>`;
-      this.applyRowName(row,s);
-      row.querySelector('.nm').ondblclick=ev=>{ ev.stopPropagation(); this.editRow(row,s); };
+      row.innerHTML=`<span class="dchip ${dc}" title="${dtitle}">${dl}</span><span class="nm">${s._name}</span>`;
       row.onclick=()=>this.pick(i);
       list.appendChild(row);
     });
     this.filter='ALL';
-    [...document.querySelectorAll('.fbtn[data-f]')].forEach(b=>b.onclick=()=>{
+    [...document.querySelectorAll('.fbtn')].forEach(b=>b.onclick=()=>{
       this.filter=b.dataset.f;
-      document.querySelectorAll('.fbtn[data-f]').forEach(x=>x.classList.toggle('on',x===b));
+      document.querySelectorAll('.fbtn').forEach(x=>x.classList.toggle('on',x===b));
       this.applyFilter();
     });
-    $('exportBtn').onclick=ev=>{ ev.stopPropagation(); this.exportRenames(); };
-    this.updateRenameCount();
     this.applyFilter();
-    document.querySelectorAll('.mtab').forEach(b=>b.onclick=()=>this.setMobileView(b.dataset.v));
+    document.querySelectorAll('.mtab[data-v]').forEach(b=>b.onclick=()=>this.setMobileView(b.dataset.v));
+    const infoModal=$('infoModal');
+    const setInfo=show=>{ infoModal.classList.toggle('show',show); document.querySelectorAll('#infoBtn,#minfo').forEach(b=>b.classList.toggle('on',show)); if(show) infoModal.querySelector('.imodal-body').scrollTop=0; };
+    const toggleInfo=()=>setInfo(!infoModal.classList.contains('show'));
+    const closeInfo=()=>setInfo(false);
+    $('infoBtn').onclick=toggleInfo;
+    $('minfo').onclick=toggleInfo;
+    // LOW-PERF toggle: lighter linear resampling instead of 8-tap Lanczos for
+    // slow devices. Persisted so the choice survives reloads.
+    const lowPerf = localStorage.getItem('tfxLowPerf')==='1';
+    const applyLowPerf=on=>{
+      Engine.hifi=!on; Engine.rsTblRatio=0;   // force resampler table rebuild on next render
+      document.querySelectorAll('#lpBtn,#mlp').forEach(b=>b.classList.toggle('on',on));
+    };
+    applyLowPerf(lowPerf);
+    const toggleLowPerf=()=>{ const on=Engine.hifi; applyLowPerf(on); localStorage.setItem('tfxLowPerf',on?'1':'0'); };
+    $('lpBtn').onclick=toggleLowPerf;
+    $('mlp').onclick=toggleLowPerf;
     $('play').onclick=()=>this.toggle();
     $('restart').onclick=()=>{ Engine.seekTo(0); if(!Engine.playing) this.draw(); };
     $('clear').onclick=()=>{ Engine.mute.clear(); Engine.solo.clear(); this.refreshChannels(); };
     $('speed').oninput=e=>{ const t=Engine.songTime(); Engine.speed=+e.target.value; $('speedV').textContent=Math.round(+e.target.value*100)+'%'; Engine.synthPos=Math.round((t/Engine.speed)*Engine.rate); Engine.frozenSong=t; Engine.anchored=false; };
     $('vol').oninput=e=>{ Engine.vol=+e.target.value; $('volV').textContent=Math.round(+e.target.value*100)+'%'; };
     $('mix').oninput=e=>{ Engine.blend=+e.target.value; $('mixV').textContent=Math.round(+e.target.value*100)+'%'; };
-    $('seek').oninput=e=>{ const T=(+e.target.value/1000)*Engine.duration; Engine.seekTo(T); if(!Engine.playing) this.draw(); };
+    $('seek').oninput=e=>{ const T=(+e.target.value/1000)*Engine.duration; Engine.seekTo(T); $('seekfill').style.width=(+e.target.value/10)+'%'; $('t-cur').textContent=this.fmt(T); if(!Engine.playing) this.draw(); };
     list.onscroll=()=>this.syncScrollbar();
-    window.addEventListener('keydown',e=>{ if(e.code==='Space'){e.preventDefault(); this.toggle();} });
+    window.addEventListener('keydown',e=>{
+      if($('infoModal').classList.contains('show')){ if(e.code==='Escape') closeInfo(); return; }
+      if(e.code==='Space'){e.preventDefault(); this.toggle();}
+    });
     this.canvas=$('roll'); this.cx=this.canvas.getContext('2d');
     new ResizeObserver(()=>this.resize()).observe($('rollWrap')); this.resize();
     window.addEventListener('resize',()=>{ this.syncScrollbar(); this.tuneMarquee(); });
@@ -536,76 +589,11 @@ const UI = {
   applyFilter(){
     let n=0;
     document.querySelectorAll('.song').forEach(r=>{
-      const okDrv=this.filter==='ALL'||r.dataset.drv===this.filter;
-      const okGame=!this.game||this.game==='ALL'||r.dataset.game===this.game;
-      const show=okDrv&&okGame;
+      const show=this.filter==='ALL'||r.dataset.drv===this.filter;
       r.style.display=show?'':'none'; if(show) n++;
-    });
-    // show a game header only if it has at least one visible song
-    document.querySelectorAll('.gamehdr').forEach(h=>{
-      const g=h.dataset.game;
-      let any=false;
-      let el=h.nextElementSibling;
-      while(el && !el.classList.contains('gamehdr')){
-        if(el.classList.contains('song') && el.style.display!=='none'){ any=true; break; }
-        el=el.nextElementSibling;
-      }
-      h.style.display=any?'':'none';
     });
     $('trackcount').textContent=n;
     this.syncScrollbar();
-  },
-
-  // ---- inline rename + export -------------------------------------------
-  rkey(s){ return s._game+'\u0000'+s._name; },          // composition identity
-  dispName(s){ return this.renames[this.rkey(s)] ?? s._name; },
-  applyRowName(row,s){
-    const nm=row.querySelector('.nm'); if(!nm) return;
-    const dn=this.dispName(s);
-    nm.textContent=dn;
-    const edited=dn!==s._name;
-    row.classList.toggle('renamed',edited);
-    nm.title=edited?`renamed from "${s._name}" — double-click to edit`:'double-click to rename';
-  },
-  editRow(row,s){
-    const nm=row.querySelector('.nm'); if(!nm || row._editing) return;
-    row._editing=true;
-    const inp=document.createElement('input'); inp.className='nm-edit';
-    inp.value=this.dispName(s); inp.spellcheck=false;
-    nm.replaceWith(inp); inp.focus(); inp.select();
-    const finish=(commit)=>{
-      if(row._done) return; row._done=true;
-      if(commit) this.setName(s, inp.value);
-      const span=document.createElement('span'); span.className='nm';
-      inp.replaceWith(span); row._editing=false; row._done=false;
-      // re-apply to ALL rows sharing this composition (per-device)
-      document.querySelectorAll('.song').forEach(r=>{
-        const t=this.songs[+r.dataset.i]; if(t && this.rkey(t)===this.rkey(s)) this.applyRowName(r,t);
-      });
-      span.ondblclick=ev=>{ ev.stopPropagation(); this.editRow(row,s); };
-    };
-    inp.onkeydown=ev=>{ ev.stopPropagation();
-      if(ev.key==='Enter'){ ev.preventDefault(); finish(true); }
-      else if(ev.key==='Escape'){ ev.preventDefault(); finish(false); } };
-    inp.onblur=()=>finish(true);
-    inp.onclick=ev=>ev.stopPropagation();
-  },
-  setName(s,val){
-    const k=this.rkey(s); val=(val||'').trim();
-    if(!val || val===s._name) delete this.renames[k]; else this.renames[k]=val;
-    localStorage.setItem('tfxRenames',JSON.stringify(this.renames));
-    this.updateRenameCount();
-  },
-  updateRenameCount(){ const el=$('renameCount'); if(el) el.textContent=Object.keys(this.renames).length; },
-  exportRenames(){
-    // export as an array python can apply back to the manifest
-    const rows=Object.entries(this.renames).map(([k,name])=>{
-      const [game,orig]=k.split('\u0000'); return {game,key:orig,name};
-    }).sort((a,b)=> (a.game+a.key).localeCompare(b.game+b.key));
-    const blob=new Blob([JSON.stringify(rows,null,2)],{type:'application/json'});
-    const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
-    a.download='tfx_renames.json'; document.body.appendChild(a); a.click();
-    setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },100);
   },
 
   async pick(i){
@@ -616,14 +604,15 @@ const UI = {
     const sel=document.querySelector('.song.sel'); if(sel) sel.scrollIntoView({block:'nearest'});
     Engine.playing=false; this.setPlayUI(false);
     await Engine.useDevice(s._drv);
-    const bytes=new Uint8Array(await fetch('medit/'+s.file).then(r=>r.arrayBuffer()));
+    const bytes=new Uint8Array(await fetch('ufo/'+s.file).then(r=>r.arrayBuffer()));
     const parsed = s._drv==='ADL' ? parseDro(bytes) : parseMidi(bytes);
     Engine.mute.clear(); Engine.solo.clear();
     Engine.loadSong(parsed);
     this.buildChannels(parsed);
-    $('trackname').textContent=s._game+' \u00b7 '+this.dispName(s); this.updateMediaMeta(s);
-    $('st-drv').textContent={RLD:'MT-32',SCC:'SCC',ADL:'ADLIB'}[s._drv]||s._drv;
-    $('st-synth').textContent={RLD:'CM-32L / LAPC-I · v1.02 + PCM',SCC:'SC-55 v1.21',ADL:'OPL3 (Nuked, YMF262)'}[s._drv]||s._drv;
+    $('trackname').textContent=s._name; this.updateMediaMeta(s);
+    $('st-drv').textContent={RLD:'MT-32',SCC:'GEN MIDI',ADL:'ADLIB'}[s._drv]||s._drv;
+    $('st-synth').textContent={RLD:'CM-32L / LAPC-I · v1.02 + PCM',SCC:'SC-55 v1.21 (SCC-1)',ADL:'OPL2 · Nuked-OPL3 (YM3812)'}[s._drv]||s._drv;
+    $('st-src').textContent={RLD:'ROLAND.CAT (MT-32)',SCC:'GM.CAT (General MIDI)',ADL:'ADLIB.CAT (OPL2 FM)'}[s._drv]||s._drv;
     $('st-notes').textContent=parsed.notes.length;
     $('st-ch').textContent=parsed.channels.length;
     $('seek').value=0;
@@ -729,8 +718,8 @@ const UI = {
   },
   updateMediaMeta(s){
     if(!('mediaSession' in navigator) || typeof MediaMetadata==='undefined') return;
-    const dev={RLD:'Roland MT-32',SCC:'Roland SC-55',ADL:'AdLib OPL3 FM'}[s._drv]||s._drv;
-    try{ navigator.mediaSession.metadata=new MediaMetadata({ title:this.dispName(s), artist:dev, album:'Inferno \u2014 Ocean (1994)' }); }catch(e){}
+    const dev={RLD:'Roland MT-32',SCC:'Roland SC-55 (General MIDI)',ADL:'AdLib OPL2 FM'}[s._drv]||s._drv;
+    try{ navigator.mediaSession.metadata=new MediaMetadata({ title:s._name, artist:dev, album:'X-COM: UFO Defense — MicroProse (John Broomhall)' }); }catch(e){}
   },
   updatePositionState(){
     if(!('mediaSession' in navigator) || !navigator.mediaSession.setPositionState) return;
@@ -750,7 +739,7 @@ const UI = {
     const tracks = v==='tracks';
     document.body.classList.toggle('mtracks',tracks);
     document.body.classList.toggle('mnotes',!tracks);
-    document.querySelectorAll('.mtab').forEach(x=>x.classList.toggle('on',x.dataset.v===v));
+    document.querySelectorAll('.mtab[data-v]').forEach(x=>x.classList.toggle('on',x.dataset.v===v));
     this.resize();
   },
 
@@ -763,16 +752,16 @@ const UI = {
     const cx=this.cx, W=this.W, H=this.H; if(!W||!this.keys) return;
     const kbH=Math.min(120,Math.max(78,H*0.20)), hit=H-kbH, look=3.0;
     if(hit<=0) return;   // roll pane hidden/too short (e.g. mobile TRACKS view) — skip drawing
-    cx.fillStyle='#150503'; cx.fillRect(0,0,W,H);
+    cx.fillStyle='#13180f'; cx.fillRect(0,0,W,H);
     // radar arcs + grid backdrop
-    cx.strokeStyle='rgba(190,70,50,.18)'; cx.lineWidth=1;
+    cx.strokeStyle='rgba(115,129,90,.16)'; cx.lineWidth=1;
     const cxn=W/2, cyn=hit*0.52, R=Math.min(W,hit)*0.46;
     for(let k=1;k<=3;k++){ cx.beginPath(); cx.arc(cxn,cyn,R*k/3,0,Math.PI*2); cx.stroke(); }
     cx.beginPath(); cx.moveTo(cxn,cyn-R); cx.lineTo(cxn,cyn+R); cx.moveTo(cxn-R,cyn); cx.lineTo(cxn+R,cyn); cx.stroke();
     // black-key lane shading
     for(let p=LOW;p<=HIGH;p++) if(!isWhite(p)){ const k=this.keys[p]; cx.fillStyle='rgba(0,0,0,.14)'; cx.fillRect(k.x,0,k.w,hit); }
     // hit line
-    cx.strokeStyle='rgba(255,140,110,.6)'; cx.lineWidth=2; cx.beginPath(); cx.moveTo(0,hit); cx.lineTo(W,hit); cx.stroke();
+    cx.strokeStyle='rgba(233,239,206,.6)'; cx.lineWidth=2; cx.beginPath(); cx.moveTo(0,hit); cx.lineTo(W,hit); cx.stroke();
 
     const now=Engine.songTime();
     const FADE=0.5; const flashes={}, held={};
@@ -794,28 +783,28 @@ const UI = {
         cx.fillStyle=this._chPat[nt.channel];
         this.rr(cx,k.x+0.7,top,k.w-1.4,h,2); cx.fill();
         // light border so notes (incl. dark channel shades) stay legible on the dark roll
-        cx.globalAlpha=muted?0.10:0.9; cx.strokeStyle='rgba(255,150,120,.85)'; cx.lineWidth=1;
+        cx.globalAlpha=muted?0.10:0.9; cx.strokeStyle='rgba(233,239,206,.85)'; cx.lineWidth=1;
         this.rr(cx,k.x+0.7+0.5,top+0.5,k.w-1.4-1,Math.max(2,h-1),2); cx.stroke();
       }
     }
     cx.globalAlpha=1;
     // keyboard: white keys, then black keys on top
-    cx.fillStyle='#160503'; cx.fillRect(0,hit,W,kbH);
+    cx.fillStyle='#0e120a'; cx.fillRect(0,hit,W,kbH);
     for(let p=LOW;p<=HIGH;p++) if(isWhite(p)){ const k=this.keys[p];
       const f=flashes[p]||0;
-      // sustained tint while held (lighter red phosphor); flash (warm) fades into it
-      const sus=held[p]?[255,150,120]:[200,90,70];
-      const fl=[255,210,150];
+      // sustained tint while held (lighter, neutral phosphor — NOT yellow); flash (yellow) fades into it
+      const sus=held[p]?[233,239,206]:[206,212,184];
+      const fl=[253,231,120];
       const r=sus[0]+(fl[0]-sus[0])*f, g=sus[1]+(fl[1]-sus[1])*f, b=sus[2]+(fl[2]-sus[2])*f;
       cx.fillStyle=`rgb(${r|0},${g|0},${b|0})`;
       cx.fillRect(k.x+0.5,hit+1,k.w-1,kbH-2);
-      cx.strokeStyle='#4a1812'; cx.lineWidth=1; cx.strokeRect(k.x+0.5,hit+1,k.w-1,kbH-2);
+      cx.strokeStyle='#3a3f30'; cx.lineWidth=1; cx.strokeRect(k.x+0.5,hit+1,k.w-1,kbH-2);
     }
     const bkH=kbH*0.62;
     for(let p=LOW;p<=HIGH;p++) if(!isWhite(p)){ const k=this.keys[p];
       const f=flashes[p]||0;
-      const sus=held[p]?[90,35,28]:[40,12,9];
-      const fl=[200,90,60];
+      const sus=held[p]?[70,80,55]:[28,32,22];
+      const fl=[160,200,110];
       const r=sus[0]+(fl[0]-sus[0])*f, g=sus[1]+(fl[1]-sus[1])*f, b=sus[2]+(fl[2]-sus[2])*f;
       cx.fillStyle=`rgb(${r|0},${g|0},${b|0})`;
       cx.fillRect(k.x,hit,k.w,bkH);

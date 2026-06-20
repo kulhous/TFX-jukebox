@@ -58,6 +58,16 @@
     padding:2px 8px;border:1px solid var(--mon-line);font-size:11px;letter-spacing:1px;
     margin-right:10px;white-space:nowrap}
   .xlink:hover{background:var(--mon-hi)}
+  /* game selector dropdown — styled to match the .xlink monitor chips */
+  .gamenav{position:relative;display:inline-flex;align-items:center;margin-right:10px}
+  .gamenav::after{content:"\25BE";position:absolute;right:7px;top:50%;transform:translateY(-50%);
+    pointer-events:none;font-size:9px;color:var(--screen)}
+  .gamesel{font-family:inherit;font-size:11px;letter-spacing:1px;color:var(--screen);
+    background:var(--mon-ink2);border:1px solid var(--mon-line);padding:2px 20px 2px 8px;
+    -webkit-appearance:none;appearance:none;cursor:pointer;line-height:1.5;border-radius:0}
+  .gamesel:hover{background:var(--mon-hi)}
+  .gamesel:focus{outline:none}
+  .gamesel option{background:var(--screen);color:var(--mon-ink);letter-spacing:0}
   .hsub{display:flex;align-items:center;gap:18px;margin-top:4px;color:var(--mon-ink2);font-size:11px;flex-wrap:wrap}
   .hsub b{color:var(--mon-hi);font-weight:400}  .meter{display:flex;align-items:center;gap:7px}
   /* marquee track: transparent on desktop (children flow in .hsub flex) */
@@ -344,7 +354,11 @@
     <div class="htop">
       <span class="logo">TFX</span>
       <span class="hline"></span>
-      <a class="xlink" href="inferno.html" title="Switch to the Inferno soundtrack — TFX's sister Ocean game">INFERNO &gt;</a>
+      <span class="gamenav"><select class="gamesel" aria-label="Select soundtrack" title="Switch jukebox" onchange="if(this.value)location.href=this.value">
+        <option value="index.html" selected>TFX</option>
+        <option value="inferno.html">INFERNO</option>
+        <option value="ufo.html">X-COM</option>
+      </select></span>
       <span class="hright">TFX JUKEBOX</span>
     </div>
     <div class="hsub">
@@ -354,7 +368,7 @@
       <span>DRIVER: <b id="st-drv">—</b></span>
       <span>NOTES: <b id="st-notes">0</b></span>
       <span>CHANNELS: <b id="st-ch">0</b></span>
-      <span>SYNTH: <b id="st-synth">MT-32 · CTRL v1.07 + PCM</b></span>
+      <span>SYNTH: <b id="st-synth">CM-32L / LAPC-I · v1.02 + PCM</b></span>
       </div>
     </div>
   </header>
@@ -643,7 +657,7 @@ const UI = {
     this.buildChannels(parsed);
     $('trackname').textContent=s._name; this.updateMediaMeta(s);
     $('st-drv').textContent={RLD:'MT-32',SCC:'SCC',ADL:'ADLIB'}[s._drv]||s._drv;
-    $('st-synth').textContent={RLD:'MT-32 · CTRL v1.07 + PCM',SCC:'SC-55 v1.21',ADL:'OPL3 (Nuked, YMF262)'}[s._drv]||s._drv;
+    $('st-synth').textContent={RLD:'CM-32L / LAPC-I · v1.02 + PCM',SCC:'SC-55 v1.21',ADL:'OPL3 (Nuked, YMF262)'}[s._drv]||s._drv;
     $('st-notes').textContent=parsed.notes.length;
     $('st-ch').textContent=parsed.channels.length;
     $('seek').value=0;

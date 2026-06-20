@@ -334,7 +334,7 @@
       <span>DRIVER: <b id="st-drv">—</b></span>
       <span>NOTES: <b id="st-notes">0</b></span>
       <span>CHANNELS: <b id="st-ch">0</b></span>
-      <span>SYNTH: <b id="st-synth">MT-32 · CTRL v1.07 + PCM</b></span>
+      <span>SYNTH: <b id="st-synth">CM-32L / LAPC-I · v1.02 + PCM</b></span>
       </div>
     </div>
   </header>
@@ -613,7 +613,7 @@ const UI = {
     this.buildChannels(parsed);
     $('trackname').textContent=s._game+' \u00b7 '+this.dispName(s); this.updateMediaMeta(s);
     $('st-drv').textContent={RLD:'MT-32',SCC:'SCC',ADL:'ADLIB'}[s._drv]||s._drv;
-    $('st-synth').textContent={RLD:'MT-32 · CTRL v1.07 + PCM',SCC:'SC-55 v1.21',ADL:'OPL3 (Nuked, YMF262)'}[s._drv]||s._drv;
+    $('st-synth').textContent={RLD:'CM-32L / LAPC-I · v1.02 + PCM',SCC:'SC-55 v1.21',ADL:'OPL3 (Nuked, YMF262)'}[s._drv]||s._drv;
     $('st-notes').textContent=parsed.notes.length;
     $('st-ch').textContent=parsed.channels.length;
     $('seek').value=0;
