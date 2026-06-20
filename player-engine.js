@@ -190,9 +190,10 @@ const Engine = {
   eventIdx:0, synthPos:0,
   speed:1, vol:0.85, blend:0, playing:false, ended:false,
   ratio:1, frac:0, prevL:0,prevR:0,curL:0,curR:0,
-  // hifi=true -> 8-tap Lanczos polyphase resampler (desktop). hifi=false ->
-  // cheap 2-tap linear interpolation (mobile, avoids main-thread stutter).
-  hifi:!IS_MOBILE,
+  // hifi=true -> 8-tap Lanczos polyphase resampler. hifi=false -> cheap 2-tap
+  // linear interpolation (fallback). Mobile uses the hi-fi path too now that the
+  // real stutter cause (coarse latencyHint:'playback' clock) is fixed.
+  hifi:true,
   // Lanczos polyphase resampler: ring of recent source frames + continuous read position.
   rsL:new Float32Array(16), rsR:new Float32Array(16), rsHead:0, rsPos:3, rsTbl:null, rsTblRatio:0,
   chunkL:new Float32Array(CHUNK),chunkR:new Float32Array(CHUNK),chunkIdx:CHUNK,chunkLen:CHUNK,
