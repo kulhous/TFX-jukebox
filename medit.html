@@ -388,6 +388,7 @@
       <span class="dmeter"><b class="mlab">VOL</b> <input id="vol" type="range" min="0" max="1" step="0.02" value="0.85"><b id="volV">85%</b></span>
       <span class="dmeter"><b class="mlab">MIX</b> <input id="mix" type="range" min="0" max="1" step="0.02" value="0" title="Blend L/R channels toward mono — easier on headphones"><b id="mixV">0%</b></span>
       </span>
+      <button id="sfBtn" class="btn" title="Play SC-55 / General MIDI (SCC) songs through the GeneralUser-GS SoundFont instead of the Roland SC-55 emulator">SOUNDFONT</button>
       <span class="credit"><a href="https://barryleitch.bandcamp.com/" target="_blank" rel="noopener">ALL MUSIC BY BARRY LEITCH</a></span>
     </div>
   </div>
@@ -469,6 +470,12 @@ const UI = {
     $('play').onclick=()=>this.toggle();
     $('restart').onclick=()=>{ Engine.seekTo(0); if(!Engine.playing) this.draw(); };
     $('clear').onclick=()=>{ Engine.mute.clear(); Engine.solo.clear(); this.refreshChannels(); };
+    // SOUNDFONT toggle: render SC-55 / General MIDI (SCC) songs through
+    // GeneralUser-GS.sf2 instead of the Roland SC-55 ROM emulator. Bank fetched
+    // lazily (with progress bar) on first use. Persisted across reloads.
+    const applySf2=on=>{ Engine.sf2Mode=on; const b=$('sfBtn'); if(b) b.classList.toggle('on',on); };
+    applySf2(localStorage.getItem('tfxSf2')==='1');
+    $('sfBtn').onclick=async()=>{ const on=!Engine.sf2Mode; applySf2(on); localStorage.setItem('tfxSf2',on?'1':'0'); if(this.cur!=null) await this.pick(this.cur); };
     $('speed').oninput=e=>{ const t=Engine.songTime(); Engine.speed=+e.target.value; $('speedV').textContent=Math.round(+e.target.value*100)+'%'; Engine.synthPos=Math.round((t/Engine.speed)*Engine.rate); Engine.frozenSong=t; Engine.anchored=false; };
     $('vol').oninput=e=>{ Engine.vol=+e.target.value; $('volV').textContent=Math.round(+e.target.value*100)+'%'; };
     $('mix').oninput=e=>{ Engine.blend=+e.target.value; $('mixV').textContent=Math.round(+e.target.value*100)+'%'; };
@@ -613,7 +620,8 @@ const UI = {
     this.buildChannels(parsed);
     $('trackname').textContent=s._game+' \u00b7 '+this.dispName(s); this.updateMediaMeta(s);
     $('st-drv').textContent={RLD:'MT-32',SCC:'SCC',ADL:'ADLIB'}[s._drv]||s._drv;
-    $('st-synth').textContent={RLD:'CM-32L / LAPC-I · v1.02 + PCM',SCC:'SC-55 v1.21',ADL:'OPL3 (Nuked, YMF262)'}[s._drv]||s._drv;
+    $('st-synth').textContent=(Engine.sf2Mode && s._drv==='SCC') ? 'GeneralUser-GS (SoundFont)'
+      : ({RLD:'CM-32L / LAPC-I · v1.02 + PCM',SCC:'SC-55 v1.21',ADL:'OPL3 (Nuked, YMF262)'}[s._drv]||s._drv);
     $('st-notes').textContent=parsed.notes.length;
     $('st-ch').textContent=parsed.channels.length;
     $('seek').value=0;

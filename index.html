@@ -366,6 +366,7 @@
         <button type="button" class="gameopt sel" role="option" aria-selected="true" data-href="index.html">TFX</button>
         <button type="button" class="gameopt" role="option" data-href="inferno.html">INFERNO</button>
         <button type="button" class="gameopt" role="option" data-href="ufo.html">X-COM</button>
+        <button type="button" class="gameopt" role="option" data-href="wc2.html">WARCRAFT II</button>
       </div></span><script>(function(){var nav=document.currentScript.previousElementSibling,btn=nav.querySelector('.gamesel-btn'),menu=nav.querySelector('.gamemenu');btn.addEventListener('click',function(e){e.stopPropagation();var o=menu.classList.toggle('open');btn.setAttribute('aria-expanded',o);});menu.querySelectorAll('.gameopt').forEach(function(o){o.addEventListener('click',function(){var h=o.dataset.href;if(h&&!o.classList.contains('sel'))location.href=h;});});document.addEventListener('click',function(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');});})();</script>
       <span class="hright">TFX JUKEBOX</span>
     </div>
@@ -496,6 +497,7 @@
       <button class="mtab" data-v="tracks">TRACKS</button>
       <button class="mtab minfo" id="minfo" title="About this jukebox">INFO</button>
       <button class="mtab minfo" id="mlp" title="Low-performance mode: lighter audio resampling if playback stutters">LOW-PERF</button>
+      <button class="mtab minfo" id="msf" title="Play SC-55 / General MIDI songs through the GeneralUser-GS SoundFont">SOUNDFONT</button>
     </div>
     <div id="chanstrip">
       <span class="lab">CHANNELS<br>L·MUTE<br>R·SOLO</span>
@@ -510,6 +512,7 @@
       <span class="dmeter"><b class="mlab">VOL</b> <input id="vol" type="range" min="0" max="1" step="0.02" value="0.85"><b id="volV">85%</b></span>
       <span class="dmeter"><b class="mlab">MIX</b> <input id="mix" type="range" min="0" max="1" step="0.02" value="0" title="Blend L/R channels toward mono — easier on headphones"><b id="mixV">0%</b></span>
       </span>
+      <button id="sfBtn" class="btn infobtn" title="Play SC-55 / General MIDI (SCC) songs through the GeneralUser-GS SoundFont instead of the Roland SC-55 emulator">SOUNDFONT</button>
       <button id="lpBtn" class="btn infobtn" title="Low-performance mode: use lighter audio resampling if playback stutters on slow devices">LOW-PERF</button>
       <button id="infoBtn" class="btn infobtn" title="About this jukebox — why MT-32, SCC and AdLib">INFO</button>
       <span class="credit"><a href="https://barryleitch.bandcamp.com/" target="_blank" rel="noopener">ALL MUSIC BY BARRY LEITCH</a></span>
@@ -579,6 +582,15 @@ const UI = {
     const toggleLowPerf=()=>{ const on=Engine.hifi; applyLowPerf(on); localStorage.setItem('tfxLowPerf',on?'1':'0'); };
     $('lpBtn').onclick=toggleLowPerf;
     $('mlp').onclick=toggleLowPerf;
+    // SOUNDFONT toggle: render SC-55 / General MIDI (SCC) songs through the
+    // GeneralUser-GS.sf2 sound bank instead of the Roland SC-55 ROM emulator.
+    // The 32 MB bank is fetched lazily (with a progress bar) the first time it's
+    // enabled. Persisted so the choice survives reloads.
+    const applySf2=on=>{ Engine.sf2Mode=on; document.querySelectorAll('#sfBtn,#msf').forEach(b=>b.classList.toggle('on',on)); };
+    applySf2(localStorage.getItem('tfxSf2')==='1');
+    const toggleSf2=async()=>{ const on=!Engine.sf2Mode; applySf2(on); localStorage.setItem('tfxSf2',on?'1':'0'); if(this.cur!=null) await this.pick(this.cur); };
+    $('sfBtn').onclick=toggleSf2;
+    $('msf').onclick=toggleSf2;
     $('play').onclick=()=>this.toggle();
     $('restart').onclick=()=>{ Engine.seekTo(0); if(!Engine.playing) this.draw(); };
     $('clear').onclick=()=>{ Engine.mute.clear(); Engine.solo.clear(); this.refreshChannels(); };
@@ -665,7 +677,8 @@ const UI = {
     this.buildChannels(parsed);
     $('trackname').textContent=s._name; this.updateMediaMeta(s);
     $('st-drv').textContent={RLD:'MT-32',SCC:'SCC',ADL:'ADLIB'}[s._drv]||s._drv;
-    $('st-synth').textContent={RLD:'CM-32L / LAPC-I · v1.02 + PCM',SCC:'SC-55 v1.21',ADL:'OPL3 (Nuked, YMF262)'}[s._drv]||s._drv;
+    $('st-synth').textContent=(Engine.sf2Mode && s._drv==='SCC') ? 'GeneralUser-GS (SoundFont)'
+      : ({RLD:'CM-32L / LAPC-I · v1.02 + PCM',SCC:'SC-55 v1.21',ADL:'OPL3 (Nuked, YMF262)'}[s._drv]||s._drv);
     $('st-notes').textContent=parsed.notes.length;
     $('st-ch').textContent=parsed.channels.length;
     $('seek').value=0;

@@ -120,7 +120,79 @@ const OPLBackend = {
   oplCut(ch){ const bank=ch>8?0x100:0, n=ch%9; this._f.write(bank|(0xb0+n), 0); }, // clear key-on
   render(frames){ this._f.render(this.renderPtr, frames); return this.M.HEAP16; },
 };
-const BACKENDS = { RLD:MT32Backend, SCC:SC55Backend, ADL:OPLBackend };
+
+// SoundFont backend (spessasynth_core, pure-JS SF2/SF3 synth). Optional override
+// for SCC/GM (General MIDI) songs: instead of the Roland SC-55 ROM emulator, render
+// the same MIDI stream through the GeneralUser-GS.sf2 sound bank. The 32 MB bank and
+// the synth bundle are both fetched lazily the first time SoundFont mode is used, so
+// users who never enable it pay nothing. Unlike the wasm ROM backends this emits
+// Float32 PCM directly (floatRender=true), so the engine skips the int16 conversion.
+const SF2_URL = 'GeneralUser-GS.sf2';
+const SoundFontBackend = {
+  key:'SF2', label:'SoundFont', rate:48000, floatRender:true, ready:false,
+  gain:0.6,   // SpessaSynth full-mix output can exceed unity; trim to avoid clipping after the volume stage
+  syn:null, _L:null, _R:null, onProgress:null,
+  async boot(){
+    if(this.ready) return;
+    const core = await import('./spessasynth_core.min.js');
+    const sf2 = await this._fetchBank(SF2_URL);            // Uint8Array, with progress
+    const bank = core.SoundBankLoader.fromArrayBuffer(sf2.buffer);
+    const synth = new core.SpessaSynthProcessor(this.rate, { enableEventSystem:false });
+    synth.soundBankManager.addSoundBank(bank, 'main');
+    if(synth.processorInitialized) await synth.processorInitialized;
+    try{ synth.setSystemParameter && synth.setSystemParameter('autoAllocateVoices', true); }catch(e){}
+    this.syn = synth;
+    this._L = new Float32Array(CHUNK);
+    this._R = new Float32Array(CHUNK);
+    this.ready = true;
+  },
+  // Stream the bank with progress reporting (loaded/total bytes). Falls back to a
+  // plain arrayBuffer() if the body isn't a readable stream.
+  async _fetchBank(url){
+    const r = await fetch(url);
+    if(!r.ok) throw new Error('missing SoundFont: '+url+' ('+r.status+')');
+    const total = +(r.headers.get('content-length')||0);
+    if(this.onProgress) this.onProgress(0, total, false);
+    if(!r.body || !r.body.getReader){
+      const u8 = new Uint8Array(await r.arrayBuffer());
+      if(this.onProgress) this.onProgress(u8.length, u8.length, true);
+      return u8;
+    }
+    const reader = r.body.getReader(); const chunks=[]; let loaded=0;
+    for(;;){
+      const {done,value} = await reader.read();
+      if(done) break;
+      chunks.push(value); loaded += value.length;
+      if(this.onProgress) this.onProgress(loaded, total, false);
+    }
+    const u8 = new Uint8Array(loaded); let off=0;
+    for(const c of chunks){ u8.set(c, off); off += c.length; }
+    if(this.onProgress) this.onProgress(loaded, total||loaded, true);
+    return u8;
+  },
+  reset(){ if(this.syn) this.syn.reset(); },
+  sysex(u8){ this.syn.systemExclusive(u8.subarray(1)); },   // drop leading 0xF0
+  msg(raw32){
+    const st=raw32&0xff, hi=st&0xf0, ch=st&0x0f, d1=(raw32>>8)&0x7f, d2=(raw32>>16)&0x7f;
+    const s=this.syn;
+    switch(hi){
+      case 0x90: if(d2>0) s.noteOn(ch,d1,d2); else s.noteOff(ch,d1); break;
+      case 0x80: s.noteOff(ch,d1); break;
+      case 0xB0: s.controllerChange(ch,d1,d2); break;
+      case 0xC0: s.programChange(ch,d1); break;
+      case 0xE0: s.pitchWheel(ch, d1|(d2<<7)); break;
+      case 0xD0: s.channelPressure(ch,d1); break;
+      case 0xA0: s.polyPressure(ch,d1,d2); break;
+    }
+  },
+  // floatRender path: fill the engine's per-chunk L/R Float32 buffers directly.
+  renderFloat(frames, L, R){ this.syn.process(L, R, 0, frames); const g=this.gain; if(g!==1){ for(let i=0;i<frames;i++){ L[i]*=g; R[i]*=g; } } },
+  // seekTo() calls render(CHUNK) to flush restored controller/patch state and
+  // discards the result; process into scratch buffers so that path works too.
+  render(frames){ this.syn.process(this._L, this._R, 0, frames); },
+};
+
+const BACKENDS = { RLD:MT32Backend, SCC:SC55Backend, ADL:OPLBackend, SF2:SoundFontBackend };
 
 // channel colors: MONOCHROME phosphor display palette — 5 shades spanning the full
 // dynamic range from near-black to near-white. With 16 channels the 5 shades repeat,
@@ -189,6 +261,8 @@ function buildPolyphase(ratio){
 const Engine = {
   syn:null, rate:32000, ctx:null, node:null,
   onEnded:null,    // optional callback the UI sets; fired when playback reaches the end
+  sf2Mode:false,   // when true, SCC/GM songs render via GeneralUser-GS.sf2 (SoundFontBackend)
+  onSf2Progress:null, // optional (loaded,total,done) callback the UI sets for the SF2 download bar
   events:[], notes:[], duration:0, channels:[],
   eventIdx:0, synthPos:0,
   speed:1, vol:0.85, blend:0, playing:false, ended:false,
@@ -207,10 +281,38 @@ const Engine = {
 
   // Switch active synth (booting it on first use). Returns when ready.
   async useDevice(drv){
+    // SoundFont mode: route SC-55 / General MIDI (SCC) songs through the
+    // GeneralUser-GS.sf2 sound bank instead of the Roland ROM emulator. MT-32
+    // (RLD) and AdLib (ADL) keep their native hardware emulation.
+    if(this.sf2Mode && drv==='SCC') drv='SF2';
     const b = BACKENDS[drv] || BACKENDS.RLD;
+    if(b===SoundFontBackend) b.onProgress = (l,t,done)=>{ this._sf2Bar(l,t,done); if(this.onSf2Progress) this.onSf2Progress(l,t,done); };
     await b.boot();
     this.syn = b; this.rate = b.rate;
     if(this.ctx) this.ratio = this.rate/this.ctx.sampleRate;
+  },
+
+  // Built-in SoundFont download progress bar. Created lazily and shared by every
+  // page so they don't each have to build one. A page that wants a custom bar can
+  // set Engine.onSf2Progress; this default overlay always runs alongside it.
+  _sf2Bar(loaded, total, done){
+    let el = this._sf2El;
+    if(!el){
+      el = this._sf2El = document.createElement('div');
+      el.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:99999;'
+        +'background:rgba(8,10,8,.94);color:#e8f0d8;border:1px solid #5a6b40;border-radius:8px;'
+        +'padding:12px 16px;font:12px/1.4 system-ui,sans-serif;min-width:240px;box-shadow:0 6px 24px rgba(0,0,0,.5)';
+      el.innerHTML = '<div style="margin-bottom:7px;letter-spacing:.04em">Loading SoundFont (GeneralUser-GS)…</div>'
+        +'<div style="height:8px;background:#1c2415;border-radius:4px;overflow:hidden">'
+        +'<div class="sf2fill" style="height:100%;width:0;background:linear-gradient(90deg,#8fa06f,#c2d0a4);transition:width .12s"></div></div>'
+        +'<div class="sf2pct" style="margin-top:6px;text-align:right;opacity:.85">0%</div>';
+      document.body.appendChild(el);
+    }
+    const pct = total ? Math.min(100, Math.round(loaded/total*100)) : 0;
+    el.querySelector('.sf2fill').style.width = pct+'%';
+    el.querySelector('.sf2pct').textContent = total ? (pct+'%  ('+(loaded/1048576).toFixed(1)+' / '+(total/1048576).toFixed(1)+' MB)') : (loaded/1048576).toFixed(1)+' MB';
+    el.style.display = 'block';
+    if(done){ const e2=el; setTimeout(()=>{ if(this._sf2El===e2) e2.style.display='none'; }, 600); }
   },
 
   ensureAudio(){
@@ -351,6 +453,13 @@ const Engine = {
     while(this.eventIdx<this.events.length && (this.events[this.eventIdx].tSec/this.speed)<=tReal){
       this.dispatch(this.events[this.eventIdx]); this.eventIdx++;
     }
+    if(this.syn.floatRender){
+      // SoundFont backend emits Float32 PCM directly into our chunk buffers.
+      this.syn.renderFloat(CHUNK, this.chunkL, this.chunkR);
+      this.chunkIdx=0;
+      if(this.eventIdx>=this.events.length && tReal>this.duration/this.speed) this.ended=true;
+      return;
+    }
     const h=this.syn.render(CHUNK);
     const base=this.syn.renderPtr>>1;
     for(let i=0;i<CHUNK;i++){ this.chunkL[i]=h[base+i*2]*INV15; this.chunkR[i]=h[base+i*2+1]*INV15; }
@@ -407,4 +516,4 @@ const Engine = {
   },
 };
 
-export { CHUNK, $, rdBin, MT32Backend, SC55Backend, OPLBackend, BACKENDS, Engine, parseMidi, parseDro, CH_SWATCH, CH_TILE, setChannelPalette };
+export { CHUNK, $, rdBin, MT32Backend, SC55Backend, OPLBackend, SoundFontBackend, BACKENDS, Engine, parseMidi, parseDro, CH_SWATCH, CH_TILE, setChannelPalette };
