@@ -473,6 +473,7 @@
       <button class="mtab on" data-v="notes">NOTES</button>
       <button class="mtab" data-v="tracks">TRACKS</button>
       <button class="mtab minfo" id="minfo" title="About this jukebox">INFO</button>
+      <button class="mtab minfo" id="mlp" title="Low-performance mode: lighter audio resampling if playback stutters">LOW-PERF</button>
     </div>
     <div id="chanstrip">
       <span class="lab">CHANNELS<br>L·MUTE<br>R·SOLO</span>
@@ -487,6 +488,7 @@
       <span class="dmeter"><b class="mlab">VOL</b> <input id="vol" type="range" min="0" max="1" step="0.02" value="0.85"><b id="volV">85%</b></span>
       <span class="dmeter"><b class="mlab">MIX</b> <input id="mix" type="range" min="0" max="1" step="0.02" value="0" title="Blend L/R channels toward mono — easier on headphones"><b id="mixV">0%</b></span>
       </span>
+      <button id="lpBtn" class="btn infobtn" title="Low-performance mode: use lighter audio resampling if playback stutters on slow devices">LOW-PERF</button>
       <button id="infoBtn" class="btn infobtn" title="About this jukebox — why MT-32, SCC and AdLib">INFO</button>
       <span class="credit"><a href="https://barryleitch.bandcamp.com/" target="_blank" rel="noopener">ALL MUSIC BY BARRY LEITCH</a></span>
     </div>
@@ -544,6 +546,17 @@ const UI = {
     const closeInfo=()=>setInfo(false);
     $('infoBtn').onclick=toggleInfo;
     $('minfo').onclick=toggleInfo;
+    // LOW-PERF toggle: lighter linear resampling instead of 8-tap Lanczos for
+    // slow devices. Persisted so the choice survives reloads.
+    const lowPerf = localStorage.getItem('tfxLowPerf')==='1';
+    const applyLowPerf=on=>{
+      Engine.hifi=!on; Engine.rsTblRatio=0;   // force resampler table rebuild on next render
+      document.querySelectorAll('#lpBtn,#mlp').forEach(b=>b.classList.toggle('on',on));
+    };
+    applyLowPerf(lowPerf);
+    const toggleLowPerf=()=>{ const on=Engine.hifi; applyLowPerf(on); localStorage.setItem('tfxLowPerf',on?'1':'0'); };
+    $('lpBtn').onclick=toggleLowPerf;
+    $('mlp').onclick=toggleLowPerf;
     $('play').onclick=()=>this.toggle();
     $('restart').onclick=()=>{ Engine.seekTo(0); if(!Engine.playing) this.draw(); };
     $('clear').onclick=()=>{ Engine.mute.clear(); Engine.solo.clear(); this.refreshChannels(); };
@@ -757,7 +770,7 @@ const UI = {
     const tracks = v==='tracks';
     document.body.classList.toggle('mtracks',tracks);
     document.body.classList.toggle('mnotes',!tracks);
-    document.querySelectorAll('.mtab').forEach(x=>x.classList.toggle('on',x.dataset.v===v));
+    document.querySelectorAll('.mtab[data-v]').forEach(x=>x.classList.toggle('on',x.dataset.v===v));
     this.resize();
   },
 
