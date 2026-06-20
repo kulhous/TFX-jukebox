@@ -58,16 +58,24 @@
     padding:2px 8px;border:1px solid var(--mon-line);font-size:11px;letter-spacing:1px;
     margin-right:10px;white-space:nowrap}
   .xlink:hover{background:var(--mon-hi)}
-  /* game selector dropdown — styled to match the .xlink monitor chips */
-  .gamenav{position:relative;display:inline-flex;align-items:center;margin-right:10px}
-  .gamenav::after{content:"\25BE";position:absolute;right:7px;top:50%;transform:translateY(-50%);
-    pointer-events:none;font-size:9px;color:var(--screen)}
-  .gamesel{font-family:inherit;font-size:11px;letter-spacing:1px;color:var(--screen);
+  /* game selector dropdown — fully custom (native <select> popups can't be themed) */
+  .gamenav{position:relative;display:inline-flex;align-items:center;margin-right:10px;font-size:11px}
+  .gamesel-btn{font-family:inherit;font-size:11px;letter-spacing:1px;color:var(--screen);
     background:var(--mon-ink2);border:1px solid var(--mon-line);padding:2px 20px 2px 8px;
-    -webkit-appearance:none;appearance:none;cursor:pointer;line-height:1.5;border-radius:0}
-  .gamesel:hover{background:var(--mon-hi)}
-  .gamesel:focus{outline:none}
-  .gamesel option{background:var(--screen);color:var(--mon-ink);letter-spacing:0}
+    cursor:pointer;line-height:1.5;position:relative;white-space:nowrap}
+  .gamesel-btn:hover{background:var(--mon-hi)}
+  .gamesel-btn::after{content:"\25BE";position:absolute;right:7px;top:50%;transform:translateY(-50%);
+    pointer-events:none;font-size:9px;color:var(--screen)}
+  .gamemenu{position:absolute;top:100%;left:0;margin-top:2px;z-index:60;min-width:100%;
+    background:var(--screen);border:1px solid var(--mon-line);box-shadow:0 2px 7px rgba(0,0,0,.5);
+    display:none;flex-direction:column}
+  .gamemenu.open{display:flex}
+  .gameopt{font-family:inherit;font-size:11px;letter-spacing:1px;color:var(--mon-ink);
+    background:none;border:0;text-align:left;padding:4px 22px 4px 8px;cursor:pointer;
+    white-space:nowrap;position:relative}
+  .gameopt:hover{background:var(--mon-ink2);color:var(--screen)}
+  .gameopt.sel{color:var(--mon-hi)}
+  .gameopt.sel::after{content:"\2713";position:absolute;right:7px}
   .hsub{display:flex;align-items:center;gap:18px;margin-top:4px;color:var(--mon-ink2);font-size:11px;flex-wrap:wrap}
   .hsub b{color:var(--mon-hi);font-weight:400}  .meter{display:flex;align-items:center;gap:7px}
   /* marquee track: transparent on desktop (children flow in .hsub flex) */
@@ -354,11 +362,11 @@
     <div class="htop">
       <span class="logo">TFX</span>
       <span class="hline"></span>
-      <span class="gamenav"><select class="gamesel" aria-label="Select soundtrack" title="Switch jukebox" onchange="if(this.value)location.href=this.value">
-        <option value="index.html" selected>TFX</option>
-        <option value="inferno.html">INFERNO</option>
-        <option value="ufo.html">X-COM</option>
-      </select></span>
+      <span class="gamenav"><button type="button" class="gamesel-btn" aria-haspopup="listbox" aria-expanded="false" title="Switch jukebox">TFX</button><div class="gamemenu" role="listbox">
+        <button type="button" class="gameopt sel" role="option" aria-selected="true" data-href="index.html">TFX</button>
+        <button type="button" class="gameopt" role="option" data-href="inferno.html">INFERNO</button>
+        <button type="button" class="gameopt" role="option" data-href="ufo.html">X-COM</button>
+      </div></span><script>(function(){var nav=document.currentScript.previousElementSibling,btn=nav.querySelector('.gamesel-btn'),menu=nav.querySelector('.gamemenu');btn.addEventListener('click',function(e){e.stopPropagation();var o=menu.classList.toggle('open');btn.setAttribute('aria-expanded',o);});menu.querySelectorAll('.gameopt').forEach(function(o){o.addEventListener('click',function(){var h=o.dataset.href;if(h&&!o.classList.contains('sel'))location.href=h;});});document.addEventListener('click',function(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');});})();</script>
       <span class="hright">TFX JUKEBOX</span>
     </div>
     <div class="hsub">
