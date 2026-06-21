@@ -131,9 +131,19 @@ const SF2_URL = 'GeneralUser-GS.sf2';
 const SoundFontBackend = {
   key:'SF2', label:'SoundFont', rate:48000, floatRender:true, ready:false,
   gain:0.6,   // SpessaSynth full-mix output can exceed unity; trim to avoid clipping after the volume stage
-  syn:null, _L:null, _R:null, onProgress:null,
-  async boot(){
-    if(this.ready) return;
+  syn:null, _L:null, _R:null, onProgress:null, _bootPromise:null,
+  boot(){
+    if(this.ready) return Promise.resolve();
+    // The 32 MB bank takes seconds to download. Without this guard, every track
+    // the user clicks during that window re-enters boot() (ready is still false)
+    // and kicks off a duplicate download, leaving the synth half-built and songs
+    // "unswitchable". Share one in-flight promise so concurrent callers wait for
+    // the same load.
+    if(this._bootPromise) return this._bootPromise;
+    this._bootPromise = this._boot().catch(e=>{ this._bootPromise=null; throw e; });
+    return this._bootPromise;
+  },
+  async _boot(){
     const core = await import('./spessasynth_core.min.js');
     const sf2 = await this._fetchBank(SF2_URL);            // Uint8Array, with progress
     const bank = core.SoundBankLoader.fromArrayBuffer(sf2.buffer);
