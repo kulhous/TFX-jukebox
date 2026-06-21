@@ -221,8 +221,9 @@
   .mtab.on{color:#0c0e11;background:var(--steel-grad-dn);text-shadow:none;
     border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);
     border-right:1px solid var(--steel-lt);border-bottom:1px solid var(--steel-lt);box-shadow:inset 0 1px 3px rgba(0,0,0,.4)}
-  /* smaller INFO tab on mobile — doesn't claim an equal third of the row */
-  .minfo{flex:0 0 auto;padding-left:13px;padding-right:13px}
+  /* smaller INFO/PERF/FONT tabs on mobile — don't claim an equal third of the row */
+  .minfo{flex:0 0 auto;padding-left:10px;padding-right:10px}
+  #mtabs{gap:5px}
 
   /* ---- desktop INFO button: sits by the Barry Leitch credit, far right ---- */
   .infobtn{margin-left:auto;font-size:13px}
@@ -259,7 +260,10 @@
     .logo{font-size:18px}
     .hsub{gap:12px}
     /* show the notes/tracks switcher and collapse the split view to one pane */
-    #mtabs{display:flex}
+    #mtabs{display:flex;flex-wrap:wrap}
+    /* keep NOTES/TRACKS together on the first row so the INFO/PERF/FONT settings
+       wrap onto a second row instead of overflowing off-screen on narrow phones */
+    #mtabs .mtab[data-v]{flex:1 1 48%}
     #main{padding:0 6px;gap:0}
     #side{width:auto;flex:1;min-width:0}
     /* roll: keys keep a real size and scroll left/right instead of squashing */
@@ -327,7 +331,8 @@
     #dash{width:222px;flex:none;display:flex;flex-direction:column;gap:6px;padding:6px;overflow-y:auto;
       border-top:0;border-left:2px solid var(--steel-lt);
       box-shadow:inset 2px 0 0 rgba(255,255,255,.35),-4px 0 12px rgba(0,0,0,.45)}
-    #mtabs{display:flex;padding:0;order:1;flex:none}
+    #mtabs{display:flex;flex-wrap:wrap;padding:0;order:1;flex:none}
+    #mtabs .mtab[data-v]{flex:1 1 40%}
     /* channels fill the middle, growing to push the playback controls to the
        bottom; the empty area above is what gets populated as tracks load */
     #chanstrip{order:2;flex:1 1 auto;gap:0;padding:0;align-items:flex-start}
@@ -444,8 +449,8 @@
       <button class="mtab on" data-v="notes">NOTES</button>
       <button class="mtab" data-v="tracks">TRACKS</button>
       <button class="mtab minfo" id="minfo" title="About this jukebox">INFO</button>
-      <button class="mtab minfo" id="mlp" title="Low-performance mode: lighter audio resampling if playback stutters">LOW-PERF</button>
-      <button class="mtab minfo" id="msf" title="Play General MIDI songs through the GeneralUser-GS SoundFont">SOUNDFONT</button>
+      <button class="mtab minfo" id="mlp" title="Low-performance mode: lighter audio resampling if playback stutters">PERF</button>
+      <button class="mtab minfo" id="msf" title="Play General MIDI songs through the GeneralUser-GS SoundFont">FONT</button>
     </div>
     <div id="chanstrip">
       <span class="lab">CHANNELS<br>L·MUTE<br>R·SOLO</span>
