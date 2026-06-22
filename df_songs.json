@@ -18,6 +18,12 @@
     "hidden": false
   },
   {
+    "file": "01_STALK-01_A3.dro",
+    "label": "01 - Level 1 · Stalk",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "02_FIGHT-01_GM.mid",
     "label": "02 - Level 1 · Fight",
     "named": true,
@@ -31,6 +37,12 @@
   },
   {
     "file": "02_FIGHT-01_A2.dro",
+    "label": "02 - Level 1 · Fight",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "02_FIGHT-01_A3.dro",
     "label": "02 - Level 1 · Fight",
     "named": true,
     "hidden": false
@@ -54,6 +66,12 @@
     "hidden": false
   },
   {
+    "file": "03_STALK-02_A3.dro",
+    "label": "03 - Level 2 · Stalk",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "04_FIGHT-02_GM.mid",
     "label": "04 - Level 2 · Fight",
     "named": true,
@@ -67,6 +85,12 @@
   },
   {
     "file": "04_FIGHT-02_A2.dro",
+    "label": "04 - Level 2 · Fight",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "04_FIGHT-02_A3.dro",
     "label": "04 - Level 2 · Fight",
     "named": true,
     "hidden": false
@@ -90,6 +114,12 @@
     "hidden": false
   },
   {
+    "file": "05_STALK-03_A3.dro",
+    "label": "05 - Level 3 · Stalk",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "06_FIGHT-03_GM.mid",
     "label": "06 - Level 3 · Fight",
     "named": true,
@@ -103,6 +133,12 @@
   },
   {
     "file": "06_FIGHT-03_A2.dro",
+    "label": "06 - Level 3 · Fight",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "06_FIGHT-03_A3.dro",
     "label": "06 - Level 3 · Fight",
     "named": true,
     "hidden": false
@@ -126,6 +162,12 @@
     "hidden": false
   },
   {
+    "file": "07_STALK-04_A3.dro",
+    "label": "07 - Level 4 · Stalk",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "08_FIGHT-04_GM.mid",
     "label": "08 - Level 4 · Fight",
     "named": true,
@@ -139,6 +181,12 @@
   },
   {
     "file": "08_FIGHT-04_A2.dro",
+    "label": "08 - Level 4 · Fight",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "08_FIGHT-04_A3.dro",
     "label": "08 - Level 4 · Fight",
     "named": true,
     "hidden": false
@@ -162,6 +210,12 @@
     "hidden": false
   },
   {
+    "file": "09_STALK-05_A3.dro",
+    "label": "09 - Level 5 · Stalk",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "10_FIGHT-05_GM.mid",
     "label": "10 - Level 5 · Fight",
     "named": true,
@@ -175,6 +229,12 @@
   },
   {
     "file": "10_FIGHT-05_A2.dro",
+    "label": "10 - Level 5 · Fight",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "10_FIGHT-05_A3.dro",
     "label": "10 - Level 5 · Fight",
     "named": true,
     "hidden": false
@@ -198,6 +258,12 @@
     "hidden": false
   },
   {
+    "file": "11_BOSS-05_A3.dro",
+    "label": "11 - Level 5 · Boss",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "12_STALK-06_GM.mid",
     "label": "12 - Level 6 · Stalk",
     "named": true,
@@ -211,6 +277,12 @@
   },
   {
     "file": "12_STALK-06_A2.dro",
+    "label": "12 - Level 6 · Stalk",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "12_STALK-06_A3.dro",
     "label": "12 - Level 6 · Stalk",
     "named": true,
     "hidden": false
@@ -234,6 +306,12 @@
     "hidden": false
   },
   {
+    "file": "13_FIGHT-06_A3.dro",
+    "label": "13 - Level 6 · Fight",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "14_STALK-07_GM.mid",
     "label": "14 - Level 7 · Stalk",
     "named": true,
@@ -247,6 +325,12 @@
   },
   {
     "file": "14_STALK-07_A2.dro",
+    "label": "14 - Level 7 · Stalk",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "14_STALK-07_A3.dro",
     "label": "14 - Level 7 · Stalk",
     "named": true,
     "hidden": false
@@ -270,6 +354,12 @@
     "hidden": false
   },
   {
+    "file": "15_FIGHT-07_A3.dro",
+    "label": "15 - Level 7 · Fight",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "16_STALK-08_GM.mid",
     "label": "16 - Level 8 · Stalk",
     "named": true,
@@ -283,6 +373,12 @@
   },
   {
     "file": "16_STALK-08_A2.dro",
+    "label": "16 - Level 8 · Stalk",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "16_STALK-08_A3.dro",
     "label": "16 - Level 8 · Stalk",
     "named": true,
     "hidden": false
@@ -306,6 +402,12 @@
     "hidden": false
   },
   {
+    "file": "17_FIGHT-08_A3.dro",
+    "label": "17 - Level 8 · Fight",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "18_BOSS-08_GM.mid",
     "label": "18 - Level 8 · Boss",
     "named": true,
@@ -319,6 +421,12 @@
   },
   {
     "file": "18_BOSS-08_A2.dro",
+    "label": "18 - Level 8 · Boss",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "18_BOSS-08_A3.dro",
     "label": "18 - Level 8 · Boss",
     "named": true,
     "hidden": false
@@ -342,6 +450,12 @@
     "hidden": false
   },
   {
+    "file": "19_STALK-09_A3.dro",
+    "label": "19 - Level 9 · Stalk",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "20_FIGHT-09_GM.mid",
     "label": "20 - Level 9 · Fight",
     "named": true,
@@ -355,6 +469,12 @@
   },
   {
     "file": "20_FIGHT-09_A2.dro",
+    "label": "20 - Level 9 · Fight",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "20_FIGHT-09_A3.dro",
     "label": "20 - Level 9 · Fight",
     "named": true,
     "hidden": false
@@ -378,6 +498,12 @@
     "hidden": false
   },
   {
+    "file": "21_STALK-10_A3.dro",
+    "label": "21 - Level 10 · Stalk",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "22_FIGHT-10_GM.mid",
     "label": "22 - Level 10 · Fight",
     "named": true,
@@ -391,6 +517,12 @@
   },
   {
     "file": "22_FIGHT-10_A2.dro",
+    "label": "22 - Level 10 · Fight",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "22_FIGHT-10_A3.dro",
     "label": "22 - Level 10 · Fight",
     "named": true,
     "hidden": false
@@ -414,6 +546,12 @@
     "hidden": false
   },
   {
+    "file": "23_BOSS-10_A3.dro",
+    "label": "23 - Level 10 · Boss",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "24_STALK-11_GM.mid",
     "label": "24 - Level 11 · Stalk",
     "named": true,
@@ -427,6 +565,12 @@
   },
   {
     "file": "24_STALK-11_A2.dro",
+    "label": "24 - Level 11 · Stalk",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "24_STALK-11_A3.dro",
     "label": "24 - Level 11 · Stalk",
     "named": true,
     "hidden": false
@@ -450,6 +594,12 @@
     "hidden": false
   },
   {
+    "file": "25_FIGHT-11_A3.dro",
+    "label": "25 - Level 11 · Fight",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "26_BOSS-11_GM.mid",
     "label": "26 - Level 11 · Boss",
     "named": true,
@@ -463,6 +613,12 @@
   },
   {
     "file": "26_BOSS-11_A2.dro",
+    "label": "26 - Level 11 · Boss",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "26_BOSS-11_A3.dro",
     "label": "26 - Level 11 · Boss",
     "named": true,
     "hidden": false
@@ -486,6 +642,12 @@
     "hidden": false
   },
   {
+    "file": "27_STALK-12_A3.dro",
+    "label": "27 - Level 12 · Stalk",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "28_FIGHT-12_GM.mid",
     "label": "28 - Level 12 · Fight",
     "named": true,
@@ -499,6 +661,12 @@
   },
   {
     "file": "28_FIGHT-12_A2.dro",
+    "label": "28 - Level 12 · Fight",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "28_FIGHT-12_A3.dro",
     "label": "28 - Level 12 · Fight",
     "named": true,
     "hidden": false
@@ -522,6 +690,12 @@
     "hidden": false
   },
   {
+    "file": "29_STALK-13_A3.dro",
+    "label": "29 - Level 13 · Stalk",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "30_FIGHT-13_GM.mid",
     "label": "30 - Level 13 · Fight",
     "named": true,
@@ -535,6 +709,12 @@
   },
   {
     "file": "30_FIGHT-13_A2.dro",
+    "label": "30 - Level 13 · Fight",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "30_FIGHT-13_A3.dro",
     "label": "30 - Level 13 · Fight",
     "named": true,
     "hidden": false
@@ -558,6 +738,12 @@
     "hidden": false
   },
   {
+    "file": "31_STALK-14_A3.dro",
+    "label": "31 - Level 14 · Stalk",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "32_FIGHT-14_GM.mid",
     "label": "32 - Level 14 · Fight",
     "named": true,
@@ -571,6 +757,12 @@
   },
   {
     "file": "32_FIGHT-14_A2.dro",
+    "label": "32 - Level 14 · Fight",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "32_FIGHT-14_A3.dro",
     "label": "32 - Level 14 · Fight",
     "named": true,
     "hidden": false
@@ -594,6 +786,12 @@
     "hidden": false
   },
   {
+    "file": "33_BOSS-14_A3.dro",
+    "label": "33 - Level 14 · Boss",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "34_OPENCRED_GM.mid",
     "label": "34 - Opening Credits (Star Wars Theme)",
     "named": true,
@@ -607,6 +805,12 @@
   },
   {
     "file": "34_OPENCRED_A2.dro",
+    "label": "34 - Opening Credits (Star Wars Theme)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "34_OPENCRED_A3.dro",
     "label": "34 - Opening Credits (Star Wars Theme)",
     "named": true,
     "hidden": false
@@ -630,6 +834,12 @@
     "hidden": false
   },
   {
+    "file": "35_STAR-THM_A3.dro",
+    "label": "35 - Star Wars Theme",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "36_GROMAS1_GM.mid",
     "label": "36 - Gromas Mines · Cutscene 1",
     "named": true,
@@ -643,6 +853,12 @@
   },
   {
     "file": "36_GROMAS1_A2.dro",
+    "label": "36 - Gromas Mines · Cutscene 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "36_GROMAS1_A3.dro",
     "label": "36 - Gromas Mines · Cutscene 1",
     "named": true,
     "hidden": false
@@ -666,6 +882,12 @@
     "hidden": false
   },
   {
+    "file": "37_GROMAS2_A3.dro",
+    "label": "37 - Gromas Mines · Cutscene 2",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "38_ROBOT1_GM.mid",
     "label": "38 - Robotics Facility · Cutscene 1",
     "named": true,
@@ -679,6 +901,12 @@
   },
   {
     "file": "38_ROBOT1_A2.dro",
+    "label": "38 - Robotics Facility · Cutscene 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "38_ROBOT1_A3.dro",
     "label": "38 - Robotics Facility · Cutscene 1",
     "named": true,
     "hidden": false
@@ -702,6 +930,12 @@
     "hidden": false
   },
   {
+    "file": "39_ROBOT2_A3.dro",
+    "label": "39 - Robotics Facility · Cutscene 2",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "40_JABBAMUS_GM.mid",
     "label": "40 - Jabba's Ship · Cutscene",
     "named": true,
@@ -715,6 +949,12 @@
   },
   {
     "file": "40_JABBAMUS_A2.dro",
+    "label": "40 - Jabba's Ship · Cutscene",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "40_JABBAMUS_A3.dro",
     "label": "40 - Jabba's Ship · Cutscene",
     "named": true,
     "hidden": false
@@ -738,6 +978,12 @@
     "hidden": false
   },
   {
+    "file": "41_CRIXMUS_A3.dro",
+    "label": "41 - Crix Madine · Cutscene",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "42_EXECMUS_GM.mid",
     "label": "42 - Executor · Cutscene",
     "named": true,
@@ -751,6 +997,12 @@
   },
   {
     "file": "42_EXECMUS_A2.dro",
+    "label": "42 - Executor · Cutscene",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "42_EXECMUS_A3.dro",
     "label": "42 - Executor · Cutscene",
     "named": true,
     "hidden": false
@@ -774,6 +1026,12 @@
     "hidden": false
   },
   {
+    "file": "43_FRIGMUS_A3.dro",
+    "label": "43 - Frigate · Cutscene",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "44_CARGO_GM.mid",
     "label": "44 - Cargo · Cutscene",
     "named": true,
@@ -787,6 +1045,12 @@
   },
   {
     "file": "44_CARGO_A2.dro",
+    "label": "44 - Cargo · Cutscene",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "44_CARGO_A3.dro",
     "label": "44 - Cargo · Cutscene",
     "named": true,
     "hidden": false
@@ -810,6 +1074,12 @@
     "hidden": false
   },
   {
+    "file": "45_VICTORY_A3.dro",
+    "label": "45 - Victory",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "46_CLOSCRED_GM.mid",
     "label": "46 - Closing Credits",
     "named": true,
@@ -823,6 +1093,12 @@
   },
   {
     "file": "46_CLOSCRED_A2.dro",
+    "label": "46 - Closing Credits",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "46_CLOSCRED_A3.dro",
     "label": "46 - Closing Credits",
     "named": true,
     "hidden": false
@@ -843,6 +1119,13 @@
   },
   {
     "file": "47_DEFAULT_A2.dro",
+    "label": "47 - [dev] Default",
+    "named": true,
+    "hidden": false,
+    "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
+  },
+  {
+    "file": "47_DEFAULT_A3.dro",
     "label": "47 - [dev] Default",
     "named": true,
     "hidden": false,
@@ -870,6 +1153,13 @@
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
+    "file": "48_GROOVE2_A3.dro",
+    "label": "48 - [dev] Groove 2",
+    "named": true,
+    "hidden": false,
+    "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
+  },
+  {
     "file": "49_SURFIN_GM.mid",
     "label": "49 - [dev] Surfin'",
     "named": true,
@@ -885,6 +1175,13 @@
   },
   {
     "file": "49_SURFIN_A2.dro",
+    "label": "49 - [dev] Surfin'",
+    "named": true,
+    "hidden": false,
+    "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
+  },
+  {
+    "file": "49_SURFIN_A3.dro",
     "label": "49 - [dev] Surfin'",
     "named": true,
     "hidden": false,
@@ -912,6 +1209,13 @@
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
+    "file": "50_RUMBLE_A3.dro",
+    "label": "50 - [dev] Rumble",
+    "named": true,
+    "hidden": false,
+    "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
+  },
+  {
     "file": "51_NOTELOOP_GM.mid",
     "label": "51 - [dev] Note Loop (test)",
     "named": true,
@@ -927,6 +1231,13 @@
   },
   {
     "file": "51_NOTELOOP_A2.dro",
+    "label": "51 - [dev] Note Loop (test)",
+    "named": true,
+    "hidden": false,
+    "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
+  },
+  {
+    "file": "51_NOTELOOP_A3.dro",
     "label": "51 - [dev] Note Loop (test)",
     "named": true,
     "hidden": false,
@@ -954,6 +1265,13 @@
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
+    "file": "52_SMOFFICE_A3.dro",
+    "label": "52 - [dev] SM Office",
+    "named": true,
+    "hidden": false,
+    "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
+  },
+  {
     "file": "53_TEMP_GM.mid",
     "label": "53 - [dev] Temp",
     "named": true,
@@ -969,6 +1287,13 @@
   },
   {
     "file": "53_TEMP_A2.dro",
+    "label": "53 - [dev] Temp",
+    "named": true,
+    "hidden": false,
+    "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
+  },
+  {
+    "file": "53_TEMP_A3.dro",
     "label": "53 - [dev] Temp",
     "named": true,
     "hidden": false,
@@ -996,6 +1321,13 @@
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
+    "file": "54_TEST1_A3.dro",
+    "label": "54 - [dev] Test 1",
+    "named": true,
+    "hidden": false,
+    "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
+  },
+  {
     "file": "55_TEST2_GM.mid",
     "label": "55 - [dev] Test 2",
     "named": true,
@@ -1011,6 +1343,13 @@
   },
   {
     "file": "55_TEST2_A2.dro",
+    "label": "55 - [dev] Test 2",
+    "named": true,
+    "hidden": false,
+    "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
+  },
+  {
+    "file": "55_TEST2_A3.dro",
     "label": "55 - [dev] Test 2",
     "named": true,
     "hidden": false,

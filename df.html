@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Star Wars: Dark Forces · General MIDI / MT-32 / AdLib</title>
+<title>Star Wars: Dark Forces · General MIDI / MT-32 / AdLib / SoundBlaster</title>
 <style>
   @font-face{
     font-family:"TFX Pixel";
@@ -125,6 +125,10 @@
   .dchip.gm{color:#ffd9a0;background:#190d07;border-color:#b07a44}
   /* MT-32 (Munt): copper LA-synth tint */
   .dchip.mt{color:#190d07;background:#e0934a;border-color:#a8650f}
+  /* OPL2 AdLib: copper FM tint */
+  .dchip.o2{color:#190d07;background:#d98a3c;border-color:#a8650f}
+  /* OPL3 SoundBlaster: brighter gold FM tint */
+  .dchip.o3{color:#190d07;background:#e6c24a;border-color:#a8930f}
   /* AdLib (OPL2): brighter gold FM tint */
   .dchip.o2{color:#190d07;background:#e6c24a;border-color:#a8930f}
   /* plasma scrollbar — lit phosphor bar */
@@ -401,6 +405,7 @@
         <button class="fbtn" data-f="GM"><span class="dchip gm">GM</span>Gen MIDI</button>
         <button class="fbtn" data-f="MT"><span class="dchip mt">MT</span>MT-32</button>
         <button class="fbtn" data-f="A2"><span class="dchip o2">O2</span>AdLib</button>
+        <button class="fbtn" data-f="A3"><span class="dchip o3">O3</span>SoundBlaster</button>
       </div>
       <div id="listwrap">
         <div id="songlist"></div>
@@ -420,11 +425,11 @@
   <div id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
     <div class="imodal">
       <div class="imodal-h">
-        <span class="t" id="infoTitle">ABOUT -- STAR WARS: DARK FORCES MUSIC / GENERAL MIDI / MT-32 / ADLIB</span>
+        <span class="t" id="infoTitle">ABOUT -- STAR WARS: DARK FORCES MUSIC / GENERAL MIDI / MT-32 / ADLIB / SOUNDBLASTER</span>
       </div>
       <div class="imodal-body">
-        <h2>One iMUSE score, two Roland devices.</h2>
-        <p>Star Wars: Dark Forces (LucasArts, 1995) drove its music with the <strong>iMUSE</strong> system. Every cue lives in SOUNDS.GOB as a <strong>.GMD</strong> file &mdash; a LucasArts wrapper around a standard MIDI file, sprinkled with private 0x7D SysEx commands that iMUSE used for loops, jumps and gameplay transitions. The original setup menu let you pick a sound device, and the same underlying score was re-interpreted by a different driver for each one. This jukebox plays two of those device paths side by side: the <strong>General MIDI</strong> mix for a Roland SC-55, and the <strong>Roland MT-32</strong> adaptation. Use the <strong>Gen MIDI / MT-32</strong> filter to switch.</p>
+        <h2>One iMUSE score, four original devices.</h2>
+        <p>Star Wars: Dark Forces (LucasArts, 1995) drove its music with the <strong>iMUSE</strong> system. Every cue lives in SOUNDS.GOB as a <strong>.GMD</strong> file &mdash; a LucasArts wrapper around a standard MIDI file, sprinkled with private 0x7D SysEx commands that iMUSE used for loops, jumps and gameplay transitions. The original setup menu let you pick a sound device, and the same underlying score was re-interpreted by a different driver for each one. This jukebox plays four of those device paths side by side: <strong>General MIDI</strong> (Roland SC-55), <strong>Roland MT-32</strong>, <strong>AdLib</strong> (OPL2 FM) and <strong>Sound Blaster</strong> (OPL3 FM). Use the <strong>Gen MIDI / MT-32 / AdLib / SoundBlaster</strong> filter to switch.</p>
 
         <h2>General MIDI: the Sound Canvas mix (premium path)</h2>
         <p>The General-MIDI path (GMIDI.MDR in the original game) sends the score straight to a <strong>Roland SC-55 / SCC-1</strong> Sound Canvas. It is fully multi-timbral &mdash; up to sixteen parts at once with standard GM instruments and a dedicated drum channel &mdash; so it is the cleanest, fullest version Dark Forces offers. For each cue we take track&nbsp;0 of the embedded MIDI (the canonical full sequence), strip the private iMUSE control SysEx, and render it through a cycle-accurate WebAssembly Nuked-SC55.</p>
@@ -433,13 +438,13 @@
         <p>The MT-32 path (ROLAND.MDR) is <em>not</em> just &ldquo;General MIDI on a Roland.&rdquo; A real <strong>MT-32 / LAPC-I</strong> has only <strong>8 melodic parts plus one rhythm part</strong>, but the Dark Forces score uses around a dozen logical channels. The driver solves this with <strong>dynamic part-stealing</strong>: it keeps state for all 16 logical channels, but assigns only 8 physical MT-32 parts at any moment. When a new channel needs to play and all 8 parts are busy, it steals the least-recently-used part &mdash; sending All&nbsp;Notes&nbsp;Off, then restoring program, volume, pan and pitch-bend for the new channel before the note. Percussion has its own quirks (high notes dropped, a couple of drums remapped). The result is a faithful but <strong>lossy</strong> re-creation &mdash; exactly what the hardware option sounded like in 1995.</p>
         <p>We reproduce that algorithm here, mapping GM programs to MT-32 patches with the program table recovered from ROLAND.MDR, and play the result through the <strong>Munt</strong> CM-32L emulator shared with the TFX jukebox.</p>
 
-        <h2>AdLib: the authentic OPL2 FM voices</h2>
-        <p>The AdLib build drives a Yamaha <strong>OPL2 (YM3812)</strong>, the two-operator FM chip in the original AdLib and Sound Blaster cards. Crucially, these are the game's <em>own</em> FM patches, not a generic GM-on-OPL approximation: we recovered the exact instrument bank by emulating the original <strong>FM2.MDR</strong> driver (a 32-bit DOS module) with a CPU emulator, calling its note-on routine for every program and percussion note, and capturing the precise OPL operator registers it writes. Those 128 melodic plus drum patches were packed into a bank and played through a cycle-accurate Nuked-OPL3 emulator, so the timbres match what a real AdLib card produced in 1995.</p>
+        <h2>AdLib &amp; Sound Blaster: the authentic FM, byte for byte</h2>
+        <p>The two FM builds are not a generic GM-on-OPL approximation &mdash; they are the game's <em>own</em> synthesis. We run the original 32-bit DOS FM drivers, <strong>FM2.MDR</strong> (2-operator OPL2, AdLib) and <strong>FM4.MDR</strong> (4-operator OPL3, Sound Blaster), inside a CPU emulator. Acting as the iMUSE sequencer, we feed each cue's MIDI events &mdash; program changes, note-ons and offs, controllers, pitch bend &mdash; straight into the real driver, and capture the exact stream of OPL register writes it produces, including its own instrument bank, voice allocation, key-scaling and percussion handling. That register log is replayed through a cycle-accurate <strong>Nuked-OPL3</strong> emulator, so the result is sample-for-sample what the original driver would have sent to a real AdLib or Sound Blaster card in 1995. The OPL3 build additionally uses the chip's second register array (18 channels / 4-operator voices) for a thicker, wider sound than plain AdLib.</p>
 
         <h2>How this works</h2>
         <p>The chain from the 1995 game data to your headphones:</p>
-        <div class="ichain"><span>SOUNDS.GOB .GMD (iMUSE / MIDI)</span><span>-&gt; track-0 SMF</span><span>-&gt; GM / MT-32 fold / OPL2 via FM2.MDR bank</span><span>-&gt; JavaScript timing</span><span>-&gt; Nuked-SC55 (GM) / Munt CM-32L (MT-32) / Nuked-OPL3 (AdLib)</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
-        <p>The fourth original path (FM4.MDR, the 4-operator OPL3 / Sound Blaster build) uses a wider instrument format and is a future addition. The synthesis engine, ROM images and UI are shared with the sister TFX jukebox &mdash; only the iMUSE converters and this page are new.</p>
+        <div class="ichain"><span>SOUNDS.GOB .GMD (iMUSE / MIDI)</span><span>-&gt; track-0 SMF</span><span>-&gt; GM / MT-32 fold / real FM2.MDR + FM4.MDR drivers</span><span>-&gt; JavaScript timing</span><span>-&gt; Nuked-SC55 (GM) / Munt CM-32L (MT-32) / Nuked-OPL3 (AdLib + SoundBlaster)</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
+        <p>The synthesis engine, ROM images and UI are shared with the sister TFX jukebox &mdash; only the iMUSE converters, the FM-driver emulator and this page are new.</p>
         <p class="sig">-- a companion to the TFX jukebox</p>
       </div>
     </div>
@@ -496,17 +501,18 @@ const UI = {
   songs:[], cur:null, raf:0,
   async init(){
     this.songs = (await fetch('df_songs.json').then(r=>r.json())).filter(s=>!s.hidden);
-    const DRVORD={GM:0,MT:1,A2:2};
+    const DRVORD={GM:0,MT:1,A2:2,A3:3};
     this.songs.forEach(s=>{
-      // Dark Forces ships two device renditions per cue (.GMD -> track-0 SMF);
+      // Dark Forces ships four device renditions per cue (.GMD -> track-0 SMF);
       // the filename token picks the backend: _GM. -> SC-55 (SCC, General MIDI),
-      // _MT. -> MT-32 (RLD, Munt CM-32L, ROLAND.MDR 8-part adaptation).
-      // backend; _filt keeps them apart for the filter and chips.
-      const tok=(/_(GM|MT|A2)\./.exec(s.file)||[,'GM'])[1];
+      // _MT. -> MT-32 (RLD, Munt CM-32L, ROLAND.MDR 8-part adaptation),
+      // _A2. -> AdLib OPL2 (FM2.MDR) and _A3. -> SoundBlaster OPL3 (FM4.MDR),
+      // both via the Nuked-OPL3 (ADL) backend; _filt keeps them apart.
+      const tok=(/_(GM|MT|A2|A3)\./.exec(s.file)||[,'GM'])[1];
       s._filt=tok;
-      s._drv={GM:'SCC',MT:'RLD',A2:'ADL'}[tok];
-      s._dev={GM:'General MIDI',MT:'Roland MT-32',A2:'AdLib (OPL2)'}[tok];
-      s._name=s.label.replace(/\s*\((?:GM|MT|A2)\)\s*$/,'');
+      s._drv={GM:'SCC',MT:'RLD',A2:'ADL',A3:'ADL'}[tok];
+      s._dev={GM:'General MIDI',MT:'Roland MT-32',A2:'AdLib (OPL2)',A3:'SoundBlaster (OPL3)'}[tok];
+      s._name=s.label.replace(/\s*\((?:GM|MT|A2|A3)\)\s*$/,'');
       s._tid=+(s.label.match(/^(\d+)/)||[,1e9])[1];
     });
     this.songs.sort((a,b)=>
@@ -518,7 +524,8 @@ const UI = {
       const row=document.createElement('div'); row.className='song'; row.dataset.i=i; row.dataset.filt=s._filt;
       const DCH={GM:['gm','GM','General MIDI — Roland SC-55 / SCC-1'],
                  MT:['mt','MT','Roland MT-32 / LAPC-I — ROLAND.MDR 8-part adaptation'],
-                 A2:['o2','O2','AdLib / OPL2 FM — YM3812 (authentic FM2.MDR bank)']};
+                 A2:['o2','O2','AdLib / OPL2 FM — YM3812 (authentic FM2.MDR driver + bank)'],
+                 A3:['o3','O3','SoundBlaster / OPL3 FM — YMF262 (authentic FM4.MDR driver + bank)']};
       const [dc,dl,dtitle]=DCH[s._filt]||DCH.GM;
       row.innerHTML=`<span class="dchip ${dc}" title="${dtitle}">${dl}</span><span class="nm">${s._name}</span>`;
       row.onclick=()=>this.pick(i);
@@ -641,10 +648,10 @@ const UI = {
     Engine.loadSong(parsed);
     this.buildChannels(parsed);
     $('trackname').textContent=s._name; this.updateMediaMeta(s);
-    $('st-drv').textContent={GM:'GEN MIDI',MT:'MT-32',A2:'ADLIB'}[s._filt]||s._filt;
+    $('st-drv').textContent={GM:'GEN MIDI',MT:'MT-32',A2:'ADLIB',A3:'SNDBLAST'}[s._filt]||s._filt;
     $('st-synth').textContent=(Engine.sf2Mode && s._filt==='GM') ? 'GeneralUser-GS (SoundFont)'
-      : ({GM:'SC-55 v1.21 (SCC-1)',MT:'MT-32 / CM-32L (Munt)',A2:'OPL2 · Nuked-OPL3 (YM3812)'}[s._filt]||s._filt);
-    $('st-src').textContent={GM:'SOUNDS.GOB (.GMD General MIDI)',MT:'SOUNDS.GOB (ROLAND.MDR adaptation)',A2:'SOUNDS.GOB (FM2.MDR AdLib bank)'}[s._filt]||s._filt;
+      : ({GM:'SC-55 v1.21 (SCC-1)',MT:'MT-32 / CM-32L (Munt)',A2:'OPL2 · Nuked-OPL3 (YM3812)',A3:'OPL3 · Nuked-OPL3 (YMF262)'}[s._filt]||s._filt);
+    $('st-src').textContent={GM:'SOUNDS.GOB (.GMD General MIDI)',MT:'SOUNDS.GOB (ROLAND.MDR adaptation)',A2:'SOUNDS.GOB (FM2.MDR OPL2 driver)',A3:'SOUNDS.GOB (FM4.MDR OPL3 driver)'}[s._filt]||s._filt;
     $('st-notes').textContent=parsed.notes.length;
     $('st-ch').textContent=parsed.channels.length;
     $('seek').value=0;
@@ -750,7 +757,7 @@ const UI = {
   },
   updateMediaMeta(s){
     if(!('mediaSession' in navigator) || typeof MediaMetadata==='undefined') return;
-    const dev={GM:'Roland SC-55 (General MIDI)',MT:'Roland MT-32 / LAPC-I',A2:'AdLib OPL2 FM'}[s._filt]||s._filt;
+    const dev={GM:'Roland SC-55 (General MIDI)',MT:'Roland MT-32 / LAPC-I',A2:'AdLib OPL2 FM',A3:'SoundBlaster OPL3 FM'}[s._filt]||s._filt;
     try{ navigator.mediaSession.metadata=new MediaMetadata({ title:s._name, artist:dev, album:'Star Wars: Dark Forces — LucasArts (Clint Bajakian · iMUSE)' }); }catch(e){}
   },
   updatePositionState(){
