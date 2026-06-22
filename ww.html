@@ -11,9 +11,9 @@
     font-weight:normal;font-style:normal;font-display:block;
   }
   :root{
-    /* yellow-road-line on asphalt (Wacky Wheels arcade racer palette) */
-    --bg:#1c1c22; --mon:#161619; --mon-ink:#ffd23f; --mon-ink2:#b8922a; --mon-line:#6a571c; --mon-hi:#fff3b0;
-    --screen:#0d0d10;
+    /* yellow-orange-on-blue (Wacky Wheels leaderboard / menu palette) */
+    --bg:#1a1aa6; --mon:#10107a; --mon-ink:#ffb22e; --mon-ink2:#cf8a24; --mon-line:#9a6a1e; --mon-hi:#ffd860;
+    --screen:#0a0a52;
     /* real brushed steel */
     --steel:#9498a0; --steel-lt:#e2e5e9; --steel-dk:#2c2f35; --steel-emb:#15171b; --steel-ink:#eef0f2;
     --steel-grad:linear-gradient(180deg,#c4c8cd 0%,#9a9ea6 46%,#6b7078 100%);
@@ -21,7 +21,7 @@
     --warn:#fde725;
   }
   *{box-sizing:border-box}
-  html,body{margin:0;height:100%;background:#081816;overflow:hidden}
+  html,body{margin:0;height:100%;background:#06063a;overflow:hidden}
   body{font-family:"TFX Pixel","Lucida Console","DejaVu Sans Mono",Consolas,monospace;
     color:var(--mon-ink);text-transform:uppercase;letter-spacing:0;font-size:13px;
     -webkit-font-smoothing:none}
@@ -29,10 +29,14 @@
   #app{position:relative;display:flex;flex-direction:column;height:100%;gap:7px;padding:7px;
     background:var(--steel-grad),repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 1px,rgba(0,0,0,.025) 1px 2px)}
   /* recessed green screen */
-  #screen{position:relative;flex:1;display:flex;flex-direction:column;min-height:0;background:var(--bg);overflow:hidden;
+  #screen{position:relative;flex:1;display:flex;flex-direction:column;min-height:0;overflow:hidden;
+    /* royal-blue checkerboard, like the in-game leaderboard / menu screens */
+    background:
+      conic-gradient(from 90deg at 50% 50%,#16168f 0 25%,#0d0d63 0 50%,#16168f 0 75%,#0d0d63 0) 0 0/40px 40px,
+      var(--bg);
     border-top:2px solid var(--steel-dk);border-left:2px solid var(--steel-dk);
     border-right:2px solid var(--steel-lt);border-bottom:2px solid var(--steel-lt);
-    box-shadow:inset 0 0 0 1px #04110d, inset 0 0 26px rgba(0,0,0,.45)}
+    box-shadow:inset 0 0 0 1px #04043a, inset 0 0 26px rgba(0,0,0,.45)}
   #screen::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:60;
     background:repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0 1px,transparent 1px 3px),
       radial-gradient(125% 125% at 50% 45%,transparent 62%,rgba(0,0,0,.4) 100%)}
@@ -383,6 +387,7 @@
         <button type="button" class="gameopt" role="option" data-href="index.html">TFX</button>
         <button type="button" class="gameopt" role="option" data-href="inferno.html">INFERNO</button>
         <button type="button" class="gameopt" role="option" data-href="ufo.html">X-COM</button>
+        <button type="button" class="gameopt" role="option" data-href="tftd.html">X-COM TFTD</button>
         <button type="button" class="gameopt" role="option" data-href="wc2.html">WARCRAFT II</button>
         <button type="button" class="gameopt" role="option" data-href="df.html">DARK FORCES</button>
         <button type="button" class="gameopt sel" role="option" aria-selected="true" data-href="ww.html">WACKY WHEELS</button>
@@ -491,9 +496,9 @@ import { $, Engine, parseMidi, parseDro, CH_SWATCH, CH_TILE, setChannelPalette }
 // CHUNK, rdBin, the synth backends and BACKENDS now live in
 // player-engine.js, shared with the other player so the render engine
 // (MT-32 / SC-55 / OPL3 backends + Engine) never diverges between pages.
-// Re-tint the shared channel swatches/note tiles to the Wacky Wheels road-line
-// palette (the default ramp is green for the index/medit monitors).
-setChannelPalette(['#0d0d10','#5e4a12','#b8922a','#ffd23f','#fff3b0']);
+// Re-tint the shared channel swatches/note tiles to the Wacky Wheels
+// yellow-orange-on-blue palette (the default ramp is green for the index/medit monitors).
+setChannelPalette(['#0a0a52','#7a5616','#cf8a24','#ffb22e','#ffd860']);
 
 // ---------- UI ----------
 const LOW=21, HIGH=108;                 // A0..C8 — full piano
