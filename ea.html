@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Extreme Assault · General MIDI / AdLib</title>
+<title>Extreme Assault · General MIDI / MT-32 / AdLib</title>
 <style>
   @font-face{
     font-family:"TFX Pixel";
@@ -414,6 +414,7 @@
       <div class="filterbar" id="filterbar">
         <button class="fbtn on" data-f="ALL">ALL</button>
         <button class="fbtn" data-f="GM"><span class="dchip gm">GM</span>Gen MIDI</button>
+        <button class="fbtn" data-f="MT"><span class="dchip mt">MT</span>MT-32</button>
         <button class="fbtn" data-f="A3"><span class="dchip o3">FM</span>AdLib</button>
       </div>
       <div id="listwrap">
@@ -434,21 +435,24 @@
   <div id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
     <div class="imodal">
       <div class="imodal-h">
-        <span class="t" id="infoTitle">ABOUT -- EXTREME ASSAULT MUSIC / GENERAL MIDI / ADLIB</span>
+        <span class="t" id="infoTitle">ABOUT -- EXTREME ASSAULT MUSIC / GENERAL MIDI / MT-32 / ADLIB</span>
       </div>
       <div class="imodal-body">
-        <h2>The cockpit score, two ways.</h2>
-        <p>Extreme Assault (Blue Byte Software, 1997) keeps its in-mission soundtrack as Red Book <strong>CD audio</strong>, but the menus, briefings and FM build of the score live on disk as compact Miles Sound System <strong>XMI</strong> event data in <code>DATA.SFX/MUSIC</code> &mdash; not as recorded audio. This jukebox plays that sequenced data two ways: the <strong>General MIDI</strong> mix (for a Roland SC-55 / SCC-1 Sound Canvas) and the game's own <strong>AdLib</strong> FM build. Use the <strong>Gen MIDI / AdLib</strong> filter to switch between them. (The streamed CD tracks are a different recording and are not included here.)</p>
+        <h2>The cockpit score, three ways.</h2>
+        <p>Extreme Assault (Blue Byte Software, 1997) keeps its in-mission soundtrack as Red Book <strong>CD audio</strong>, but the menus, briefings and FM build of the score live on disk as compact Miles Sound System <strong>XMI</strong> event data in <code>DATA.SFX/MUSIC</code> &mdash; not as recorded audio. This jukebox plays that sequenced data three ways: the <strong>General MIDI</strong> mix (for a Roland SC-55 / SCC-1 Sound Canvas), a <strong>Roland MT-32</strong> rendition, and the game's own <strong>AdLib</strong> FM build. Use the <strong>Gen MIDI / MT-32 / AdLib</strong> filter to switch between them. (The streamed CD tracks are a different recording and are not included here.)</p>
 
         <h2>General MIDI: the Sound Canvas mix</h2>
         <p>The General-MIDI arrangement targets a <strong>Roland SC-55 / SCC-1</strong>, the Sound Canvas that defined the GM sound of the mid-90s. It is fully multi-timbral, one part per MIDI channel with standard GM instruments and a dedicated drum channel, so it sounds cleaner and fuller than the FM build while staying faithful to the original cues.</p>
+
+        <h2>Roland MT-32: the stock passthrough driver</h2>
+        <p>Extreme Assault ships a genuine MT-32 driver, <strong>MT32MPU.MDI</strong> (&ldquo;Roland MT-32 MIDI with MPU-401 MIDI Interface&rdquo;, also covering the LAPC-I). Unlike the fan driver used for the Warcraft&nbsp;II jukebox, this is the <em>stock Miles MPU-401 output driver</em>: a plain passthrough that streams the cue's MIDI straight to the synth with <strong>no GM&rarr;MT-32 translation</strong>. So this rendition is the exact same note/program data as the General-MIDI mix, played on Roland's <strong>MT-32 / CM-32L</strong> (emulated by <strong>Munt</strong>) instead of the Sound Canvas. The MT-32's preset map is its own &mdash; not GM-ordered &mdash; so the instruments differ from the SC-55 version; that is precisely what an MT-32 owner heard with this driver.</p>
 
         <h2>AdLib: the game's own FM bank</h2>
         <p>The AdLib build is the game's <em>own</em> FM synthesis. Extreme Assault's Miles drivers map each General-MIDI program through a custom OPL instrument bank shipped as <strong>LEVEL_X.OPL</strong> (a Miles/AIL timbre library: 128 melodic + percussion 2-operator patches). We convert that bank to WOPL, feed the original XMI through a patched build of <strong>libADLMIDI</strong> loaded with it, capture every OPL register write, and replay it through a cycle-accurate <strong>Nuked-OPL3</strong> emulator &mdash; so the timbres, voice allocation and key-scaling are the card's own, not a generic AdLib substitute.</p>
 
         <h2>How this works</h2>
-        <p>Each cue in <code>DATA.SFX/MUSIC</code> is an AIL/Miles XMI (XMIDI) stream. The General-MIDI XMI is converted to a Standard MIDI File (a port of Exult's XMidiFile timing model) for the SC-55. The FM XMI is rendered by libADLMIDI with the game's LEVEL_X bank, captured as a DOSBox raw-OPL (DRO) register log, then played in your browser:</p>
-        <div class="ichain"><span>1997 Extreme Assault DATA.SFX/MUSIC (XMI)</span><span>-&gt; SMF / OPL register log (game LEVEL_X bank)</span><span>-&gt; SMF / DRO</span><span>-&gt; JavaScript timing</span><span>-&gt; WebAssembly Nuked-SC55 (GM) / Nuked-OPL3 (AdLib)</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
+        <p>Each cue in <code>DATA.SFX/MUSIC</code> is an AIL/Miles XMI (XMIDI) stream. The General-MIDI XMI is converted to a Standard MIDI File (a port of Exult's XMidiFile timing model); the MT-32 path plays that same SMF through Munt; the FM XMI is rendered by libADLMIDI with the game's LEVEL_X bank, captured as a DOSBox raw-OPL (DRO) register log. All three are then played in your browser:</p>
+        <div class="ichain"><span>1997 Extreme Assault DATA.SFX/MUSIC (XMI)</span><span>-&gt; SMF / OPL register log (game LEVEL_X bank)</span><span>-&gt; SMF / DRO</span><span>-&gt; JavaScript timing</span><span>-&gt; WebAssembly Nuked-SC55 (GM) / Munt CM-32L (MT-32) / Nuked-OPL3 (AdLib)</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
         <p>The synthesis engine, ROM images and UI are shared with the sister TFX jukebox -- only the music converters and this page are new.</p>
         <p class="sig">-- a companion to the TFX jukebox</p>
       </div>
@@ -479,7 +483,7 @@
       </span>
       <button id="sfBtn" class="btn infobtn" title="Play the General MIDI version through the GeneralUser-GS SoundFont instead of the Roland SC-55 emulator">SOUNDFONT</button>
       <button id="lpBtn" class="btn infobtn" title="Low-performance mode: use lighter audio resampling if playback stutters on slow devices">LOW-PERF</button>
-      <button id="infoBtn" class="btn infobtn" title="About this jukebox — General MIDI and AdLib">INFO</button>
+      <button id="infoBtn" class="btn infobtn" title="About this jukebox — General MIDI, MT-32 and AdLib">INFO</button>
       <span class="credit"><a href="https://www.mobygames.com/game/extreme-assault" target="_blank" rel="noopener">EXTREME ASSAULT · BLUE BYTE SOFTWARE 1997</a></span>
     </div>
   </div>
@@ -527,7 +531,7 @@ const UI = {
     this.songs.forEach((s,i)=>{
       const row=document.createElement('div'); row.className='song'; row.dataset.i=i; row.dataset.filt=s._filt;
       const DCH={GM:['gm','GM','General MIDI — Roland SC-55 / SCC-1'],
-                 MT:['mt','MT','Roland MT-32 — Mok’s MT32GM Miles driver (MPU401.MDI), Munt CM-32L'],
+                 MT:['mt','MT','Roland MT-32 / CM-32L — the game’s stock Miles MPU-401 driver (MT32MPU.MDI), Munt'],
                  A2:['o2','O2','AdLib / OPL2 FM — YM3812'],
                  A3:['o3','FM','AdLib FM — the game’s own Miles/AIL OPL bank (LEVEL_X), Nuked-OPL3']};
       const [dc,dl,dtitle]=DCH[s._filt]||DCH.GM;
@@ -655,7 +659,7 @@ const UI = {
     $('st-drv').textContent={GM:'GEN MIDI',MT:'MT-32',A2:'ADLIB',A3:'ADLIB'}[s._filt]||s._filt;
     $('st-synth').textContent=(Engine.sf2Mode && s._filt==='GM') ? 'GeneralUser-GS (SoundFont)'
       : ({GM:'SC-55 v1.21 (SCC-1)',MT:'MT-32 / CM-32L (Munt)',A2:'OPL2 · Nuked-OPL3 (YM3812)',A3:'OPL3 · Nuked-OPL3 (YMF262)'}[s._filt]||s._filt);
-    $('st-src').textContent={GM:'DATA.SFX/MUSIC (General MIDI)',MT:'DATA.SFX/MUSIC (GM → MT-32)',A2:'DATA.SFX/MUSIC (AdLib OPL2)',A3:'DATA.SFX/MUSIC (AdLib · LEVEL_X bank)'}[s._filt]||s._filt;
+    $('st-src').textContent={GM:'DATA.SFX/MUSIC (General MIDI)',MT:'DATA.SFX/MUSIC (MT-32 passthrough)',A2:'DATA.SFX/MUSIC (AdLib OPL2)',A3:'DATA.SFX/MUSIC (AdLib · LEVEL_X bank)'}[s._filt]||s._filt;
     $('st-notes').textContent=parsed.notes.length;
     $('st-ch').textContent=parsed.channels.length;
     $('seek').value=0;
@@ -761,7 +765,7 @@ const UI = {
   },
   updateMediaMeta(s){
     if(!('mediaSession' in navigator) || typeof MediaMetadata==='undefined') return;
-    const dev={GM:'Roland SC-55 (General MIDI)',MT:'Roland MT-32',A2:'AdLib OPL2 FM',A3:'AdLib FM (game bank)'}[s._filt]||s._filt;
+    const dev={GM:'Roland SC-55 (General MIDI)',MT:'Roland MT-32 / CM-32L',A2:'AdLib OPL2 FM',A3:'AdLib FM (game bank)'}[s._filt]||s._filt;
     try{ navigator.mediaSession.metadata=new MediaMetadata({ title:s._name, artist:dev, album:'Extreme Assault — Blue Byte Software (1997)' }); }catch(e){}
   },
   updatePositionState(){
