@@ -54,8 +54,12 @@
   /* ---- header ---- */
   header{padding:7px 12px 4px}
   .htop{display:flex;align-items:flex-end;gap:12px}
-  .logo{font-size:22px;font-weight:700;color:var(--mon-hi);letter-spacing:0;line-height:.9;
-    text-shadow:0 0 7px rgba(120,235,205,.4)}
+  .logo{font-size:22px;font-weight:700;letter-spacing:0;line-height:.9;
+    /* per-letter vertical gradient like the in-game beveled text (a vertical
+       background clipped to the glyphs gives every letter the same top->bottom ramp) */
+    background:linear-gradient(180deg,#fff6c0 0%,#ffe14a 40%,#ff9e1f 70%,#d4641a 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+    text-shadow:0 1px 0 rgba(70,30,0,.45)}
   .hline{flex:1;height:0;border-top:1px solid var(--mon-line);box-shadow:0 1px 0 rgba(0,0,0,.35);margin-bottom:5px}
   .hright{color:var(--mon-ink2);font-size:11px;margin-bottom:1px}
   .xlink{color:var(--screen);background:var(--mon-ink2);text-decoration:none;
@@ -121,11 +125,16 @@
   #songlist::-webkit-scrollbar{display:none}
   .song{display:flex;align-items:center;gap:9px;height:24px;padding:0 10px;cursor:pointer;color:var(--mon-ink);
     border-bottom:1px solid rgba(53,125,111,.20);font-size:13px;line-height:1;white-space:nowrap;overflow:hidden}
-  .song .nm{overflow:hidden;text-overflow:ellipsis}
+  .song .nm{overflow:hidden;text-overflow:ellipsis;
+    /* same per-letter yellow->orange gradient as the leaderboard names */
+    background:linear-gradient(180deg,#fff6c0 0%,#ffe14a 42%,#ff9e1f 70%,#d4641a 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
   .song .tid{flex:none;width:30px;box-sizing:border-box;font-size:13px;line-height:1;color:var(--screen);background:var(--mon-line);
     border-radius:3px;padding:3px 4px;opacity:.85;font-variant-numeric:tabular-nums;text-align:center}
   .song:hover{background:rgba(53,125,111,.20)}
   .song.sel{background:var(--mon-line);color:var(--screen)}
+  /* selected row sits on a light bar -> drop the gradient for legibility */
+  .song.sel .nm{background:none;-webkit-text-fill-color:var(--screen);color:var(--screen)}
   .song.playing{box-shadow:inset 3px 0 0 var(--warn)}
   /* driver icons / badges */
   .dchip{flex:none;width:34px;box-sizing:border-box;font-size:13px;letter-spacing:0;padding:3px 0;border-radius:2px;
