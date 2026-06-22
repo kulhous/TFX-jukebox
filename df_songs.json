@@ -1,1376 +1,1376 @@
 [
   {
     "file": "01_OPENCRED_GM.mid",
-    "label": "01 - Opening Credits (Star Wars Theme)",
+    "label": "Opening Credits (Star Wars Theme)",
     "named": true,
     "hidden": false
   },
   {
     "file": "01_OPENCRED_MT.mid",
-    "label": "01 - Opening Credits (Star Wars Theme)",
+    "label": "Opening Credits (Star Wars Theme)",
     "named": true,
     "hidden": false
   },
   {
     "file": "01_OPENCRED_A2.dro",
-    "label": "01 - Opening Credits (Star Wars Theme)",
+    "label": "Opening Credits (Star Wars Theme)",
     "named": true,
     "hidden": false
   },
   {
     "file": "01_OPENCRED_A3.dro",
-    "label": "01 - Opening Credits (Star Wars Theme)",
+    "label": "Opening Credits (Star Wars Theme)",
     "named": true,
     "hidden": false
   },
   {
     "file": "02_STAR-THM_GM.mid",
-    "label": "02 - Star Wars Theme",
+    "label": "Star Wars Theme",
     "named": true,
     "hidden": false,
     "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "02_STAR-THM_MT.mid",
-    "label": "02 - Star Wars Theme",
+    "label": "Star Wars Theme",
     "named": true,
     "hidden": false,
     "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "02_STAR-THM_A2.dro",
-    "label": "02 - Star Wars Theme",
+    "label": "Star Wars Theme",
     "named": true,
     "hidden": false,
     "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "02_STAR-THM_A3.dro",
-    "label": "02 - Star Wars Theme",
+    "label": "Star Wars Theme",
     "named": true,
     "hidden": false,
     "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "03_STALK-01_GM.mid",
-    "label": "03 - Level 1 · Stalk",
+    "label": "L1 · Secret Base · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "03_STALK-01_MT.mid",
-    "label": "03 - Level 1 · Stalk",
+    "label": "L1 · Secret Base · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "03_STALK-01_A2.dro",
-    "label": "03 - Level 1 · Stalk",
+    "label": "L1 · Secret Base · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "03_STALK-01_A3.dro",
-    "label": "03 - Level 1 · Stalk",
+    "label": "L1 · Secret Base · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "04_FIGHT-01_GM.mid",
-    "label": "04 - Level 1 · Fight",
+    "label": "L1 · Secret Base · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "04_FIGHT-01_MT.mid",
-    "label": "04 - Level 1 · Fight",
+    "label": "L1 · Secret Base · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "04_FIGHT-01_A2.dro",
-    "label": "04 - Level 1 · Fight",
+    "label": "L1 · Secret Base · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "04_FIGHT-01_A3.dro",
-    "label": "04 - Level 1 · Fight",
+    "label": "L1 · Secret Base · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "05_STALK-02_GM.mid",
-    "label": "05 - Level 2 · Stalk",
+    "label": "L2 · Talay: Tak Base · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "05_STALK-02_MT.mid",
-    "label": "05 - Level 2 · Stalk",
+    "label": "L2 · Talay: Tak Base · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "05_STALK-02_A2.dro",
-    "label": "05 - Level 2 · Stalk",
+    "label": "L2 · Talay: Tak Base · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "05_STALK-02_A3.dro",
-    "label": "05 - Level 2 · Stalk",
+    "label": "L2 · Talay: Tak Base · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "06_FIGHT-02_GM.mid",
-    "label": "06 - Level 2 · Fight",
+    "label": "L2 · Talay: Tak Base · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "06_FIGHT-02_MT.mid",
-    "label": "06 - Level 2 · Fight",
+    "label": "L2 · Talay: Tak Base · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "06_FIGHT-02_A2.dro",
-    "label": "06 - Level 2 · Fight",
+    "label": "L2 · Talay: Tak Base · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "06_FIGHT-02_A3.dro",
-    "label": "06 - Level 2 · Fight",
+    "label": "L2 · Talay: Tak Base · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "07_STALK-03_GM.mid",
-    "label": "07 - Level 3 · Stalk",
+    "label": "L3 · Anoat City · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "07_STALK-03_MT.mid",
-    "label": "07 - Level 3 · Stalk",
+    "label": "L3 · Anoat City · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "07_STALK-03_A2.dro",
-    "label": "07 - Level 3 · Stalk",
+    "label": "L3 · Anoat City · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "07_STALK-03_A3.dro",
-    "label": "07 - Level 3 · Stalk",
+    "label": "L3 · Anoat City · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "08_FIGHT-03_GM.mid",
-    "label": "08 - Level 3 · Fight",
+    "label": "L3 · Anoat City · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "08_FIGHT-03_MT.mid",
-    "label": "08 - Level 3 · Fight",
+    "label": "L3 · Anoat City · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "08_FIGHT-03_A2.dro",
-    "label": "08 - Level 3 · Fight",
+    "label": "L3 · Anoat City · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "08_FIGHT-03_A3.dro",
-    "label": "08 - Level 3 · Fight",
+    "label": "L3 · Anoat City · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "09_STALK-04_GM.mid",
-    "label": "09 - Level 4 · Stalk",
+    "label": "L4 · Research Facility · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "09_STALK-04_MT.mid",
-    "label": "09 - Level 4 · Stalk",
+    "label": "L4 · Research Facility · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "09_STALK-04_A2.dro",
-    "label": "09 - Level 4 · Stalk",
+    "label": "L4 · Research Facility · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "09_STALK-04_A3.dro",
-    "label": "09 - Level 4 · Stalk",
+    "label": "L4 · Research Facility · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "10_FIGHT-04_GM.mid",
-    "label": "10 - Level 4 · Fight",
+    "label": "L4 · Research Facility · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "10_FIGHT-04_MT.mid",
-    "label": "10 - Level 4 · Fight",
+    "label": "L4 · Research Facility · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "10_FIGHT-04_A2.dro",
-    "label": "10 - Level 4 · Fight",
+    "label": "L4 · Research Facility · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "10_FIGHT-04_A3.dro",
-    "label": "10 - Level 4 · Fight",
+    "label": "L4 · Research Facility · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "11_GROMAS1_GM.mid",
-    "label": "11 - Gromas Mines · Cutscene 1",
+    "label": "L5 · Gromas Mines · Cutscene 1",
     "named": true,
     "hidden": false
   },
   {
     "file": "11_GROMAS1_MT.mid",
-    "label": "11 - Gromas Mines · Cutscene 1",
+    "label": "L5 · Gromas Mines · Cutscene 1",
     "named": true,
     "hidden": false
   },
   {
     "file": "11_GROMAS1_A2.dro",
-    "label": "11 - Gromas Mines · Cutscene 1",
+    "label": "L5 · Gromas Mines · Cutscene 1",
     "named": true,
     "hidden": false
   },
   {
     "file": "11_GROMAS1_A3.dro",
-    "label": "11 - Gromas Mines · Cutscene 1",
+    "label": "L5 · Gromas Mines · Cutscene 1",
     "named": true,
     "hidden": false
   },
   {
     "file": "12_GROMAS2_GM.mid",
-    "label": "12 - Gromas Mines · Cutscene 2",
+    "label": "L5 · Gromas Mines · Cutscene 2",
     "named": true,
     "hidden": false
   },
   {
     "file": "12_GROMAS2_MT.mid",
-    "label": "12 - Gromas Mines · Cutscene 2",
+    "label": "L5 · Gromas Mines · Cutscene 2",
     "named": true,
     "hidden": false
   },
   {
     "file": "12_GROMAS2_A2.dro",
-    "label": "12 - Gromas Mines · Cutscene 2",
+    "label": "L5 · Gromas Mines · Cutscene 2",
     "named": true,
     "hidden": false
   },
   {
     "file": "12_GROMAS2_A3.dro",
-    "label": "12 - Gromas Mines · Cutscene 2",
+    "label": "L5 · Gromas Mines · Cutscene 2",
     "named": true,
     "hidden": false
   },
   {
     "file": "13_STALK-05_GM.mid",
-    "label": "13 - Level 5 · Stalk",
+    "label": "L5 · Gromas Mines · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "13_STALK-05_MT.mid",
-    "label": "13 - Level 5 · Stalk",
+    "label": "L5 · Gromas Mines · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "13_STALK-05_A2.dro",
-    "label": "13 - Level 5 · Stalk",
+    "label": "L5 · Gromas Mines · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "13_STALK-05_A3.dro",
-    "label": "13 - Level 5 · Stalk",
+    "label": "L5 · Gromas Mines · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "14_FIGHT-05_GM.mid",
-    "label": "14 - Level 5 · Fight",
+    "label": "L5 · Gromas Mines · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "14_FIGHT-05_MT.mid",
-    "label": "14 - Level 5 · Fight",
+    "label": "L5 · Gromas Mines · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "14_FIGHT-05_A2.dro",
-    "label": "14 - Level 5 · Fight",
+    "label": "L5 · Gromas Mines · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "14_FIGHT-05_A3.dro",
-    "label": "14 - Level 5 · Fight",
+    "label": "L5 · Gromas Mines · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "15_BOSS-05_GM.mid",
-    "label": "15 - Level 5 · Boss",
+    "label": "L5 · Gromas Mines · Boss",
     "named": true,
     "hidden": false
   },
   {
     "file": "15_BOSS-05_MT.mid",
-    "label": "15 - Level 5 · Boss",
+    "label": "L5 · Gromas Mines · Boss",
     "named": true,
     "hidden": false
   },
   {
     "file": "15_BOSS-05_A2.dro",
-    "label": "15 - Level 5 · Boss",
+    "label": "L5 · Gromas Mines · Boss",
     "named": true,
     "hidden": false
   },
   {
     "file": "15_BOSS-05_A3.dro",
-    "label": "15 - Level 5 · Boss",
+    "label": "L5 · Gromas Mines · Boss",
     "named": true,
     "hidden": false
   },
   {
     "file": "16_CRIXMUS_GM.mid",
-    "label": "16 - Crix Madine · Cutscene",
+    "label": "L6 · Detention Center · Cutscene",
     "named": true,
     "hidden": false,
     "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "16_CRIXMUS_MT.mid",
-    "label": "16 - Crix Madine · Cutscene",
+    "label": "L6 · Detention Center · Cutscene",
     "named": true,
     "hidden": false,
     "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "16_CRIXMUS_A2.dro",
-    "label": "16 - Crix Madine · Cutscene",
+    "label": "L6 · Detention Center · Cutscene",
     "named": true,
     "hidden": false,
     "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "16_CRIXMUS_A3.dro",
-    "label": "16 - Crix Madine · Cutscene",
+    "label": "L6 · Detention Center · Cutscene",
     "named": true,
     "hidden": false,
     "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "17_STALK-06_GM.mid",
-    "label": "17 - Level 6 · Stalk",
+    "label": "L6 · Detention Center · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "17_STALK-06_MT.mid",
-    "label": "17 - Level 6 · Stalk",
+    "label": "L6 · Detention Center · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "17_STALK-06_A2.dro",
-    "label": "17 - Level 6 · Stalk",
+    "label": "L6 · Detention Center · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "17_STALK-06_A3.dro",
-    "label": "17 - Level 6 · Stalk",
+    "label": "L6 · Detention Center · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "18_FIGHT-06_GM.mid",
-    "label": "18 - Level 6 · Fight",
+    "label": "L6 · Detention Center · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "18_FIGHT-06_MT.mid",
-    "label": "18 - Level 6 · Fight",
+    "label": "L6 · Detention Center · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "18_FIGHT-06_A2.dro",
-    "label": "18 - Level 6 · Fight",
+    "label": "L6 · Detention Center · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "18_FIGHT-06_A3.dro",
-    "label": "18 - Level 6 · Fight",
+    "label": "L6 · Detention Center · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "19_CARGO_GM.mid",
-    "label": "19 - Cargo · Cutscene",
+    "label": "L7 · Ramsees Hed · Cutscene",
     "named": true,
     "hidden": false
   },
   {
     "file": "19_CARGO_MT.mid",
-    "label": "19 - Cargo · Cutscene",
+    "label": "L7 · Ramsees Hed · Cutscene",
     "named": true,
     "hidden": false
   },
   {
     "file": "19_CARGO_A2.dro",
-    "label": "19 - Cargo · Cutscene",
+    "label": "L7 · Ramsees Hed · Cutscene",
     "named": true,
     "hidden": false
   },
   {
     "file": "19_CARGO_A3.dro",
-    "label": "19 - Cargo · Cutscene",
+    "label": "L7 · Ramsees Hed · Cutscene",
     "named": true,
     "hidden": false
   },
   {
     "file": "20_STALK-07_GM.mid",
-    "label": "20 - Level 7 · Stalk",
+    "label": "L7 · Ramsees Hed · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "20_STALK-07_MT.mid",
-    "label": "20 - Level 7 · Stalk",
+    "label": "L7 · Ramsees Hed · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "20_STALK-07_A2.dro",
-    "label": "20 - Level 7 · Stalk",
+    "label": "L7 · Ramsees Hed · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "20_STALK-07_A3.dro",
-    "label": "20 - Level 7 · Stalk",
+    "label": "L7 · Ramsees Hed · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "21_FIGHT-07_GM.mid",
-    "label": "21 - Level 7 · Fight",
+    "label": "L7 · Ramsees Hed · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "21_FIGHT-07_MT.mid",
-    "label": "21 - Level 7 · Fight",
+    "label": "L7 · Ramsees Hed · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "21_FIGHT-07_A2.dro",
-    "label": "21 - Level 7 · Fight",
+    "label": "L7 · Ramsees Hed · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "21_FIGHT-07_A3.dro",
-    "label": "21 - Level 7 · Fight",
+    "label": "L7 · Ramsees Hed · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "22_ROBOT1_GM.mid",
-    "label": "22 - Robotics Facility · Cutscene 1",
+    "label": "L8 · Robotics Facility · Cutscene 1",
     "named": true,
     "hidden": false
   },
   {
     "file": "22_ROBOT1_MT.mid",
-    "label": "22 - Robotics Facility · Cutscene 1",
+    "label": "L8 · Robotics Facility · Cutscene 1",
     "named": true,
     "hidden": false
   },
   {
     "file": "22_ROBOT1_A2.dro",
-    "label": "22 - Robotics Facility · Cutscene 1",
+    "label": "L8 · Robotics Facility · Cutscene 1",
     "named": true,
     "hidden": false
   },
   {
     "file": "22_ROBOT1_A3.dro",
-    "label": "22 - Robotics Facility · Cutscene 1",
+    "label": "L8 · Robotics Facility · Cutscene 1",
     "named": true,
     "hidden": false
   },
   {
     "file": "23_ROBOT2_GM.mid",
-    "label": "23 - Robotics Facility · Cutscene 2",
+    "label": "L8 · Robotics Facility · Cutscene 2",
     "named": true,
     "hidden": false
   },
   {
     "file": "23_ROBOT2_MT.mid",
-    "label": "23 - Robotics Facility · Cutscene 2",
+    "label": "L8 · Robotics Facility · Cutscene 2",
     "named": true,
     "hidden": false
   },
   {
     "file": "23_ROBOT2_A2.dro",
-    "label": "23 - Robotics Facility · Cutscene 2",
+    "label": "L8 · Robotics Facility · Cutscene 2",
     "named": true,
     "hidden": false
   },
   {
     "file": "23_ROBOT2_A3.dro",
-    "label": "23 - Robotics Facility · Cutscene 2",
+    "label": "L8 · Robotics Facility · Cutscene 2",
     "named": true,
     "hidden": false
   },
   {
     "file": "24_STALK-08_GM.mid",
-    "label": "24 - Level 8 · Stalk",
+    "label": "L8 · Robotics Facility · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "24_STALK-08_MT.mid",
-    "label": "24 - Level 8 · Stalk",
+    "label": "L8 · Robotics Facility · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "24_STALK-08_A2.dro",
-    "label": "24 - Level 8 · Stalk",
+    "label": "L8 · Robotics Facility · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "24_STALK-08_A3.dro",
-    "label": "24 - Level 8 · Stalk",
+    "label": "L8 · Robotics Facility · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "25_FIGHT-08_GM.mid",
-    "label": "25 - Level 8 · Fight",
+    "label": "L8 · Robotics Facility · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "25_FIGHT-08_MT.mid",
-    "label": "25 - Level 8 · Fight",
+    "label": "L8 · Robotics Facility · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "25_FIGHT-08_A2.dro",
-    "label": "25 - Level 8 · Fight",
+    "label": "L8 · Robotics Facility · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "25_FIGHT-08_A3.dro",
-    "label": "25 - Level 8 · Fight",
+    "label": "L8 · Robotics Facility · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "26_BOSS-08_GM.mid",
-    "label": "26 - Level 8 · Boss",
+    "label": "L8 · Robotics Facility · Boss",
     "named": true,
     "hidden": false
   },
   {
     "file": "26_BOSS-08_MT.mid",
-    "label": "26 - Level 8 · Boss",
+    "label": "L8 · Robotics Facility · Boss",
     "named": true,
     "hidden": false
   },
   {
     "file": "26_BOSS-08_A2.dro",
-    "label": "26 - Level 8 · Boss",
+    "label": "L8 · Robotics Facility · Boss",
     "named": true,
     "hidden": false
   },
   {
     "file": "26_BOSS-08_A3.dro",
-    "label": "26 - Level 8 · Boss",
+    "label": "L8 · Robotics Facility · Boss",
     "named": true,
     "hidden": false
   },
   {
     "file": "27_STALK-09_GM.mid",
-    "label": "27 - Level 9 · Stalk",
+    "label": "L9 · Nar Shaddaa · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "27_STALK-09_MT.mid",
-    "label": "27 - Level 9 · Stalk",
+    "label": "L9 · Nar Shaddaa · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "27_STALK-09_A2.dro",
-    "label": "27 - Level 9 · Stalk",
+    "label": "L9 · Nar Shaddaa · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "27_STALK-09_A3.dro",
-    "label": "27 - Level 9 · Stalk",
+    "label": "L9 · Nar Shaddaa · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "28_FIGHT-09_GM.mid",
-    "label": "28 - Level 9 · Fight",
+    "label": "L9 · Nar Shaddaa · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "28_FIGHT-09_MT.mid",
-    "label": "28 - Level 9 · Fight",
+    "label": "L9 · Nar Shaddaa · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "28_FIGHT-09_A2.dro",
-    "label": "28 - Level 9 · Fight",
+    "label": "L9 · Nar Shaddaa · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "28_FIGHT-09_A3.dro",
-    "label": "28 - Level 9 · Fight",
+    "label": "L9 · Nar Shaddaa · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "29_JABBAMUS_GM.mid",
-    "label": "29 - Jabba's Ship · Cutscene",
+    "label": "L10 · Jabba's Ship · Cutscene",
     "named": true,
     "hidden": false
   },
   {
     "file": "29_JABBAMUS_MT.mid",
-    "label": "29 - Jabba's Ship · Cutscene",
+    "label": "L10 · Jabba's Ship · Cutscene",
     "named": true,
     "hidden": false
   },
   {
     "file": "29_JABBAMUS_A2.dro",
-    "label": "29 - Jabba's Ship · Cutscene",
+    "label": "L10 · Jabba's Ship · Cutscene",
     "named": true,
     "hidden": false
   },
   {
     "file": "29_JABBAMUS_A3.dro",
-    "label": "29 - Jabba's Ship · Cutscene",
+    "label": "L10 · Jabba's Ship · Cutscene",
     "named": true,
     "hidden": false
   },
   {
     "file": "30_STALK-10_GM.mid",
-    "label": "30 - Level 10 · Stalk",
+    "label": "L10 · Jabba's Ship · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "30_STALK-10_MT.mid",
-    "label": "30 - Level 10 · Stalk",
+    "label": "L10 · Jabba's Ship · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "30_STALK-10_A2.dro",
-    "label": "30 - Level 10 · Stalk",
+    "label": "L10 · Jabba's Ship · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "30_STALK-10_A3.dro",
-    "label": "30 - Level 10 · Stalk",
+    "label": "L10 · Jabba's Ship · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "31_FIGHT-10_GM.mid",
-    "label": "31 - Level 10 · Fight",
+    "label": "L10 · Jabba's Ship · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "31_FIGHT-10_MT.mid",
-    "label": "31 - Level 10 · Fight",
+    "label": "L10 · Jabba's Ship · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "31_FIGHT-10_A2.dro",
-    "label": "31 - Level 10 · Fight",
+    "label": "L10 · Jabba's Ship · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "31_FIGHT-10_A3.dro",
-    "label": "31 - Level 10 · Fight",
+    "label": "L10 · Jabba's Ship · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "32_BOSS-10_GM.mid",
-    "label": "32 - Level 10 · Boss",
+    "label": "L10 · Jabba's Ship · Boss",
     "named": true,
     "hidden": false
   },
   {
     "file": "32_BOSS-10_MT.mid",
-    "label": "32 - Level 10 · Boss",
+    "label": "L10 · Jabba's Ship · Boss",
     "named": true,
     "hidden": false
   },
   {
     "file": "32_BOSS-10_A2.dro",
-    "label": "32 - Level 10 · Boss",
+    "label": "L10 · Jabba's Ship · Boss",
     "named": true,
     "hidden": false
   },
   {
     "file": "32_BOSS-10_A3.dro",
-    "label": "32 - Level 10 · Boss",
+    "label": "L10 · Jabba's Ship · Boss",
     "named": true,
     "hidden": false
   },
   {
     "file": "33_STALK-11_GM.mid",
-    "label": "33 - Level 11 · Stalk",
+    "label": "L11 · Imperial City · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "33_STALK-11_MT.mid",
-    "label": "33 - Level 11 · Stalk",
+    "label": "L11 · Imperial City · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "33_STALK-11_A2.dro",
-    "label": "33 - Level 11 · Stalk",
+    "label": "L11 · Imperial City · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "33_STALK-11_A3.dro",
-    "label": "33 - Level 11 · Stalk",
+    "label": "L11 · Imperial City · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "34_FIGHT-11_GM.mid",
-    "label": "34 - Level 11 · Fight",
+    "label": "L11 · Imperial City · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "34_FIGHT-11_MT.mid",
-    "label": "34 - Level 11 · Fight",
+    "label": "L11 · Imperial City · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "34_FIGHT-11_A2.dro",
-    "label": "34 - Level 11 · Fight",
+    "label": "L11 · Imperial City · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "34_FIGHT-11_A3.dro",
-    "label": "34 - Level 11 · Fight",
+    "label": "L11 · Imperial City · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "35_BOSS-11_GM.mid",
-    "label": "35 - Level 11 · Boss",
+    "label": "L11 · Imperial City · Boss",
     "named": true,
     "hidden": false
   },
   {
     "file": "35_BOSS-11_MT.mid",
-    "label": "35 - Level 11 · Boss",
+    "label": "L11 · Imperial City · Boss",
     "named": true,
     "hidden": false
   },
   {
     "file": "35_BOSS-11_A2.dro",
-    "label": "35 - Level 11 · Boss",
+    "label": "L11 · Imperial City · Boss",
     "named": true,
     "hidden": false
   },
   {
     "file": "35_BOSS-11_A3.dro",
-    "label": "35 - Level 11 · Boss",
+    "label": "L11 · Imperial City · Boss",
     "named": true,
     "hidden": false
   },
   {
     "file": "36_STALK-12_GM.mid",
-    "label": "36 - Level 12 · Stalk",
+    "label": "L12 · Fuel Station · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "36_STALK-12_MT.mid",
-    "label": "36 - Level 12 · Stalk",
+    "label": "L12 · Fuel Station · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "36_STALK-12_A2.dro",
-    "label": "36 - Level 12 · Stalk",
+    "label": "L12 · Fuel Station · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "36_STALK-12_A3.dro",
-    "label": "36 - Level 12 · Stalk",
+    "label": "L12 · Fuel Station · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "37_FIGHT-12_GM.mid",
-    "label": "37 - Level 12 · Fight",
+    "label": "L12 · Fuel Station · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "37_FIGHT-12_MT.mid",
-    "label": "37 - Level 12 · Fight",
+    "label": "L12 · Fuel Station · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "37_FIGHT-12_A2.dro",
-    "label": "37 - Level 12 · Fight",
+    "label": "L12 · Fuel Station · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "37_FIGHT-12_A3.dro",
-    "label": "37 - Level 12 · Fight",
+    "label": "L12 · Fuel Station · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "38_FRIGMUS_GM.mid",
-    "label": "38 - Frigate · Cutscene",
+    "label": "L13 · The Executor · Cutscene 1",
     "named": true,
     "hidden": false,
     "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "38_FRIGMUS_MT.mid",
-    "label": "38 - Frigate · Cutscene",
+    "label": "L13 · The Executor · Cutscene 1",
     "named": true,
     "hidden": false,
     "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "38_FRIGMUS_A2.dro",
-    "label": "38 - Frigate · Cutscene",
+    "label": "L13 · The Executor · Cutscene 1",
     "named": true,
     "hidden": false,
     "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "38_FRIGMUS_A3.dro",
-    "label": "38 - Frigate · Cutscene",
+    "label": "L13 · The Executor · Cutscene 1",
     "named": true,
     "hidden": false,
     "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "39_EXECMUS_GM.mid",
-    "label": "39 - Executor · Cutscene",
+    "label": "L13 · The Executor · Cutscene 2",
     "named": true,
     "hidden": false,
     "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "39_EXECMUS_MT.mid",
-    "label": "39 - Executor · Cutscene",
+    "label": "L13 · The Executor · Cutscene 2",
     "named": true,
     "hidden": false,
     "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "39_EXECMUS_A2.dro",
-    "label": "39 - Executor · Cutscene",
+    "label": "L13 · The Executor · Cutscene 2",
     "named": true,
     "hidden": false,
     "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "39_EXECMUS_A3.dro",
-    "label": "39 - Executor · Cutscene",
+    "label": "L13 · The Executor · Cutscene 2",
     "named": true,
     "hidden": false,
     "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "40_STALK-13_GM.mid",
-    "label": "40 - Level 13 · Stalk",
+    "label": "L13 · The Executor · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "40_STALK-13_MT.mid",
-    "label": "40 - Level 13 · Stalk",
+    "label": "L13 · The Executor · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "40_STALK-13_A2.dro",
-    "label": "40 - Level 13 · Stalk",
+    "label": "L13 · The Executor · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "40_STALK-13_A3.dro",
-    "label": "40 - Level 13 · Stalk",
+    "label": "L13 · The Executor · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "41_FIGHT-13_GM.mid",
-    "label": "41 - Level 13 · Fight",
+    "label": "L13 · The Executor · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "41_FIGHT-13_MT.mid",
-    "label": "41 - Level 13 · Fight",
+    "label": "L13 · The Executor · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "41_FIGHT-13_A2.dro",
-    "label": "41 - Level 13 · Fight",
+    "label": "L13 · The Executor · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "41_FIGHT-13_A3.dro",
-    "label": "41 - Level 13 · Fight",
+    "label": "L13 · The Executor · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "42_STALK-14_GM.mid",
-    "label": "42 - Level 14 · Stalk",
+    "label": "L14 · The Arc Hammer · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "42_STALK-14_MT.mid",
-    "label": "42 - Level 14 · Stalk",
+    "label": "L14 · The Arc Hammer · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "42_STALK-14_A2.dro",
-    "label": "42 - Level 14 · Stalk",
+    "label": "L14 · The Arc Hammer · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "42_STALK-14_A3.dro",
-    "label": "42 - Level 14 · Stalk",
+    "label": "L14 · The Arc Hammer · Stalk",
     "named": true,
     "hidden": false
   },
   {
     "file": "43_FIGHT-14_GM.mid",
-    "label": "43 - Level 14 · Fight",
+    "label": "L14 · The Arc Hammer · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "43_FIGHT-14_MT.mid",
-    "label": "43 - Level 14 · Fight",
+    "label": "L14 · The Arc Hammer · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "43_FIGHT-14_A2.dro",
-    "label": "43 - Level 14 · Fight",
+    "label": "L14 · The Arc Hammer · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "43_FIGHT-14_A3.dro",
-    "label": "43 - Level 14 · Fight",
+    "label": "L14 · The Arc Hammer · Fight",
     "named": true,
     "hidden": false
   },
   {
     "file": "44_BOSS-14_GM.mid",
-    "label": "44 - Level 14 · Boss",
+    "label": "L14 · The Arc Hammer · Boss",
     "named": true,
     "hidden": false
   },
   {
     "file": "44_BOSS-14_MT.mid",
-    "label": "44 - Level 14 · Boss",
+    "label": "L14 · The Arc Hammer · Boss",
     "named": true,
     "hidden": false
   },
   {
     "file": "44_BOSS-14_A2.dro",
-    "label": "44 - Level 14 · Boss",
+    "label": "L14 · The Arc Hammer · Boss",
     "named": true,
     "hidden": false
   },
   {
     "file": "44_BOSS-14_A3.dro",
-    "label": "44 - Level 14 · Boss",
+    "label": "L14 · The Arc Hammer · Boss",
     "named": true,
     "hidden": false
   },
   {
     "file": "45_VICTORY_GM.mid",
-    "label": "45 - Victory",
+    "label": "Victory",
     "named": true,
     "hidden": false,
     "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "45_VICTORY_MT.mid",
-    "label": "45 - Victory",
+    "label": "Victory",
     "named": true,
     "hidden": false,
     "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "45_VICTORY_A2.dro",
-    "label": "45 - Victory",
+    "label": "Victory",
     "named": true,
     "hidden": false,
     "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "45_VICTORY_A3.dro",
-    "label": "45 - Victory",
+    "label": "Victory",
     "named": true,
     "hidden": false,
     "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "46_CLOSCRED_GM.mid",
-    "label": "46 - Closing Credits",
+    "label": "Closing Credits",
     "named": true,
     "hidden": false
   },
   {
     "file": "46_CLOSCRED_MT.mid",
-    "label": "46 - Closing Credits",
+    "label": "Closing Credits",
     "named": true,
     "hidden": false
   },
   {
     "file": "46_CLOSCRED_A2.dro",
-    "label": "46 - Closing Credits",
+    "label": "Closing Credits",
     "named": true,
     "hidden": false
   },
   {
     "file": "46_CLOSCRED_A3.dro",
-    "label": "46 - Closing Credits",
+    "label": "Closing Credits",
     "named": true,
     "hidden": false
   },
   {
     "file": "47_DEFAULT_GM.mid",
-    "label": "47 - [dev] Default",
+    "label": "[dev] Default",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "47_DEFAULT_MT.mid",
-    "label": "47 - [dev] Default",
+    "label": "[dev] Default",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "47_DEFAULT_A2.dro",
-    "label": "47 - [dev] Default",
+    "label": "[dev] Default",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "47_DEFAULT_A3.dro",
-    "label": "47 - [dev] Default",
+    "label": "[dev] Default",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "48_GROOVE2_GM.mid",
-    "label": "48 - [dev] Groove 2",
+    "label": "[dev] Groove 2",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "48_GROOVE2_MT.mid",
-    "label": "48 - [dev] Groove 2",
+    "label": "[dev] Groove 2",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "48_GROOVE2_A2.dro",
-    "label": "48 - [dev] Groove 2",
+    "label": "[dev] Groove 2",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "48_GROOVE2_A3.dro",
-    "label": "48 - [dev] Groove 2",
+    "label": "[dev] Groove 2",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "49_SURFIN_GM.mid",
-    "label": "49 - [dev] Surfin'",
+    "label": "[dev] Surfin'",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "49_SURFIN_MT.mid",
-    "label": "49 - [dev] Surfin'",
+    "label": "[dev] Surfin'",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "49_SURFIN_A2.dro",
-    "label": "49 - [dev] Surfin'",
+    "label": "[dev] Surfin'",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "49_SURFIN_A3.dro",
-    "label": "49 - [dev] Surfin'",
+    "label": "[dev] Surfin'",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "50_RUMBLE_GM.mid",
-    "label": "50 - [dev] Rumble",
+    "label": "[dev] Rumble",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "50_RUMBLE_MT.mid",
-    "label": "50 - [dev] Rumble",
+    "label": "[dev] Rumble",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "50_RUMBLE_A2.dro",
-    "label": "50 - [dev] Rumble",
+    "label": "[dev] Rumble",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "50_RUMBLE_A3.dro",
-    "label": "50 - [dev] Rumble",
+    "label": "[dev] Rumble",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "51_NOTELOOP_GM.mid",
-    "label": "51 - [dev] Note Loop (test)",
+    "label": "[dev] Note Loop (test)",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "51_NOTELOOP_MT.mid",
-    "label": "51 - [dev] Note Loop (test)",
+    "label": "[dev] Note Loop (test)",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "51_NOTELOOP_A2.dro",
-    "label": "51 - [dev] Note Loop (test)",
+    "label": "[dev] Note Loop (test)",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "51_NOTELOOP_A3.dro",
-    "label": "51 - [dev] Note Loop (test)",
+    "label": "[dev] Note Loop (test)",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "52_SMOFFICE_GM.mid",
-    "label": "52 - [dev] SM Office",
+    "label": "[dev] SM Office",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "52_SMOFFICE_MT.mid",
-    "label": "52 - [dev] SM Office",
+    "label": "[dev] SM Office",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "52_SMOFFICE_A2.dro",
-    "label": "52 - [dev] SM Office",
+    "label": "[dev] SM Office",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "52_SMOFFICE_A3.dro",
-    "label": "52 - [dev] SM Office",
+    "label": "[dev] SM Office",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "53_TEMP_GM.mid",
-    "label": "53 - [dev] Temp",
+    "label": "[dev] Temp",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "53_TEMP_MT.mid",
-    "label": "53 - [dev] Temp",
+    "label": "[dev] Temp",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "53_TEMP_A2.dro",
-    "label": "53 - [dev] Temp",
+    "label": "[dev] Temp",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "53_TEMP_A3.dro",
-    "label": "53 - [dev] Temp",
+    "label": "[dev] Temp",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "54_TEST1_GM.mid",
-    "label": "54 - [dev] Test 1",
+    "label": "[dev] Test 1",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "54_TEST1_MT.mid",
-    "label": "54 - [dev] Test 1",
+    "label": "[dev] Test 1",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "54_TEST1_A2.dro",
-    "label": "54 - [dev] Test 1",
+    "label": "[dev] Test 1",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "54_TEST1_A3.dro",
-    "label": "54 - [dev] Test 1",
+    "label": "[dev] Test 1",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "55_TEST2_GM.mid",
-    "label": "55 - [dev] Test 2",
+    "label": "[dev] Test 2",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "55_TEST2_MT.mid",
-    "label": "55 - [dev] Test 2",
+    "label": "[dev] Test 2",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "55_TEST2_A2.dro",
-    "label": "55 - [dev] Test 2",
+    "label": "[dev] Test 2",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
   },
   {
     "file": "55_TEST2_A3.dro",
-    "label": "55 - [dev] Test 2",
+    "label": "[dev] Test 2",
     "named": true,
     "hidden": false,
     "note": "developer/test cue left in SOUNDS.GOB (not used in-game)"
