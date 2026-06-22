@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TFX · MT-32 / SC-55</title>
+<title>Extreme Assault · General MIDI / AdLib</title>
 <style>
   @font-face{
     font-family:"TFX Pixel";
@@ -11,17 +11,17 @@
     font-weight:normal;font-style:normal;font-display:block;
   }
   :root{
-    /* phosphor monitor */
-    --bg:#45503c; --mon:#3e4936; --mon-ink:#cdd7b2; --mon-ink2:#93a173; --mon-line:#73815a; --mon-hi:#e9efce;
-    --screen:#171c12;
+    /* cyan mech-HUD UI (Extreme Assault cockpit display) */
+    --bg:#0a1418; --mon:#0c181c; --mon-ink:#5fd0e0; --mon-ink2:#3a8f9e; --mon-line:#1f5560; --mon-hi:#c8f4ff;
+    --screen:#050d10;
     /* real brushed steel */
     --steel:#9498a0; --steel-lt:#e2e5e9; --steel-dk:#2c2f35; --steel-emb:#15171b; --steel-ink:#eef0f2;
     --steel-grad:linear-gradient(180deg,#c4c8cd 0%,#9a9ea6 46%,#6b7078 100%);
     --steel-grad-dn:linear-gradient(180deg,#797d85 0%,#5e636b 100%);
-    --warn:#fde725;
+    --warn:#ff5a3c;
   }
   *{box-sizing:border-box}
-  html,body{margin:0;height:100%;background:#1c2016;overflow:hidden}
+  html,body{margin:0;height:100%;background:#081816;overflow:hidden}
   body{font-family:"TFX Pixel","Lucida Console","DejaVu Sans Mono",Consolas,monospace;
     color:var(--mon-ink);text-transform:uppercase;letter-spacing:0;font-size:13px;
     -webkit-font-smoothing:none}
@@ -32,7 +32,7 @@
   #screen{position:relative;flex:1;display:flex;flex-direction:column;min-height:0;background:var(--bg);overflow:hidden;
     border-top:2px solid var(--steel-dk);border-left:2px solid var(--steel-dk);
     border-right:2px solid var(--steel-lt);border-bottom:2px solid var(--steel-lt);
-    box-shadow:inset 0 0 0 1px #0c0f08, inset 0 0 26px rgba(0,0,0,.45)}
+    box-shadow:inset 0 0 0 1px #04110d, inset 0 0 26px rgba(0,0,0,.45)}
   #screen::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:60;
     background:repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0 1px,transparent 1px 3px),
       radial-gradient(125% 125% at 50% 45%,transparent 62%,rgba(0,0,0,.4) 100%)}
@@ -51,7 +51,7 @@
   header{padding:7px 12px 4px}
   .htop{display:flex;align-items:flex-end;gap:12px}
   .logo{font-size:22px;font-weight:700;color:var(--mon-hi);letter-spacing:0;line-height:.9;
-    text-shadow:0 0 7px rgba(190,210,120,.4)}
+    text-shadow:0 0 7px rgba(120,235,205,.4)}
   .hline{flex:1;height:0;border-top:1px solid var(--mon-line);box-shadow:0 1px 0 rgba(0,0,0,.35);margin-bottom:5px}
   .hright{color:var(--mon-ink2);font-size:11px;margin-bottom:1px}
   .xlink{color:var(--screen);background:var(--mon-ink2);text-decoration:none;
@@ -94,7 +94,7 @@
   #rollWrap{flex:1;position:relative;min-width:0;background:var(--screen)}
   canvas{display:block;width:100%;height:100%;image-rendering:pixelated}
   #overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-    background:rgba(20,24,16,.92);color:var(--mon-ink2);text-align:center;padding:20px;font-size:12px;z-index:5}
+    background:rgba(8,22,20,.92);color:var(--mon-ink2);text-align:center;padding:20px;font-size:12px;z-index:5}
   #overlay.hidden{display:none}
 
   #side{width:420px;display:flex;flex-direction:column;min-height:0;background:var(--mon)}
@@ -116,28 +116,30 @@
   #songlist{overflow-y:auto;flex:1;scrollbar-width:none}
   #songlist::-webkit-scrollbar{display:none}
   .song{display:flex;align-items:center;gap:9px;height:24px;padding:0 10px;cursor:pointer;color:var(--mon-ink);
-    border-bottom:1px solid rgba(115,129,90,.16);font-size:13px;line-height:1;white-space:nowrap;overflow:hidden}
+    border-bottom:1px solid rgba(53,125,111,.20);font-size:13px;line-height:1;white-space:nowrap;overflow:hidden}
   .song .nm{overflow:hidden;text-overflow:ellipsis}
   .song .tid{flex:none;width:30px;box-sizing:border-box;font-size:13px;line-height:1;color:var(--screen);background:var(--mon-line);
     border-radius:3px;padding:3px 4px;opacity:.85;font-variant-numeric:tabular-nums;text-align:center}
-  .song:hover{background:rgba(115,129,90,.16)}
+  .song:hover{background:rgba(53,125,111,.20)}
   .song.sel{background:var(--mon-line);color:var(--screen)}
   .song.playing{box-shadow:inset 3px 0 0 var(--warn)}
   /* driver icons / badges */
   .dchip{flex:none;width:34px;box-sizing:border-box;font-size:13px;letter-spacing:0;padding:3px 0;border-radius:2px;
     border:1px solid;line-height:1;text-align:center;text-indent:1px}
-  /* MT-32: dark ink on light phosphor */
-  .dchip.rld{color:#10160c;background:#cdd7b2;border-color:#93a173}
-  /* SCC: light text on dark screen, light border */
-  .dchip.scc{color:#cdd7b2;background:#171c12;border-color:#b8c79b}
-  /* AdLib/OPL: yellowish FM tint (matches playhead/seeker --warn, slightly muted) */
-  .dchip.adl{color:#1a1205;background:#d8c63f;border-color:#a8970f}
+  /* GM (SC-55): light text on dark screen */
+  .dchip.gm{color:#ffe9a8;background:#190d07;border-color:#b8902c}
+  /* MT-32 (Munt LA synth): cool Roland blue, distinct from the gold FM/GM chips */
+  .dchip.mt{color:#cfe3ff;background:#0c1626;border-color:#3f6fb0}
+  /* OPL2 AdLib: copper FM tint */
+  .dchip.o2{color:#190d07;background:#e0934a;border-color:#a8650f}
+  /* OPL3 SoundBlaster: brighter gold FM tint */
+  .dchip.o3{color:#190d07;background:#e6c24a;border-color:#a8930f}
   /* plasma scrollbar — lit phosphor bar */
-  #sb{width:14px;background:#0e120a;position:relative;cursor:pointer;
-    box-shadow:inset 1px 0 0 rgba(0,0,0,.5),inset -1px 0 0 rgba(115,129,90,.25)}
+  #sb{width:14px;background:#150a05;position:relative;cursor:pointer;
+    box-shadow:inset 1px 0 0 rgba(0,0,0,.5),inset -1px 0 0 rgba(122,74,44,.30)}
   #sbthumb{position:absolute;left:2px;right:2px;min-height:18px;border-radius:1px;
     background:linear-gradient(90deg,var(--mon-ink2) 0%,var(--mon-hi) 50%,var(--mon-ink2) 100%);
-    box-shadow:0 0 6px rgba(205,215,178,.6),0 0 2px rgba(233,239,206,.9),inset 0 0 0 1px rgba(233,239,206,.4)}
+    box-shadow:0 0 6px rgba(232,178,122,.6),0 0 2px rgba(255,217,160,.9),inset 0 0 0 1px rgba(255,217,160,.4)}
 
   /* ---- bottom steel dashboard ---- */
   #dash{padding:7px 9px 9px;
@@ -198,7 +200,7 @@
   #seekbar #t-cur{color:var(--mon-hi);min-width:34px}
   #time{color:var(--mon-ink2);font-size:11px;min-width:34px;text-align:right;font-variant-numeric:tabular-nums}
   #seektrack{position:relative;flex:1;height:16px;background:var(--screen);overflow:hidden;
-    box-shadow:inset 0 0 0 1px #0c0f08, inset 0 0 10px rgba(0,0,0,.55)}
+    box-shadow:inset 0 0 0 1px #04110d, inset 0 0 10px rgba(0,0,0,.55)}
   /* phosphor fill with a yellowish decay trailing behind the playhead */
   #seekfill{position:absolute;left:0;top:0;bottom:0;width:0%;pointer-events:none;
     background:linear-gradient(90deg,var(--mon-line),var(--mon-ink2));
@@ -244,12 +246,12 @@
   .imodal-h{display:flex;align-items:center;gap:10px;padding:7px 12px;color:var(--mon-ink2);
     border-bottom:1px solid var(--mon-line)}
   .imodal-h .t{font-size:14px;letter-spacing:1px;color:var(--mon-hi);
-    text-shadow:0 0 7px rgba(190,210,120,.4)}
+    text-shadow:0 0 7px rgba(120,235,205,.4)}
   .imodal-body{flex:1;min-height:0;overflow-y:auto;padding:16px 22px 22px;color:var(--mon-ink);
     font-size:13px;line-height:1.7;
-    background:radial-gradient(130% 120% at 50% 0%,rgba(115,129,90,.10),transparent 60%)}
+    background:radial-gradient(130% 120% at 50% 0%,rgba(53,125,111,.12),transparent 60%)}
   .imodal-body h2{font-size:15px;line-height:1.45;color:var(--mon-hi);margin:24px 0 10px;
-    text-shadow:0 0 8px rgba(190,210,120,.3)}
+    text-shadow:0 0 8px rgba(120,235,205,.3)}
   .imodal-body h2:first-child{margin-top:0}
   .imodal-body p{margin:0 0 11px}
   .imodal-body strong{color:var(--mon-hi)}
@@ -375,19 +377,19 @@
   <div id="screen">
   <header>
     <div class="htop">
-      <span class="logo">TFX</span>
+      <span class="logo">EA</span>
       <span class="hline"></span>
-      <span class="gamenav"><button type="button" class="gamesel-btn" aria-haspopup="listbox" aria-expanded="false" title="Switch jukebox">TFX</button><div class="gamemenu" role="listbox">
-        <button type="button" class="gameopt sel" role="option" aria-selected="true" data-href="index.html">TFX</button>
+      <span class="gamenav"><button type="button" class="gamesel-btn" aria-haspopup="listbox" aria-expanded="false" title="Switch jukebox">EXTREME ASSAULT</button><div class="gamemenu" role="listbox">
+        <button type="button" class="gameopt" role="option" data-href="index.html">TFX</button>
         <button type="button" class="gameopt" role="option" data-href="inferno.html">INFERNO</button>
         <button type="button" class="gameopt" role="option" data-href="ufo.html">X-COM</button>
         <button type="button" class="gameopt" role="option" data-href="tftd.html">X-COM TFTD</button>
         <button type="button" class="gameopt" role="option" data-href="wc2.html">WARCRAFT II</button>
         <button type="button" class="gameopt" role="option" data-href="df.html">DARK FORCES</button>
         <button type="button" class="gameopt" role="option" data-href="ww.html">WACKY WHEELS</button>
-        <button type="button" class="gameopt" role="option" data-href="ea.html">EXTREME ASSAULT</button>
+        <button type="button" class="gameopt sel" role="option" aria-selected="true" data-href="ea.html">EXTREME ASSAULT</button>
       </div></span><script>(function(){var nav=document.currentScript.previousElementSibling,btn=nav.querySelector('.gamesel-btn'),menu=nav.querySelector('.gamemenu');btn.addEventListener('click',function(e){e.stopPropagation();var o=menu.classList.toggle('open');btn.setAttribute('aria-expanded',o);});menu.querySelectorAll('.gameopt').forEach(function(o){o.addEventListener('click',function(){var h=o.dataset.href;if(h&&!o.classList.contains('sel'))location.href=h;});});document.addEventListener('click',function(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');});})();</script>
-      <span class="hright">TFX JUKEBOX</span>
+      <span class="hright">EXTREME ASSAULT JUKEBOX</span>
     </div>
     <div class="hsub">
       <div class="hmarquee">
@@ -396,7 +398,8 @@
       <span>DRIVER: <b id="st-drv">—</b></span>
       <span>NOTES: <b id="st-notes">0</b></span>
       <span>CHANNELS: <b id="st-ch">0</b></span>
-      <span>SYNTH: <b id="st-synth">CM-32L / LAPC-I · v1.02 + PCM</b></span>
+      <span>SYNTH: <b id="st-synth">SC-55 v1.21 (SCC-1)</b></span>
+      <span>SOURCE: <b id="st-src">DATA.SFX/MUSIC (General MIDI)</b></span>
       </div>
     </div>
   </header>
@@ -404,15 +407,14 @@
   <div id="main">
     <div id="rollWrap" class="ginset">
       <canvas id="roll"></canvas>
-      <div id="overlay">INITIALISING MT-32 SYNTHESIS &mdash; HARDWARE &amp; ROM IMAGES&hellip;</div>
+      <div id="overlay">INITIALISING SYNTHESIS &mdash; HARDWARE &amp; ROM IMAGES&hellip;</div>
     </div>
     <div id="side" class="graise">
       <div class="side-h">TRACK SELECT<span class="sp"></span><b id="trackcount">0</b></div>
       <div class="filterbar" id="filterbar">
         <button class="fbtn on" data-f="ALL">ALL</button>
-        <button class="fbtn" data-f="RLD"><span class="dchip rld">MT</span>MT-32</button>
-        <button class="fbtn" data-f="SCC"><span class="dchip scc">SC</span>SCC</button>
-        <button class="fbtn" data-f="ADL"><span class="dchip adl">FM</span>AdLib</button>
+        <button class="fbtn" data-f="GM"><span class="dchip gm">GM</span>Gen MIDI</button>
+        <button class="fbtn" data-f="A3"><span class="dchip o3">FM</span>AdLib</button>
       </div>
       <div id="listwrap">
         <div id="songlist"></div>
@@ -432,79 +434,23 @@
   <div id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
     <div class="imodal">
       <div class="imodal-h">
-        <span class="t" id="infoTitle">ABOUT -- MT-32 / SCC / ADLIB</span>
+        <span class="t" id="infoTitle">ABOUT -- EXTREME ASSAULT MUSIC / GENERAL MIDI / ADLIB</span>
       </div>
       <div class="imodal-body">
-        <h2>MT-32 was not merely one option. It was the intended TFX sound.</h2>
-        <p>It would be easy to tell a neat technological story here:</p>
-        <p>MT-32 first, then Sound Canvas, then more realistic instruments, more ROM, more polyphony, more standardization.</p>
-        <p>That story is broadly true for PC sound hardware. But it is not the right story for TFX.</p>
-        <p>For TFX, the <strong>Roland MT-32 version is the version the music was written for</strong>.</p>
-        <p>That matters more than whether another device has a larger sound bank, more polished samples, or better General MIDI compatibility. The MT-32's patch structure, metallic attacks, synthetic pads, unusual percussion, and slightly alien timbres are not accidental limitations around the music. They are part of the music.</p>
-        <p>The SCC / Sound Canvas version is interesting because it shows how the material was translated into the newer General MIDI world. It may sound fuller in places, and its instruments may be more conventionally recognisable. But it does not have the same authority.</p>
-        <p>The MT-32 version has the strange digital atmosphere that belongs to TFX: a future imagined before everything became cinematically realistic. It is a little artificial, a little cold, occasionally metallic, and much more distinctive for it.</p>
-        <p>The clear winner is MT-32.</p>
-        <p>Not because it is objectively the most advanced synthesizer ever made, but because it is where the composition, the arrangement, and the sound design line up.</p>
-        <p>It is the version where the soundtrack sounds like it knows exactly what game it belongs to.</p>
+        <h2>The cockpit score, two ways.</h2>
+        <p>Extreme Assault (Blue Byte Software, 1997) keeps its in-mission soundtrack as Red Book <strong>CD audio</strong>, but the menus, briefings and FM build of the score live on disk as compact Miles Sound System <strong>XMI</strong> event data in <code>DATA.SFX/MUSIC</code> &mdash; not as recorded audio. This jukebox plays that sequenced data two ways: the <strong>General MIDI</strong> mix (for a Roland SC-55 / SCC-1 Sound Canvas) and the game's own <strong>AdLib</strong> FM build. Use the <strong>Gen MIDI / AdLib</strong> filter to switch between them. (The streamed CD tracks are a different recording and are not included here.)</p>
 
-        <h2>Sound Canvas: technically newer, but not necessarily more right</h2>
-        <p>The Roland SCC-1 and SC-55 family represent a different idea of PC music.</p>
-        <p>They brought General MIDI conventions, PCM instrument samples, more familiar orchestral colors, and a much more standardized sound world. Their sound banks were larger -- around 3 MB for the SC-55/SCC-1 class, covering hundreds of patches and drum sounds -- and their instruments could sound more immediately recognisable than the MT-32's deliberately synthetic voices.</p>
-        <p>But "newer" and "more standard" are not the same as "better for this soundtrack."</p>
-        <p>The SCC version of TFX is best understood as a translation.</p>
-        <p>It takes the musical structure of TFX and maps it into a more conventional General MIDI palette. Some things survive well. Some become smoother. Some become more obviously instrumental. But something is lost too: the particular tension between melody, synthetic texture, and slightly strange sound design that makes the MT-32 score feel native to the game.</p>
-        <p>The Sound Canvas is a fascinating alternate interpretation.</p>
-        <p>The MT-32 is TFX.</p>
+        <h2>General MIDI: the Sound Canvas mix</h2>
+        <p>The General-MIDI arrangement targets a <strong>Roland SC-55 / SCC-1</strong>, the Sound Canvas that defined the GM sound of the mid-90s. It is fully multi-timbral, one part per MIDI channel with standard GM instruments and a dedicated drum channel, so it sounds cleaner and fuller than the FM build while staying faithful to the original cues.</p>
 
-        <h2>AdLib: not the definitive version, but the one I remember</h2>
-        <p>And then there is AdLib.</p>
-        <p>The AdLib version is not the version that Barry Leitch was primarily writing toward. It cannot reproduce the full MT-32 arrangements, the layered patches, or the particular timbral logic of the original score.</p>
-        <p>But it is the version I remember.</p>
-        <p>That is a different kind of truth.</p>
-        <p>My childhood TFX experience was connected to AdLib / Sound Blaster FM music: a Yamaha OPL chip with a tiny number of voices, no large sample bank, and almost no room for luxury.</p>
-        <p>The original AdLib OPL2 chip had only nine melodic channels, built from eighteen small FM operators. In rhythm mode, some of those channels had to be repurposed for percussion. There was no sampled orchestra waiting in memory. No lush string section. No realistic piano. No studio-quality reverb. No huge sound design toolkit.</p>
-        <p>Just oscillators, envelopes, modulation, feedback, frequency ratios, and a few carefully chosen tricks.</p>
-        <p>At a technical level, FM synthesis is almost brutally minimal.</p>
-        <p>One oscillator creates a simple waveform. Another modulates it. The result produces extra harmonics. With the right ratios, levels, envelopes, and feedback, a few sine waves become something that our ears interpret as a bell, a bass, a metallic hit, an electric piano, a brass-like sound, a drum, or an alarm from the future.</p>
-        <p>With the wrong settings, they become electrical noise.</p>
-        <p>And that boundary is part of the charm.</p>
-        <p>AdLib music often sits close to that edge: a few mathematical oscillators trying very hard to become music. The result can be thin, sharp, synthetic, and strangely deep. It has an 8-bit-like emotional texture -- not because OPL music is literally an 8-bit audio stream, but because it carries the same sense of radical compression, directness, and vivid abstraction.</p>
-        <p>A few channels. A few envelopes. A few modulated waveforms.</p>
-        <p>And somehow: atmosphere.</p>
-        <p>The arrangement has to be clever because there is nowhere to hide. Every note competes for one of a handful of voices. Every drum hit costs resources. Every sustained chord makes the next melodic decision harder. The composer and programmer have to think in terms of scarcity.</p>
-        <p>That is why these soundtracks can feel so concentrated.</p>
-        <p>Modern music production can use a hundred tracks, gigabytes of samples, convolution reverbs, layered synths, and unlimited automation. AdLib had a small chip that could create beauty or noise depending on a few register values.</p>
-        <p>The soundtrack is therefore not merely compressed.</p>
-        <p>It is distilled.</p>
+        <h2>AdLib: the game's own FM bank</h2>
+        <p>The AdLib build is the game's <em>own</em> FM synthesis. Extreme Assault's Miles drivers map each General-MIDI program through a custom OPL instrument bank shipped as <strong>LEVEL_X.OPL</strong> (a Miles/AIL timbre library: 128 melodic + percussion 2-operator patches). We convert that bank to WOPL, feed the original XMI through a patched build of <strong>libADLMIDI</strong> loaded with it, capture every OPL register write, and replay it through a cycle-accurate <strong>Nuked-OPL3</strong> emulator &mdash; so the timbres, voice allocation and key-scaling are the card's own, not a generic AdLib substitute.</p>
 
-        <h2>A browser is now emulating a machine that was already emulating instruments</h2>
-        <p>The strangest part of this project is the chain of abstractions.</p>
-        <p>The original TFX music was not stored as finished audio. It was stored as compact musical instructions: timing, note events, patch changes, volume, panning, pitch bends, and other control data.</p>
-        <p>Those instructions were designed to drive old hardware.</p>
-        <p>That hardware then tried to create instruments.</p>
-        <p>The MT-32 combined small PCM attacks with synthetic partials to create pads, brass, percussion, and imaginary instruments. The Sound Canvas used a compressed sample bank to approximate an orchestra. The AdLib chip used a handful of oscillators and modulation paths to persuade the ear that mathematics could be music.</p>
-        <p>And now, decades later, JavaScript is running in a browser, scheduling those reconstructed musical events, while WebAssembly emulates the old synthesizer hardware, which then recreates its approximation of instruments.</p>
-        <p>The chain is almost comically indirect:</p>
-        <div class="ichain"><span>1993 game data</span><span>-&gt; extracted music events</span><span>-&gt; MIDI-style sequencing</span><span>-&gt; JavaScript timing</span><span>-&gt; WebAssembly emulation</span><span>-&gt; emulated MT-32, Sound Canvas, or OPL chip</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
-        <p>A browser tab is now effectively hosting a miniature museum of old sound hardware.</p>
-        <p>And the remarkable thing is that this did not require a huge engineering team or months of bespoke low-level work. Modern emulators, browser audio, WebAssembly, and AI-assisted development made it possible to assemble this in roughly twenty hours.</p>
-        <p>That is the science-fiction part.</p>
-        <p>But it is not the reason the project matters.</p>
-
-        <h2>The technical work is only the path back</h2>
-        <p>All of this can sound extremely geeky.</p>
-        <p>Custom data formats. MIDI events. OPL operators. LA synthesis. ISA cards. PCM ROMs. General MIDI mappings. WebAssembly. Browser scheduling. Synthesizer state restoration.</p>
-        <p>And yes, it is geeky.</p>
-        <p>But the point is much simpler.</p>
-        <p>As a child, I would sometimes leave TFX on the intro screen, or sit after a landing, or delay the next click in a menu, simply because I wanted the music to continue.</p>
-        <p>I was not analyzing MIDI channels.</p>
-        <p>I was not thinking about FM operators or waveform ROM sizes.</p>
-        <p>I just liked the feeling.</p>
-        <p>The MT-32 version now shows me what the soundtrack was truly designed to be: the rich, synthetic, slightly alien sound world that belongs to TFX itself.</p>
-        <p>The AdLib version gives me something else: the smaller, harsher, more compressed sound world that belongs to my own memory of playing it.</p>
-        <p>The jukebox holds both.</p>
-        <p>The technically "right" version, and the emotionally right one.</p>
-        <p class="sig">-- Voyta</p>
+        <h2>How this works</h2>
+        <p>Each cue in <code>DATA.SFX/MUSIC</code> is an AIL/Miles XMI (XMIDI) stream. The General-MIDI XMI is converted to a Standard MIDI File (a port of Exult's XMidiFile timing model) for the SC-55. The FM XMI is rendered by libADLMIDI with the game's LEVEL_X bank, captured as a DOSBox raw-OPL (DRO) register log, then played in your browser:</p>
+        <div class="ichain"><span>1997 Extreme Assault DATA.SFX/MUSIC (XMI)</span><span>-&gt; SMF / OPL register log (game LEVEL_X bank)</span><span>-&gt; SMF / DRO</span><span>-&gt; JavaScript timing</span><span>-&gt; WebAssembly Nuked-SC55 (GM) / Nuked-OPL3 (AdLib)</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
+        <p>The synthesis engine, ROM images and UI are shared with the sister TFX jukebox -- only the music converters and this page are new.</p>
+        <p class="sig">-- a companion to the TFX jukebox</p>
       </div>
     </div>
   </div>
@@ -516,7 +462,7 @@
       <button class="mtab" data-v="tracks">TRACKS</button>
       <button class="mtab minfo" id="minfo" title="About this jukebox">INFO</button>
       <button class="mtab minfo" id="mlp" title="Low-performance mode: lighter audio resampling if playback stutters">PERF</button>
-      <button class="mtab minfo" id="msf" title="Play SC-55 / General MIDI songs through the GeneralUser-GS SoundFont">FONT</button>
+      <button class="mtab minfo" id="msf" title="Play the General MIDI version through the GeneralUser-GS SoundFont">FONT</button>
     </div>
     <div id="chanstrip">
       <span class="lab">CHANNELS<br>L·MUTE<br>R·SOLO</span>
@@ -531,10 +477,10 @@
       <span class="dmeter"><b class="mlab">VOL</b> <input id="vol" type="range" min="0" max="1" step="0.02" value="0.85"><b id="volV">85%</b></span>
       <span class="dmeter"><b class="mlab">MIX</b> <input id="mix" type="range" min="0" max="1" step="0.02" value="0" title="Blend L/R channels toward mono — easier on headphones"><b id="mixV">0%</b></span>
       </span>
-      <button id="sfBtn" class="btn infobtn" title="Play SC-55 / General MIDI (SCC) songs through the GeneralUser-GS SoundFont instead of the Roland SC-55 emulator">SOUNDFONT</button>
+      <button id="sfBtn" class="btn infobtn" title="Play the General MIDI version through the GeneralUser-GS SoundFont instead of the Roland SC-55 emulator">SOUNDFONT</button>
       <button id="lpBtn" class="btn infobtn" title="Low-performance mode: use lighter audio resampling if playback stutters on slow devices">LOW-PERF</button>
-      <button id="infoBtn" class="btn infobtn" title="About this jukebox — why MT-32, SCC and AdLib">INFO</button>
-      <span class="credit"><a href="https://barryleitch.bandcamp.com/" target="_blank" rel="noopener">ALL MUSIC BY BARRY LEITCH</a></span>
+      <button id="infoBtn" class="btn infobtn" title="About this jukebox — General MIDI and AdLib">INFO</button>
+      <span class="credit"><a href="https://www.mobygames.com/game/extreme-assault" target="_blank" rel="noopener">EXTREME ASSAULT · BLUE BYTE SOFTWARE 1997</a></span>
     </div>
   </div>
 </div>
@@ -543,10 +489,13 @@
 <script src="sc55.js"></script>
 <script src="opl3.js"></script>
 <script type="module">
-import { $, Engine, parseMidi, parseDro, CH_SWATCH, CH_TILE } from './player-engine.js';
+import { $, Engine, parseMidi, parseDro, CH_SWATCH, CH_TILE, setChannelPalette } from './player-engine.js';
 // CHUNK, rdBin, the synth backends and BACKENDS now live in
 // player-engine.js, shared with the other player so the render engine
 // (MT-32 / SC-55 / OPL3 backends + Engine) never diverges between pages.
+// Re-tint the shared channel swatches/note tiles to Extreme Assault's cyan
+// mech-HUD palette (the default ramp is green for the index/medit monitors).
+setChannelPalette(['#05161a','#0e4a52','#1f9fb0','#5fd0e0','#c8f4ff']);
 
 // ---------- UI ----------
 const LOW=21, HIGH=108;                 // A0..C8 — full piano
@@ -556,22 +505,32 @@ const isWhite=p=>WHITE.includes(((p%12)+12)%12);
 const UI = {
   songs:[], cur:null, raf:0,
   async init(){
-    this.songs = (await fetch('songs.json').then(r=>r.json())).filter(s=>!s.hidden);
-    const DRVORD={RLD:0,SCC:1,ADL:2};
+    this.songs = (await fetch('ea_songs.json').then(r=>r.json())).filter(s=>!s.hidden);
+    const DRVORD={GM:0,MT:1,A2:2,A3:3};
     this.songs.forEach(s=>{
-      s._drv=(/_(RLD|SCC|ADL)_/.exec(s.file)||[,'RLD'])[1];
-      s._name=s.label.replace(/\s*\((?:RLD|SCC|ADL)\)\s*$/,'').replace(/^TFX[\s:\-]*/i,'');
-      s._tid=+(s.file.match(/tune_(\d+)/)||[,1e9])[1];
+      // Extreme Assault ships Miles XMI cues (DATA.SFX/MUSIC); the filename token
+      // picks the backend: _GM. -> SC-55 (SCC), _A3. -> the game's own Miles/AIL
+      // OPL bank rendered on Nuked-OPL3 (ADL). _filt keeps them apart for the
+      // filter and chips.
+      const tok=(/_(GM|MT|A2|A3)\./.exec(s.file)||[,'GM'])[1];
+      s._filt=tok;
+      s._drv={GM:'SCC',MT:'RLD',A2:'ADL',A3:'ADL'}[tok];
+      s._dev={GM:'General MIDI',MT:'Roland MT-32',A2:'AdLib (OPL2)',A3:'AdLib (OPL3)'}[tok];
+      s._name=s.label.replace(/\s*\((?:GM|A2|A3)\)\s*$/,'');
+      s._tid=+(s.label.match(/^(\d+)/)||[,1e9])[1];
     });
     this.songs.sort((a,b)=>
       a._name.localeCompare(b._name,undefined,{sensitivity:'base',numeric:true}) ||
-      (DRVORD[a._drv]??9)-(DRVORD[b._drv]??9) ||
+      (DRVORD[a._filt]??9)-(DRVORD[b._filt]??9) ||
       a._tid-b._tid);
     const list=$('songlist');
     this.songs.forEach((s,i)=>{
-      const row=document.createElement('div'); row.className='song'; row.dataset.i=i; row.dataset.drv=s._drv;
-      const DCH={RLD:['rld','MT','Roland MT-32 / LAPC-I'],SCC:['scc','SC','Sound Canvas / General MIDI'],ADL:['adl','FM','AdLib / OPL2 FM synthesis']};
-      const [dc,dl,dtitle]=DCH[s._drv]||DCH.RLD;
+      const row=document.createElement('div'); row.className='song'; row.dataset.i=i; row.dataset.filt=s._filt;
+      const DCH={GM:['gm','GM','General MIDI — Roland SC-55 / SCC-1'],
+                 MT:['mt','MT','Roland MT-32 — Mok’s MT32GM Miles driver (MPU401.MDI), Munt CM-32L'],
+                 A2:['o2','O2','AdLib / OPL2 FM — YM3812'],
+                 A3:['o3','FM','AdLib FM — the game’s own Miles/AIL OPL bank (LEVEL_X), Nuked-OPL3']};
+      const [dc,dl,dtitle]=DCH[s._filt]||DCH.GM;
       row.innerHTML=`<span class="dchip ${dc}" title="${dtitle}">${dl}</span><span class="nm">${s._name}</span>`;
       row.onclick=()=>this.pick(i);
       list.appendChild(row);
@@ -601,10 +560,9 @@ const UI = {
     const toggleLowPerf=()=>{ const on=Engine.hifi; applyLowPerf(on); localStorage.setItem('tfxLowPerf',on?'1':'0'); };
     $('lpBtn').onclick=toggleLowPerf;
     $('mlp').onclick=toggleLowPerf;
-    // SOUNDFONT toggle: render SC-55 / General MIDI (SCC) songs through the
-    // GeneralUser-GS.sf2 sound bank instead of the Roland SC-55 ROM emulator.
-    // The 32 MB bank is fetched lazily (with a progress bar) the first time it's
-    // enabled. Persisted so the choice survives reloads.
+    // SOUNDFONT toggle: render the General MIDI (GM → SCC) version through
+    // GeneralUser-GS.sf2 instead of the Roland SC-55 ROM emulator. Bank fetched
+    // lazily (with progress bar) on first use. Persisted across reloads.
     const applySf2=on=>{ Engine.sf2Mode=on; document.querySelectorAll('#sfBtn,#msf').forEach(b=>b.classList.toggle('on',on)); };
     applySf2(localStorage.getItem('tfxSf2')==='1');
     const toggleSf2=async()=>{ const on=!Engine.sf2Mode; applySf2(on); localStorage.setItem('tfxSf2',on?'1':'0'); if(this.cur!=null) await this.pick(this.cur); };
@@ -673,7 +631,7 @@ const UI = {
   applyFilter(){
     let n=0;
     document.querySelectorAll('.song').forEach(r=>{
-      const show=this.filter==='ALL'||r.dataset.drv===this.filter;
+      const show=this.filter==='ALL'||r.dataset.filt===this.filter;
       r.style.display=show?'':'none'; if(show) n++;
     });
     $('trackcount').textContent=n;
@@ -688,16 +646,16 @@ const UI = {
     const sel=document.querySelector('.song.sel'); if(sel) sel.scrollIntoView({block:'nearest'});
     Engine.playing=false; this.setPlayUI(false);
     await Engine.useDevice(s._drv);
-    const dir = s._drv==='ADL' ? 'dro/' : 'midis/';
-    const bytes=new Uint8Array(await fetch(dir+s.file).then(r=>r.arrayBuffer()));
+    const bytes=new Uint8Array(await fetch('ea/'+s.file).then(r=>r.arrayBuffer()));
     const parsed = s._drv==='ADL' ? parseDro(bytes) : parseMidi(bytes);
     Engine.mute.clear(); Engine.solo.clear();
     Engine.loadSong(parsed);
     this.buildChannels(parsed);
     $('trackname').textContent=s._name; this.updateMediaMeta(s);
-    $('st-drv').textContent={RLD:'MT-32',SCC:'SCC',ADL:'ADLIB'}[s._drv]||s._drv;
-    $('st-synth').textContent=(Engine.sf2Mode && s._drv==='SCC') ? 'GeneralUser-GS (SoundFont)'
-      : ({RLD:'CM-32L / LAPC-I · v1.02 + PCM',SCC:'SC-55 v1.21',ADL:'OPL3 (Nuked, YMF262)'}[s._drv]||s._drv);
+    $('st-drv').textContent={GM:'GEN MIDI',MT:'MT-32',A2:'ADLIB',A3:'ADLIB'}[s._filt]||s._filt;
+    $('st-synth').textContent=(Engine.sf2Mode && s._filt==='GM') ? 'GeneralUser-GS (SoundFont)'
+      : ({GM:'SC-55 v1.21 (SCC-1)',MT:'MT-32 / CM-32L (Munt)',A2:'OPL2 · Nuked-OPL3 (YM3812)',A3:'OPL3 · Nuked-OPL3 (YMF262)'}[s._filt]||s._filt);
+    $('st-src').textContent={GM:'DATA.SFX/MUSIC (General MIDI)',MT:'DATA.SFX/MUSIC (GM → MT-32)',A2:'DATA.SFX/MUSIC (AdLib OPL2)',A3:'DATA.SFX/MUSIC (AdLib · LEVEL_X bank)'}[s._filt]||s._filt;
     $('st-notes').textContent=parsed.notes.length;
     $('st-ch').textContent=parsed.channels.length;
     $('seek').value=0;
@@ -803,8 +761,8 @@ const UI = {
   },
   updateMediaMeta(s){
     if(!('mediaSession' in navigator) || typeof MediaMetadata==='undefined') return;
-    const dev={RLD:'Roland MT-32',SCC:'Roland SC-55',ADL:'AdLib OPL3 FM'}[s._drv]||s._drv;
-    try{ navigator.mediaSession.metadata=new MediaMetadata({ title:s._name, artist:dev, album:'TFX — Team17 / DID (Barry Leitch)' }); }catch(e){}
+    const dev={GM:'Roland SC-55 (General MIDI)',MT:'Roland MT-32',A2:'AdLib OPL2 FM',A3:'AdLib FM (game bank)'}[s._filt]||s._filt;
+    try{ navigator.mediaSession.metadata=new MediaMetadata({ title:s._name, artist:dev, album:'Extreme Assault — Blue Byte Software (1997)' }); }catch(e){}
   },
   updatePositionState(){
     if(!('mediaSession' in navigator) || !navigator.mediaSession.setPositionState) return;
