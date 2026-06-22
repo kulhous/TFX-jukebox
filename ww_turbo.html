@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wacky Wheels · Turbo — track explorer (hidden-message hunt)</title>
+<style>
+  :root{ --bg:#10130d; --ink:#d7e26a; --ink2:#7e8a3e; --line:#39411c; --hi:#f4ffb0; --warn:#ff8a3c; }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:#080a06;color:var(--ink);
+    font-family:"Lucida Console","DejaVu Sans Mono",Consolas,monospace;font-size:13px}
+  #app{display:flex;flex-direction:column;height:100%}
+  header{padding:8px 12px;background:#161a0f;border-bottom:1px solid var(--line)}
+  header h1{margin:0 0 2px;font-size:15px;letter-spacing:1px;color:var(--hi)}
+  header .sub{color:var(--ink2);font-size:11px}
+  #controls{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;
+    padding:9px 12px;background:#12150c;border-bottom:1px solid var(--line)}
+  .ctl{display:flex;flex-direction:column;gap:3px;min-width:120px}
+  .ctl label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--ink2)}
+  .ctl .row{display:flex;align-items:center;gap:8px}
+  .ctl input[type=range]{width:170px;accent-color:var(--ink)}
+  .ctl b{color:var(--hi);min-width:54px;display:inline-block}
+  .seg{display:flex;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+  .seg button{font:inherit;font-size:11px;background:#161a0f;color:var(--ink2);border:0;
+    padding:5px 10px;cursor:pointer}
+  .seg button.on{background:var(--line);color:var(--hi)}
+  button.tg{font:inherit;font-size:11px;background:#161a0f;color:var(--ink);border:1px solid var(--line);
+    border-radius:3px;padding:6px 11px;cursor:pointer}
+  button.tg.on{background:var(--line);color:var(--hi)}
+  #scrollWrap{flex:1;overflow:auto;background:var(--bg)}
+  #lanes{display:block}
+  .hint{color:var(--ink2);font-size:11px;max-width:560px;line-height:1.45}
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>WACKY WHEELS · &ldquo;TURBO&rdquo; — TRACK EXPLORER</h1>
+    <div class="sub">Mark A. Klem, 1994 · each MIDI track is its own horizontal lane (time left&rarr;right, pitch = vertical). Tweak the layout to hunt for a hidden picture/message in the note placement.</div>
+  </header>
+  <div id="controls">
+    <div class="ctl">
+      <label>Layout</label>
+      <div class="seg" id="modeSeg">
+        <button data-m="time" class="on">By time</button>
+        <button data-m="seq">Sequential grid</button>
+      </div>
+    </div>
+    <div class="ctl" id="ctlScale">
+      <label>Time scale (px per beat)</label>
+      <div class="row"><input id="scale" type="range" min="0.3" max="40" step="0.1" value="6"><b id="scaleV">6.0</b></div>
+    </div>
+    <div class="ctl" id="ctlCols" style="display:none">
+      <label>Columns per row (grid)</label>
+      <div class="row"><input id="cols" type="range" min="1" max="256" step="1" value="32"><b id="colsV">32</b></div>
+    </div>
+    <div class="ctl" id="ctlCell" style="display:none">
+      <label>Cell width (px)</label>
+      <div class="row"><input id="cell" type="range" min="1" max="24" step="1" value="6"><b id="cellV">6</b></div>
+    </div>
+    <div class="ctl" id="ctlGrid" style="display:none">
+      <label>Grid cell value</label>
+      <div class="seg" id="gridSeg">
+        <button data-g="pitch" class="on">Pitch</button>
+        <button data-g="vel">Velocity</button>
+        <button data-g="dur">Length</button>
+      </div>
+    </div>
+    <div class="ctl">
+      <label>Note width (px, min)</label>
+      <div class="row"><input id="nw" type="range" min="1" max="40" step="1" value="2"><b id="nwV">2</b></div>
+    </div>
+    <div class="ctl">
+      <label>Pitch row height (px)</label>
+      <div class="row"><input id="rh" type="range" min="1" max="12" step="1" value="3"><b id="rhV">3</b></div>
+    </div>
+    <div class="ctl">
+      <label>Lane gap (px)</label>
+      <div class="row"><input id="gap" type="range" min="0" max="40" step="1" value="14"><b id="gapV">14</b></div>
+    </div>
+    <div class="ctl">
+      <label>Options</label>
+      <div class="row">
+        <button class="tg" id="velTg">Velocity shade</button>
+        <button class="tg on" id="labTg">Labels</button>
+      </div>
+    </div>
+  </div>
+  <div id="scrollWrap"><canvas id="lanes"></canvas></div>
+</div>
+<script>
+const C={ scale:6, cols:32, cell:6, nw:2, rh:3, gap:14, mode:'time', vel:false, lab:true, grid:'pitch' };
+let DATA=null;
+const cv=document.getElementById('lanes'), cx=cv.getContext('2d');
+// distinct per-track hue ramp (yellow-green family + a few accents)
+const HUES=[70,90,50,110,40,140,30,160,20,180,0];
+
+function colorFor(ti, vel){
+  const h=HUES[ti%HUES.length];
+  const l = C.vel ? (28 + (vel/127)*46) : 56;
+  return `hsl(${h} 70% ${l}%)`;
+}
+
+function draw(){
+  if(!DATA) return;
+  const dpr=window.devicePixelRatio||1;
+  const tracks=DATA.tracks, div=DATA.division;
+  const labW = C.lab ? 130 : 8;
+  // compute each lane's height + total width
+  let totalW=labW+20, layout=[];
+  for(const tr of tracks){
+    const span=(tr.maxPitch-tr.minPitch+1);
+    const laneH=Math.max(C.rh*span, C.rh*1);
+    let laneW;
+    if(C.mode==='time'){
+      laneW = labW + 20 + (DATA.endTick/div)*C.scale;
+    } else {
+      const rows=Math.ceil(tr.notes.length / C.cols);
+      laneW = labW + 20 + C.cols*C.cell;
+      // in grid mode laneH is rows*cell
+    }
+    let lh;
+    if(C.mode==='time') lh=laneH;
+    else lh=Math.ceil(tr.notes.length / C.cols)*C.cell;
+    layout.push({tr, laneH:lh, span});
+    totalW=Math.max(totalW, laneW);
+  }
+  let totalH=8;
+  for(const L of layout) totalH += L.laneH + C.gap + 16;
+
+  cv.width=Math.ceil(totalW*dpr); cv.height=Math.ceil(totalH*dpr);
+  cv.style.width=totalW+'px'; cv.style.height=totalH+'px';
+  cx.setTransform(dpr,0,0,dpr,0,0);
+  cx.fillStyle='#10130d'; cx.fillRect(0,0,totalW,totalH);
+
+  let y=8;
+  for(let li=0; li<layout.length; li++){
+    const {tr,laneH,span}=layout[li];
+    const ti=tr.index;
+    // lane title
+    if(C.lab){
+      cx.fillStyle='#f4ffb0'; cx.font='11px monospace';
+      cx.fillText(`${tr.name}`, 6, y+11);
+      cx.fillStyle='#7e8a3e';
+      cx.fillText(`${tr.notes.length}n  ${tr.minPitch}-${tr.maxPitch}`, 6, y+24);
+    }
+    const x0=labW+12;
+    // lane background
+    cx.fillStyle='#0c0f08'; cx.fillRect(x0-2, y, totalW-x0-6, laneH+2);
+
+    if(C.mode==='time'){
+      for(const n of tr.notes){
+        const [st,dur,pit,vel]=n;
+        const x = x0 + (st/div)*C.scale;
+        const w = Math.max(C.nw, (dur/div)*C.scale);
+        const ry = y + (tr.maxPitch - pit)*C.rh;
+        cx.fillStyle=colorFor(ti,vel);
+        cx.fillRect(x, ry, w, Math.max(1,C.rh-0.5));
+      }
+    } else {
+      // sequential grid: each note = one cell, filled left->right, wrap at cols.
+      // Cell brightness encodes the chosen value (pitch by default) so a hidden
+      // picture can emerge when the column count matches the row length.
+      const lo=tr.minPitch, hi=tr.maxPitch, rng=Math.max(1,hi-lo);
+      const h=HUES[ti%HUES.length];
+      for(let k=0;k<tr.notes.length;k++){
+        const n=tr.notes[k]; const pit=n[2], vel=n[3];
+        const col=k % C.cols, rowi=Math.floor(k / C.cols);
+        const x = x0 + col*C.cell;
+        const ry = y + rowi*C.cell;
+        let t;                                  // 0..1 value -> brightness
+        if(C.grid==='vel') t=vel/127;
+        else if(C.grid==='dur') t=Math.min(1, n[1]/div);
+        else t=(pit-lo)/rng;                    // pitch (default)
+        const l = 14 + t*70;
+        cx.fillStyle=`hsl(${h} 70% ${l}%)`;
+        cx.fillRect(x, ry, Math.max(1,C.cell-0.5), Math.max(1,C.cell-0.5));
+      }
+    }
+    y += laneH + C.gap + 16;
+  }
+}
+
+function bind(id, key, fmt, after){
+  const el=document.getElementById(id), out=document.getElementById(id+'V');
+  const upd=()=>{ C[key]=parseFloat(el.value); if(out) out.textContent=fmt?fmt(C[key]):el.value; if(after)after(); draw(); };
+  el.addEventListener('input',upd); upd();
+}
+bind('scale','scale',v=>v.toFixed(1));
+bind('cols','cols',v=>v|0);
+bind('cell','cell',v=>v|0);
+bind('nw','nw',v=>v|0);
+bind('rh','rh',v=>v|0);
+bind('gap','gap',v=>v|0);
+
+document.querySelectorAll('#modeSeg button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#modeSeg button').forEach(x=>x.classList.toggle('on',x===b));
+  C.mode=b.dataset.m;
+  document.getElementById('ctlScale').style.display = C.mode==='time'?'':'none';
+  document.getElementById('ctlCols').style.display = C.mode==='seq'?'':'none';
+  document.getElementById('ctlCell').style.display = C.mode==='seq'?'':'none';
+  document.getElementById('ctlGrid').style.display = C.mode==='seq'?'':'none';
+  draw();
+});
+document.querySelectorAll('#gridSeg button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#gridSeg button').forEach(x=>x.classList.toggle('on',x===b));
+  C.grid=b.dataset.g; draw();
+});
+document.getElementById('velTg').onclick=function(){ C.vel=!C.vel; this.classList.toggle('on',C.vel); draw(); };
+document.getElementById('labTg').onclick=function(){ C.lab=!C.lab; this.classList.toggle('on',C.lab); draw(); };
+
+fetch('ww_turbo_tracks.json').then(r=>r.json()).then(d=>{ DATA=d; draw(); });
+</script>
+</body>
+</html>
