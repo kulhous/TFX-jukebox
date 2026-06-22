@@ -11,14 +11,14 @@
     font-weight:normal;font-style:normal;font-display:block;
   }
   :root{
-    /* ember/amber phosphor monitor (Star Wars: Dark Forces palette) */
-    --bg:#2a1610; --mon:#241410; --mon-ink:#e8b27a; --mon-ink2:#b07a44; --mon-line:#7a4a2c; --mon-hi:#ffd9a0;
-    --screen:#190d07;
+    /* green/red phosphor cockpit monitor (Star Wars: Dark Forces HUD palette) */
+    --bg:#081a0e; --mon:#0a1c10; --mon-ink:#5ce049; --mon-ink2:#2f9e2c; --mon-line:#1f6e22; --mon-hi:#a6ff8c;
+    --screen:#02130a;
     /* real brushed steel */
     --steel:#9498a0; --steel-lt:#e2e5e9; --steel-dk:#2c2f35; --steel-emb:#15171b; --steel-ink:#eef0f2;
     --steel-grad:linear-gradient(180deg,#c4c8cd 0%,#9a9ea6 46%,#6b7078 100%);
     --steel-grad-dn:linear-gradient(180deg,#797d85 0%,#5e636b 100%);
-    --warn:#fde725;
+    --warn:#ff3a2a;
   }
   *{box-sizing:border-box}
   html,body{margin:0;height:100%;background:#081816;overflow:hidden}
@@ -121,22 +121,22 @@
   /* driver icons / badges */
   .dchip{flex:none;width:34px;box-sizing:border-box;font-size:13px;letter-spacing:0;padding:3px 0;border-radius:2px;
     border:1px solid;line-height:1;text-align:center;text-indent:1px}
-  /* GM (SC-55): light text on dark screen */
-  .dchip.gm{color:#ffd9a0;background:#190d07;border-color:#b07a44}
-  /* MT-32 (Munt): copper LA-synth tint */
-  .dchip.mt{color:#190d07;background:#e0934a;border-color:#a8650f}
-  /* OPL2 AdLib: copper FM tint */
-  .dchip.o2{color:#190d07;background:#d98a3c;border-color:#a8650f}
-  /* OPL3 SoundBlaster: brighter gold FM tint */
-  .dchip.o3{color:#190d07;background:#e6c24a;border-color:#a8930f}
-  /* AdLib (OPL2): brighter gold FM tint */
-  .dchip.o2{color:#190d07;background:#e6c24a;border-color:#a8930f}
+  /* GM (SC-55): bright green readout on dark screen */
+  .dchip.gm{color:var(--mon-hi);background:#02130a;border-color:#2f9e2c}
+  /* MT-32 (Munt): solid green LA-synth tint */
+  .dchip.mt{color:#02130a;background:#43c23a;border-color:#1f6e22}
+  /* OPL2 AdLib: red FM tint (HUD alert red) */
+  .dchip.o2{color:#1a0402;background:#e0431f;border-color:#a8200f}
+  /* OPL3 SoundBlaster: brighter red FM tint */
+  .dchip.o3{color:#1a0402;background:#ff5a3a;border-color:#c0300f}
+  /* AdLib (OPL2): red FM tint */
+  .dchip.o2{color:#1a0402;background:#e0431f;border-color:#a8200f}
   /* plasma scrollbar — lit phosphor bar */
-  #sb{width:14px;background:#150a05;position:relative;cursor:pointer;
-    box-shadow:inset 1px 0 0 rgba(0,0,0,.5),inset -1px 0 0 rgba(122,74,44,.30)}
+  #sb{width:14px;background:#05130a;position:relative;cursor:pointer;
+    box-shadow:inset 1px 0 0 rgba(0,0,0,.5),inset -1px 0 0 rgba(47,158,44,.30)}
   #sbthumb{position:absolute;left:2px;right:2px;min-height:18px;border-radius:1px;
     background:linear-gradient(90deg,var(--mon-ink2) 0%,var(--mon-hi) 50%,var(--mon-ink2) 100%);
-    box-shadow:0 0 6px rgba(232,178,122,.6),0 0 2px rgba(255,217,160,.9),inset 0 0 0 1px rgba(255,217,160,.4)}
+    box-shadow:0 0 6px rgba(92,224,73,.6),0 0 2px rgba(166,255,140,.9),inset 0 0 0 1px rgba(166,255,140,.4)}
 
   /* ---- bottom steel dashboard ---- */
   #dash{padding:7px 9px 9px;
@@ -198,13 +198,13 @@
   #time{color:var(--mon-ink2);font-size:11px;min-width:34px;text-align:right;font-variant-numeric:tabular-nums}
   #seektrack{position:relative;flex:1;height:16px;background:var(--screen);overflow:hidden;
     box-shadow:inset 0 0 0 1px #04110d, inset 0 0 10px rgba(0,0,0,.55)}
-  /* phosphor fill with a yellowish decay trailing behind the playhead */
+  /* green phosphor fill with a red decay trailing behind the playhead */
   #seekfill{position:absolute;left:0;top:0;bottom:0;width:0%;pointer-events:none;
     background:linear-gradient(90deg,var(--mon-line),var(--mon-ink2));
-    box-shadow:0 0 8px rgba(253,231,37,.4);border-right:1px solid rgba(253,231,37,.9)}
-  /* fixed-width yellow decay dropped right behind the playhead (fades backward) */
+    box-shadow:0 0 8px rgba(255,58,42,.4);border-right:1px solid rgba(255,58,42,.9)}
+  /* fixed-width red decay dropped right behind the playhead (fades backward) */
   #seekfill::after{content:"";position:absolute;top:0;bottom:0;right:0;width:48px;max-width:100%;
-    background:linear-gradient(90deg,rgba(253,231,37,0),rgba(253,231,37,.85))}
+    background:linear-gradient(90deg,rgba(255,58,42,0),rgba(255,58,42,.85))}
   /* faint scanline texture, keeping the in-screen CRT feel */
   #seektrack::after{content:"";position:absolute;inset:0;pointer-events:none;
     background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px)}
@@ -212,8 +212,8 @@
   #seektrack #seek{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;
     background:transparent;border:0;appearance:none;-webkit-appearance:none;cursor:pointer;z-index:2}
   #seektrack #seek::-webkit-slider-thumb{-webkit-appearance:none;width:3px;height:16px;
-    background:#fffbe0;box-shadow:0 0 6px rgba(253,231,37,.9);border:0;cursor:pointer}
-  #seektrack #seek::-moz-range-thumb{width:3px;height:16px;background:#fffbe0;border:0;cursor:pointer}
+    background:#ffe9e2;box-shadow:0 0 6px rgba(255,58,42,.9);border:0;cursor:pointer}
+  #seektrack #seek::-moz-range-thumb{width:3px;height:16px;background:#ffe9e2;border:0;cursor:pointer}
   #seektrack #seek:disabled{cursor:default}
 
   /* ---- mobile tab toggle (notes <-> tracks) — lives in the bottom metal dash ---- */
@@ -488,9 +488,9 @@ import { $, Engine, parseMidi, parseDro, CH_SWATCH, CH_TILE, setChannelPalette }
 // CHUNK, rdBin, the synth backends and BACKENDS now live in
 // player-engine.js, shared with the other player so the render engine
 // (MT-32 / SC-55 / OPL3 backends + Engine) never diverges between pages.
-// Re-tint the shared channel swatches/note tiles to Dark Forces' ember/amber
-// phosphor (the default ramp is green for the index/medit monitors).
-setChannelPalette(['#190d07','#5a2f14','#a8650f','#e6c24a','#ffe0a8']);
+// Re-tint the shared channel swatches/note tiles to Dark Forces' green cockpit
+// phosphor (matching the HUD gauge green; red is reserved for accents/alerts).
+setChannelPalette(['#0a1a0c','#1f6e22','#3fb03a','#7fe06a','#d8ffc0']);
 
 // ---------- UI ----------
 const LOW=21, HIGH=108;                 // A0..C8 — full piano
@@ -831,9 +831,9 @@ const UI = {
     cx.fillStyle='#0e120a'; cx.fillRect(0,hit,W,kbH);
     for(let p=LOW;p<=HIGH;p++) if(isWhite(p)){ const k=this.keys[p];
       const f=flashes[p]||0;
-      // sustained tint while held (lighter, neutral phosphor — NOT yellow); flash (yellow) fades into it
+      // sustained tint while held (lighter, neutral phosphor); flash (red HUD alert) fades into it
       const sus=held[p]?[233,239,206]:[206,212,184];
-      const fl=[253,231,120];
+      const fl=[255,90,60];
       const r=sus[0]+(fl[0]-sus[0])*f, g=sus[1]+(fl[1]-sus[1])*f, b=sus[2]+(fl[2]-sus[2])*f;
       cx.fillStyle=`rgb(${r|0},${g|0},${b|0})`;
       cx.fillRect(k.x+0.5,hit+1,k.w-1,kbH-2);
@@ -843,7 +843,7 @@ const UI = {
     for(let p=LOW;p<=HIGH;p++) if(!isWhite(p)){ const k=this.keys[p];
       const f=flashes[p]||0;
       const sus=held[p]?[70,80,55]:[28,32,22];
-      const fl=[160,200,110];
+      const fl=[200,60,40];
       const r=sus[0]+(fl[0]-sus[0])*f, g=sus[1]+(fl[1]-sus[1])*f, b=sus[2]+(fl[2]-sus[2])*f;
       cx.fillStyle=`rgb(${r|0},${g|0},${b|0})`;
       cx.fillRect(k.x,hit,k.w,bkH);
