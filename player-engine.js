@@ -180,7 +180,11 @@ const SoundFontBackend = {
     if(this.onProgress) this.onProgress(loaded, total||loaded, true);
     return u8;
   },
-  reset(){ if(this.syn) this.syn.reset(); },
+  // Force-kill every sounding voice BEFORE the controller reset. syn.reset()
+  // only RELEASES voices (graceful envelope), so on a stop/seek/track-change the
+  // halted render loop freezes those release tails and they resume — bleeding the
+  // previous track's notes into the next one. stopAllChannels(true) hard-stops them.
+  reset(){ if(this.syn){ this.syn.stopAllChannels(true); this.syn.reset(); } },
   sysex(u8){ this.syn.systemExclusive(u8.subarray(1)); },   // drop leading 0xF0
   msg(raw32){
     const st=raw32&0xff, hi=st&0xf0, ch=st&0x0f, d1=(raw32>>8)&0x7f, d2=(raw32>>16)&0x7f;
