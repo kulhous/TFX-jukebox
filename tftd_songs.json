@@ -1,0 +1,401 @@
+[
+  {
+    "file": "00_Tune_00_-_Music_for_the_floppy_intro_RLD.mid",
+    "label": "01 - Intro",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "01_Tune_01_-_Signature_type_jingle_RLD.mid",
+    "label": "02 - Signature Jingle",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "02_Tune_02_-_Load_game__New_game__RLD.mid",
+    "label": "03 - Main Menu",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "03_Tune_03_RLD.mid",
+    "label": "04 - Geoscape 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "04_Tune_04_RLD.mid",
+    "label": "05 - Geoscape 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "05_Tune_05_RLD.mid",
+    "label": "06 - Geoscape 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "06_Tune_06_RLD.mid",
+    "label": "07 - Geoscape 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "07_Tune_07_RLD.mid",
+    "label": "08 - Geoscape 5",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "08_Tune_08_RLD.mid",
+    "label": "09 - Geoscape 6",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "09_Tune_09_-_Interception_sequence_RLD.mid",
+    "label": "10 - Interception",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "10_Tune_10_-_Alternative_interception_sequence_RLD.mid",
+    "label": "11 - Interception (alternate)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "11_Tune_11_-_Second_alternative_interception_sequence_RLD.mid",
+    "label": "12 - Interception (2nd alternate)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "12_Tune_12_-_Pre-mission__Islands_Ports_Ships_RLD.mid",
+    "label": "13 - Pre-Mission: Islands / Ports / Ships",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "13_Tune_13_-_Pre-mission__Mars_RLD.mid",
+    "label": "14 - Pre-Mission: T'leth",
+    "named": true,
+    "hidden": false,
+    "note": "CAT entry reads \"Mars\" (label carried over from UFO: Enemy Unknown)."
+  },
+  {
+    "file": "14_Tune_14_-_Pre-mission__Defend_your_base_RLD.mid",
+    "label": "15 - Pre-Mission: Defend Your Base",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "15_Tune_15_-_Pre-mission__Artefacts_Attack_alien_base_RLD.mid",
+    "label": "16 - Pre-Mission: Artefacts / Attack Alien Base",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "16_Tune_16_-_De-brief_for_okay_or_above_rating_RLD.mid",
+    "label": "19 - De-Brief: Success",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "17_Tune_17_-_De-brief_for_poor_or_terrible_rating_RLD.mid",
+    "label": "20 - De-Brief: Failure",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "18_Tune_18_-_Tactical_game_-_aquatic_RLD.mid",
+    "label": "17 - Tactical Combat: Aquatic",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "19_Tune_19_-_Tactical_game_-_on_dry_ground_RLD.mid",
+    "label": "18 - Tactical Combat: Dry Ground",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "20_Tune_20_-_Music_for_the_floppy_outro__win_RLD.mid",
+    "label": "21 - Outro: Victory",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "21_Tune_21_-_Music_for_the_floppy_outro__lose_RLD.mid",
+    "label": "22 - Outro: Defeat",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "00_Tune_00_-_Music_for_the_floppy_intro_GM.mid",
+    "label": "01 - Intro",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "00_Tune_00_-_Music_for_the_floppy_intro_ADL.dro",
+    "label": "01 - Intro",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "01_Tune_01_-_Signature_type_jingle_GM.mid",
+    "label": "02 - Signature Jingle",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "01_Tune_01_-_Signature_type_jingle_ADL.dro",
+    "label": "02 - Signature Jingle",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "02_Tune_02_-_Load_game__New_game__GM.mid",
+    "label": "03 - Main Menu",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "02_Tune_02_-_Load_game__New_game__ADL.dro",
+    "label": "03 - Main Menu",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "03_Tune_03_GM.mid",
+    "label": "04 - Geoscape 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "03_Tune_03_ADL.dro",
+    "label": "04 - Geoscape 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "04_Tune_04_GM.mid",
+    "label": "05 - Geoscape 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "04_Tune_04_ADL.dro",
+    "label": "05 - Geoscape 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "05_Tune_05_GM.mid",
+    "label": "06 - Geoscape 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "05_Tune_05_ADL.dro",
+    "label": "06 - Geoscape 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "06_Tune_06_GM.mid",
+    "label": "07 - Geoscape 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "06_Tune_06_ADL.dro",
+    "label": "07 - Geoscape 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "07_Tune_07_GM.mid",
+    "label": "08 - Geoscape 5",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "07_Tune_07_ADL.dro",
+    "label": "08 - Geoscape 5",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "08_Tune_08_GM.mid",
+    "label": "09 - Geoscape 6",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "08_Tune_08_ADL.dro",
+    "label": "09 - Geoscape 6",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "09_Tune_09_-_Interception_sequence_GM.mid",
+    "label": "10 - Interception",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "09_Tune_09_-_Interception_sequence_ADL.dro",
+    "label": "10 - Interception",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "10_Tune_10_-_Alternative_interception_sequence_GM.mid",
+    "label": "11 - Interception (alternate)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "10_Tune_10_-_Alternative_interception_sequence_ADL.dro",
+    "label": "11 - Interception (alternate)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "11_Tune_11_-_Second_alternative_interception_sequence_GM.mid",
+    "label": "12 - Interception (2nd alternate)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "11_Tune_11_-_Second_alternative_interception_sequence_ADL.dro",
+    "label": "12 - Interception (2nd alternate)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "12_Tune_12_-_Pre-mission__Islands_Ports_Ships_GM.mid",
+    "label": "13 - Pre-Mission: Islands / Ports / Ships",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "12_Tune_12_-_Pre-mission__Islands_Ports_Ships_ADL.dro",
+    "label": "13 - Pre-Mission: Islands / Ports / Ships",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "13_Tune_13_-_Pre-mission__Mars_GM.mid",
+    "label": "14 - Pre-Mission: T'leth",
+    "named": true,
+    "hidden": false,
+    "note": "CAT entry reads \"Mars\" (label carried over from UFO: Enemy Unknown)."
+  },
+  {
+    "file": "13_Tune_13_-_Pre-mission__Mars_ADL.dro",
+    "label": "14 - Pre-Mission: T'leth",
+    "named": true,
+    "hidden": false,
+    "note": "CAT entry reads \"Mars\" (label carried over from UFO: Enemy Unknown)."
+  },
+  {
+    "file": "14_Tune_14_-_Pre-mission__Defend_your_base_GM.mid",
+    "label": "15 - Pre-Mission: Defend Your Base",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "14_Tune_14_-_Pre-mission__Defend_your_base_ADL.dro",
+    "label": "15 - Pre-Mission: Defend Your Base",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "15_Tune_15_-_Pre-mission__Artefacts_Attack_alien_base_GM.mid",
+    "label": "16 - Pre-Mission: Artefacts / Attack Alien Base",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "15_Tune_15_-_Pre-mission__Artefacts_Attack_alien_base_ADL.dro",
+    "label": "16 - Pre-Mission: Artefacts / Attack Alien Base",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "16_Tune_16_-_De-brief_for_okay_or_above_rating_GM.mid",
+    "label": "19 - De-Brief: Success",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "16_Tune_16_-_De-brief_for_okay_or_above_rating_ADL.dro",
+    "label": "19 - De-Brief: Success",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "17_Tune_17_-_De-brief_for_poor_or_terrible_rating_GM.mid",
+    "label": "20 - De-Brief: Failure",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "17_Tune_17_-_De-brief_for_poor_or_terrible_rating_ADL.dro",
+    "label": "20 - De-Brief: Failure",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "18_Tune_18_-_Tactical_game_-_aquatic_GM.mid",
+    "label": "17 - Tactical Combat: Aquatic",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "18_Tune_18_-_Tactical_game_-_aquatic_ADL.dro",
+    "label": "17 - Tactical Combat: Aquatic",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "19_Tune_19_-_Tactical_game_-_on_dry_ground_GM.mid",
+    "label": "18 - Tactical Combat: Dry Ground",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "19_Tune_19_-_Tactical_game_-_on_dry_ground_ADL.dro",
+    "label": "18 - Tactical Combat: Dry Ground",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "20_Tune_20_-_Music_for_the_floppy_outro__win_GM.mid",
+    "label": "21 - Outro: Victory",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "20_Tune_20_-_Music_for_the_floppy_outro__win_ADL.dro",
+    "label": "21 - Outro: Victory",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "21_Tune_21_-_Music_for_the_floppy_outro__lose_GM.mid",
+    "label": "22 - Outro: Defeat",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "21_Tune_21_-_Music_for_the_floppy_outro__lose_ADL.dro",
+    "label": "22 - Outro: Defeat",
+    "named": true,
+    "hidden": false
+  }
+]
