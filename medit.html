@@ -84,7 +84,12 @@
     display:flex;align-items:center}
   .side-h b{color:var(--mon-hi);font-weight:400}
   .side-h .sp{flex:1}
-  .filterbar{display:flex;gap:5px;padding:5px 9px;border-bottom:1px solid var(--mon-line)}
+  .filterbar{display:flex;gap:5px;padding:5px 9px;border-bottom:1px solid var(--mon-line);overflow-x:auto;
+    scrollbar-width:thin;scrollbar-color:var(--mon-ink2) var(--screen)}
+  .filterbar::-webkit-scrollbar{height:9px}
+  .filterbar::-webkit-scrollbar-track{background:var(--screen);box-shadow:inset 0 1px 0 rgba(0,0,0,.5)}
+  .filterbar::-webkit-scrollbar-thumb{border:1px solid var(--mon-line);border-radius:1px;
+    background:linear-gradient(180deg,var(--mon-ink2) 0%,var(--mon-hi) 50%,var(--mon-ink2) 100%)}
   .gamesel{font:inherit;text-transform:uppercase;letter-spacing:0;font-size:13px;
     color:var(--mon-hi);background:var(--screen);border:1px solid var(--mon-line);
     padding:2px 4px;cursor:pointer;margin-right:4px;max-width:150px}
@@ -227,7 +232,12 @@
     #main{padding:0 6px;gap:0}
     #side{width:auto;flex:1;min-width:0}
     /* roll: keys keep a real size and scroll left/right instead of squashing */
-    #rollWrap{flex:1;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;touch-action:pan-x}
+    #rollWrap{flex:1;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;touch-action:pan-x;
+      scrollbar-width:thin;scrollbar-color:var(--mon-ink2) var(--screen)}
+    #rollWrap::-webkit-scrollbar{height:9px}
+    #rollWrap::-webkit-scrollbar-track{background:var(--screen);box-shadow:inset 0 1px 0 rgba(0,0,0,.5)}
+    #rollWrap::-webkit-scrollbar-thumb{border:1px solid var(--mon-line);border-radius:1px;
+      background:linear-gradient(180deg,var(--mon-ink2) 0%,var(--mon-hi) 50%,var(--mon-ink2) 100%)}
     body.mnotes #side{display:none}
     body.mtracks #rollWrap{display:none}
     /* hide the driver / notes / channels / synth status line */
