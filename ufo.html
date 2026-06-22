@@ -102,8 +102,13 @@
     display:flex;align-items:center}
   .side-h b{color:var(--mon-hi);font-weight:400}
   .side-h .sp{flex:1}
-  .filterbar{display:flex;gap:5px;padding:5px 9px;border-bottom:1px solid var(--mon-line)}
-  .fbtn{font:inherit;text-transform:uppercase;letter-spacing:0;font-size:13px;color:var(--mon-ink2);
+  .filterbar{display:flex;gap:5px;padding:5px 9px;border-bottom:1px solid var(--mon-line);overflow-x:auto;
+    scrollbar-width:thin;scrollbar-color:var(--mon-ink2) var(--screen)}
+  .filterbar::-webkit-scrollbar{height:9px}
+  .filterbar::-webkit-scrollbar-track{background:var(--screen);box-shadow:inset 0 1px 0 rgba(0,0,0,.5)}
+  .filterbar::-webkit-scrollbar-thumb{border:1px solid var(--mon-line);border-radius:1px;
+    background:linear-gradient(180deg,var(--mon-ink2) 0%,var(--mon-hi) 50%,var(--mon-ink2) 100%)}
+  .fbtn{flex:none;white-space:nowrap;font:inherit;text-transform:uppercase;letter-spacing:0;font-size:13px;color:var(--mon-ink2);
     background:transparent;border:1px solid var(--mon-line);padding:2px 9px;cursor:pointer;display:flex;align-items:center;gap:6px}
   .fbtn:hover{color:var(--mon-hi)}
   .fbtn.on{background:var(--mon-line);color:var(--screen)}
@@ -267,7 +272,12 @@
     #main{padding:0 6px;gap:0}
     #side{width:auto;flex:1;min-width:0}
     /* roll: keys keep a real size and scroll left/right instead of squashing */
-    #rollWrap{flex:1;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;touch-action:pan-x}
+    #rollWrap{flex:1;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;touch-action:pan-x;
+      scrollbar-width:thin;scrollbar-color:var(--mon-ink2) var(--screen)}
+    #rollWrap::-webkit-scrollbar{height:9px}
+    #rollWrap::-webkit-scrollbar-track{background:var(--screen);box-shadow:inset 0 1px 0 rgba(0,0,0,.5)}
+    #rollWrap::-webkit-scrollbar-thumb{border:1px solid var(--mon-line);border-radius:1px;
+      background:linear-gradient(180deg,var(--mon-ink2) 0%,var(--mon-hi) 50%,var(--mon-ink2) 100%)}
     body.mnotes #side{display:none}
     body.mtracks #rollWrap{display:none}
     /* hide the driver / notes / channels / synth status line */
@@ -373,6 +383,7 @@
         <button type="button" class="gameopt sel" role="option" aria-selected="true" data-href="ufo.html">X-COM</button>
         <button type="button" class="gameopt" role="option" data-href="wc2.html">WARCRAFT II</button>
         <button type="button" class="gameopt" role="option" data-href="df.html">DARK FORCES</button>
+        <button type="button" class="gameopt" role="option" data-href="ww.html">WACKY WHEELS</button>
       </div></span><script>(function(){var nav=document.currentScript.previousElementSibling,btn=nav.querySelector('.gamesel-btn'),menu=nav.querySelector('.gamemenu');btn.addEventListener('click',function(e){e.stopPropagation();var o=menu.classList.toggle('open');btn.setAttribute('aria-expanded',o);});menu.querySelectorAll('.gameopt').forEach(function(o){o.addEventListener('click',function(){var h=o.dataset.href;if(h&&!o.classList.contains('sel'))location.href=h;});});document.addEventListener('click',function(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');});})();</script>
       <span class="hright">UFO: ENEMY UNKNOWN JUKEBOX</span>
     </div>

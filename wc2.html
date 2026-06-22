@@ -102,8 +102,13 @@
     display:flex;align-items:center}
   .side-h b{color:var(--mon-hi);font-weight:400}
   .side-h .sp{flex:1}
-  .filterbar{display:flex;gap:5px;padding:5px 9px;border-bottom:1px solid var(--mon-line)}
-  .fbtn{font:inherit;text-transform:uppercase;letter-spacing:0;font-size:13px;color:var(--mon-ink2);
+  .filterbar{display:flex;gap:5px;padding:5px 9px;border-bottom:1px solid var(--mon-line);overflow-x:auto;
+    scrollbar-width:thin;scrollbar-color:var(--mon-ink2) var(--screen)}
+  .filterbar::-webkit-scrollbar{height:9px}
+  .filterbar::-webkit-scrollbar-track{background:var(--screen);box-shadow:inset 0 1px 0 rgba(0,0,0,.5)}
+  .filterbar::-webkit-scrollbar-thumb{border:1px solid var(--mon-line);border-radius:1px;
+    background:linear-gradient(180deg,var(--mon-ink2) 0%,var(--mon-hi) 50%,var(--mon-ink2) 100%)}
+  .fbtn{flex:none;white-space:nowrap;font:inherit;text-transform:uppercase;letter-spacing:0;font-size:13px;color:var(--mon-ink2);
     background:transparent;border:1px solid var(--mon-line);padding:2px 9px;cursor:pointer;display:flex;align-items:center;gap:6px}
   .fbtn:hover{color:var(--mon-hi)}
   .fbtn.on{background:var(--mon-line);color:var(--screen)}
@@ -269,7 +274,12 @@
     #main{padding:0 6px;gap:0}
     #side{width:auto;flex:1;min-width:0}
     /* roll: keys keep a real size and scroll left/right instead of squashing */
-    #rollWrap{flex:1;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;touch-action:pan-x}
+    #rollWrap{flex:1;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;touch-action:pan-x;
+      scrollbar-width:thin;scrollbar-color:var(--mon-ink2) var(--screen)}
+    #rollWrap::-webkit-scrollbar{height:9px}
+    #rollWrap::-webkit-scrollbar-track{background:var(--screen);box-shadow:inset 0 1px 0 rgba(0,0,0,.5)}
+    #rollWrap::-webkit-scrollbar-thumb{border:1px solid var(--mon-line);border-radius:1px;
+      background:linear-gradient(180deg,var(--mon-ink2) 0%,var(--mon-hi) 50%,var(--mon-ink2) 100%)}
     body.mnotes #side{display:none}
     body.mtracks #rollWrap{display:none}
     /* hide the driver / notes / channels / synth status line */
@@ -375,6 +385,7 @@
         <button type="button" class="gameopt" role="option" data-href="ufo.html">X-COM</button>
         <button type="button" class="gameopt sel" role="option" aria-selected="true" data-href="wc2.html">WARCRAFT II</button>
         <button type="button" class="gameopt" role="option" data-href="df.html">DARK FORCES</button>
+        <button type="button" class="gameopt" role="option" data-href="ww.html">WACKY WHEELS</button>
       </div></span><script>(function(){var nav=document.currentScript.previousElementSibling,btn=nav.querySelector('.gamesel-btn'),menu=nav.querySelector('.gamemenu');btn.addEventListener('click',function(e){e.stopPropagation();var o=menu.classList.toggle('open');btn.setAttribute('aria-expanded',o);});menu.querySelectorAll('.gameopt').forEach(function(o){o.addEventListener('click',function(){var h=o.dataset.href;if(h&&!o.classList.contains('sel'))location.href=h;});});document.addEventListener('click',function(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');});})();</script>
       <span class="hright">WARCRAFT II: TIDES OF DARKNESS JUKEBOX</span>
     </div>
@@ -433,7 +444,7 @@
         <p>The General-MIDI arrangement targets a <strong>Roland SC-55 / SCC-1</strong>, the Sound Canvas that defined the GM sound of the mid-90s. It is fully multi-timbral, one part per MIDI channel with standard GM instruments and a dedicated drum channel, so it sounds cleaner and more orchestral than the FM builds while staying faithful to Glenn Stafford and the Blizzard audio team's score.</p>
 
         <h2>Roland MT-32: a fan driver, emulated</h2>
-        <p>Warcraft II shipped no native MT-32 score, so this path is something the game never had. It is produced by the real <strong>MT32GM</strong> driver (MPU401.MDI) &mdash; a fan-made Miles Sound System&nbsp;3 driver by <em>Mok</em> that lets an MT-32 owner play General-MIDI-only games by translating GM into the MT-32's world. We load the actual 16-bit DOS driver into a <strong>Unicorn</strong> x86 CPU emulator, act as the Miles/AIL host, and drive it exactly as the game would: open the &ldquo;Roland MT-32 General MIDI with MPU-401&rdquo; device, preload the timbres each cue needs, then feed it the cue's GM events. The MT-32 has only <strong>8 melodic parts plus rhythm</strong>, far fewer than GM's channels, so the driver dynamically allocates and steals parts, and &mdash; because the MT-32's built-in presets are not GM-ordered &mdash; it uploads a baked GM timbre set into the synth's 64-slot timbre memory (its own <strong>AcouPiano / NylonGtr / StringEns1 / Violin&hellip;</strong> patches) via Roland SysEx and reprograms the patch memory. We capture every byte the driver writes to the MPU-401 port &mdash; the genuine MT-32 SysEx + MIDI stream &mdash; and play it through the same <strong>Munt</strong> CM-32L emulator the TFX jukebox uses. As the author admits, a few of the stitched-together timbres are rough; that is exactly how it sounded on real hardware.</p>
+        <p>Warcraft II shipped no native MT-32 score, so this path is something the game never had. It is produced by the real <strong>MT32GM</strong> driver (MPU401.MDI) &mdash; a fan-made Miles Sound System&nbsp;3 driver by Mok that lets an MT-32 owner play General-MIDI-only games by translating GM into the MT-32's world. We load the actual 16-bit DOS driver into a <strong>Unicorn</strong> x86 CPU emulator, act as the Miles/AIL host, and drive it exactly as the game would: open the &ldquo;Roland MT-32 General MIDI with MPU-401&rdquo; device, preload the timbres each cue needs, then feed it the cue's GM events. The MT-32 has only <strong>8 melodic parts plus rhythm</strong>, far fewer than GM's channels, so the driver dynamically allocates and steals parts, and &mdash; because the MT-32's built-in presets are not GM-ordered &mdash; it uploads a baked GM timbre set into the synth's 64-slot timbre memory (its own <strong>AcouPiano / NylonGtr / StringEns1 / Violin&hellip;</strong> patches) via Roland SysEx and reprograms the patch memory. We capture every byte the driver writes to the MPU-401 port &mdash; the genuine MT-32 SysEx + MIDI stream &mdash; and play it through the same <strong>Munt</strong> CM-32L emulator the TFX jukebox uses. As the author admits, a few of the stitched-together timbres are rough; that is exactly how it sounded on real hardware.</p>
 
         <h2>AdLib: two-operator OPL2 FM</h2>
         <p>The AdLib build drives a Yamaha <strong>OPL2 (YM3812)</strong> -- the two-operator FM chip in the original AdLib and Sound Blaster cards. It is punchy, buzzy and bright, using the game's own Miles/AIL custom FM patches. We feed the original XMI through a patched build of libADLMIDI loaded with the authentic <strong>AIL Warcraft 2</strong> instrument bank, capture every OPL register write, and replay it through a cycle-accurate Nuked-OPL3 emulator.</p>

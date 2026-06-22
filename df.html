@@ -102,8 +102,13 @@
     display:flex;align-items:center}
   .side-h b{color:var(--mon-hi);font-weight:400}
   .side-h .sp{flex:1}
-  .filterbar{display:flex;gap:5px;padding:5px 9px;border-bottom:1px solid var(--mon-line)}
-  .fbtn{font:inherit;text-transform:uppercase;letter-spacing:0;font-size:13px;color:var(--mon-ink2);
+  .filterbar{display:flex;gap:5px;padding:5px 9px;border-bottom:1px solid var(--mon-line);overflow-x:auto;
+    scrollbar-width:thin;scrollbar-color:var(--mon-ink2) var(--screen)}
+  .filterbar::-webkit-scrollbar{height:9px}
+  .filterbar::-webkit-scrollbar-track{background:var(--screen);box-shadow:inset 0 1px 0 rgba(0,0,0,.5)}
+  .filterbar::-webkit-scrollbar-thumb{border:1px solid var(--mon-line);border-radius:1px;
+    background:linear-gradient(180deg,var(--mon-ink2) 0%,var(--mon-hi) 50%,var(--mon-ink2) 100%)}
+  .fbtn{flex:none;white-space:nowrap;font:inherit;text-transform:uppercase;letter-spacing:0;font-size:13px;color:var(--mon-ink2);
     background:transparent;border:1px solid var(--mon-line);padding:2px 9px;cursor:pointer;display:flex;align-items:center;gap:6px}
   .fbtn:hover{color:var(--mon-hi)}
   .fbtn.on{background:var(--mon-line);color:var(--screen)}
@@ -271,7 +276,12 @@
     #main{padding:0 6px;gap:0}
     #side{width:auto;flex:1;min-width:0}
     /* roll: keys keep a real size and scroll left/right instead of squashing */
-    #rollWrap{flex:1;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;touch-action:pan-x}
+    #rollWrap{flex:1;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;touch-action:pan-x;
+      scrollbar-width:thin;scrollbar-color:var(--mon-ink2) var(--screen)}
+    #rollWrap::-webkit-scrollbar{height:9px}
+    #rollWrap::-webkit-scrollbar-track{background:var(--screen);box-shadow:inset 0 1px 0 rgba(0,0,0,.5)}
+    #rollWrap::-webkit-scrollbar-thumb{border:1px solid var(--mon-line);border-radius:1px;
+      background:linear-gradient(180deg,var(--mon-ink2) 0%,var(--mon-hi) 50%,var(--mon-ink2) 100%)}
     body.mnotes #side{display:none}
     body.mtracks #rollWrap{display:none}
     /* hide the driver / notes / channels / synth status line */
@@ -377,6 +387,7 @@
         <button type="button" class="gameopt" role="option" data-href="ufo.html">X-COM</button>
         <button type="button" class="gameopt" role="option" data-href="wc2.html">WARCRAFT II</button>
         <button type="button" class="gameopt sel" role="option" aria-selected="true" data-href="df.html">DARK FORCES</button>
+        <button type="button" class="gameopt" role="option" data-href="ww.html">WACKY WHEELS</button>
       </div></span><script>(function(){var nav=document.currentScript.previousElementSibling,btn=nav.querySelector('.gamesel-btn'),menu=nav.querySelector('.gamemenu');btn.addEventListener('click',function(e){e.stopPropagation();var o=menu.classList.toggle('open');btn.setAttribute('aria-expanded',o);});menu.querySelectorAll('.gameopt').forEach(function(o){o.addEventListener('click',function(){var h=o.dataset.href;if(h&&!o.classList.contains('sel'))location.href=h;});});document.addEventListener('click',function(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');});})();</script>
       <span class="hright">STAR WARS: DARK FORCES iMUSE JUKEBOX</span>
     </div>
@@ -435,11 +446,11 @@
         <p>The General-MIDI path (GMIDI.MDR in the original game) sends the score straight to a <strong>Roland SC-55 / SCC-1</strong> Sound Canvas. It is fully multi-timbral &mdash; up to sixteen parts at once with standard GM instruments and a dedicated drum channel &mdash; so it is the cleanest, fullest version Dark Forces offers. For each cue we take track&nbsp;0 of the embedded MIDI (the canonical full sequence), strip the private iMUSE control SysEx, and render it through a cycle-accurate WebAssembly Nuked-SC55.</p>
 
         <h2>Roland MT-32: a clever, constrained adaptation</h2>
-        <p>The MT-32 path (ROLAND.MDR) is <em>not</em> just &ldquo;General MIDI on a Roland.&rdquo; A real <strong>MT-32 / LAPC-I</strong> has only <strong>8 melodic parts plus one rhythm part</strong>, but the Dark Forces score uses around a dozen logical channels. The driver solves this with <strong>dynamic part-stealing</strong>: it keeps state for all 16 logical channels, but assigns only 8 physical MT-32 parts at any moment. When a new channel needs to play and all 8 parts are busy, it steals the least-recently-used part &mdash; sending All&nbsp;Notes&nbsp;Off, then restoring program, volume, pan and pitch-bend for the new channel before the note. Percussion has its own quirks (high notes dropped, a couple of drums remapped). The result is a faithful but <strong>lossy</strong> re-creation &mdash; exactly what the hardware option sounded like in 1995.</p>
+        <p>The MT-32 path (ROLAND.MDR) is not just &ldquo;General MIDI on a Roland.&rdquo; A real <strong>MT-32 / LAPC-I</strong> has only <strong>8 melodic parts plus one rhythm part</strong>, but the Dark Forces score uses around a dozen logical channels. The driver solves this with <strong>dynamic part-stealing</strong>: it keeps state for all 16 logical channels, but assigns only 8 physical MT-32 parts at any moment. When a new channel needs to play and all 8 parts are busy, it steals the least-recently-used part &mdash; sending All&nbsp;Notes&nbsp;Off, then restoring program, volume, pan and pitch-bend for the new channel before the note. Percussion has its own quirks (high notes dropped, a couple of drums remapped). The result is a faithful but <strong>lossy</strong> re-creation &mdash; exactly what the hardware option sounded like in 1995.</p>
         <p>We reproduce that algorithm here, mapping GM programs to MT-32 patches with the program table recovered from ROLAND.MDR, and play the result through the <strong>Munt</strong> CM-32L emulator shared with the TFX jukebox.</p>
 
         <h2>AdLib &amp; Sound Blaster: the authentic FM, byte for byte</h2>
-        <p>The two FM builds are not a generic GM-on-OPL approximation &mdash; they are the game's <em>own</em> synthesis. We run the original 32-bit DOS FM drivers, <strong>FM2.MDR</strong> (2-operator OPL2, AdLib) and <strong>FM4.MDR</strong> (4-operator OPL3, Sound Blaster), inside a CPU emulator. Acting as the iMUSE sequencer, we feed each cue's MIDI events &mdash; program changes, note-ons and offs, controllers, pitch bend &mdash; straight into the real driver, and capture the exact stream of OPL register writes it produces, including its own instrument bank, voice allocation, key-scaling and percussion handling. That register log is replayed through a cycle-accurate <strong>Nuked-OPL3</strong> emulator, so the result is sample-for-sample what the original driver would have sent to a real AdLib or Sound Blaster card in 1995. The OPL3 build additionally uses the chip's second register array (18 channels / 4-operator voices) for a thicker, wider sound than plain AdLib.</p>
+        <p>The two FM builds are not a generic GM-on-OPL approximation &mdash; they are the game's own synthesis. We run the original 32-bit DOS FM drivers, <strong>FM2.MDR</strong> (2-operator OPL2, AdLib) and <strong>FM4.MDR</strong> (4-operator OPL3, Sound Blaster), inside a CPU emulator. Acting as the iMUSE sequencer, we feed each cue's MIDI events &mdash; program changes, note-ons and offs, controllers, pitch bend &mdash; straight into the real driver, and capture the exact stream of OPL register writes it produces, including its own instrument bank, voice allocation, key-scaling and percussion handling. That register log is replayed through a cycle-accurate <strong>Nuked-OPL3</strong> emulator, so the result is sample-for-sample what the original driver would have sent to a real AdLib or Sound Blaster card in 1995. The OPL3 build additionally uses the chip's second register array (18 channels / 4-operator voices) for a thicker, wider sound than plain AdLib.</p>
 
         <h2>How this works</h2>
         <p>The chain from the 1995 game data to your headphones:</p>
