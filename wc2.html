@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Warcraft II: Tides of Darkness · General MIDI / AdLib / SoundBlaster</title>
+<title>Warcraft II: Tides of Darkness · General MIDI / MT-32 / AdLib / SoundBlaster</title>
 <style>
   @font-face{
     font-family:"TFX Pixel";
@@ -11,8 +11,8 @@
     font-weight:normal;font-style:normal;font-display:block;
   }
   :root{
-    /* ember/amber phosphor monitor (Warcraft II: Tides of Darkness palette) */
-    --bg:#2a1610; --mon:#241410; --mon-ink:#e8b27a; --mon-ink2:#b07a44; --mon-line:#7a4a2c; --mon-hi:#ffd9a0;
+    /* gold-on-brown UI (Warcraft II: Tides of Darkness in-game font palette) */
+    --bg:#2a1610; --mon:#241410; --mon-ink:#f0c84a; --mon-ink2:#b8902c; --mon-line:#7a531f; --mon-hi:#ffe9a8;
     --screen:#190d07;
     /* real brushed steel */
     --steel:#9498a0; --steel-lt:#e2e5e9; --steel-dk:#2c2f35; --steel-emb:#15171b; --steel-ink:#eef0f2;
@@ -122,7 +122,9 @@
   .dchip{flex:none;width:34px;box-sizing:border-box;font-size:13px;letter-spacing:0;padding:3px 0;border-radius:2px;
     border:1px solid;line-height:1;text-align:center;text-indent:1px}
   /* GM (SC-55): light text on dark screen */
-  .dchip.gm{color:#ffd9a0;background:#190d07;border-color:#b07a44}
+  .dchip.gm{color:#ffe9a8;background:#190d07;border-color:#b8902c}
+  /* MT-32 (Munt LA synth): cool Roland blue, distinct from the gold FM/GM chips */
+  .dchip.mt{color:#cfe3ff;background:#0c1626;border-color:#3f6fb0}
   /* OPL2 AdLib: copper FM tint */
   .dchip.o2{color:#190d07;background:#e0934a;border-color:#a8650f}
   /* OPL3 SoundBlaster: brighter gold FM tint */
@@ -399,6 +401,7 @@
       <div class="filterbar" id="filterbar">
         <button class="fbtn on" data-f="ALL">ALL</button>
         <button class="fbtn" data-f="GM"><span class="dchip gm">GM</span>Gen MIDI</button>
+        <button class="fbtn" data-f="MT"><span class="dchip mt">MT</span>MT-32</button>
         <button class="fbtn" data-f="A2"><span class="dchip o2">O2</span>AdLib</button>
         <button class="fbtn" data-f="A3"><span class="dchip o3">O3</span>SoundBlaster</button>
       </div>
@@ -420,14 +423,17 @@
   <div id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
     <div class="imodal">
       <div class="imodal-h">
-        <span class="t" id="infoTitle">ABOUT -- WARCRAFT II MUSIC / GENERAL MIDI / ADLIB / SOUNDBLASTER</span>
+        <span class="t" id="infoTitle">ABOUT -- WARCRAFT II MUSIC / GENERAL MIDI / MT-32 / ADLIB / SOUNDBLASTER</span>
       </div>
       <div class="imodal-body">
         <h2>The orcish-and-human war themes, three ways.</h2>
-        <p>Warcraft II: Tides of Darkness (Blizzard Entertainment, 1995) stored its music as compact Miles Sound System <strong>XMI</strong> event data inside MAINDAT.WAR, not as recorded audio. The game shipped three FM/MIDI arrangements of every cue, and this jukebox plays them side by side: the <strong>General MIDI</strong> mix (for a Roland SC-55 / SCC-1 Sound Canvas), the <strong>AdLib / OPL2</strong> FM build, and the richer <strong>Sound Blaster / OPL3</strong> FM build. Use the <strong>Gen MIDI / AdLib / SoundBlaster</strong> filter to switch between them.</p>
+        <p>Warcraft II: Tides of Darkness (Blizzard Entertainment, 1995) stored its music as compact Miles Sound System <strong>XMI</strong> event data inside MAINDAT.WAR, not as recorded audio. The game shipped three FM/MIDI arrangements of every cue, and this jukebox plays them side by side: the <strong>General MIDI</strong> mix (for a Roland SC-55 / SCC-1 Sound Canvas), the <strong>AdLib / OPL2</strong> FM build, and the richer <strong>Sound Blaster / OPL3</strong> FM build. A fourth, <strong>Roland MT-32</strong> rendition has been added: Warcraft II never had a native MT-32 score, so this one is produced by running the game's General-MIDI data through a fan-made MT-32 driver (see below). Use the <strong>Gen MIDI / MT-32 / AdLib / SoundBlaster</strong> filter to switch between them.</p>
 
         <h2>General MIDI: the Sound Canvas mix</h2>
         <p>The General-MIDI arrangement targets a <strong>Roland SC-55 / SCC-1</strong>, the Sound Canvas that defined the GM sound of the mid-90s. It is fully multi-timbral, one part per MIDI channel with standard GM instruments and a dedicated drum channel, so it sounds cleaner and more orchestral than the FM builds while staying faithful to Glenn Stafford and the Blizzard audio team's score.</p>
+
+        <h2>Roland MT-32: a fan driver, emulated</h2>
+        <p>Warcraft II shipped no native MT-32 score, so this path is something the game never had. It is produced by the real <strong>MT32GM</strong> driver (MPU401.MDI) &mdash; a fan-made Miles Sound System&nbsp;3 driver by <em>Mok</em> that lets an MT-32 owner play General-MIDI-only games by translating GM into the MT-32's world. We load the actual 16-bit DOS driver into a <strong>Unicorn</strong> x86 CPU emulator, act as the Miles/AIL host, and drive it exactly as the game would: open the &ldquo;Roland MT-32 General MIDI with MPU-401&rdquo; device, preload the timbres each cue needs, then feed it the cue's GM events. The MT-32 has only <strong>8 melodic parts plus rhythm</strong>, far fewer than GM's channels, so the driver dynamically allocates and steals parts, and &mdash; because the MT-32's built-in presets are not GM-ordered &mdash; it uploads a baked GM timbre set into the synth's 64-slot timbre memory (its own <strong>AcouPiano / NylonGtr / StringEns1 / Violin&hellip;</strong> patches) via Roland SysEx and reprograms the patch memory. We capture every byte the driver writes to the MPU-401 port &mdash; the genuine MT-32 SysEx + MIDI stream &mdash; and play it through the same <strong>Munt</strong> CM-32L emulator the TFX jukebox uses. As the author admits, a few of the stitched-together timbres are rough; that is exactly how it sounded on real hardware.</p>
 
         <h2>AdLib: two-operator OPL2 FM</h2>
         <p>The AdLib build drives a Yamaha <strong>OPL2 (YM3812)</strong> -- the two-operator FM chip in the original AdLib and Sound Blaster cards. It is punchy, buzzy and bright, using the game's own Miles/AIL custom FM patches. We feed the original XMI through a patched build of libADLMIDI loaded with the authentic <strong>AIL Warcraft 2</strong> instrument bank, capture every OPL register write, and replay it through a cycle-accurate Nuked-OPL3 emulator.</p>
@@ -436,8 +442,8 @@
         <p>The Sound Blaster build uses the same Miles driver in <strong>OPL3 (YMF262)</strong> mode -- a second register bank, stereo panning and extra voices on top of the OPL2 design. It is the fullest FM version the game offers: thicker pads, wider stereo and more simultaneous voices than the plain AdLib mix.</p>
 
         <h2>How this works</h2>
-        <p>The <strong>MAINDAT.WAR</strong> archive stores each cue as an AIL/Miles XMI (XMIDI) stream. The General-MIDI XMI is converted to a Standard MIDI File (a port of Exult's XMidiFile timing model) for the SC-55. The two FM XMIs are rendered by libADLMIDI with the embedded Warcraft 2 bank, captured as a DOSBox raw-OPL (DRO) register log, then played in your browser:</p>
-        <div class="ichain"><span>1995 Warcraft II MAINDAT.WAR (XMI)</span><span>-&gt; SMF / OPL register log</span><span>-&gt; SMF / DRO</span><span>-&gt; JavaScript timing</span><span>-&gt; WebAssembly Nuked-SC55 (GM) / Nuked-OPL3 (AdLib + SoundBlaster)</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
+        <p>The <strong>MAINDAT.WAR</strong> archive stores each cue as an AIL/Miles XMI (XMIDI) stream. The General-MIDI XMI is converted to a Standard MIDI File (a port of Exult's XMidiFile timing model) for the SC-55. The MT-32 path runs that same GM data through Mok's MT32GM driver under x86 emulation and captures the MT-32 SysEx/MIDI it emits. The two FM XMIs are rendered by libADLMIDI with the embedded Warcraft 2 bank, captured as a DOSBox raw-OPL (DRO) register log, then played in your browser:</p>
+        <div class="ichain"><span>1995 Warcraft II MAINDAT.WAR (XMI)</span><span>-&gt; SMF / MT32GM driver (emulated) / OPL register log</span><span>-&gt; SMF / MT-32 SysEx+MIDI / DRO</span><span>-&gt; JavaScript timing</span><span>-&gt; WebAssembly Nuked-SC55 (GM) / Munt CM-32L (MT-32) / Nuked-OPL3 (AdLib + SoundBlaster)</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
         <p>The synthesis engine, ROM images and UI are shared with the sister TFX jukebox -- only the music converters and this page are new.</p>
         <p class="sig">-- a companion to the TFX jukebox</p>
       </div>
@@ -482,9 +488,9 @@ import { $, Engine, parseMidi, parseDro, CH_SWATCH, CH_TILE, setChannelPalette }
 // CHUNK, rdBin, the synth backends and BACKENDS now live in
 // player-engine.js, shared with the other player so the render engine
 // (MT-32 / SC-55 / OPL3 backends + Engine) never diverges between pages.
-// Re-tint the shared channel swatches/note tiles to Warcraft II's ember/amber
-// phosphor (the default ramp is green for the index/medit monitors).
-setChannelPalette(['#190d07','#5a2f14','#a8650f','#e6c24a','#ffe0a8']);
+// Re-tint the shared channel swatches/note tiles to Warcraft II's gold-on-brown
+// in-game font palette (the default ramp is green for the index/medit monitors).
+setChannelPalette(['#190d07','#5e3d12','#b8860d','#f0c83a','#ffe9a8']);
 
 // ---------- UI ----------
 const LOW=21, HIGH=108;                 // A0..C8 — full piano
@@ -495,16 +501,16 @@ const UI = {
   songs:[], cur:null, raf:0,
   async init(){
     this.songs = (await fetch('wc2_songs.json').then(r=>r.json())).filter(s=>!s.hidden);
-    const DRVORD={GM:0,A2:1,A3:2};
+    const DRVORD={GM:0,MT:1,A2:2,A3:3};
     this.songs.forEach(s=>{
       // Warcraft II ships three Miles XMI arrangements per cue (MAINDAT.WAR);
       // the filename token picks the backend: _GM. -> SC-55 (SCC), _A2. -> OPL2
       // AdLib, _A3. -> OPL3 SoundBlaster. Both FM builds ride the Nuked-OPL3 (ADL)
       // backend; _filt keeps them apart for the filter and chips.
-      const tok=(/_(GM|A2|A3)\./.exec(s.file)||[,'GM'])[1];
+      const tok=(/_(GM|MT|A2|A3)\./.exec(s.file)||[,'GM'])[1];
       s._filt=tok;
-      s._drv=tok==='GM'?'SCC':'ADL';
-      s._dev={GM:'General MIDI',A2:'AdLib (OPL2)',A3:'SoundBlaster (OPL3)'}[tok];
+      s._drv={GM:'SCC',MT:'RLD',A2:'ADL',A3:'ADL'}[tok];
+      s._dev={GM:'General MIDI',MT:'Roland MT-32',A2:'AdLib (OPL2)',A3:'SoundBlaster (OPL3)'}[tok];
       s._name=s.label.replace(/\s*\((?:GM|A2|A3)\)\s*$/,'');
       s._tid=+(s.label.match(/^(\d+)/)||[,1e9])[1];
     });
@@ -516,6 +522,7 @@ const UI = {
     this.songs.forEach((s,i)=>{
       const row=document.createElement('div'); row.className='song'; row.dataset.i=i; row.dataset.filt=s._filt;
       const DCH={GM:['gm','GM','General MIDI — Roland SC-55 / SCC-1'],
+                 MT:['mt','MT','Roland MT-32 — Mok\u2019s MT32GM Miles driver (MPU401.MDI), Munt CM-32L'],
                  A2:['o2','O2','AdLib / OPL2 FM — YM3812 (AIL Warcraft 2 bank)'],
                  A3:['o3','O3','SoundBlaster / OPL3 FM — YMF262 (AIL Warcraft 2 bank)']};
       const [dc,dl,dtitle]=DCH[s._filt]||DCH.GM;
@@ -640,10 +647,10 @@ const UI = {
     Engine.loadSong(parsed);
     this.buildChannels(parsed);
     $('trackname').textContent=s._name; this.updateMediaMeta(s);
-    $('st-drv').textContent={GM:'GEN MIDI',A2:'ADLIB',A3:'SNDBLAST'}[s._filt]||s._filt;
+    $('st-drv').textContent={GM:'GEN MIDI',MT:'MT-32',A2:'ADLIB',A3:'SNDBLAST'}[s._filt]||s._filt;
     $('st-synth').textContent=(Engine.sf2Mode && s._filt==='GM') ? 'GeneralUser-GS (SoundFont)'
-      : ({GM:'SC-55 v1.21 (SCC-1)',A2:'OPL2 · Nuked-OPL3 (YM3812)',A3:'OPL3 · Nuked-OPL3 (YMF262)'}[s._filt]||s._filt);
-    $('st-src').textContent={GM:'MAINDAT.WAR (General MIDI)',A2:'MAINDAT.WAR (AdLib OPL2)',A3:'MAINDAT.WAR (SoundBlaster OPL3)'}[s._filt]||s._filt;
+      : ({GM:'SC-55 v1.21 (SCC-1)',MT:'MT-32 / CM-32L (Munt)',A2:'OPL2 · Nuked-OPL3 (YM3812)',A3:'OPL3 · Nuked-OPL3 (YMF262)'}[s._filt]||s._filt);
+    $('st-src').textContent={GM:'MAINDAT.WAR (General MIDI)',MT:'MAINDAT.WAR (GM \u2192 MT-32 driver)',A2:'MAINDAT.WAR (AdLib OPL2)',A3:'MAINDAT.WAR (SoundBlaster OPL3)'}[s._filt]||s._filt;
     $('st-notes').textContent=parsed.notes.length;
     $('st-ch').textContent=parsed.channels.length;
     $('seek').value=0;
@@ -749,7 +756,7 @@ const UI = {
   },
   updateMediaMeta(s){
     if(!('mediaSession' in navigator) || typeof MediaMetadata==='undefined') return;
-    const dev={GM:'Roland SC-55 (General MIDI)',A2:'AdLib OPL2 FM',A3:'SoundBlaster OPL3 FM'}[s._filt]||s._filt;
+    const dev={GM:'Roland SC-55 (General MIDI)',MT:'Roland MT-32',A2:'AdLib OPL2 FM',A3:'SoundBlaster OPL3 FM'}[s._filt]||s._filt;
     try{ navigator.mediaSession.metadata=new MediaMetadata({ title:s._name, artist:dev, album:'Warcraft II: Tides of Darkness — Blizzard (Glenn Stafford)' }); }catch(e){}
   },
   updatePositionState(){

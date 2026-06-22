@@ -307,5 +307,108 @@
     "named": true,
     "hidden": false,
     "note": "hidden disco track (DISCOWC) — Glenn Stafford's 'I'm a Medieval Man'"
+  },
+  {
+    "file": "01_MT.mid",
+    "label": "01 - Human Briefing",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "02_MT.mid",
+    "label": "02 - Orc Briefing",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "03_MT.mid",
+    "label": "03 - Human Battle 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "04_MT.mid",
+    "label": "04 - Human Battle 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "05_MT.mid",
+    "label": "05 - Human Battle 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "06_MT.mid",
+    "label": "06 - Human Battle 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "07_MT.mid",
+    "label": "07 - Human Battle 5",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "08_MT.mid",
+    "label": "08 - Orc Battle 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "09_MT.mid",
+    "label": "09 - Orc Battle 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "10_MT.mid",
+    "label": "10 - Orc Battle 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "11_MT.mid",
+    "label": "11 - Orc Battle 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "12_MT.mid",
+    "label": "12 - Orc Battle 5",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "13_MT.mid",
+    "label": "13 - Human Victory",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "14_MT.mid",
+    "label": "14 - Orc Victory",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "15_MT.mid",
+    "label": "15 - Human Defeat",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "16_MT.mid",
+    "label": "16 - Orc Defeat",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "17_MT.mid",
+    "label": "17 - I'm a Medieval Man",
+    "named": true,
+    "hidden": false,
+    "note": "hidden disco track (DISCOWC) — Glenn Stafford's 'I'm a Medieval Man'"
   }
 ]
