@@ -819,25 +819,29 @@
     "file": "35_STAR-THM_GM.mid",
     "label": "35 - Star Wars Theme",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "35_STAR-THM_MT.mid",
     "label": "35 - Star Wars Theme",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "35_STAR-THM_A2.dro",
     "label": "35 - Star Wars Theme",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "35_STAR-THM_A3.dro",
     "label": "35 - Star Wars Theme",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "36_GROMAS1_GM.mid",
@@ -963,73 +967,85 @@
     "file": "41_CRIXMUS_GM.mid",
     "label": "41 - Crix Madine · Cutscene",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "41_CRIXMUS_MT.mid",
     "label": "41 - Crix Madine · Cutscene",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "41_CRIXMUS_A2.dro",
     "label": "41 - Crix Madine · Cutscene",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "41_CRIXMUS_A3.dro",
     "label": "41 - Crix Madine · Cutscene",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "42_EXECMUS_GM.mid",
     "label": "42 - Executor · Cutscene",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "42_EXECMUS_MT.mid",
     "label": "42 - Executor · Cutscene",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "42_EXECMUS_A2.dro",
     "label": "42 - Executor · Cutscene",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "42_EXECMUS_A3.dro",
     "label": "42 - Executor · Cutscene",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "43_FRIGMUS_GM.mid",
     "label": "43 - Frigate · Cutscene",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "43_FRIGMUS_MT.mid",
     "label": "43 - Frigate · Cutscene",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "43_FRIGMUS_A2.dro",
     "label": "43 - Frigate · Cutscene",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "43_FRIGMUS_A3.dro",
     "label": "43 - Frigate · Cutscene",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "44_CARGO_GM.mid",
@@ -1059,25 +1075,29 @@
     "file": "45_VICTORY_GM.mid",
     "label": "45 - Victory",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "45_VICTORY_MT.mid",
     "label": "45 - Victory",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "45_VICTORY_A2.dro",
     "label": "45 - Victory",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "45_VICTORY_A3.dro",
     "label": "45 - Victory",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "note": "cutscene: full iMUSE chunk sequence (CUTMUSE.TXT order), not just the intro"
   },
   {
     "file": "46_CLOSCRED_GM.mid",
