@@ -343,6 +343,7 @@ const Engine = {
   loadSong(parsed){
     this.events=parsed.events; this.notes=parsed.notes;
     this.duration=parsed.durationSec; this.channels=parsed.channels;
+    this.oplOwner=new Int16Array(18).fill(-1);   // OPL voice -> current source channel (CMAP-driven)
     this.seekTo(0,true);
   },
 
@@ -352,7 +353,19 @@ const Engine = {
     if(ev.type==='sysex'){ this.syn.sysex(ev.sysex); return; }
     if(ev.type==='opl'){
       let val=ev.val;
-      if(ev.keyon && ev.channel>=0 && this.effMuted(ev.channel)) val &= ~0x20; // force key-off for muted ch
+      if(ev.keyon){
+        const oplc = ev.channel;                       // OPL voice slot 0..17
+        const on = (val & 0x20) !== 0;
+        if(on){
+          // ev.src (from the DRO's CMAP) is the STABLE source MIDI channel that
+          // owns this voice; without a map it falls back to the OPL slot index.
+          const mc = (ev.src!=null) ? ev.src : oplc;
+          if(this.oplOwner && oplc>=0) this.oplOwner[oplc]=mc;
+          if(mc>=0 && this.effMuted(mc)) val &= ~0x20;  // suppress key-on for a muted source
+        } else if(this.oplOwner && oplc>=0){
+          this.oplOwner[oplc]=-1;
+        }
+      }
       this.syn.oplWrite(ev.reg, val);
       return;
     }
@@ -367,6 +380,7 @@ const Engine = {
     this.eventIdx=0; this.ended=false;
     this.frac=0; this.chunkIdx=CHUNK; this.chunkLen=CHUNK; this.prevL=this.prevR=this.curL=this.curR=0;
     this.rsHead=0; this.rsPos=3; this.rsL.fill(0); this.rsR.fill(0);   // reset resampler ring/phase
+    if(this.oplOwner) this.oplOwner.fill(-1);   // OPL voice ownership is rebuilt as events replay
 
     // 1) Replay every state-affecting message strictly BEFORE T to rebuild the
     //    synth's controller/patch state. Note-ons are suppressed (nothing is
@@ -409,7 +423,19 @@ const Engine = {
     if(t<0) t=0; else if(t>this.duration) t=this.duration;
     this.frozenSong = t; return t;
   },
-  cutChannel(ch){ if(this.syn.oplCut){ this.syn.oplCut(ch); return; } this.syn.msg(0xB0|ch|(120<<8)); this.syn.msg(0xB0|ch|(123<<8)); },
+  cutChannel(ch){
+    if(this.syn.oplCut){
+      // OPL: `ch` is a source channel. Silence every OPL voice it currently owns
+      // (CMAP playback); without a map, fall back to treating ch as the voice.
+      if(this.oplOwner){
+        let any=false;
+        for(let o=0;o<18;o++) if(this.oplOwner[o]===ch){ this.syn.oplCut(o); this.oplOwner[o]=-1; any=true; }
+        if(!any) this.syn.oplCut(ch);
+      } else this.syn.oplCut(ch);
+      return;
+    }
+    this.syn.msg(0xB0|ch|(120<<8)); this.syn.msg(0xB0|ch|(123<<8));
+  },
 
   renderChunk(){
     const tReal=this.synthPos/this.rate;

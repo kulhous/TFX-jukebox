@@ -46,7 +46,7 @@ function parseDroWrites(b) {
         writes.push({ ms, reg, val });
       }
     }
-    return { writes, lengthMs: lengthMs || ms };
+    return { writes, lengthMs: lengthMs || ms, endOffset: p };
   }
 
   // DRO v1 (best-effort)
@@ -63,7 +63,26 @@ function parseDroWrites(b) {
     else if (cmd === 0x04) { const reg = b[p++], val = b[p++]; writes.push({ ms, reg: (reg | bank) >>> 0, val }); }
     else { const val = b[p++]; writes.push({ ms, reg: (cmd | bank) >>> 0, val }); }
   }
-  return { writes, lengthMs: lengthMs || ms };
+  return { writes, lengthMs: lengthMs || ms, endOffset: p };
+}
+
+// Optional trailing "CMAP" block written by wc2_dro.write_dro: a list of
+// (ms, oplChannel, srcChannel) ownership records, one per key-on, so the player
+// can group notes by the STABLE source MIDI channel instead of the OPL voice
+// slot the driver dynamically stole. Returns an 18-slot array of {ms,src} lists
+// (sorted by ms), or null when the DRO carries no map.
+function parseCmap(b, off) {
+  if (off + 8 > b.length) return null;
+  if (b[off] !== 0x43 || b[off + 1] !== 0x4d || b[off + 2] !== 0x41 || b[off + 3] !== 0x50) return null; // "CMAP"
+  const dv = new DataView(b.buffer, b.byteOffset, b.byteLength);
+  const count = dv.getUint32(off + 4, true);
+  const lists = Array.from({ length: 18 }, () => []);
+  let p = off + 8;
+  for (let i = 0; i < count && p + 6 <= b.length; i++) {
+    const ms = dv.getUint32(p, true); const opl = b[p + 4], src = b[p + 5]; p += 6;
+    if (opl < 18) lists[opl].push({ ms, src });
+  }
+  return lists;
 }
 
 // OPL channel that a channel-register (0xA0-0xB8 / 0xC0-0xC8) belongs to.
@@ -84,7 +103,17 @@ const PERC = [ // rhythm-mode hits: bit, viz channel, fixed pitch
 ];
 
 export function parseDro(bytes) {
-  const { writes, lengthMs } = parseDroWrites(bytes);
+  const { writes, lengthMs, endOffset } = parseDroWrites(bytes);
+  const cmap = parseCmap(bytes, endOffset);   // per-OPL-channel ownership timeline, or null
+  const cmapPtr = cmap ? new Array(18).fill(0) : null;
+  // Resolve the source MIDI channel that owns OPL voice `opl` at time `ms`.
+  function srcOf(opl, ms) {
+    if (!cmap || opl < 0 || opl >= 18) return opl & 15;
+    const list = cmap[opl]; let pi = cmapPtr[opl];
+    while (pi + 1 < list.length && list[pi + 1].ms <= ms) pi++;
+    cmapPtr[opl] = pi;
+    return list.length ? list[pi].src : (opl & 15);
+  }
 
   const fnumLow = new Array(18).fill(0);
   const keyon = new Array(18).fill(false);
@@ -109,11 +138,15 @@ export function parseDro(bytes) {
       const block = (w.val >> 2) & 7;
       const fnum = ((w.val & 3) << 8) | fnumLow[ch];
       ev.keyon = true; // mark so mute can suppress
-      if (newOn && !keyon[ch]) {
-        const pitch = fnumToMidi(fnum, block);
-        if (pitch >= 0) {
-          const n = { channel: ch & 15, pitch, vel: 100, startSec: tSec, endSec: tSec + 0.3 };
-          cur[ch] = n; channels.add(ch & 15);
+      if (newOn) {
+        const src = srcOf(ch, w.ms);
+        ev.src = src;                     // STABLE source channel for mute/solo
+        if (!keyon[ch]) {
+          const pitch = fnumToMidi(fnum, block);
+          if (pitch >= 0) {
+            const n = { channel: src & 15, pitch, vel: 100, startSec: tSec, endSec: tSec + 0.3 };
+            cur[ch] = n; channels.add(src & 15);
+          }
         }
       } else if (!newOn && keyon[ch]) {
         if (cur[ch]) { cur[ch].endSec = tSec; notes.push(cur[ch]); cur[ch] = null; }
