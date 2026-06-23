@@ -7,7 +7,7 @@
 <style>
   @font-face{
     font-family:"TFX Pixel";
-    src:url("tfxfont.woff") format("woff"),url("tfxfont.ttf") format("truetype");
+    src:url("tfxfont.woff?v=3") format("woff"),url("tfxfont.ttf?v=3") format("truetype");
     font-weight:normal;font-style:normal;font-display:block;
   }
   :root{
@@ -179,7 +179,7 @@
     border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);border-right:1px solid var(--steel-lt)}
   .ch.muted::before{opacity:.3}
   .ch.solo{color:#1a1d11;background:linear-gradient(180deg,#fff08a,#e7c81e);text-shadow:none}
-  #transport{display:flex;align-items:stretch;gap:0}
+  #transport{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
   .btn{font:inherit;text-transform:uppercase;letter-spacing:0;color:var(--steel-emb);
     background:var(--steel-grad);padding:7px 14px;cursor:pointer;white-space:nowrap;text-shadow:0 1px 0 rgba(255,255,255,.35);
     border-top:1px solid var(--steel-lt);border-left:1px solid var(--steel-lt);
@@ -188,13 +188,13 @@
   .btn:active,.btn.on{background:var(--steel-grad-dn);border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);
     border-right:1px solid var(--steel-lt);border-bottom:1px solid var(--steel-lt);box-shadow:inset 0 1px 3px rgba(0,0,0,.4);text-shadow:none}
   .btn:disabled{color:#5b6068;opacity:.7;cursor:default;text-shadow:none}
-  .dmeter{display:flex;align-items:center;gap:7px;padding:0 12px;color:var(--steel-emb);font-size:13px;
+  .dmeter{display:flex;align-items:center;gap:6px;padding:0 9px;color:var(--steel-emb);font-size:13px;
     white-space:nowrap;text-shadow:0 1px 0 rgba(255,255,255,.35);
     background:var(--steel-grad);border-top:1px solid var(--steel-lt);
     border-bottom:1px solid var(--steel-dk);border-right:1px solid var(--steel-dk)}
   .dmeter b{color:#11140d}
   #meters{display:contents}
-  #speed{width:78px}
+  #speed{width:64px}
   #speedV{display:inline-block;width:44px;text-align:right;margin-right:4px;font-variant-numeric:tabular-nums}
   #volV{display:inline-block;width:38px;text-align:right;font-variant-numeric:tabular-nums}
   #mixV{display:inline-block;width:38px;text-align:right;font-variant-numeric:tabular-nums}
@@ -232,21 +232,38 @@
   #seektrack #seek::-moz-range-thumb{width:3px;height:16px;background:#fffbe0;border:0;cursor:pointer}
   #seektrack #seek:disabled{cursor:default}
 
-  /* ---- mobile tab toggle (notes <-> tracks) — lives in the bottom metal dash ---- */
-  #mtabs{display:none;gap:6px;padding:0 0 6px}
-  .mtab{font:inherit;text-transform:uppercase;letter-spacing:0;font-size:13px;cursor:pointer;flex:1;text-align:center;
-    color:var(--steel-emb);background:var(--steel-grad);padding:7px 14px;text-shadow:0 1px 0 rgba(255,255,255,.35);
+  /* ---- mobile tab toggle — lives in the bottom metal dash ----
+     row 1 = NOTES/TRACKS/INFO 3-position segmented slider (small font);
+     row 2 = REPEAT/AUTO/PERF/FONT compact square icon buttons (TFX-font icons) */
+  #mtabs{display:none;flex-direction:column;gap:6px;padding:0 0 6px}
+  .mseg{display:flex;border:1px solid var(--steel-dk)}
+  .mtab{font:inherit;text-transform:uppercase;letter-spacing:0;font-size:11px;cursor:pointer;flex:1;text-align:center;
+    color:var(--steel-emb);background:var(--steel-grad);padding:6px 2px;text-shadow:0 1px 0 rgba(255,255,255,.35);
+    border:0;border-right:1px solid var(--steel-dk)}
+  .mseg .mtab:last-child{border-right:0}
+  .mtab.on{color:#0c0e11;background:var(--steel-grad-dn);text-shadow:none;box-shadow:inset 0 1px 3px rgba(0,0,0,.4)}
+  .micons{display:flex;gap:8px;justify-content:center}
+  .micon{font:inherit;font-size:19px;line-height:1;cursor:pointer;flex:0 0 auto;width:44px;height:34px;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--steel-emb);background:var(--steel-grad);text-shadow:0 1px 0 rgba(255,255,255,.35);
     border-top:1px solid var(--steel-lt);border-left:1px solid var(--steel-lt);
     border-right:1px solid var(--steel-dk);border-bottom:1px solid var(--steel-dk)}
-  .mtab.on{color:#0c0e11;background:var(--steel-grad-dn);text-shadow:none;
+  .micon.on{color:#0c0e11;background:var(--steel-grad-dn);text-shadow:none;
     border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);
     border-right:1px solid var(--steel-lt);border-bottom:1px solid var(--steel-lt);box-shadow:inset 0 1px 3px rgba(0,0,0,.4)}
-  /* smaller INFO/PERF/FONT tabs on mobile — don't claim an equal third of the row */
-  .minfo{flex:0 0 auto;padding-left:10px;padding-right:10px}
-  #mtabs{gap:5px}
 
-  /* ---- desktop INFO button: sits by the Barry Leitch credit, far right ---- */
-  .infobtn{margin-left:auto;font-size:13px}
+  /* ---- desktop settings buttons: compact icon squares (save space) ----
+     SOUNDFONT / LOW-PERF / REPEAT / AUTO / INFO collapse to single TFX-font
+     icons so the transport row + credit always fit, even on smaller desktops */
+  .infobtn{margin-left:auto;font-size:0;width:34px;padding:0;text-align:center;
+    display:inline-flex;align-items:center;justify-content:center}
+  .infobtn + .infobtn{margin-left:0}
+  .infobtn::before{font-family:inherit;font-size:18px;line-height:1;letter-spacing:0}
+  #sfBtn.infobtn::before{content:"\E003"}      /* SoundFont — music note */
+  #lpBtn.infobtn::before{content:"\E002"}      /* Low-perf — lightning */
+  #repeatBtn.infobtn::before{content:"\E000"}  /* Repeat — loop */
+  #autoBtn.infobtn::before{content:"\E001"}    /* Autoadvance — next */
+  #infoBtn.infobtn::before{content:"\E004"}    /* Info — i */
   .infobtn + .credit{margin-left:10px;padding-left:0}
 
   /* ---- ABOUT panel: embedded in the green monitor, replaces roll + list ---- */
@@ -280,10 +297,7 @@
     .logo{font-size:18px}
     .hsub{gap:12px}
     /* show the notes/tracks switcher and collapse the split view to one pane */
-    #mtabs{display:flex;flex-wrap:wrap}
-    /* keep NOTES/TRACKS together on the first row so the INFO/PERF/FONT settings
-       wrap onto a second row instead of overflowing off-screen on narrow phones */
-    #mtabs .mtab[data-v]{flex:1 1 48%}
+    #mtabs{display:flex}
     #main{padding:0 6px;gap:0}
     #side{width:auto;flex:1;min-width:0}
     /* roll: keys keep a real size and scroll left/right instead of squashing */
@@ -356,8 +370,7 @@
     #dash{width:222px;flex:none;display:flex;flex-direction:column;gap:6px;padding:6px;overflow-y:auto;
       border-top:0;border-left:2px solid var(--steel-lt);
       box-shadow:inset 2px 0 0 rgba(255,255,255,.35),-4px 0 12px rgba(0,0,0,.45)}
-    #mtabs{display:flex;flex-wrap:wrap;padding:0;order:1;flex:none}
-    #mtabs .mtab[data-v]{flex:1 1 40%}
+    #mtabs{display:flex;flex-direction:column;padding:0;order:1;flex:none}
     /* channels fill the middle, growing to push the playback controls to the
        bottom; the empty area above is what gets populated as tracks load */
     #chanstrip{order:2;flex:1 1 auto;gap:0;padding:0;align-items:flex-start}
@@ -401,6 +414,8 @@
         <button type="button" class="gameopt" role="option" data-href="df.html">DARK FORCES</button>
         <button type="button" class="gameopt sel" role="option" aria-selected="true" data-href="ww.html">WACKY WHEELS</button>
         <button type="button" class="gameopt" role="option" data-href="ea.html">EXTREME ASSAULT</button>
+        <button type="button" class="gameopt" role="option" data-href="lba.html">LITTLE BIG ADVENTURE</button>
+        <button type="button" class="gameopt" role="option" data-href="d2.html">DUNE II</button>
       </div></span><script>(function(){var nav=document.currentScript.previousElementSibling,btn=nav.querySelector('.gamesel-btn'),menu=nav.querySelector('.gamemenu');btn.addEventListener('click',function(e){e.stopPropagation();var o=menu.classList.toggle('open');btn.setAttribute('aria-expanded',o);});menu.querySelectorAll('.gameopt').forEach(function(o){o.addEventListener('click',function(){var h=o.dataset.href;if(h&&!o.classList.contains('sel'))location.href=h;});});document.addEventListener('click',function(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');});})();</script>
       <span class="hright">WACKY WHEELS JUKEBOX</span>
     </div>
@@ -471,11 +486,17 @@
 
   <div id="dash">
     <div id="mtabs">
-      <button class="mtab on" data-v="notes">NOTES</button>
-      <button class="mtab" data-v="tracks">TRACKS</button>
-      <button class="mtab minfo" id="minfo" title="About this jukebox">INFO</button>
-      <button class="mtab minfo" id="mlp" title="Low-performance mode: lighter audio resampling if playback stutters">PERF</button>
-      <button class="mtab minfo" id="msf" title="Play the General MIDI version through the GeneralUser-GS SoundFont">FONT</button>
+      <div class="mseg">
+        <button class="mtab on" data-v="notes">NOTES</button>
+        <button class="mtab" data-v="tracks">TRACKS</button>
+        <button class="mtab" id="minfo" title="About this jukebox">INFO</button>
+      </div>
+      <div class="micons">
+        <button class="micon" id="mrepeat" aria-label="Repeat" title="Repeat: when the song ends, play it again from the beginning">&#xE000;</button>
+        <button class="micon" id="mauto" aria-label="Autoadvance" title="Autoadvance: when the song ends, automatically play the next song">&#xE001;</button>
+        <button class="micon" id="mlp" aria-label="Low-performance mode" title="Low-performance mode: lighter audio resampling if playback stutters">&#xE002;</button>
+        <button class="micon" id="msf" aria-label="SoundFont" title="Play the General MIDI version through the GeneralUser-GS SoundFont">&#xE003;</button>
+      </div>
     </div>
     <div id="chanstrip">
       <span class="lab">CHANNELS<br>L·MUTE<br>R·SOLO</span>
@@ -492,6 +513,8 @@
       </span>
       <button id="sfBtn" class="btn infobtn" title="Play the General MIDI version through the GeneralUser-GS SoundFont instead of the Roland SC-55 emulator">SOUNDFONT</button>
       <button id="lpBtn" class="btn infobtn" title="Low-performance mode: use lighter audio resampling if playback stutters on slow devices">LOW-PERF</button>
+      <button id="repeatBtn" class="btn infobtn" title="Repeat: when the song ends, play it again from the beginning">REPEAT</button>
+      <button id="autoBtn" class="btn infobtn" title="Autoadvance: when the song ends, automatically play the next song in the list">AUTO</button>
       <button id="infoBtn" class="btn infobtn" title="About this jukebox — General MIDI, AdLib and SoundBlaster">INFO</button>
       <span class="credit"><a href="https://wowpedia.fandom.com/wiki/Warcraft_II:_Tides_of_Darkness" target="_blank" rel="noopener">MUSIC BY GLENN STAFFORD · BLIZZARD ENTERTAINMENT 1995</a></span>
     </div>
@@ -582,6 +605,23 @@ const UI = {
     $('msf').onclick=toggleSf2;
     $('play').onclick=()=>this.toggle();
     $('restart').onclick=()=>{ Engine.seekTo(0); if(!Engine.playing) this.draw(); };
+    // REPEAT / AUTOADVANCE: when a song ends, replay it or jump to the next one.
+    // The two are mutually exclusive; both choices persist across reloads.
+    this.repeat=localStorage.getItem('tfxRepeat')==='1';
+    this.autoAdv=localStorage.getItem('tfxAutoAdv')==='1';
+    const paintLoop=()=>{
+      document.querySelectorAll('#repeatBtn,#mrepeat').forEach(b=>b.classList.toggle('on',this.repeat));
+      document.querySelectorAll('#autoBtn,#mauto').forEach(b=>b.classList.toggle('on',this.autoAdv));
+    };
+    document.querySelectorAll('#repeatBtn,#mrepeat').forEach(b=>b.onclick=()=>{
+      this.repeat=!this.repeat; if(this.repeat) this.autoAdv=false;
+      localStorage.setItem('tfxRepeat',this.repeat?'1':'0'); localStorage.setItem('tfxAutoAdv',this.autoAdv?'1':'0'); paintLoop();
+    });
+    document.querySelectorAll('#autoBtn,#mauto').forEach(b=>b.onclick=()=>{
+      this.autoAdv=!this.autoAdv; if(this.autoAdv) this.repeat=false;
+      localStorage.setItem('tfxAutoAdv',this.autoAdv?'1':'0'); localStorage.setItem('tfxRepeat',this.repeat?'1':'0'); paintLoop();
+    });
+    paintLoop();
     $('clear').onclick=()=>{ Engine.mute.clear(); Engine.solo.clear(); this.refreshChannels(); };
     $('speed').oninput=e=>{ const t=Engine.songTime(); Engine.speed=+e.target.value; $('speedV').textContent=Math.round(+e.target.value*100)+'%'; Engine.synthPos=Math.round((t/Engine.speed)*Engine.rate); Engine.frozenSong=t; Engine.anchored=false; };
     $('vol').oninput=e=>{ Engine.vol=+e.target.value; $('volV').textContent=Math.round(+e.target.value*100)+'%'; };
@@ -748,7 +788,17 @@ const UI = {
     if('mediaSession' in navigator){ try{ navigator.mediaSession.playbackState=p?'playing':'paused'; }catch(e){} }
     if(p) this.requestWake(); else this.releaseWake();
     this.updatePositionState(); },
-  onEnded(){ this.setPlayUI(false); },
+  onEnded(){
+    if(this.repeat){ this.toggle(); return; }            // replay current song from the start
+    if(this.autoAdv){ this.advance(1); return; }          // jump to the next visible song
+    this.setPlayUI(false);
+  },
+  advance(dir){
+    const vis=this.visibleIdx(); if(!vis.length){ this.setPlayUI(false); return; }
+    let k=vis.indexOf(this.cur); if(k<0) k=0;
+    k=(k+dir+vis.length)%vis.length;
+    Promise.resolve(this.pick(vis[k])).then(()=>{ if(!Engine.playing) this.toggle(); });
+  },
 
   // ---- Media Session (lockscreen / Bluetooth / wired-headset transport) ----
   setupMedia(){

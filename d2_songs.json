@@ -1,0 +1,614 @@
+[
+  {
+    "file": "01_GM.mid",
+    "label": "01 - Intro",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "01_MT.mid",
+    "label": "01 - Intro",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "01_A2.dro",
+    "label": "01 - Intro",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "02_GM.mid",
+    "label": "02 - Main Menu / House Selection",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "02_MT.mid",
+    "label": "02 - Main Menu / House Selection",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "02_A2.dro",
+    "label": "02 - Main Menu / House Selection",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "03_GM.mid",
+    "label": "03 - Attack 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "03_MT.mid",
+    "label": "03 - Attack 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "03_A2.dro",
+    "label": "03 - Attack 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "04_GM.mid",
+    "label": "04 - Attack 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "04_MT.mid",
+    "label": "04 - Attack 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "04_A2.dro",
+    "label": "04 - Attack 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "05_GM.mid",
+    "label": "05 - Attack 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "05_MT.mid",
+    "label": "05 - Attack 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "05_A2.dro",
+    "label": "05 - Attack 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "06_GM.mid",
+    "label": "06 - Attack 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "06_MT.mid",
+    "label": "06 - Attack 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "06_A2.dro",
+    "label": "06 - Attack 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "07_GM.mid",
+    "label": "07 - Attack 5",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "07_MT.mid",
+    "label": "07 - Attack 5",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "07_A2.dro",
+    "label": "07 - Attack 5",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "08_GM.mid",
+    "label": "08 - Attack 6",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "08_MT.mid",
+    "label": "08 - Attack 6",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "08_A2.dro",
+    "label": "08 - Attack 6",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "09_GM.mid",
+    "label": "09 - Peaceful 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "09_MT.mid",
+    "label": "09 - Peaceful 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "09_A2.dro",
+    "label": "09 - Peaceful 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "10_GM.mid",
+    "label": "10 - Peaceful 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "10_MT.mid",
+    "label": "10 - Peaceful 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "10_A2.dro",
+    "label": "10 - Peaceful 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "11_GM.mid",
+    "label": "11 - Peaceful 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "11_MT.mid",
+    "label": "11 - Peaceful 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "11_A2.dro",
+    "label": "11 - Peaceful 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "12_GM.mid",
+    "label": "12 - Peaceful 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "12_MT.mid",
+    "label": "12 - Peaceful 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "12_A2.dro",
+    "label": "12 - Peaceful 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "13_GM.mid",
+    "label": "13 - Peaceful 5",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "13_MT.mid",
+    "label": "13 - Peaceful 5",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "13_A2.dro",
+    "label": "13 - Peaceful 5",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "14_GM.mid",
+    "label": "14 - Peaceful 6",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "14_MT.mid",
+    "label": "14 - Peaceful 6",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "14_A2.dro",
+    "label": "14 - Peaceful 6",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "15_GM.mid",
+    "label": "15 - Peaceful 7",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "15_MT.mid",
+    "label": "15 - Peaceful 7",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "15_A2.dro",
+    "label": "15 - Peaceful 7",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "16_GM.mid",
+    "label": "16 - Peaceful 8",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "16_MT.mid",
+    "label": "16 - Peaceful 8",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "16_A2.dro",
+    "label": "16 - Peaceful 8",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "17_GM.mid",
+    "label": "17 - Peaceful 9",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "17_MT.mid",
+    "label": "17 - Peaceful 9",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "17_A2.dro",
+    "label": "17 - Peaceful 9",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "18_GM.mid",
+    "label": "18 - Harkonnen — Mentat Briefing",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "18_MT.mid",
+    "label": "18 - Harkonnen — Mentat Briefing",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "18_A2.dro",
+    "label": "18 - Harkonnen — Mentat Briefing",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "19_GM.mid",
+    "label": "19 - Atreides — Mentat Briefing",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "19_MT.mid",
+    "label": "19 - Atreides — Mentat Briefing",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "19_A2.dro",
+    "label": "19 - Atreides — Mentat Briefing",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "20_GM.mid",
+    "label": "20 - Ordos — Mentat Briefing",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "20_MT.mid",
+    "label": "20 - Ordos — Mentat Briefing",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "20_A2.dro",
+    "label": "20 - Ordos — Mentat Briefing",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "21_GM.mid",
+    "label": "21 - Harkonnen — Victory",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "21_MT.mid",
+    "label": "21 - Harkonnen — Victory",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "21_A2.dro",
+    "label": "21 - Harkonnen — Victory",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "22_GM.mid",
+    "label": "22 - Atreides — Victory",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "22_MT.mid",
+    "label": "22 - Atreides — Victory",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "22_A2.dro",
+    "label": "22 - Atreides — Victory",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "23_GM.mid",
+    "label": "23 - Ordos — Victory",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "23_MT.mid",
+    "label": "23 - Ordos — Victory",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "23_A2.dro",
+    "label": "23 - Ordos — Victory",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "24_GM.mid",
+    "label": "24 - Harkonnen — Defeat",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "24_MT.mid",
+    "label": "24 - Harkonnen — Defeat",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "24_A2.dro",
+    "label": "24 - Harkonnen — Defeat",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "25_GM.mid",
+    "label": "25 - Atreides — Defeat",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "25_MT.mid",
+    "label": "25 - Atreides — Defeat",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "25_A2.dro",
+    "label": "25 - Atreides — Defeat",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "26_GM.mid",
+    "label": "26 - Ordos — Defeat",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "26_MT.mid",
+    "label": "26 - Ordos — Defeat",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "26_A2.dro",
+    "label": "26 - Ordos — Defeat",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "27_GM.mid",
+    "label": "27 - Harkonnen — Finale",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "27_MT.mid",
+    "label": "27 - Harkonnen — Finale",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "27_A2.dro",
+    "label": "27 - Harkonnen — Finale",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "28_GM.mid",
+    "label": "28 - Atreides — Finale",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "28_MT.mid",
+    "label": "28 - Atreides — Finale",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "28_A2.dro",
+    "label": "28 - Atreides — Finale",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "29_GM.mid",
+    "label": "29 - Ordos — Finale",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "29_MT.mid",
+    "label": "29 - Ordos — Finale",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "29_A2.dro",
+    "label": "29 - Ordos — Finale",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "30_GM.mid",
+    "label": "30 - Victory Cutscene",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "30_MT.mid",
+    "label": "30 - Victory Cutscene",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "30_A2.dro",
+    "label": "30 - Victory Cutscene",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "31_GM.mid",
+    "label": "31 - Credits",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "31_MT.mid",
+    "label": "31 - Credits",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "31_A2.dro",
+    "label": "31 - Credits",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "32_GM.mid",
+    "label": "32 - Westwood Logo",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "32_MT.mid",
+    "label": "32 - Westwood Logo",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "32_A2.dro",
+    "label": "32 - Westwood Logo",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "33_GM.mid",
+    "label": "33 - Strategic Map",
+    "named": false,
+    "hidden": false
+  },
+  {
+    "file": "33_MT.mid",
+    "label": "33 - Strategic Map",
+    "named": false,
+    "hidden": false
+  },
+  {
+    "file": "33_A2.dro",
+    "label": "33 - Strategic Map",
+    "named": false,
+    "hidden": false
+  },
+  {
+    "file": "34_GM.mid",
+    "label": "34 - Cutscene Theme",
+    "named": false,
+    "hidden": false
+  },
+  {
+    "file": "34_MT.mid",
+    "label": "34 - Cutscene Theme",
+    "named": false,
+    "hidden": false
+  },
+  {
+    "file": "34_A2.dro",
+    "label": "34 - Cutscene Theme",
+    "named": false,
+    "hidden": false
+  }
+]

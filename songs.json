@@ -285,7 +285,7 @@
     "label": "19 - Libya (SCC)",
     "named": true,
     "hidden": false,
-    "note": "Replaced 2026-06-19 with the TFX-INPROGRESS render from medit source SCC1MUSI/TFX/LIBYA.SCC (8645 notes)."
+    "note": "Render from medit source SCC1MUSI/TFX/LIBYA.SCC (8645 notes). 2026-06-22: fixed percussion. The GS 'Use For Rhythm Part' flags for the drum channels (player ch3/ch5/ch6 = blocks 2/4/5, identity Rx-mapped) were stranded at the loop wrap (t~239135), so ch3 (hi-hats, notes 42/44/46) played as Percussive Organ all song. Moved those 3 rhythm-part sysex into the initial GS setup (after the reset, before each channel's first note, 8ms-spaced); notes byte-identical. Browser A/B (ch3 solo, SC-55): organ fundamental dropped ~580x, 6-12kHz hi-hat band rose ~1560x = now drums."
   },
   {
     "file": "tune_56_at03536da_RLD_dec9012.mid",

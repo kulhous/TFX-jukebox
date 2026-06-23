@@ -1,0 +1,683 @@
+[
+  {
+    "file": "00_GM.mid",
+    "label": "00 - Recorder Note (script cue)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "00_MT.mid",
+    "label": "00 - Recorder Note (script cue)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "00_A2.dro",
+    "label": "00 - Recorder Note (script cue)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "01_GM.mid",
+    "label": "01 - Intro Dream / Island Ruins",
+    "named": true,
+    "hidden": false,
+    "note": "Intro dream sequence; Principal Island Ruins, White Leaf Desert maze, Brundle teleportation. CD audio track 2 when CD enabled."
+  },
+  {
+    "file": "01_MT.mid",
+    "label": "01 - Intro Dream / Island Ruins",
+    "named": true,
+    "hidden": false,
+    "note": "Intro dream sequence; Principal Island Ruins, White Leaf Desert maze, Brundle teleportation. CD audio track 2 when CD enabled."
+  },
+  {
+    "file": "01_A2.dro",
+    "label": "01 - Intro Dream / Island Ruins",
+    "named": true,
+    "hidden": false,
+    "note": "Intro dream sequence; Principal Island Ruins, White Leaf Desert maze, Brundle teleportation. CD audio track 2 when CD enabled."
+  },
+  {
+    "file": "02_GM.mid",
+    "label": "02 - Action / Battle Theme",
+    "named": true,
+    "hidden": false,
+    "note": "Harbor, ticket office, Hamalayi fighting scenes, Polar rocky peak."
+  },
+  {
+    "file": "02_MT.mid",
+    "label": "02 - Action / Battle Theme",
+    "named": true,
+    "hidden": false,
+    "note": "Harbor, ticket office, Hamalayi fighting scenes, Polar rocky peak."
+  },
+  {
+    "file": "02_A2.dro",
+    "label": "02 - Action / Battle Theme",
+    "named": true,
+    "hidden": false,
+    "note": "Harbor, ticket office, Hamalayi fighting scenes, Polar rocky peak."
+  },
+  {
+    "file": "03_GM.mid",
+    "label": "03 - Rebellion Island",
+    "named": true,
+    "hidden": false,
+    "note": "Rebellion Island harbor & rebel camp."
+  },
+  {
+    "file": "03_MT.mid",
+    "label": "03 - Rebellion Island",
+    "named": true,
+    "hidden": false,
+    "note": "Rebellion Island harbor & rebel camp."
+  },
+  {
+    "file": "03_A2.dro",
+    "label": "03 - Rebellion Island",
+    "named": true,
+    "hidden": false,
+    "note": "Rebellion Island harbor & rebel camp."
+  },
+  {
+    "file": "04_GM.mid",
+    "label": "04 - Warehouse / Outdoors",
+    "named": true,
+    "hidden": false,
+    "note": "Citadel warehouse, outside Temple of Bu, Fortress outside & docks."
+  },
+  {
+    "file": "04_MT.mid",
+    "label": "04 - Warehouse / Outdoors",
+    "named": true,
+    "hidden": false,
+    "note": "Citadel warehouse, outside Temple of Bu, Fortress outside & docks."
+  },
+  {
+    "file": "04_A2.dro",
+    "label": "04 - Warehouse / Outdoors",
+    "named": true,
+    "hidden": false,
+    "note": "Citadel warehouse, outside Temple of Bu, Fortress outside & docks."
+  },
+  {
+    "file": "05_GM.mid",
+    "label": "05 - Temple & Prison",
+    "named": true,
+    "hidden": false,
+    "note": "Tavern/pharmacy, White Leaf Temple, Hamalayi prison, fortress passages."
+  },
+  {
+    "file": "05_MT.mid",
+    "label": "05 - Temple & Prison",
+    "named": true,
+    "hidden": false,
+    "note": "Tavern/pharmacy, White Leaf Temple, Hamalayi prison, fortress passages."
+  },
+  {
+    "file": "05_A2.dro",
+    "label": "05 - Temple & Prison",
+    "named": true,
+    "hidden": false,
+    "note": "Tavern/pharmacy, White Leaf Temple, Hamalayi prison, fortress passages."
+  },
+  {
+    "file": "06_GM.mid",
+    "label": "06 - Twinsen's House",
+    "named": true,
+    "hidden": false,
+    "note": "Twinsen's house, Library, Old Burg, Stables, Tippet village. DEMO end credits. CD audio track 7 when CD enabled."
+  },
+  {
+    "file": "06_MT.mid",
+    "label": "06 - Twinsen's House",
+    "named": true,
+    "hidden": false,
+    "note": "Twinsen's house, Library, Old Burg, Stables, Tippet village. DEMO end credits. CD audio track 7 when CD enabled."
+  },
+  {
+    "file": "06_A2.dro",
+    "label": "06 - Twinsen's House",
+    "named": true,
+    "hidden": false,
+    "note": "Twinsen's house, Library, Old Burg, Stables, Tippet village. DEMO end credits. CD audio track 7 when CD enabled."
+  },
+  {
+    "file": "07_GM.mid",
+    "label": "07 - Landing Place / Mutation Centre",
+    "named": true,
+    "hidden": false,
+    "note": "Hamalayi landing place, Mutation centre, Catamaran dock."
+  },
+  {
+    "file": "07_MT.mid",
+    "label": "07 - Landing Place / Mutation Centre",
+    "named": true,
+    "hidden": false,
+    "note": "Hamalayi landing place, Mutation centre, Catamaran dock."
+  },
+  {
+    "file": "07_A2.dro",
+    "label": "07 - Landing Place / Mutation Centre",
+    "named": true,
+    "hidden": false,
+    "note": "Hamalayi landing place, Mutation centre, Catamaran dock."
+  },
+  {
+    "file": "08_GM.mid",
+    "label": "08 - Main Theme (Finale / Ending)",
+    "named": true,
+    "hidden": false,
+    "note": "The big main/finale theme (21980 B). Played via script events; identical bytes to tracks 9 and 32."
+  },
+  {
+    "file": "08_MT.mid",
+    "label": "08 - Main Theme (Finale / Ending)",
+    "named": true,
+    "hidden": false,
+    "note": "The big main/finale theme (21980 B). Played via script events; identical bytes to tracks 9 and 32."
+  },
+  {
+    "file": "08_A2.dro",
+    "label": "08 - Main Theme (Finale / Ending)",
+    "named": true,
+    "hidden": false,
+    "note": "The big main/finale theme (21980 B). Played via script events; identical bytes to tracks 9 and 32."
+  },
+  {
+    "file": "09_GM.mid",
+    "label": "09 - Main Theme (Options & Credits loop)",
+    "named": true,
+    "hidden": true,
+    "note": "identical to track 08. Byte-for-byte copy of track 8 (hidden). Options menu + credits loop. CD audio track 10 when CD enabled."
+  },
+  {
+    "file": "09_MT.mid",
+    "label": "09 - Main Theme (Options & Credits loop)",
+    "named": true,
+    "hidden": true,
+    "note": "identical to track 08. Byte-for-byte copy of track 8 (hidden). Options menu + credits loop. CD audio track 10 when CD enabled."
+  },
+  {
+    "file": "09_A2.dro",
+    "label": "09 - Main Theme (Options & Credits loop)",
+    "named": true,
+    "hidden": true,
+    "note": "identical to track 08. Byte-for-byte copy of track 8 (hidden). Options menu + credits loop. CD audio track 10 when CD enabled."
+  },
+  {
+    "file": "10_GM.mid",
+    "label": "10 - Rabbibunny Village",
+    "named": true,
+    "hidden": false,
+    "note": "Hamalayi Rabbibunny village, outside library, Peg Leg Street, bunker."
+  },
+  {
+    "file": "10_MT.mid",
+    "label": "10 - Rabbibunny Village",
+    "named": true,
+    "hidden": false,
+    "note": "Hamalayi Rabbibunny village, outside library, Peg Leg Street, bunker."
+  },
+  {
+    "file": "10_A2.dro",
+    "label": "10 - Rabbibunny Village",
+    "named": true,
+    "hidden": false,
+    "note": "Hamalayi Rabbibunny village, outside library, Peg Leg Street, bunker."
+  },
+  {
+    "file": "11_GM.mid",
+    "label": "11 - Script Cue 11",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "11_MT.mid",
+    "label": "11 - Script Cue 11",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "11_A2.dro",
+    "label": "11 - Script Cue 11",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "12_GM.mid",
+    "label": "12 - Cellar / Water Tower",
+    "named": true,
+    "hidden": false,
+    "note": "Cellar of Tavern, inside water tower, Hamalayi transporter."
+  },
+  {
+    "file": "12_MT.mid",
+    "label": "12 - Cellar / Water Tower",
+    "named": true,
+    "hidden": false,
+    "note": "Cellar of Tavern, inside water tower, Hamalayi transporter."
+  },
+  {
+    "file": "12_A2.dro",
+    "label": "12 - Cellar / Water Tower",
+    "named": true,
+    "hidden": false,
+    "note": "Cellar of Tavern, inside water tower, Hamalayi transporter."
+  },
+  {
+    "file": "13_GM.mid",
+    "label": "13 - Military / Urban Theme",
+    "named": true,
+    "hidden": false,
+    "note": "Military camps, Proxim City, prison entrance, Twinsun Cafe."
+  },
+  {
+    "file": "13_MT.mid",
+    "label": "13 - Military / Urban Theme",
+    "named": true,
+    "hidden": false,
+    "note": "Military camps, Proxim City, prison entrance, Twinsun Cafe."
+  },
+  {
+    "file": "13_A2.dro",
+    "label": "13 - Military / Urban Theme",
+    "named": true,
+    "hidden": false,
+    "note": "Military camps, Proxim City, prison entrance, Twinsun Cafe."
+  },
+  {
+    "file": "14_GM.mid",
+    "label": "14 - Sacred Carrot / Final Approach",
+    "named": true,
+    "hidden": false,
+    "note": "Sacred Carrot; Polar Island before the end room."
+  },
+  {
+    "file": "14_MT.mid",
+    "label": "14 - Sacred Carrot / Final Approach",
+    "named": true,
+    "hidden": false,
+    "note": "Sacred Carrot; Polar Island before the end room."
+  },
+  {
+    "file": "14_A2.dro",
+    "label": "14 - Sacred Carrot / Final Approach",
+    "named": true,
+    "hidden": false,
+    "note": "Sacred Carrot; Polar Island before the end room."
+  },
+  {
+    "file": "15_GM.mid",
+    "label": "15 - Shops & Taverns",
+    "named": true,
+    "hidden": false,
+    "note": "Civilian interiors: shops, taverns, architect's & inventor's houses."
+  },
+  {
+    "file": "15_MT.mid",
+    "label": "15 - Shops & Taverns",
+    "named": true,
+    "hidden": false,
+    "note": "Civilian interiors: shops, taverns, architect's & inventor's houses."
+  },
+  {
+    "file": "15_A2.dro",
+    "label": "15 - Shops & Taverns",
+    "named": true,
+    "hidden": false,
+    "note": "Civilian interiors: shops, taverns, architect's & inventor's houses."
+  },
+  {
+    "file": "16_GM.mid",
+    "label": "16 - Prison / Astronomer's House",
+    "named": true,
+    "hidden": false,
+    "note": "Prisons, Astronomer's house, rune stone, clear-water lake."
+  },
+  {
+    "file": "16_MT.mid",
+    "label": "16 - Prison / Astronomer's House",
+    "named": true,
+    "hidden": false,
+    "note": "Prisons, Astronomer's house, rune stone, clear-water lake."
+  },
+  {
+    "file": "16_A2.dro",
+    "label": "16 - Prison / Astronomer's House",
+    "named": true,
+    "hidden": false,
+    "note": "Prisons, Astronomer's house, rune stone, clear-water lake."
+  },
+  {
+    "file": "17_GM.mid",
+    "label": "17 - Rune Stone / Cloning Centre",
+    "named": true,
+    "hidden": false,
+    "note": "Proxima rune stones, Fortress cloning centre, Polar final battle."
+  },
+  {
+    "file": "17_MT.mid",
+    "label": "17 - Rune Stone / Cloning Centre",
+    "named": true,
+    "hidden": false,
+    "note": "Proxima rune stones, Fortress cloning centre, Polar final battle."
+  },
+  {
+    "file": "17_A2.dro",
+    "label": "17 - Rune Stone / Cloning Centre",
+    "named": true,
+    "hidden": false,
+    "note": "Proxima rune stones, Fortress cloning centre, Polar final battle."
+  },
+  {
+    "file": "18_GM.mid",
+    "label": "18 - Silence / Ambient Placeholder",
+    "named": true,
+    "hidden": true,
+    "note": "identical to track 00. Most-used neutral track (12 scenes). Identical to track 0 (hidden)."
+  },
+  {
+    "file": "18_MT.mid",
+    "label": "18 - Silence / Ambient Placeholder",
+    "named": true,
+    "hidden": true,
+    "note": "identical to track 00. Most-used neutral track (12 scenes). Identical to track 0 (hidden)."
+  },
+  {
+    "file": "18_A2.dro",
+    "label": "18 - Silence / Ambient Placeholder",
+    "named": true,
+    "hidden": true,
+    "note": "identical to track 00. Most-used neutral track (12 scenes). Identical to track 0 (hidden)."
+  },
+  {
+    "file": "19_GM.mid",
+    "label": "19 - Outside the Citadel",
+    "named": true,
+    "hidden": false,
+    "note": "Outside the citadel, near Twinsen's house, Fortress swimming pool."
+  },
+  {
+    "file": "19_MT.mid",
+    "label": "19 - Outside the Citadel",
+    "named": true,
+    "hidden": false,
+    "note": "Outside the citadel, near Twinsen's house, Fortress swimming pool."
+  },
+  {
+    "file": "19_A2.dro",
+    "label": "19 - Outside the Citadel",
+    "named": true,
+    "hidden": false,
+    "note": "Outside the citadel, near Twinsen's house, Fortress swimming pool."
+  },
+  {
+    "file": "20_GM.mid",
+    "label": "20 - Citadel Harbor",
+    "named": true,
+    "hidden": false,
+    "note": "Citadel Harbor, Hamalayi transporter exterior, Tippet passages."
+  },
+  {
+    "file": "20_MT.mid",
+    "label": "20 - Citadel Harbor",
+    "named": true,
+    "hidden": false,
+    "note": "Citadel Harbor, Hamalayi transporter exterior, Tippet passages."
+  },
+  {
+    "file": "20_A2.dro",
+    "label": "20 - Citadel Harbor",
+    "named": true,
+    "hidden": false,
+    "note": "Citadel Harbor, Hamalayi transporter exterior, Tippet passages."
+  },
+  {
+    "file": "21_GM.mid",
+    "label": "21 - Prison Backdoor",
+    "named": true,
+    "hidden": false,
+    "note": "Single scene: Hamalayi backdoor of the prison."
+  },
+  {
+    "file": "21_MT.mid",
+    "label": "21 - Prison Backdoor",
+    "named": true,
+    "hidden": false,
+    "note": "Single scene: Hamalayi backdoor of the prison."
+  },
+  {
+    "file": "21_A2.dro",
+    "label": "21 - Prison Backdoor",
+    "named": true,
+    "hidden": false,
+    "note": "Single scene: Hamalayi backdoor of the prison."
+  },
+  {
+    "file": "22_GM.mid",
+    "label": "22 - Behind the Sacred Carrot",
+    "named": true,
+    "hidden": false,
+    "note": "Single scene: Hamalayi behind the Sacred Carrot."
+  },
+  {
+    "file": "22_MT.mid",
+    "label": "22 - Behind the Sacred Carrot",
+    "named": true,
+    "hidden": false,
+    "note": "Single scene: Hamalayi behind the Sacred Carrot."
+  },
+  {
+    "file": "22_A2.dro",
+    "label": "22 - Behind the Sacred Carrot",
+    "named": true,
+    "hidden": false,
+    "note": "Single scene: Hamalayi behind the Sacred Carrot."
+  },
+  {
+    "file": "23_GM.mid",
+    "label": "23 - Script Cue 23",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "23_MT.mid",
+    "label": "23 - Script Cue 23",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "23_A2.dro",
+    "label": "23 - Script Cue 23",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "24_GM.mid",
+    "label": "24 - Script Cue 24",
+    "named": true,
+    "hidden": false,
+    "note": "Script-only cue; identical to track 25."
+  },
+  {
+    "file": "24_MT.mid",
+    "label": "24 - Script Cue 24",
+    "named": true,
+    "hidden": false,
+    "note": "Script-only cue; identical to track 25."
+  },
+  {
+    "file": "24_A2.dro",
+    "label": "24 - Script Cue 24",
+    "named": true,
+    "hidden": false,
+    "note": "Script-only cue; identical to track 25."
+  },
+  {
+    "file": "25_GM.mid",
+    "label": "25 - Script Cue 25",
+    "named": true,
+    "hidden": true,
+    "note": "identical to track 24. Script-only cue; identical to track 24 (hidden)."
+  },
+  {
+    "file": "25_MT.mid",
+    "label": "25 - Script Cue 25",
+    "named": true,
+    "hidden": true,
+    "note": "identical to track 24. Script-only cue; identical to track 24 (hidden)."
+  },
+  {
+    "file": "25_A2.dro",
+    "label": "25 - Script Cue 25",
+    "named": true,
+    "hidden": true,
+    "note": "identical to track 24. Script-only cue; identical to track 24 (hidden)."
+  },
+  {
+    "file": "26_GM.mid",
+    "label": "26 - FLA Cutscene Flute",
+    "named": true,
+    "hidden": false,
+    "note": "FLA cutscene flute (PLAYFLA.C). Same bytes in MIDI_MI and MIDI_SB."
+  },
+  {
+    "file": "26_MT.mid",
+    "label": "26 - FLA Cutscene Flute",
+    "named": true,
+    "hidden": false,
+    "note": "FLA cutscene flute (PLAYFLA.C). Same bytes in MIDI_MI and MIDI_SB."
+  },
+  {
+    "file": "26_A2.dro",
+    "label": "26 - FLA Cutscene Flute",
+    "named": true,
+    "hidden": false,
+    "note": "FLA cutscene flute (PLAYFLA.C). Same bytes in MIDI_MI and MIDI_SB."
+  },
+  {
+    "file": "27_GM.mid",
+    "label": "27 - Underground / Sewers",
+    "named": true,
+    "hidden": false,
+    "note": "Sewers and small underground interiors."
+  },
+  {
+    "file": "27_MT.mid",
+    "label": "27 - Underground / Sewers",
+    "named": true,
+    "hidden": false,
+    "note": "Sewers and small underground interiors."
+  },
+  {
+    "file": "27_A2.dro",
+    "label": "27 - Underground / Sewers",
+    "named": true,
+    "hidden": false,
+    "note": "Sewers and small underground interiors."
+  },
+  {
+    "file": "28_GM.mid",
+    "label": "28 - Museum / Mutation Centre",
+    "named": true,
+    "hidden": false,
+    "note": "Proxima Museum, Mutation centre, Fortress destroyed, Polar 3rd scene."
+  },
+  {
+    "file": "28_MT.mid",
+    "label": "28 - Museum / Mutation Centre",
+    "named": true,
+    "hidden": false,
+    "note": "Proxima Museum, Mutation centre, Fortress destroyed, Polar 3rd scene."
+  },
+  {
+    "file": "28_A2.dro",
+    "label": "28 - Museum / Mutation Centre",
+    "named": true,
+    "hidden": false,
+    "note": "Proxima Museum, Mutation centre, Fortress destroyed, Polar 3rd scene."
+  },
+  {
+    "file": "29_GM.mid",
+    "label": "29 - Near the Inventor's House",
+    "named": true,
+    "hidden": false,
+    "note": "Single scene: Proxima near the Inventor's house."
+  },
+  {
+    "file": "29_MT.mid",
+    "label": "29 - Near the Inventor's House",
+    "named": true,
+    "hidden": false,
+    "note": "Single scene: Proxima near the Inventor's house."
+  },
+  {
+    "file": "29_A2.dro",
+    "label": "29 - Near the Inventor's House",
+    "named": true,
+    "hidden": false,
+    "note": "Single scene: Proxima near the Inventor's house."
+  },
+  {
+    "file": "30_GM.mid",
+    "label": "30 - Script Cue 30",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "30_MT.mid",
+    "label": "30 - Script Cue 30",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "30_A2.dro",
+    "label": "30 - Script Cue 30",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "31_GM.mid",
+    "label": "31 - Adeline Logo Jingle",
+    "named": true,
+    "hidden": false,
+    "note": "14-note Vibraphone jingle for the Adeline logo screen."
+  },
+  {
+    "file": "31_MT.mid",
+    "label": "31 - Adeline Logo Jingle",
+    "named": true,
+    "hidden": false,
+    "note": "14-note Vibraphone jingle for the Adeline logo screen."
+  },
+  {
+    "file": "31_A2.dro",
+    "label": "31 - Adeline Logo Jingle",
+    "named": true,
+    "hidden": false,
+    "note": "14-note Vibraphone jingle for the Adeline logo screen."
+  },
+  {
+    "file": "32_GM.mid",
+    "label": "32 - Main Theme (End Sequence)",
+    "named": true,
+    "hidden": true,
+    "note": "identical to track 08. Finale/ending (Polar end, Citadel end sequences). Same bytes as 8/9."
+  },
+  {
+    "file": "32_MT.mid",
+    "label": "32 - Main Theme (End Sequence)",
+    "named": true,
+    "hidden": true,
+    "note": "identical to track 08. Finale/ending (Polar end, Citadel end sequences). Same bytes as 8/9."
+  },
+  {
+    "file": "32_A2.dro",
+    "label": "32 - Main Theme (End Sequence)",
+    "named": true,
+    "hidden": true,
+    "note": "identical to track 08. Finale/ending (Polar end, Citadel end sequences). Same bytes as 8/9."
+  }
+]

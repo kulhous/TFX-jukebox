@@ -159,7 +159,7 @@
     border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);border-right:1px solid var(--steel-lt)}
   .ch.muted::before{opacity:.3}
   .ch.solo{color:#1a1d11;background:linear-gradient(180deg,#fff08a,#e7c81e);text-shadow:none}
-  #transport{display:flex;align-items:stretch;gap:0}
+  #transport{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
   .btn{font:inherit;text-transform:uppercase;letter-spacing:0;color:var(--steel-emb);
     background:var(--steel-grad);padding:7px 14px;cursor:pointer;white-space:nowrap;text-shadow:0 1px 0 rgba(255,255,255,.35);
     border-top:1px solid var(--steel-lt);border-left:1px solid var(--steel-lt);
@@ -261,6 +261,8 @@
     #play.on::before{content:"\23F8"}   /* ⏸ */
     #restart::before{content:"\21BA"}   /* ↺ */
     #clear::before{content:"\2298"}     /* ⊘ */
+    #repeatBtn::before{content:"\27F3"} /* ⟳ */
+    #autoBtn::before{content:"\23ED"}   /* ⏭ */
     #meters{display:flex;flex-direction:column;flex:1;gap:6px;min-width:0}
     /* SPD / VOL / MIX rows share one grid template so all three sliders are the
        exact same width regardless of label / percent text length */
@@ -317,6 +319,8 @@
     #play.on::before{content:"\23F8"}   /* ⏸ */
     #restart::before{content:"\21BA"}   /* ↺ */
     #clear::before{content:"\2298"}     /* ⊘ */
+    #repeatBtn::before{content:"\27F3"} /* ⟳ */
+    #autoBtn::before{content:"\23ED"}   /* ⏭ */
     /* mixing sliders above the playback buttons */
     #meters{order:1;flex:1 0 100%;display:flex;flex-direction:column;gap:6px;min-width:0}
     #meters .dmeter{display:grid;grid-template-columns:30px 1fr 40px;align-items:center;gap:6px;padding:4px 9px;font-size:11px}
@@ -399,6 +403,8 @@
       <span class="dmeter"><b class="mlab">MIX</b> <input id="mix" type="range" min="0" max="1" step="0.02" value="0" title="Blend L/R channels toward mono — easier on headphones"><b id="mixV">0%</b></span>
       </span>
       <button id="sfBtn" class="btn" title="Play SC-55 / General MIDI (SCC) songs through the GeneralUser-GS SoundFont instead of the Roland SC-55 emulator">SOUNDFONT</button>
+      <button id="repeatBtn" class="btn" title="Repeat: when the song ends, play it again from the beginning">REPEAT</button>
+      <button id="autoBtn" class="btn" title="Autoadvance: when the song ends, automatically play the next song in the list">AUTO</button>
       <span class="credit"><a href="https://barryleitch.bandcamp.com/" target="_blank" rel="noopener">ALL MUSIC BY BARRY LEITCH</a></span>
     </div>
   </div>
@@ -479,6 +485,23 @@ const UI = {
     document.querySelectorAll('.mtab').forEach(b=>b.onclick=()=>this.setMobileView(b.dataset.v));
     $('play').onclick=()=>this.toggle();
     $('restart').onclick=()=>{ Engine.seekTo(0); if(!Engine.playing) this.draw(); };
+    // REPEAT / AUTOADVANCE: when a song ends, replay it or jump to the next one.
+    // The two are mutually exclusive; both choices persist across reloads.
+    this.repeat=localStorage.getItem('tfxRepeat')==='1';
+    this.autoAdv=localStorage.getItem('tfxAutoAdv')==='1';
+    const paintLoop=()=>{
+      document.querySelectorAll('#repeatBtn,#mrepeat').forEach(b=>b.classList.toggle('on',this.repeat));
+      document.querySelectorAll('#autoBtn,#mauto').forEach(b=>b.classList.toggle('on',this.autoAdv));
+    };
+    document.querySelectorAll('#repeatBtn,#mrepeat').forEach(b=>b.onclick=()=>{
+      this.repeat=!this.repeat; if(this.repeat) this.autoAdv=false;
+      localStorage.setItem('tfxRepeat',this.repeat?'1':'0'); localStorage.setItem('tfxAutoAdv',this.autoAdv?'1':'0'); paintLoop();
+    });
+    document.querySelectorAll('#autoBtn,#mauto').forEach(b=>b.onclick=()=>{
+      this.autoAdv=!this.autoAdv; if(this.autoAdv) this.repeat=false;
+      localStorage.setItem('tfxAutoAdv',this.autoAdv?'1':'0'); localStorage.setItem('tfxRepeat',this.repeat?'1':'0'); paintLoop();
+    });
+    paintLoop();
     $('clear').onclick=()=>{ Engine.mute.clear(); Engine.solo.clear(); this.refreshChannels(); };
     // SOUNDFONT toggle: render SC-55 / General MIDI (SCC) songs through
     // GeneralUser-GS.sf2 instead of the Roland SC-55 ROM emulator. Bank fetched
@@ -712,7 +735,17 @@ const UI = {
     if('mediaSession' in navigator){ try{ navigator.mediaSession.playbackState=p?'playing':'paused'; }catch(e){} }
     if(p) this.requestWake(); else this.releaseWake();
     this.updatePositionState(); },
-  onEnded(){ this.setPlayUI(false); },
+  onEnded(){
+    if(this.repeat){ this.toggle(); return; }            // replay current song from the start
+    if(this.autoAdv){ this.advance(1); return; }          // jump to the next visible song
+    this.setPlayUI(false);
+  },
+  advance(dir){
+    const vis=this.visibleIdx(); if(!vis.length){ this.setPlayUI(false); return; }
+    let k=vis.indexOf(this.cur); if(k<0) k=0;
+    k=(k+dir+vis.length)%vis.length;
+    Promise.resolve(this.pick(vis[k])).then(()=>{ if(!Engine.playing) this.toggle(); });
+  },
 
   // ---- Media Session (lockscreen / Bluetooth / wired-headset transport) ----
   setupMedia(){

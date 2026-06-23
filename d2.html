@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dune II: The Building of a Dynasty · Roland MT-32 / General MIDI / AdLib</title>
+<style>
+  @font-face{
+    font-family:"TFX Pixel";
+    src:url("tfxfont.woff?v=3") format("woff"),url("tfxfont.ttf?v=3") format("truetype");
+    font-weight:normal;font-style:normal;font-display:block;
+  }
+  :root{
+    /* gold-on-brown UI (Dune II desert / spice palette) */
+    --bg:#2a1610; --mon:#241410; --mon-ink:#f0c84a; --mon-ink2:#b8902c; --mon-line:#7a531f; --mon-hi:#ffe9a8;
+    --screen:#190d07;
+    /* real brushed steel */
+    --steel:#9498a0; --steel-lt:#e2e5e9; --steel-dk:#2c2f35; --steel-emb:#15171b; --steel-ink:#eef0f2;
+    --steel-grad:linear-gradient(180deg,#c4c8cd 0%,#9a9ea6 46%,#6b7078 100%);
+    --steel-grad-dn:linear-gradient(180deg,#797d85 0%,#5e636b 100%);
+    --warn:#fde725;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:#081816;overflow:hidden}
+  body{font-family:"TFX Pixel","Lucida Console","DejaVu Sans Mono",Consolas,monospace;
+    color:var(--mon-ink);text-transform:uppercase;letter-spacing:0;font-size:13px;
+    -webkit-font-smoothing:none}
+  /* steel chassis */
+  #app{position:relative;display:flex;flex-direction:column;height:100%;gap:7px;padding:7px;
+    background:var(--steel-grad),repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 1px,rgba(0,0,0,.025) 1px 2px)}
+  /* recessed green screen */
+  #screen{position:relative;flex:1;display:flex;flex-direction:column;min-height:0;background:var(--bg);overflow:hidden;
+    border-top:2px solid var(--steel-dk);border-left:2px solid var(--steel-dk);
+    border-right:2px solid var(--steel-lt);border-bottom:2px solid var(--steel-lt);
+    box-shadow:inset 0 0 0 1px #04110d, inset 0 0 26px rgba(0,0,0,.45)}
+  #screen::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:60;
+    background:repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0 1px,transparent 1px 3px),
+      radial-gradient(125% 125% at 50% 45%,transparent 62%,rgba(0,0,0,.4) 100%)}
+  /* bevels */
+  .raise{border-top:1px solid var(--steel-lt);border-left:1px solid var(--steel-lt);
+    border-right:1px solid var(--steel-dk);border-bottom:1px solid var(--steel-dk)}
+  .inset{border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);
+    border-right:1px solid var(--steel-lt);border-bottom:1px solid var(--steel-lt)}
+  /* green-monitor bevels for panels that sit on the screen (no steel edges) */
+  .graise{border:1px solid var(--mon-line);
+    border-top-color:var(--mon-ink2);border-left-color:var(--mon-ink2)}
+  .ginset{border:1px solid var(--mon-line);
+    border-right-color:var(--mon-ink2);border-bottom-color:var(--mon-ink2)}
+
+  /* ---- header ---- */
+  header{padding:7px 12px 4px}
+  .htop{display:flex;align-items:flex-end;gap:12px}
+  .logo{font-size:22px;font-weight:700;color:var(--mon-hi);letter-spacing:0;line-height:.9;
+    text-shadow:0 0 7px rgba(120,235,205,.4)}
+  .hline{flex:1;height:0;border-top:1px solid var(--mon-line);box-shadow:0 1px 0 rgba(0,0,0,.35);margin-bottom:5px}
+  .hright{color:var(--mon-ink2);font-size:11px;margin-bottom:1px}
+  .xlink{color:var(--screen);background:var(--mon-ink2);text-decoration:none;
+    padding:2px 8px;border:1px solid var(--mon-line);font-size:11px;letter-spacing:1px;
+    margin-right:10px;white-space:nowrap}
+  .xlink:hover{background:var(--mon-hi)}
+  /* game selector dropdown — fully custom (native <select> popups can't be themed) */
+  .gamenav{position:relative;display:inline-flex;align-items:center;margin-right:10px;font-size:11px}
+  .gamesel-btn{font-family:inherit;font-size:11px;letter-spacing:1px;color:var(--screen);
+    background:var(--mon-ink2);border:1px solid var(--mon-line);padding:2px 20px 2px 8px;
+    cursor:pointer;line-height:1.5;position:relative;white-space:nowrap}
+  .gamesel-btn:hover{background:var(--mon-hi)}
+  .gamesel-btn::after{content:"\25BE";position:absolute;right:7px;top:50%;transform:translateY(-50%);
+    pointer-events:none;font-size:9px;color:var(--screen)}
+  .gamemenu{position:absolute;top:100%;left:0;margin-top:2px;z-index:60;min-width:100%;
+    background:var(--screen);border:1px solid var(--mon-line);box-shadow:0 2px 7px rgba(0,0,0,.5);
+    display:none;flex-direction:column}
+  .gamemenu.open{display:flex}
+  .gameopt{font-family:inherit;font-size:11px;letter-spacing:1px;color:var(--mon-ink);
+    background:none;border:0;text-align:left;padding:4px 22px 4px 8px;cursor:pointer;
+    white-space:nowrap;position:relative}
+  .gameopt:hover{background:var(--mon-ink2);color:var(--screen)}
+  .gameopt.sel{color:var(--mon-hi)}
+  .gameopt.sel::after{content:"\2713";position:absolute;right:7px}
+  .hsub{display:flex;align-items:center;gap:18px;margin-top:4px;color:var(--mon-ink2);font-size:11px;flex-wrap:wrap}
+  .hsub b{color:var(--mon-hi);font-weight:400}  .meter{display:flex;align-items:center;gap:7px}
+  /* marquee track: transparent on desktop (children flow in .hsub flex) */
+  .hmarquee{display:contents}
+  @keyframes hmarq{from{transform:translate3d(0,0,0)}to{transform:translate3d(-100%,0,0)}}
+  input[type=range]{-webkit-appearance:none;appearance:none;height:9px;width:92px;background:var(--screen);
+    border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);
+    border-right:1px solid var(--steel-lt);border-bottom:1px solid var(--steel-lt)}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:16px;background:var(--steel-grad);
+    border-top:1px solid var(--steel-lt);border-left:1px solid var(--steel-lt);
+    border-right:1px solid var(--steel-dk);border-bottom:1px solid var(--steel-dk);cursor:pointer}
+  input[type=range]::-moz-range-thumb{width:10px;height:16px;background:var(--steel-grad);border:1px solid var(--steel-dk);cursor:pointer}
+
+  /* ---- main ---- */
+  #main{flex:1;display:flex;gap:8px;min-height:0;padding:0 12px}
+  #rollWrap{flex:1;position:relative;min-width:0;background:var(--screen)}
+  canvas{display:block;width:100%;height:100%;image-rendering:pixelated}
+  #overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    background:rgba(8,22,20,.92);color:var(--mon-ink2);text-align:center;padding:20px;font-size:12px;z-index:5}
+  #overlay.hidden{display:none}
+
+  #side{width:420px;display:flex;flex-direction:column;min-height:0;background:var(--mon)}
+  .side-h{padding:5px 9px;color:var(--mon-ink2);font-size:13px;border-bottom:1px solid var(--mon-line);
+    display:flex;align-items:center}
+  .side-h b{color:var(--mon-hi);font-weight:400}
+  .side-h .sp{flex:1}
+  .filterbar{display:flex;gap:5px;padding:5px 9px;border-bottom:1px solid var(--mon-line);overflow-x:auto;
+    scrollbar-width:thin;scrollbar-color:var(--mon-ink2) var(--screen)}
+  .filterbar::-webkit-scrollbar{height:9px}
+  .filterbar::-webkit-scrollbar-track{background:var(--screen);box-shadow:inset 0 1px 0 rgba(0,0,0,.5)}
+  .filterbar::-webkit-scrollbar-thumb{border:1px solid var(--mon-line);border-radius:1px;
+    background:linear-gradient(180deg,var(--mon-ink2) 0%,var(--mon-hi) 50%,var(--mon-ink2) 100%)}
+  .fbtn{flex:none;white-space:nowrap;font:inherit;text-transform:uppercase;letter-spacing:0;font-size:13px;color:var(--mon-ink2);
+    background:transparent;border:1px solid var(--mon-line);padding:2px 9px;cursor:pointer;display:flex;align-items:center;gap:6px}
+  .fbtn:hover{color:var(--mon-hi)}
+  .fbtn.on{background:var(--mon-line);color:var(--screen)}
+  #listwrap{flex:1;display:flex;min-height:0}
+  #songlist{overflow-y:auto;flex:1;scrollbar-width:none}
+  #songlist::-webkit-scrollbar{display:none}
+  .song{display:flex;align-items:center;gap:9px;height:24px;padding:0 10px;cursor:pointer;color:var(--mon-ink);
+    border-bottom:1px solid rgba(53,125,111,.20);font-size:13px;line-height:1;white-space:nowrap;overflow:hidden}
+  .song .nm{overflow:hidden;text-overflow:ellipsis}
+  .song .tid{flex:none;width:30px;box-sizing:border-box;font-size:13px;line-height:1;color:var(--screen);background:var(--mon-line);
+    border-radius:3px;padding:3px 4px;opacity:.85;font-variant-numeric:tabular-nums;text-align:center}
+  .song:hover{background:rgba(53,125,111,.20)}
+  .song.sel{background:var(--mon-line);color:var(--screen)}
+  .song.playing{box-shadow:inset 3px 0 0 var(--warn)}
+  /* driver icons / badges */
+  .dchip{flex:none;width:34px;box-sizing:border-box;font-size:13px;letter-spacing:0;padding:3px 0;border-radius:2px;
+    border:1px solid;line-height:1;text-align:center;text-indent:1px}
+  /* GM (SC-55): light text on dark screen */
+  .dchip.gm{color:#ffe9a8;background:#190d07;border-color:#b8902c}
+  /* MT-32 (Munt LA synth): cool Roland blue, distinct from the gold FM/GM chips */
+  .dchip.mt{color:#cfe3ff;background:#0c1626;border-color:#3f6fb0}
+  /* OPL2 AdLib: copper FM tint */
+  .dchip.o2{color:#190d07;background:#e0934a;border-color:#a8650f}
+  /* OPL3 SoundBlaster: brighter gold FM tint */
+  .dchip.o3{color:#190d07;background:#e6c24a;border-color:#a8930f}
+  /* plasma scrollbar — lit phosphor bar */
+  #sb{width:14px;background:#150a05;position:relative;cursor:pointer;
+    box-shadow:inset 1px 0 0 rgba(0,0,0,.5),inset -1px 0 0 rgba(122,74,44,.30)}
+  #sbthumb{position:absolute;left:2px;right:2px;min-height:18px;border-radius:1px;
+    background:linear-gradient(90deg,var(--mon-ink2) 0%,var(--mon-hi) 50%,var(--mon-ink2) 100%);
+    box-shadow:0 0 6px rgba(232,178,122,.6),0 0 2px rgba(255,217,160,.9),inset 0 0 0 1px rgba(255,217,160,.4)}
+
+  /* ---- bottom steel dashboard ---- */
+  #dash{padding:7px 9px 9px;
+    background:var(--steel-grad),repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0 1px,rgba(0,0,0,.03) 1px 2px);
+    border-top:2px solid var(--steel-lt);
+    box-shadow:inset 0 2px 0 rgba(255,255,255,.35), 0 -4px 12px rgba(0,0,0,.45)}
+  .statline{display:flex;gap:20px;color:var(--steel-emb);font-size:13px;padding:1px 2px 5px}
+  .statline .v{color:#11140d}
+  .statline .sp{flex:1}
+  #chanstrip{display:flex;align-items:center;gap:8px;padding:3px 2px 6px}
+  #chanstrip .lab{color:var(--steel-emb);font-size:13px;line-height:1.15;flex:none}
+  #chans{display:flex;gap:3px;flex-wrap:wrap;flex:1}
+  .ch{position:relative;width:34px;flex:none;display:flex;flex-direction:column;align-items:center;gap:3px;
+    text-align:center;text-indent:.12em;padding:3px 4px 4px;font-size:13px;color:var(--steel-emb);
+    cursor:pointer;background:var(--steel-grad);user-select:none;text-shadow:0 1px 0 rgba(255,255,255,.3);
+    border-top:1px solid var(--steel-lt);border-left:1px solid var(--steel-lt);
+    border-right:1px solid var(--steel-dk);border-bottom:1px solid var(--steel-dk)}
+  .ch::before{content:"";width:15px;height:15px;background:var(--swatch,var(--steel-dk));
+    border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);
+    border-right:1px solid var(--steel-lt);border-bottom:1px solid var(--steel-lt);
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
+  .ch:hover{background:linear-gradient(180deg,#d4d8dd,#aab0b8)}
+  .ch.muted{color:#3a3d42;opacity:.85;text-decoration:line-through;background:var(--steel-grad-dn);
+    border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);border-right:1px solid var(--steel-lt)}
+  .ch.muted::before{opacity:.3}
+  .ch.solo{color:#1a1d11;background:linear-gradient(180deg,#fff08a,#e7c81e);text-shadow:none}
+  #transport{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+  .btn{font:inherit;text-transform:uppercase;letter-spacing:0;color:var(--steel-emb);
+    background:var(--steel-grad);padding:7px 14px;cursor:pointer;white-space:nowrap;text-shadow:0 1px 0 rgba(255,255,255,.35);
+    border-top:1px solid var(--steel-lt);border-left:1px solid var(--steel-lt);
+    border-right:1px solid var(--steel-dk);border-bottom:1px solid var(--steel-dk)}
+  .btn:hover{background:linear-gradient(180deg,#d4d8dd,#a7adb5);color:#0c0e11}
+  .btn:active,.btn.on{background:var(--steel-grad-dn);border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);
+    border-right:1px solid var(--steel-lt);border-bottom:1px solid var(--steel-lt);box-shadow:inset 0 1px 3px rgba(0,0,0,.4);text-shadow:none}
+  .btn:disabled{color:#5b6068;opacity:.7;cursor:default;text-shadow:none}
+  .dmeter{display:flex;align-items:center;gap:6px;padding:0 9px;color:var(--steel-emb);font-size:13px;
+    white-space:nowrap;text-shadow:0 1px 0 rgba(255,255,255,.35);
+    background:var(--steel-grad);border-top:1px solid var(--steel-lt);
+    border-bottom:1px solid var(--steel-dk);border-right:1px solid var(--steel-dk)}
+  .dmeter b{color:#11140d}
+  #meters{display:contents}
+  #speed{width:64px}
+  #speedV{display:inline-block;width:44px;text-align:right;margin-right:4px;font-variant-numeric:tabular-nums}
+  #volV{display:inline-block;width:38px;text-align:right;font-variant-numeric:tabular-nums}
+  #mixV{display:inline-block;width:38px;text-align:right;font-variant-numeric:tabular-nums}
+  .mlab{font-weight:400}
+  .credit{margin-left:auto;display:flex;align-items:center;padding:0 12px;font-size:13px;
+    color:var(--steel-emb);text-shadow:0 1px 0 rgba(255,255,255,.35);white-space:nowrap}
+  .credit a{color:var(--steel-emb);text-decoration:none}
+  .credit a:hover{color:#0c0e11;text-decoration:underline}
+  #seekwrap{flex:1;display:flex;align-items:center;gap:10px;padding:0 11px;background:var(--screen);
+    border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);
+    border-right:1px solid var(--steel-lt);border-bottom:1px solid var(--steel-lt)}
+  #seek{flex:1;width:auto}
+  /* seek bar lives inside the green screen */
+  #seekbar{display:flex;align-items:center;gap:11px;margin:0 12px;padding:8px 4px 11px;color:var(--mon-ink2);
+    font-size:11px;font-variant-numeric:tabular-nums}
+  #seekbar #t-cur{color:var(--mon-hi);min-width:34px}
+  #time{color:var(--mon-ink2);font-size:11px;min-width:34px;text-align:right;font-variant-numeric:tabular-nums}
+  #seektrack{position:relative;flex:1;height:16px;background:var(--screen);overflow:hidden;
+    box-shadow:inset 0 0 0 1px #04110d, inset 0 0 10px rgba(0,0,0,.55)}
+  /* phosphor fill with a yellowish decay trailing behind the playhead */
+  #seekfill{position:absolute;left:0;top:0;bottom:0;width:0%;pointer-events:none;
+    background:linear-gradient(90deg,var(--mon-line),var(--mon-ink2));
+    box-shadow:0 0 8px rgba(253,231,37,.4);border-right:1px solid rgba(253,231,37,.9)}
+  /* fixed-width yellow decay dropped right behind the playhead (fades backward) */
+  #seekfill::after{content:"";position:absolute;top:0;bottom:0;right:0;width:48px;max-width:100%;
+    background:linear-gradient(90deg,rgba(253,231,37,0),rgba(253,231,37,.85))}
+  /* faint scanline texture, keeping the in-screen CRT feel */
+  #seektrack::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px)}
+  /* transparent native range on top for interaction */
+  #seektrack #seek{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;
+    background:transparent;border:0;appearance:none;-webkit-appearance:none;cursor:pointer;z-index:2}
+  #seektrack #seek::-webkit-slider-thumb{-webkit-appearance:none;width:3px;height:16px;
+    background:#fffbe0;box-shadow:0 0 6px rgba(253,231,37,.9);border:0;cursor:pointer}
+  #seektrack #seek::-moz-range-thumb{width:3px;height:16px;background:#fffbe0;border:0;cursor:pointer}
+  #seektrack #seek:disabled{cursor:default}
+
+  /* ---- mobile tab toggle — lives in the bottom metal dash ----
+     row 1 = NOTES/TRACKS/INFO 3-position segmented slider (small font);
+     row 2 = REPEAT/AUTO/PERF/FONT compact square icon buttons (TFX-font icons) */
+  #mtabs{display:none;flex-direction:column;gap:6px;padding:0 0 6px}
+  .mseg{display:flex;border:1px solid var(--steel-dk)}
+  .mtab{font:inherit;text-transform:uppercase;letter-spacing:0;font-size:11px;cursor:pointer;flex:1;text-align:center;
+    color:var(--steel-emb);background:var(--steel-grad);padding:6px 2px;text-shadow:0 1px 0 rgba(255,255,255,.35);
+    border:0;border-right:1px solid var(--steel-dk)}
+  .mseg .mtab:last-child{border-right:0}
+  .mtab.on{color:#0c0e11;background:var(--steel-grad-dn);text-shadow:none;box-shadow:inset 0 1px 3px rgba(0,0,0,.4)}
+  .micons{display:flex;gap:8px;justify-content:center}
+  .micon{font:inherit;font-size:19px;line-height:1;cursor:pointer;flex:0 0 auto;width:44px;height:34px;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--steel-emb);background:var(--steel-grad);text-shadow:0 1px 0 rgba(255,255,255,.35);
+    border-top:1px solid var(--steel-lt);border-left:1px solid var(--steel-lt);
+    border-right:1px solid var(--steel-dk);border-bottom:1px solid var(--steel-dk)}
+  .micon.on{color:#0c0e11;background:var(--steel-grad-dn);text-shadow:none;
+    border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);
+    border-right:1px solid var(--steel-lt);border-bottom:1px solid var(--steel-lt);box-shadow:inset 0 1px 3px rgba(0,0,0,.4)}
+
+  /* ---- desktop settings buttons: compact icon squares (save space) ----
+     SOUNDFONT / LOW-PERF / REPEAT / AUTO / INFO collapse to single TFX-font
+     icons so the transport row + credit always fit, even on smaller desktops */
+  .infobtn{margin-left:auto;font-size:0;width:34px;padding:0;text-align:center;
+    display:inline-flex;align-items:center;justify-content:center}
+  .infobtn + .infobtn{margin-left:0}
+  .infobtn::before{font-family:inherit;font-size:18px;line-height:1;letter-spacing:0}
+  #sfBtn.infobtn::before{content:"\E003"}      /* SoundFont — music note */
+  #lpBtn.infobtn::before{content:"\E002"}      /* Low-perf — lightning */
+  #repeatBtn.infobtn::before{content:"\E000"}  /* Repeat — loop */
+  #autoBtn.infobtn::before{content:"\E001"}    /* Autoadvance — next */
+  #infoBtn.infobtn::before{content:"\E004"}    /* Info — i */
+  .infobtn + .credit{margin-left:10px;padding-left:0}
+
+  /* ---- ABOUT panel: embedded in the green monitor, replaces roll + list ---- */
+  /* sits inside #screen (inset:0) and uses the TFX Pixel font like everything
+     else on the monitor; only the body scrolls — the chassis never does */
+  #infoModal{position:absolute;inset:0;z-index:40;display:none;flex-direction:column;
+    background:var(--bg)}
+  #infoModal.show{display:flex}
+  .imodal{position:relative;flex:1;min-height:0;display:flex;flex-direction:column;background:transparent}
+  .imodal-h{display:flex;align-items:center;gap:10px;padding:7px 12px;color:var(--mon-ink2);
+    border-bottom:1px solid var(--mon-line)}
+  .imodal-h .t{font-size:14px;letter-spacing:1px;color:var(--mon-hi);
+    text-shadow:0 0 7px rgba(120,235,205,.4)}
+  .imodal-body{flex:1;min-height:0;overflow-y:auto;padding:16px 22px 22px;color:var(--mon-ink);
+    font-size:13px;line-height:1.7;
+    background:radial-gradient(130% 120% at 50% 0%,rgba(53,125,111,.12),transparent 60%)}
+  .imodal-body h2{font-size:15px;line-height:1.45;color:var(--mon-hi);margin:24px 0 10px;
+    text-shadow:0 0 8px rgba(120,235,205,.3)}
+  .imodal-body h2:first-child{margin-top:0}
+  .imodal-body p{margin:0 0 11px}
+  .imodal-body strong{color:var(--mon-hi)}
+  .imodal-body .ichain{display:flex;flex-direction:column;gap:3px;margin:0 0 14px;padding:12px 14px;
+    background:rgba(0,0,0,.32);color:var(--mon-ink2);
+    border-left:3px solid var(--mon-line);font-size:12px;line-height:1.6}
+  .imodal-body .ichain span:first-child{color:var(--mon-hi)}
+  .imodal-body .sig{margin-top:20px;color:var(--mon-ink2)}
+
+  /* ===================== MOBILE LAYOUT ===================== */
+  @media (max-width:720px){
+    body{font-size:12px;letter-spacing:0}
+    .logo{font-size:18px}
+    .hsub{gap:12px}
+    /* show the notes/tracks switcher and collapse the split view to one pane */
+    #mtabs{display:flex}
+    #main{padding:0 6px;gap:0}
+    #side{width:auto;flex:1;min-width:0}
+    /* roll: keys keep a real size and scroll left/right instead of squashing */
+    #rollWrap{flex:1;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;touch-action:pan-x;
+      scrollbar-width:thin;scrollbar-color:var(--mon-ink2) var(--screen)}
+    #rollWrap::-webkit-scrollbar{height:9px}
+    #rollWrap::-webkit-scrollbar-track{background:var(--screen);box-shadow:inset 0 1px 0 rgba(0,0,0,.5)}
+    #rollWrap::-webkit-scrollbar-thumb{border:1px solid var(--mon-line);border-radius:1px;
+      background:linear-gradient(180deg,var(--mon-ink2) 0%,var(--mon-hi) 50%,var(--mon-ink2) 100%)}
+    body.mnotes #side{display:none}
+    body.mtracks #rollWrap{display:none}
+    /* hide the driver / notes / channels / synth status line */
+    .statline{display:none}
+    /* channel strip: one row, horizontal scroll; tap = mute, long-press = solo */
+    #chanstrip{gap:0;padding:3px 0 5px}
+    #chanstrip .lab{display:none}
+    #chans{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+      padding-bottom:2px;touch-action:pan-x}
+    #chans::-webkit-scrollbar{display:none}
+    .ch{width:38px}
+    /* transport: compact single-character playback buttons on the left, speed &
+       volume stacked vertically filling the rest of the row */
+    #dash{padding:6px}
+    #transport{flex-wrap:nowrap;gap:6px;align-items:stretch}
+    .credit{display:none}
+    #transport .btn.infobtn{display:none}
+    #transport .btn{width:44px;padding:0;text-align:center;font-size:0;
+      display:flex;align-items:center;justify-content:center}
+    #transport .btn::before{font-family:inherit;font-size:20px;line-height:1;letter-spacing:0}
+    #play::before{content:"\25B6"}      /* ▶ */
+    #play.on::before{content:"\23F8"}   /* ⏸ */
+    #restart::before{content:"\21BA"}   /* ↺ */
+    #clear::before{content:"\2298"}     /* ⊘ */
+    #meters{display:flex;flex-direction:column;flex:1;gap:6px;min-width:0}
+    /* SPD / VOL / MIX rows share one grid template so all three sliders are the
+       exact same width regardless of label / percent text length */
+    #meters .dmeter{flex:1;display:grid;grid-template-columns:30px 1fr 40px;align-items:center;gap:6px;padding:4px 9px;font-size:11px}
+    #meters .dmeter input[type=range]{width:auto;min-width:0;margin:0}
+    #meters #speedV,#meters #volV,#meters #mixV{width:auto;margin:0}
+    /* compact label: SPEED -> SPD */
+    #spdLab{font-size:0}
+    #spdLab::before{content:"SPD";font-size:11px}
+    /* condense the song-info header into one scrolling marquee line */
+    .hsub{flex-wrap:nowrap;overflow:hidden;white-space:nowrap;margin-top:2px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%)}
+    .hmarquee{display:inline-flex;gap:18px;padding-left:100%;animation:hmarq 24s linear infinite}
+  }
+
+  /* ============ MOBILE LANDSCAPE (rotated) — screen left, controls right ============ */
+  @media (orientation:landscape) and (max-height:540px){
+    body{font-size:12px;letter-spacing:0}
+    /* lay the chassis out horizontally: green screen on the left, the metal
+       control panel as a vertical strip down the right edge */
+    #app{flex-direction:row;gap:7px}
+    #screen{flex:1;min-width:0}
+    header{padding:5px 10px 3px}
+    .logo{font-size:16px}
+    /* condense song-info into a scrolling marquee */
+    .hsub{flex-wrap:nowrap;overflow:hidden;white-space:nowrap;margin-top:2px;
+      -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%);
+      mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%)}
+    .hmarquee{display:inline-flex;gap:18px;padding-left:100%;animation:hmarq 24s linear infinite}
+    /* single pane switched by the NOTES/TRACKS tabs */
+    #main{padding:0 6px;gap:0}
+    #side{width:auto;flex:1;min-width:0}
+    #rollWrap{flex:1}
+    body.mnotes #side{display:none}
+    body.mtracks #rollWrap{display:none}
+    .statline{display:none}
+    /* right-hand metal control column */
+    #dash{width:222px;flex:none;display:flex;flex-direction:column;gap:6px;padding:6px;overflow-y:auto;
+      border-top:0;border-left:2px solid var(--steel-lt);
+      box-shadow:inset 2px 0 0 rgba(255,255,255,.35),-4px 0 12px rgba(0,0,0,.45)}
+    #mtabs{display:flex;flex-direction:column;padding:0;order:1;flex:none}
+    /* channels fill the middle, growing to push the playback controls to the
+       bottom; the empty area above is what gets populated as tracks load */
+    #chanstrip{order:2;flex:1 1 auto;gap:0;padding:0;align-items:flex-start}
+    #chanstrip .lab{display:none}
+    #chans{flex-wrap:wrap;gap:4px;overflow:visible;touch-action:auto;align-content:flex-start}
+    .ch{width:38px}
+    /* playback controls pinned to the bottom of the column, buttons spread to fit */
+    #transport{order:3;flex:none;flex-wrap:wrap;gap:6px;align-items:stretch;margin-top:auto}
+    .credit{display:none}
+    #transport .btn.infobtn{display:none}
+    #transport .btn{flex:1;min-width:0;padding:8px 0;text-align:center;font-size:0;
+      display:flex;align-items:center;justify-content:center;order:2}
+    #transport .btn::before{font-family:inherit;font-size:20px;line-height:1;letter-spacing:0}
+    #play::before{content:"\25B6"}      /* ▶ */
+    #play.on::before{content:"\23F8"}   /* ⏸ */
+    #restart::before{content:"\21BA"}   /* ↺ */
+    #clear::before{content:"\2298"}     /* ⊘ */
+    /* mixing sliders above the playback buttons */
+    #meters{order:1;flex:1 0 100%;display:flex;flex-direction:column;gap:6px;min-width:0}
+    #meters .dmeter{display:grid;grid-template-columns:30px 1fr 40px;align-items:center;gap:6px;padding:4px 9px;font-size:11px}
+    #meters .dmeter input[type=range]{width:auto;min-width:0;margin:0}
+    #meters #speedV,#meters #volV,#meters #mixV{width:auto;margin:0}
+    #spdLab{font-size:0}
+    #spdLab::before{content:"SPD";font-size:11px}
+  }
+</style>
+</head>
+<body class="mnotes">
+<div id="app">
+  <div id="screen">
+  <header>
+    <div class="htop">
+      <span class="logo">DUNE II</span>
+      <span class="hline"></span>
+      <span class="gamenav"><button type="button" class="gamesel-btn" aria-haspopup="listbox" aria-expanded="false" title="Switch jukebox">DUNE II</button><div class="gamemenu" role="listbox">
+        <button type="button" class="gameopt" role="option" data-href="index.html">TFX</button>
+        <button type="button" class="gameopt" role="option" data-href="inferno.html">INFERNO</button>
+        <button type="button" class="gameopt" role="option" data-href="ufo.html">X-COM</button>
+        <button type="button" class="gameopt" role="option" data-href="tftd.html">X-COM TFTD</button>
+        <button type="button" class="gameopt" role="option" data-href="wc2.html">WARCRAFT II</button>
+        <button type="button" class="gameopt" role="option" data-href="df.html">DARK FORCES</button>
+        <button type="button" class="gameopt" role="option" data-href="ww.html">WACKY WHEELS</button>
+        <button type="button" class="gameopt" role="option" data-href="ea.html">EXTREME ASSAULT</button>
+        <button type="button" class="gameopt" role="option" data-href="lba.html">LITTLE BIG ADVENTURE</button>
+        <button type="button" class="gameopt sel" role="option" aria-selected="true" data-href="d2.html">DUNE II</button>
+      </div></span><script>(function(){var nav=document.currentScript.previousElementSibling,btn=nav.querySelector('.gamesel-btn'),menu=nav.querySelector('.gamemenu');btn.addEventListener('click',function(e){e.stopPropagation();var o=menu.classList.toggle('open');btn.setAttribute('aria-expanded',o);});menu.querySelectorAll('.gameopt').forEach(function(o){o.addEventListener('click',function(){var h=o.dataset.href;if(h&&!o.classList.contains('sel'))location.href=h;});});document.addEventListener('click',function(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');});})();</script>
+      <span class="hright">DUNE II: THE BUILDING OF A DYNASTY JUKEBOX</span>
+    </div>
+    <div class="hsub">
+      <div class="hmarquee">
+      <span>TRACK: <b id="trackname">—</b></span>
+      <span>STATUS: <b id="status">LOADING</b></span>
+      <span>DRIVER: <b id="st-drv">—</b></span>
+      <span>NOTES: <b id="st-notes">0</b></span>
+      <span>CHANNELS: <b id="st-ch">0</b></span>
+      <span>SYNTH: <b id="st-synth">MT-32 / CM-32L (Munt)</b></span>
+      <span>SOURCE: <b id="st-src">SOUND.PAK (XMI / Westwood ADL)</b></span>
+      </div>
+    </div>
+  </header>
+
+  <div id="main">
+    <div id="rollWrap" class="ginset">
+      <canvas id="roll"></canvas>
+      <div id="overlay">INITIALISING SYNTHESIS &mdash; HARDWARE &amp; ROM IMAGES&hellip;</div>
+    </div>
+    <div id="side" class="graise">
+      <div class="side-h">TRACK SELECT<span class="sp"></span><b id="trackcount">0</b></div>
+      <div class="filterbar" id="filterbar">
+        <button class="fbtn on" data-f="ALL">ALL</button>
+        <button class="fbtn" data-f="GM"><span class="dchip gm">GM</span>Gen MIDI</button>
+        <button class="fbtn" data-f="MT"><span class="dchip mt">MT</span>MT-32</button>
+        <button class="fbtn" data-f="A2"><span class="dchip o2">O2</span>AdLib</button>
+      </div>
+      <div id="listwrap">
+        <div id="songlist"></div>
+        <div id="sb" class="ginset"><div id="sbthumb"></div></div>
+      </div>
+    </div>
+  </div>
+  <div id="seekbar">
+    <span id="t-cur">0:00</span>
+    <div id="seektrack" class="ginset">
+      <div id="seekfill"></div>
+      <input id="seek" type="range" min="0" max="1000" step="1" value="0" disabled>
+    </div>
+    <span id="time">0:00 / 0:00</span>
+  </div>
+
+  <div id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
+    <div class="imodal">
+      <div class="imodal-h">
+        <span class="t" id="infoTitle">ABOUT -- DUNE II MUSIC / ROLAND MT-32 / GENERAL MIDI / ADLIB</span>
+      </div>
+      <div class="imodal-body">
+        <h2>The desert war of Arrakis, three ways.</h2>
+        <p>Dune II: The Building of a Dynasty (Westwood Studios, 1992) &mdash; the game that defined the real-time strategy genre &mdash; scored by <strong>Frank Klepacki</strong>. Its music is stored not as recorded audio but as compact per-device event data inside <strong>SOUND.PAK</strong>: AIL/Miles <strong>XMI</strong> for the Roland MT-32, a matching <strong>C55</strong> set for the Roland SC-55 General-MIDI module, and Westwood's own <strong>ADL</strong> for AdLib FM. Each <code>DUNE&lt;n&gt;</code> file is a bank of indexed sub-songs; this jukebox plays three device renditions of every real cue side by side &mdash; the authentic <strong>Roland MT-32</strong> score, the <strong>General MIDI</strong> Sound Canvas version, and the <strong>AdLib / OPL2</strong> FM build. Use the <strong>MT-32 / Gen MIDI / AdLib</strong> filter to switch between them.</p>
+
+        <h2>Roland MT-32: the score as composed</h2>
+        <p>Dune II was written for the <strong>Roland MT-32 / LAPC-I</strong>, and the MT-32 reading is the authentic one. The game's XMI carries the LA-synthesis part and program assignments straight to the synth; we convert each cue's XMI to a Standard MIDI File (a port of Exult's XMidiFile timing model) and render it through the <strong>Munt</strong> CM-32L emulator &mdash; the same MT-32 backend the sister TFX jukebox uses. Parts ride MIDI channels&nbsp;2&ndash;7, just as the original driver drove them.</p>
+
+        <h2>General MIDI: the Sound Canvas version</h2>
+        <p>Westwood shipped a <strong>separate</strong> Roland SC-55 / SCC-1 score in the <code>.C55</code> files &mdash; a genuine <strong>General MIDI</strong> arrangement with standard GM instruments and a dedicated <strong>channel-10 drum kit</strong>, not the MT-32 data replayed on a GM chip. We convert each cue's C55 (also AIL/Miles XMIDI) to a Standard MIDI File and render it through WebAssembly <strong>Nuked-SC55</strong>, so the percussion and patches are mapped as the Sound Canvas mix intended.</p>
+
+        <h2>AdLib: two-operator OPL2 FM</h2>
+        <p>The AdLib build is Westwood's <strong>own</strong> FM synthesis, not a MIDI conversion. The <code>.ADL</code> files are Westwood's proprietary AdLib format (the same engine used by Dune&nbsp;II, The Legend of Kyrandia and others), driven by their in-house OPL driver and custom FM patch bank. We replay each cue through <strong>AdPlug's</strong> <code>CadlPlayer</code> &mdash; the canonical Westwood ADL replayer &mdash; tick it at the driver's fixed 72&nbsp;Hz, capture every <strong>OPL2 (YM3812)</strong> register write, and play that register log back through a cycle-accurate <strong>Nuked-OPL3</strong> emulator in your browser. Punchy, buzzy and bright, exactly as a 1992 AdLib card sounded.</p>
+
+        <h2>Which cue is which</h2>
+        <p>Most sub-song slots in each bank are empty stubs; the real cues and their meaning are recovered from <strong>OpenDUNE</strong>'s music table (<code>g_table_musics</code>) and its <code>Music_Play()</code> call sites: the intro and menu themes, the in-game <strong>Attack</strong> and <strong>Peaceful</strong> pools the engine shuffles through, the per-house <strong>Mentat briefing</strong>, <strong>victory</strong>, <strong>defeat</strong> and <strong>finale</strong> cues, the cutscene music and the credits. Two extra real sub-songs the engine never references (the original's strategic-map / cutscene cues) are included and flagged <em>[audition]</em>.</p>
+
+        <h2>How this works</h2>
+        <div class="ichain"><span>1992 Dune II SOUND.PAK</span><span>-&gt; XMI (MT-32) / C55 (SC-55 GM) / Westwood ADL (AdLib)</span><span>-&gt; SMF (Exult timing) / AdPlug CadlPlayer OPL register log</span><span>-&gt; SMF / DRO</span><span>-&gt; JavaScript timing</span><span>-&gt; WebAssembly Munt CM-32L (MT-32) / Nuked-SC55 (GM) / Nuked-OPL3 (AdLib)</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
+        <p>The synthesis engine, ROM images and UI are shared with the sister TFX jukebox -- only the music converters and this page are new.</p>
+        <p class="sig">-- a companion to the TFX jukebox</p>
+      </div>
+    </div>
+  </div>
+  </div><!-- /screen -->
+
+  <div id="dash">
+    <div id="mtabs">
+      <div class="mseg">
+        <button class="mtab on" data-v="notes">NOTES</button>
+        <button class="mtab" data-v="tracks">TRACKS</button>
+        <button class="mtab" id="minfo" title="About this jukebox">INFO</button>
+      </div>
+      <div class="micons">
+        <button class="micon" id="mrepeat" aria-label="Repeat" title="Repeat: when the song ends, play it again from the beginning">&#xE000;</button>
+        <button class="micon" id="mauto" aria-label="Autoadvance" title="Autoadvance: when the song ends, automatically play the next song">&#xE001;</button>
+        <button class="micon" id="mlp" aria-label="Low-performance mode" title="Low-performance mode: lighter audio resampling if playback stutters">&#xE002;</button>
+        <button class="micon" id="msf" aria-label="SoundFont" title="Play the General MIDI version through the GeneralUser-GS SoundFont">&#xE003;</button>
+      </div>
+    </div>
+    <div id="chanstrip">
+      <span class="lab">CHANNELS<br>L·MUTE<br>R·SOLO</span>
+      <div id="chans"></div>
+    </div>
+    <div id="transport">
+      <button id="play" class="btn" disabled>PLAY</button>
+      <button id="restart" class="btn" disabled>RESTART</button>
+      <button id="clear" class="btn" disabled>CLEAR M/S</button>
+      <span id="meters">
+      <span class="dmeter"><b class="mlab" id="spdLab">SPEED</b> <input id="speed" type="range" min="0.25" max="2" step="0.05" value="1"><b id="speedV">100%</b></span>
+      <span class="dmeter"><b class="mlab">VOL</b> <input id="vol" type="range" min="0" max="1" step="0.02" value="0.85"><b id="volV">85%</b></span>
+      <span class="dmeter"><b class="mlab">MIX</b> <input id="mix" type="range" min="0" max="1" step="0.02" value="0" title="Blend L/R channels toward mono — easier on headphones"><b id="mixV">0%</b></span>
+      </span>
+      <button id="sfBtn" class="btn infobtn" title="Play the General MIDI version through the GeneralUser-GS SoundFont instead of the Roland SC-55 emulator">SOUNDFONT</button>
+      <button id="lpBtn" class="btn infobtn" title="Low-performance mode: use lighter audio resampling if playback stutters on slow devices">LOW-PERF</button>
+      <button id="repeatBtn" class="btn infobtn" title="Repeat: when the song ends, play it again from the beginning">REPEAT</button>
+      <button id="autoBtn" class="btn infobtn" title="Autoadvance: when the song ends, automatically play the next song in the list">AUTO</button>
+      <button id="infoBtn" class="btn infobtn" title="About this jukebox — Roland MT-32, General MIDI and AdLib">INFO</button>
+      <span class="credit"><a href="https://en.wikipedia.org/wiki/Dune_II" target="_blank" rel="noopener">MUSIC BY FRANK KLEPACKI · WESTWOOD STUDIOS 1992</a></span>
+    </div>
+  </div>
+</div>
+
+<script src="mt32emu.js"></script>
+<script src="sc55.js"></script>
+<script src="opl3.js"></script>
+<script type="module">
+import { $, Engine, parseMidi, parseDro, CH_SWATCH, CH_TILE, setChannelPalette } from './player-engine.js';
+// CHUNK, rdBin, the synth backends and BACKENDS now live in
+// player-engine.js, shared with the other player so the render engine
+// (MT-32 / SC-55 / OPL3 backends + Engine) never diverges between pages.
+// Re-tint the shared channel swatches/note tiles to Warcraft II's gold-on-brown
+// in-game font palette (the default ramp is green for the index/medit monitors).
+setChannelPalette(['#190d07','#5e3d12','#b8860d','#f0c83a','#ffe9a8']);
+
+// ---------- UI ----------
+const LOW=21, HIGH=108;                 // A0..C8 — full piano
+const WHITE=[0,2,4,5,7,9,11];
+const isWhite=p=>WHITE.includes(((p%12)+12)%12);
+
+const UI = {
+  songs:[], cur:null, raf:0,
+  async init(){
+    this.songs = (await fetch('d2_songs.json').then(r=>r.json())).filter(s=>!s.hidden);
+    const DRVORD={MT:0,GM:1,A2:2,A3:3};
+    this.songs.forEach(s=>{
+      // Warcraft II ships three Miles XMI arrangements per cue (MAINDAT.WAR);
+      // the filename token picks the backend: _GM. -> SC-55 (SCC), _A2. -> OPL2
+      // AdLib, _A3. -> OPL3 SoundBlaster. Both FM builds ride the Nuked-OPL3 (ADL)
+      // backend; _filt keeps them apart for the filter and chips.
+      const tok=(/_(GM|MT|A2|A3)\./.exec(s.file)||[,'GM'])[1];
+      s._filt=tok;
+      s._drv={GM:'SCC',MT:'RLD',A2:'ADL',A3:'ADL'}[tok];
+      s._dev={GM:'General MIDI',MT:'Roland MT-32',A2:'AdLib (OPL2)',A3:'SoundBlaster (OPL3)'}[tok];
+      s._name=s.label.replace(/\s*\((?:GM|A2|A3)\)\s*$/,'');
+      s._tid=+(s.label.match(/^(\d+)/)||[,1e9])[1];
+    });
+    this.songs.sort((a,b)=>
+      a._name.localeCompare(b._name,undefined,{sensitivity:'base',numeric:true}) ||
+      (DRVORD[a._filt]??9)-(DRVORD[b._filt]??9) ||
+      a._tid-b._tid);
+    const list=$('songlist');
+    this.songs.forEach((s,i)=>{
+      const row=document.createElement('div'); row.className='song'; row.dataset.i=i; row.dataset.filt=s._filt;
+      const DCH={GM:['gm','GM','General MIDI — Roland SC-55 / SCC-1'],
+                 MT:['mt','MT','Roland MT-32 — Mok\u2019s MT32GM Miles driver (MPU401.MDI), Munt CM-32L'],
+                 A2:['o2','O2','AdLib / OPL2 FM — Westwood ADL (YM3812)'],
+                 A3:['o3','O3','SoundBlaster / OPL3 FM']};
+      const [dc,dl,dtitle]=DCH[s._filt]||DCH.GM;
+      row.innerHTML=`<span class="dchip ${dc}" title="${dtitle}">${dl}</span><span class="nm">${s._name}</span>`;
+      row.onclick=()=>this.pick(i);
+      list.appendChild(row);
+    });
+    this.filter='ALL';
+    [...document.querySelectorAll('.fbtn')].forEach(b=>b.onclick=()=>{
+      this.filter=b.dataset.f;
+      document.querySelectorAll('.fbtn').forEach(x=>x.classList.toggle('on',x===b));
+      this.applyFilter();
+    });
+    this.applyFilter();
+    document.querySelectorAll('.mtab[data-v]').forEach(b=>b.onclick=()=>this.setMobileView(b.dataset.v));
+    const infoModal=$('infoModal');
+    const setInfo=show=>{ infoModal.classList.toggle('show',show); document.querySelectorAll('#infoBtn,#minfo').forEach(b=>b.classList.toggle('on',show)); if(show) infoModal.querySelector('.imodal-body').scrollTop=0; };
+    const toggleInfo=()=>setInfo(!infoModal.classList.contains('show'));
+    const closeInfo=()=>setInfo(false);
+    $('infoBtn').onclick=toggleInfo;
+    $('minfo').onclick=toggleInfo;
+    // LOW-PERF toggle: lighter linear resampling instead of 8-tap Lanczos for
+    // slow devices. Persisted so the choice survives reloads.
+    const lowPerf = localStorage.getItem('tfxLowPerf')==='1';
+    const applyLowPerf=on=>{
+      Engine.hifi=!on; Engine.rsTblRatio=0;   // force resampler table rebuild on next render
+      document.querySelectorAll('#lpBtn,#mlp').forEach(b=>b.classList.toggle('on',on));
+    };
+    applyLowPerf(lowPerf);
+    const toggleLowPerf=()=>{ const on=Engine.hifi; applyLowPerf(on); localStorage.setItem('tfxLowPerf',on?'1':'0'); };
+    $('lpBtn').onclick=toggleLowPerf;
+    $('mlp').onclick=toggleLowPerf;
+    // SOUNDFONT toggle: render the General MIDI (GM → SCC) version through
+    // GeneralUser-GS.sf2 instead of the Roland SC-55 ROM emulator. Bank fetched
+    // lazily (with progress bar) on first use. Persisted across reloads.
+    const applySf2=on=>{ Engine.sf2Mode=on; document.querySelectorAll('#sfBtn,#msf').forEach(b=>b.classList.toggle('on',on)); };
+    applySf2(localStorage.getItem('tfxSf2')==='1');
+    const toggleSf2=async()=>{ const on=!Engine.sf2Mode; applySf2(on); localStorage.setItem('tfxSf2',on?'1':'0'); if(this.cur!=null) await this.pick(this.cur); };
+    $('sfBtn').onclick=toggleSf2;
+    $('msf').onclick=toggleSf2;
+    $('play').onclick=()=>this.toggle();
+    $('restart').onclick=()=>{ Engine.seekTo(0); if(!Engine.playing) this.draw(); };
+    // REPEAT / AUTOADVANCE: when a song ends, replay it or jump to the next one.
+    // The two are mutually exclusive; both choices persist across reloads.
+    this.repeat=localStorage.getItem('tfxRepeat')==='1';
+    this.autoAdv=localStorage.getItem('tfxAutoAdv')==='1';
+    const paintLoop=()=>{
+      document.querySelectorAll('#repeatBtn,#mrepeat').forEach(b=>b.classList.toggle('on',this.repeat));
+      document.querySelectorAll('#autoBtn,#mauto').forEach(b=>b.classList.toggle('on',this.autoAdv));
+    };
+    document.querySelectorAll('#repeatBtn,#mrepeat').forEach(b=>b.onclick=()=>{
+      this.repeat=!this.repeat; if(this.repeat) this.autoAdv=false;
+      localStorage.setItem('tfxRepeat',this.repeat?'1':'0'); localStorage.setItem('tfxAutoAdv',this.autoAdv?'1':'0'); paintLoop();
+    });
+    document.querySelectorAll('#autoBtn,#mauto').forEach(b=>b.onclick=()=>{
+      this.autoAdv=!this.autoAdv; if(this.autoAdv) this.repeat=false;
+      localStorage.setItem('tfxAutoAdv',this.autoAdv?'1':'0'); localStorage.setItem('tfxRepeat',this.repeat?'1':'0'); paintLoop();
+    });
+    paintLoop();
+    $('clear').onclick=()=>{ Engine.mute.clear(); Engine.solo.clear(); this.refreshChannels(); };
+    $('speed').oninput=e=>{ const t=Engine.songTime(); Engine.speed=+e.target.value; $('speedV').textContent=Math.round(+e.target.value*100)+'%'; Engine.synthPos=Math.round((t/Engine.speed)*Engine.rate); Engine.frozenSong=t; Engine.anchored=false; };
+    $('vol').oninput=e=>{ Engine.vol=+e.target.value; $('volV').textContent=Math.round(+e.target.value*100)+'%'; };
+    $('mix').oninput=e=>{ Engine.blend=+e.target.value; $('mixV').textContent=Math.round(+e.target.value*100)+'%'; };
+    $('seek').oninput=e=>{ const T=(+e.target.value/1000)*Engine.duration; Engine.seekTo(T); $('seekfill').style.width=(+e.target.value/10)+'%'; $('t-cur').textContent=this.fmt(T); if(!Engine.playing) this.draw(); };
+    list.onscroll=()=>this.syncScrollbar();
+    window.addEventListener('keydown',e=>{
+      if($('infoModal').classList.contains('show')){ if(e.code==='Escape') closeInfo(); return; }
+      if(e.code==='Space'){e.preventDefault(); this.toggle();}
+    });
+    this.canvas=$('roll'); this.cx=this.canvas.getContext('2d');
+    new ResizeObserver(()=>this.resize()).observe($('rollWrap')); this.resize();
+    window.addEventListener('resize',()=>{ this.syncScrollbar(); this.tuneMarquee(); });
+    if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>this.tuneMarquee());
+
+    try{ await Engine.boot(); }catch(err){ $('overlay').textContent='ENGINE ERROR: '+err.message; $('status').textContent='ERROR'; return; }
+    $('overlay').classList.add('hidden'); $('status').textContent='READY';
+    ['play','restart','clear','seek'].forEach(id=>$(id).disabled=false);
+    // restore the song named in the URL hash (so a refresh keeps the same track)
+    let startIdx=0;
+    const want=decodeURIComponent((location.hash||'').replace(/^#/,''));
+    if(want){ const j=this.songs.findIndex(s=>s.file===want); if(j>=0) startIdx=j; }
+    window.addEventListener('hashchange',()=>{
+      const w=decodeURIComponent((location.hash||'').replace(/^#/,''));
+      const j=this.songs.findIndex(s=>s.file===w);
+      if(j>=0 && j!==this.cur) this.pick(j);
+    });
+    this.setupMedia();
+    Engine.onEnded=()=>this.onEnded();
+    document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible' && Engine.playing) this.requestWake(); });
+    this.pick(startIdx);
+    this.loop();
+  },
+
+  resize(){ const wrap=$('rollWrap'); const cw=wrap.clientWidth, ch=wrap.clientHeight; const dpr=devicePixelRatio||1;
+    // On mobile keep keys at a usable size and let the roll scroll horizontally
+    // rather than squashing all 52 white keys into the viewport.
+    let nW=0; for(let p=LOW;p<=HIGH;p++) if(isWhite(p)) nW++;
+    const minKeyW=this.isMobile()?22:0;
+    const fullW=Math.max(cw, nW*minKeyW);
+    this.canvas.style.width=fullW+'px'; this.canvas.style.height=ch+'px';
+    this.canvas.width=fullW*dpr; this.canvas.height=ch*dpr; this.W=fullW; this.H=ch; this.cx.setTransform(dpr,0,0,dpr,0,0);
+    this.buildKeys(); this.syncScrollbar();
+    if(this.isMobile() && this._lastFullW!==fullW){ this._lastFullW=fullW; this.centerRoll(); } },
+
+  centerRoll(){ const w=$('rollWrap'); if(w) w.scrollLeft=Math.max(0,(this.W-w.clientWidth)/2); },
+
+  // piano key geometry: white keys full width, black keys narrower & between
+  buildKeys(){
+    const whites=[]; for(let p=LOW;p<=HIGH;p++) if(isWhite(p)) whites.push(p);
+    const nW=whites.length, wW=this.W/nW; const wi={};
+    const lay={};
+    let k=0; for(let p=LOW;p<=HIGH;p++) if(isWhite(p)){ wi[p]=k; lay[p]={x:k*wW,w:wW,black:false,cx:k*wW+wW/2}; k++; }
+    const bw=wW*0.62;
+    for(let p=LOW;p<=HIGH;p++) if(!isWhite(p)){ const c=(wi[p-1]+1)*wW; lay[p]={x:c-bw/2,w:bw,black:true,cx:c}; }
+    this.keys=lay; this.whiteW=wW; this.blackW=bw;
+  },
+
+  applyFilter(){
+    let n=0;
+    document.querySelectorAll('.song').forEach(r=>{
+      const show=this.filter==='ALL'||r.dataset.filt===this.filter;
+      r.style.display=show?'':'none'; if(show) n++;
+    });
+    $('trackcount').textContent=n;
+    this.syncScrollbar();
+  },
+
+  async pick(i){
+    this.cur=i; const s=this.songs[i];
+    history.replaceState(null,'','#'+encodeURIComponent(s.file));
+    $('status').textContent='LOADING';
+    [...document.querySelectorAll('.song')].forEach(r=>r.classList.toggle('sel',+r.dataset.i===i));
+    const sel=document.querySelector('.song.sel'); if(sel) sel.scrollIntoView({block:'nearest'});
+    Engine.playing=false; this.setPlayUI(false);
+    await Engine.useDevice(s._drv);
+    const bytes=new Uint8Array(await fetch('d2/'+s.file).then(r=>r.arrayBuffer()));
+    const parsed = s._drv==='ADL' ? parseDro(bytes) : parseMidi(bytes);
+    Engine.mute.clear(); Engine.solo.clear();
+    Engine.loadSong(parsed);
+    this.buildChannels(parsed);
+    $('trackname').textContent=s._name; this.updateMediaMeta(s);
+    $('st-drv').textContent={GM:'GEN MIDI',MT:'MT-32',A2:'ADLIB',A3:'SNDBLAST'}[s._filt]||s._filt;
+    $('st-synth').textContent=(Engine.sf2Mode && s._filt==='GM') ? 'GeneralUser-GS (SoundFont)'
+      : ({GM:'SC-55 v1.21 (SCC-1)',MT:'MT-32 / CM-32L (Munt)',A2:'OPL2 · Nuked-OPL3 (YM3812)',A3:'OPL3 · Nuked-OPL3 (YMF262)'}[s._filt]||s._filt);
+    $('st-src').textContent={GM:'SOUND.PAK C55 (SC-55 GM)',MT:'SOUND.PAK XMI (MT-32)',A2:'SOUND.PAK Westwood ADL (OPL2)',A3:'SOUND.PAK (OPL3)'}[s._filt]||s._filt;
+    $('st-notes').textContent=parsed.notes.length;
+    $('st-ch').textContent=parsed.channels.length;
+    $('seek').value=0;
+    $('status').textContent='READY';
+    this.tuneMarquee();
+    if(this.isMobile()) this.setMobileView('notes');
+    this.draw();
+  },
+
+  buildChannels(parsed){
+    const box=$('chans'); box.innerHTML='';
+    const noteCount={}; parsed.notes.forEach(n=>noteCount[n.channel]=(noteCount[n.channel]||0)+1);
+    parsed.channels.forEach(ch=>{
+      const cell=document.createElement('div'); cell.className='ch'; cell.dataset.ch=ch;
+      cell.style.setProperty('--swatch',CH_SWATCH[ch]);
+      cell.title=`Channel ${ch+1} — ${noteCount[ch]||0} notes · tap/click mute · long-press or right-click solo`;
+      cell.textContent=ch+1;
+      const doMute=()=>{ if(Engine.mute.has(ch)){Engine.mute.delete(ch);} else {Engine.mute.add(ch); Engine.cutChannel(ch);} this.refreshChannels(); };
+      const doSolo=()=>{ if(Engine.solo.has(ch)){Engine.solo.delete(ch);} else {Engine.solo.add(ch);} for(const c of parsed.channels) if(Engine.effMuted(c)) Engine.cutChannel(c); this.refreshChannels(); };
+      let timer=null, fired=false, moved=false, sx=0, sy=0;
+      cell.addEventListener('pointerdown',e=>{
+        fired=false; moved=false; sx=e.clientX; sy=e.clientY;
+        if(e.pointerType==='mouse' && e.button!==0) return;   // right-click solo handled by contextmenu
+        clearTimeout(timer);
+        timer=setTimeout(()=>{ fired=true; doSolo(); }, 450); // hold = solo
+      });
+      cell.addEventListener('pointermove',e=>{
+        if(Math.abs(e.clientX-sx)>8||Math.abs(e.clientY-sy)>8){ moved=true; clearTimeout(timer); } // scrolling the strip
+      });
+      cell.addEventListener('pointerup',e=>{
+        clearTimeout(timer);
+        if(fired||moved) return;                              // long-press or scroll: not a tap
+        if(e.pointerType==='mouse' && e.button!==0) return;
+        doMute();                                             // tap/click = mute
+      });
+      cell.addEventListener('pointercancel',()=>{ clearTimeout(timer); });
+      cell.oncontextmenu=e=>{ e.preventDefault(); if(!fired) doSolo(); }; // desktop right-click = solo
+      box.appendChild(cell);
+    });
+    this.refreshChannels();
+  },
+  refreshChannels(){
+    [...document.querySelectorAll('.ch')].forEach(cell=>{
+      const ch=+cell.dataset.ch;
+      cell.classList.toggle('solo',Engine.solo.has(ch));
+      cell.classList.toggle('muted',Engine.effMuted(ch)&&!Engine.solo.has(ch));
+    });
+  },
+
+  // Quantise the header marquee so it scrolls in whole TFX font-pixels (one
+  // glyph pixel = font-size * 0.2, since the bitmap font is 5px tall in a 1000
+  // upm em). steps(n) makes the slide jump exactly one font-pixel per step.
+  tuneMarquee(){
+    const m=document.querySelector('.hmarquee'); if(!m) return;
+    const cs=getComputedStyle(m);
+    if(cs.animationName!=='hmarq'){ m.style.animationTimingFunction=''; return; } // desktop: flows in flex, no marquee
+    const fpx=Math.max(1,Math.round(parseFloat(cs.fontSize)*0.2));
+    const steps=Math.max(1,Math.round(m.scrollWidth/fpx));
+    m.style.animationTimingFunction='steps('+steps+')';
+  },
+
+  syncScrollbar(){
+    const l=$('songlist'), thumb=$('sbthumb'), sb=$('sb'); if(!sb) return;
+    const trackH=sb.clientHeight; const ratio=l.clientHeight/l.scrollHeight;
+    const th=Math.max(18,trackH*Math.min(1,ratio));
+    thumb.style.height=th+'px';
+    const max=l.scrollHeight-l.clientHeight;
+    thumb.style.top=(max>0? (l.scrollTop/max)*(trackH-th):0)+'px';
+  },
+
+  toggle(){
+    if(Engine.ended){ Engine.seekTo(0); }
+    Engine.ensureAudio(); if(Engine.ctx.state==='suspended') Engine.ctx.resume();
+    Engine.anchored=false; Engine.playing=!Engine.playing; this.setPlayUI(Engine.playing);
+  },
+  setPlayUI(p){ const b=$('play'); b.textContent=p?'PAUSE':'PLAY'; b.classList.toggle('on',p);
+    [...document.querySelectorAll('.song')].forEach(r=>r.classList.toggle('playing',p&&+r.dataset.i===this.cur));
+    if('mediaSession' in navigator){ try{ navigator.mediaSession.playbackState=p?'playing':'paused'; }catch(e){} }
+    if(p) this.requestWake(); else this.releaseWake();
+    this.updatePositionState(); },
+  onEnded(){
+    if(this.repeat){ this.toggle(); return; }            // replay current song from the start
+    if(this.autoAdv){ this.advance(1); return; }          // jump to the next visible song
+    this.setPlayUI(false);
+  },
+  advance(dir){
+    const vis=this.visibleIdx(); if(!vis.length){ this.setPlayUI(false); return; }
+    let k=vis.indexOf(this.cur); if(k<0) k=0;
+    k=(k+dir+vis.length)%vis.length;
+    Promise.resolve(this.pick(vis[k])).then(()=>{ if(!Engine.playing) this.toggle(); });
+  },
+
+  // ---- Media Session (lockscreen / Bluetooth / wired-headset transport) ----
+  setupMedia(){
+    if(!('mediaSession' in navigator)) return;
+    const ms=navigator.mediaSession, set=(a,fn)=>{ try{ ms.setActionHandler(a,fn); }catch(e){} };
+    set('play', ()=>{ if(!Engine.playing) this.toggle(); });
+    set('pause', ()=>{ if(Engine.playing) this.toggle(); });
+    set('stop', ()=>{ Engine.playing=false; Engine.seekTo(0); this.setPlayUI(false); this.draw(); });
+    set('previoustrack', ()=>this.step(-1));
+    set('nexttrack', ()=>this.step(1));
+    set('seekbackward', d=>{ const t=Math.max(0,Engine.songTime()-((d&&d.seekOffset)||10)); Engine.seekTo(t); if(!Engine.playing) this.draw(); });
+    set('seekforward', d=>{ const t=Math.min(Engine.duration,Engine.songTime()+((d&&d.seekOffset)||10)); Engine.seekTo(t); if(!Engine.playing) this.draw(); });
+    set('seekto', d=>{ if(d&&d.seekTime!=null){ Engine.seekTo(d.seekTime); if(!Engine.playing) this.draw(); } });
+  },
+  visibleIdx(){ return [...document.querySelectorAll('.song')].filter(r=>r.style.display!=='none').map(r=>+r.dataset.i); },
+  step(dir){
+    const vis=this.visibleIdx(); if(!vis.length) return;
+    let k=vis.indexOf(this.cur); if(k<0) k=0;
+    k=(k+dir+vis.length)%vis.length;
+    const wasPlaying=Engine.playing;
+    Promise.resolve(this.pick(vis[k])).then(()=>{ if(wasPlaying && !Engine.playing) this.toggle(); });
+  },
+  updateMediaMeta(s){
+    if(!('mediaSession' in navigator) || typeof MediaMetadata==='undefined') return;
+    const dev={GM:'Roland SC-55 (General MIDI)',MT:'Roland MT-32',A2:'AdLib OPL2 FM',A3:'SoundBlaster OPL3 FM'}[s._filt]||s._filt;
+    try{ navigator.mediaSession.metadata=new MediaMetadata({ title:s._name, artist:dev, album:'Dune II: The Building of a Dynasty — Westwood (Frank Klepacki)' }); }catch(e){}
+  },
+  updatePositionState(){
+    if(!('mediaSession' in navigator) || !navigator.mediaSession.setPositionState) return;
+    const dur=Engine.duration||0; if(dur<=0) return;
+    let pos=Engine.songTime(); if(pos<0) pos=0; else if(pos>dur) pos=dur;
+    try{ navigator.mediaSession.setPositionState({duration:dur, position:pos, playbackRate:Engine.speed||1}); }catch(e){}
+  },
+  // ---- Screen Wake Lock: keep the phone awake while music is playing ----
+  async requestWake(){
+    if(!('wakeLock' in navigator) || this._wake || document.visibilityState!=='visible') return;
+    try{ this._wake=await navigator.wakeLock.request('screen'); this._wake.addEventListener('release',()=>{ this._wake=null; }); }catch(e){ this._wake=null; }
+  },
+  releaseWake(){ try{ if(this._wake) this._wake.release(); }catch(e){} this._wake=null; },
+
+  isMobile(){ return window.matchMedia('(max-width:720px)').matches; },
+  setMobileView(v){
+    const tracks = v==='tracks';
+    document.body.classList.toggle('mtracks',tracks);
+    document.body.classList.toggle('mnotes',!tracks);
+    document.querySelectorAll('.mtab[data-v]').forEach(x=>x.classList.toggle('on',x.dataset.v===v));
+    this.resize();
+  },
+
+  fmt(s){ s=Math.max(0,s|0); return (s/60|0)+':'+String(s%60).padStart(2,'0'); },
+
+  loop(){ this.draw();
+    const now=performance.now(); if(!this._posT||now-this._posT>500){ this._posT=now; this.updatePositionState(); }
+    this.raf=requestAnimationFrame(()=>this.loop()); },
+  draw(){
+    const cx=this.cx, W=this.W, H=this.H; if(!W||!this.keys) return;
+    const kbH=Math.min(120,Math.max(78,H*0.20)), hit=H-kbH, look=3.0;
+    if(hit<=0) return;   // roll pane hidden/too short (e.g. mobile TRACKS view) — skip drawing
+    cx.fillStyle='#13180f'; cx.fillRect(0,0,W,H);
+    // radar arcs + grid backdrop
+    cx.strokeStyle='rgba(115,129,90,.16)'; cx.lineWidth=1;
+    const cxn=W/2, cyn=hit*0.52, R=Math.min(W,hit)*0.46;
+    for(let k=1;k<=3;k++){ cx.beginPath(); cx.arc(cxn,cyn,R*k/3,0,Math.PI*2); cx.stroke(); }
+    cx.beginPath(); cx.moveTo(cxn,cyn-R); cx.lineTo(cxn,cyn+R); cx.moveTo(cxn-R,cyn); cx.lineTo(cxn+R,cyn); cx.stroke();
+    // black-key lane shading
+    for(let p=LOW;p<=HIGH;p++) if(!isWhite(p)){ const k=this.keys[p]; cx.fillStyle='rgba(0,0,0,.14)'; cx.fillRect(k.x,0,k.w,hit); }
+    // hit line
+    cx.strokeStyle='rgba(233,239,206,.6)'; cx.lineWidth=2; cx.beginPath(); cx.moveTo(0,hit); cx.lineTo(W,hit); cx.stroke();
+
+    const now=Engine.songTime();
+    const FADE=0.5; const flashes={}, held={};
+    // notes — whites first, blacks on top
+    for(let pass=0;pass<2;pass++){
+      for(const nt of Engine.notes){
+        const k=this.keys[nt.pitch]; if(!k) continue;
+        if((pass===0)===k.black) continue;
+        if(nt.startSec>now+look) continue;
+        const muted=Engine.effMuted(nt.channel);
+        const age=now-nt.startSec;
+        if(age>=0 && age<FADE && !muted){ const f=1-age/FADE; if(!(flashes[nt.pitch]>=f)) flashes[nt.pitch]=f; }
+        if(nt.startSec<=now && nt.endSec>now && !muted) held[nt.pitch]=true;   // key currently sounding
+        if(nt.endSec<now-0.05) continue;
+        const yS=hit-((nt.startSec-now)/look)*hit, yE=hit-((nt.endSec-now)/look)*hit;
+        const top=Math.min(yS,yE), h=Math.max(3,Math.abs(yE-yS));
+        cx.globalAlpha=muted?0.13:1;
+        if(!this._chPat) this._chPat=CH_TILE.map(t=>cx.createPattern(t,'repeat'));
+        cx.fillStyle=this._chPat[nt.channel];
+        this.rr(cx,k.x+0.7,top,k.w-1.4,h,2); cx.fill();
+        // light border so notes (incl. dark channel shades) stay legible on the dark roll
+        cx.globalAlpha=muted?0.10:0.9; cx.strokeStyle='rgba(233,239,206,.85)'; cx.lineWidth=1;
+        this.rr(cx,k.x+0.7+0.5,top+0.5,k.w-1.4-1,Math.max(2,h-1),2); cx.stroke();
+      }
+    }
+    cx.globalAlpha=1;
+    // keyboard: white keys, then black keys on top
+    cx.fillStyle='#0e120a'; cx.fillRect(0,hit,W,kbH);
+    for(let p=LOW;p<=HIGH;p++) if(isWhite(p)){ const k=this.keys[p];
+      const f=flashes[p]||0;
+      // sustained tint while held (lighter, neutral phosphor — NOT yellow); flash (yellow) fades into it
+      const sus=held[p]?[233,239,206]:[206,212,184];
+      const fl=[253,231,120];
+      const r=sus[0]+(fl[0]-sus[0])*f, g=sus[1]+(fl[1]-sus[1])*f, b=sus[2]+(fl[2]-sus[2])*f;
+      cx.fillStyle=`rgb(${r|0},${g|0},${b|0})`;
+      cx.fillRect(k.x+0.5,hit+1,k.w-1,kbH-2);
+      cx.strokeStyle='#3a3f30'; cx.lineWidth=1; cx.strokeRect(k.x+0.5,hit+1,k.w-1,kbH-2);
+    }
+    const bkH=kbH*0.62;
+    for(let p=LOW;p<=HIGH;p++) if(!isWhite(p)){ const k=this.keys[p];
+      const f=flashes[p]||0;
+      const sus=held[p]?[70,80,55]:[28,32,22];
+      const fl=[160,200,110];
+      const r=sus[0]+(fl[0]-sus[0])*f, g=sus[1]+(fl[1]-sus[1])*f, b=sus[2]+(fl[2]-sus[2])*f;
+      cx.fillStyle=`rgb(${r|0},${g|0},${b|0})`;
+      cx.fillRect(k.x,hit,k.w,bkH);
+      cx.strokeStyle='#000'; cx.strokeRect(k.x+0.5,hit+0.5,k.w-1,bkH);
+    }
+    // readout — left shows current time, right shows total only (no duplicate)
+    $('time').textContent=this.fmt(Engine.duration);
+    $('t-cur').textContent=this.fmt(now);
+    const pct=Math.min(100,(now/Engine.duration)*100||0);
+    $('seekfill').style.width=pct+'%';
+    if(document.activeElement!==$('seek')) $('seek').value=Math.min(1000,(now/Engine.duration)*1000||0);
+  },
+  rr(cx,x,y,w,h,r){ r=Math.min(r,w/2,h/2); if(r<0)r=0; cx.beginPath();
+    cx.moveTo(x+r,y); cx.arcTo(x+w,y,x+w,y+h,r); cx.arcTo(x+w,y+h,x,y+h,r);
+    cx.arcTo(x,y+h,x,y,r); cx.arcTo(x,y,x+w,y,r); cx.closePath(); },
+};
+
+UI.init();
+</script>
+</body>
+</html>
