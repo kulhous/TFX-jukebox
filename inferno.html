@@ -76,6 +76,30 @@
   .gameopt:hover{background:var(--mon-ink2);color:var(--screen)}
   .gameopt.sel{color:var(--mon-hi)}
   .gameopt.sel::after{content:"\2713";position:absolute;right:7px}
+  /* ---- ABOUT panel: embedded in the red monitor, overlays roll + list ---- */
+  #infoModal{position:absolute;inset:0;z-index:40;display:none;flex-direction:column;background:var(--bg)}
+  #infoModal.show{display:flex}
+  .imodal{position:relative;flex:1;min-height:0;display:flex;flex-direction:column;background:transparent}
+  .imodal-h{display:flex;align-items:center;gap:10px;padding:7px 12px;color:var(--mon-ink2);
+    border-bottom:1px solid var(--mon-line)}
+  .imodal-h .t{font-size:14px;letter-spacing:1px;color:var(--mon-hi);flex:1;
+    text-shadow:0 0 7px rgba(255,143,115,.4)}
+  .imodal-h .x{font:inherit;font-size:18px;line-height:1;color:var(--mon-ink2);background:none;border:0;
+    cursor:pointer;padding:0 4px}
+  .imodal-h .x:hover{color:var(--mon-hi)}
+  .imodal-body{flex:1;min-height:0;overflow-y:auto;padding:16px 22px 22px;color:var(--mon-ink);
+    font-size:13px;line-height:1.7;
+    background:radial-gradient(130% 120% at 50% 0%,rgba(180,60,45,.12),transparent 60%)}
+  .imodal-body h2{font-size:15px;line-height:1.45;color:var(--mon-hi);margin:24px 0 10px;
+    text-shadow:0 0 8px rgba(255,143,115,.3)}
+  .imodal-body h2:first-child{margin-top:0}
+  .imodal-body p{margin:0 0 11px}
+  .imodal-body strong{color:var(--mon-hi)}
+  .imodal-body .ichain{display:flex;flex-direction:column;gap:3px;margin:0 0 14px;padding:12px 14px;
+    background:rgba(0,0,0,.32);color:var(--mon-ink2);
+    border-left:3px solid var(--mon-line);font-size:12px;line-height:1.6}
+  .imodal-body .ichain span:first-child{color:var(--mon-hi)}
+  .imodal-body .sig{margin-top:20px;color:var(--mon-ink2)}
   .hsub{display:flex;align-items:center;gap:18px;margin-top:4px;color:var(--mon-ink2);font-size:11px;flex-wrap:wrap}
   .hsub b{color:var(--mon-hi);font-weight:400}  .meter{display:flex;align-items:center;gap:7px}
   /* marquee track: transparent on desktop (children flow in .hsub flex) */
@@ -283,6 +307,7 @@
     #clear::before{content:"\2298"}     /* ⊘ */
     #repeatBtn::before{content:"\27F3"} /* ⟳ */
     #autoBtn::before{content:"\23ED"}   /* ⏭ */
+    #infoBtn::before{content:"\24D8"}   /* ⓘ */
     #meters{display:flex;flex-direction:column;flex:1;gap:6px;min-width:0}
     /* SPD / VOL / MIX rows share one grid template so all three sliders are the
        exact same width regardless of label / percent text length */
@@ -341,6 +366,7 @@
     #clear::before{content:"\2298"}     /* ⊘ */
     #repeatBtn::before{content:"\27F3"} /* ⟳ */
     #autoBtn::before{content:"\23ED"}   /* ⏭ */
+    #infoBtn::before{content:"\24D8"}   /* ⓘ */
     /* mixing sliders above the playback buttons */
     #meters{order:1;flex:1 0 100%;display:flex;flex-direction:column;gap:6px;min-width:0}
     #meters .dmeter{display:grid;grid-template-columns:30px 1fr 40px;align-items:center;gap:6px;padding:4px 9px;font-size:11px}
@@ -413,6 +439,28 @@
     </div>
     <span id="time">0:00 / 0:00</span>
   </div>
+
+  <div id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
+    <div class="imodal">
+      <div class="imodal-h">
+        <span class="t" id="infoTitle">ABOUT -- INFERNO &amp; TFX</span>
+        <button class="x" id="infoClose" aria-label="Close">&times;</button>
+      </div>
+      <div class="imodal-body">
+        <h2>TFX's sister ship.</h2>
+        <p><strong>Inferno: The Odyssey Continues</strong> (Ocean Software, 1994) is the deep-space combat sim that grew straight out of <strong>TFX</strong>. Both were built by <strong>Digital Image Design (DID)</strong> and published by Ocean: TFX (1993) put you in a near-future jet over Earth, and Inferno took the same flight-sim lineage off-planet a year later, swapping fighter jets for the F4500 Wraith starfighter. They share DNA &mdash; the engine, the cockpit-sim philosophy, and the studio &mdash; which is why this jukebox treats Inferno as TFX's sister.</p>
+
+        <h2>Same studio, same music toolchain.</h2>
+        <p>Inferno's score was sequenced in <strong>MEdit</strong>, Ocean's in-house MIDI tracker (an OctaMED-style editor designed by <strong>Barry Leitch</strong> and coded by Leslie Long) &mdash; the very same tool used for the TFX soundtrack. Because of that, the Inferno tunes survive as native <strong>OSL1</strong> modules in the MEdit archive, in exactly the format the TFX music was recovered from. Each tune exists per sound device: a <strong>Roland MT-32 / LAPC-I</strong> version, a <strong>General MIDI</strong> (Sound Canvas) version, and an <strong>AdLib</strong> FM version. Use the <strong>MT-32 / SCC / AdLib</strong> filter to switch between them.</p>
+
+        <h2>How this works</h2>
+        <p>The native MEdit modules are loaded into a re-implementation of DID's OSL music driver, which renders each one note-for-note to a Standard MIDI File (MT-32 / GM) or a raw-OPL register log (AdLib). All three are then played in your browser:</p>
+        <div class="ichain"><span>Ocean MEdit OSL1 module (per device)</span><span>-&gt; OSL driver render -&gt; SMF / DRO</span><span>-&gt; JavaScript timing</span><span>-&gt; WebAssembly Munt CM-32L (MT-32) / Nuked-SC55 (GM) / Nuked-OPL3 (AdLib)</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
+        <p>The synthesis engine, ROM images and UI are shared with the TFX jukebox &mdash; only the song data on this page is Inferno's.</p>
+        <p class="sig">-- a companion to the TFX jukebox</p>
+      </div>
+    </div>
+  </div>
   </div><!-- /screen -->
 
   <div id="dash">
@@ -437,6 +485,7 @@
       <button id="sfBtn" class="btn" title="Play SC-55 / General MIDI (SCC) songs through the GeneralUser-GS SoundFont instead of the Roland SC-55 emulator">SOUNDFONT</button>
       <button id="repeatBtn" class="btn" title="Repeat: when the song ends, play it again from the beginning">REPEAT</button>
       <button id="autoBtn" class="btn" title="Autoadvance: when the song ends, automatically play the next song in the list">AUTO</button>
+      <button id="infoBtn" class="btn" title="About this jukebox — Inferno &amp; TFX">INFO</button>
       <span class="credit"><a href="https://barryleitch.bandcamp.com/" target="_blank" rel="noopener">ALL MUSIC BY BARRY LEITCH</a></span>
     </div>
   </div>
@@ -510,6 +559,11 @@ const UI = {
     this.updateRenameCount();
     this.applyFilter();
     document.querySelectorAll('.mtab').forEach(b=>b.onclick=()=>this.setMobileView(b.dataset.v));
+    const infoModal=$('infoModal');
+    const setInfo=show=>{ infoModal.classList.toggle('show',show); $('infoBtn').classList.toggle('on',show); if(show) infoModal.querySelector('.imodal-body').scrollTop=0; };
+    $('infoBtn').onclick=()=>setInfo(!infoModal.classList.contains('show'));
+    $('infoClose').onclick=()=>setInfo(false);
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape') setInfo(false); });
     $('play').onclick=()=>this.toggle();
     $('restart').onclick=()=>{ Engine.seekTo(0); if(!Engine.playing) this.draw(); };
     // REPEAT / AUTOADVANCE: when a song ends, replay it or jump to the next one.
