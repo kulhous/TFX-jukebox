@@ -242,8 +242,9 @@
   /* ---- desktop settings buttons: compact icon squares (save space) ----
      SOUNDFONT / LOW-PERF / REPEAT / AUTO / INFO collapse to single TFX-font
      icons so the transport row + credit always fit, even on smaller desktops */
-  .infobtn{margin-left:auto;font-size:0;width:34px;padding:0;text-align:center;
+  .infobtn{margin-left:0;font-size:0;width:34px;padding:0;text-align:center;
     display:inline-flex;align-items:center;justify-content:center}
+  #sfBtn.infobtn{margin-left:8px}
   .infobtn + .infobtn{margin-left:0}
   .infobtn::before{font-family:inherit;font-size:18px;line-height:1;letter-spacing:0}
   #sfBtn.infobtn::before{content:"\E003"}      /* SoundFont — music note */
@@ -251,7 +252,7 @@
   #repeatBtn.infobtn::before{content:"\E000"}  /* Repeat — loop */
   #autoBtn.infobtn::before{content:"\E001"}    /* Autoadvance — next */
   #infoBtn.infobtn::before{content:"\E004"}    /* Info — i */
-  .infobtn + .credit{margin-left:10px;padding-left:0}
+  .infobtn + .credit{margin-left:auto;padding-left:12px}
 
   /* ---- ABOUT panel: embedded in the green monitor, replaces roll + list ---- */
   /* sits inside #screen (inset:0) and uses the TFX Pixel font like everything
@@ -282,6 +283,10 @@
   @media (max-width:720px){
     body{font-size:12px;letter-spacing:0}
     .logo{font-size:18px}
+    header{padding:5px 8px 3px}
+    .htop{align-items:center;justify-content:space-between;gap:8px}
+    .hline,.hright,.hsub{display:none}
+    .gamenav{margin-right:0}
     .hsub{gap:12px}
     /* show the notes/tracks switcher and collapse the split view to one pane */
     #mtabs{display:flex}
@@ -339,8 +344,11 @@
        control panel as a vertical strip down the right edge */
     #app{flex-direction:row;gap:7px}
     #screen{flex:1;min-width:0}
-    header{padding:5px 10px 3px}
+    header{padding:5px 8px 3px}
     .logo{font-size:16px}
+    .htop{align-items:center;justify-content:space-between;gap:8px}
+    .hline,.hright,.hsub{display:none}
+    .gamenav{margin-right:0}
     /* condense song-info into a scrolling marquee */
     .hsub{flex-wrap:nowrap;overflow:hidden;white-space:nowrap;margin-top:2px;
       -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%);
