@@ -1,0 +1,586 @@
+[
+ {
+  "file": "01_DM2TTL_GM.mid",
+  "label": "Title",
+  "named": true,
+  "hidden": false,
+  "note": "Doom II title theme"
+ },
+ {
+  "file": "01_DM2TTL_MT.mid",
+  "label": "Title",
+  "named": true,
+  "hidden": false,
+  "note": "Doom II title theme"
+ },
+ {
+  "file": "01_DM2TTL_A2.dro",
+  "label": "Title",
+  "named": true,
+  "hidden": false,
+  "note": "Doom II title theme"
+ },
+ {
+  "file": "01_DM2TTL_A3.dro",
+  "label": "Title",
+  "named": true,
+  "hidden": false,
+  "note": "Doom II title theme"
+ },
+ {
+  "file": "02_RUNNIN_GM.mid",
+  "label": "Running from Evil \u00b7 MAPS 01, 15",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "02_RUNNIN_MT.mid",
+  "label": "Running from Evil \u00b7 MAPS 01, 15",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "02_RUNNIN_A2.dro",
+  "label": "Running from Evil \u00b7 MAPS 01, 15",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "02_RUNNIN_A3.dro",
+  "label": "Running from Evil \u00b7 MAPS 01, 15",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "03_STALKS_GM.mid",
+  "label": "The Healer Stalks \u00b7 MAPS 02, 11, 17",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "03_STALKS_MT.mid",
+  "label": "The Healer Stalks \u00b7 MAPS 02, 11, 17",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "03_STALKS_A2.dro",
+  "label": "The Healer Stalks \u00b7 MAPS 02, 11, 17",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "03_STALKS_A3.dro",
+  "label": "The Healer Stalks \u00b7 MAPS 02, 11, 17",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "04_COUNTD_GM.mid",
+  "label": "Countdown to Death \u00b7 MAPS 03, 21",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "04_COUNTD_MT.mid",
+  "label": "Countdown to Death \u00b7 MAPS 03, 21",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "04_COUNTD_A2.dro",
+  "label": "Countdown to Death \u00b7 MAPS 03, 21",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "04_COUNTD_A3.dro",
+  "label": "Countdown to Death \u00b7 MAPS 03, 21",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "05_BETWEE_GM.mid",
+  "label": "Between Levels \u00b7 MAP04",
+  "named": true,
+  "hidden": false,
+  "note": "after Wolfenstein 3D \u2013 'Zero Hour'"
+ },
+ {
+  "file": "05_BETWEE_MT.mid",
+  "label": "Between Levels \u00b7 MAP04",
+  "named": true,
+  "hidden": false,
+  "note": "after Wolfenstein 3D \u2013 'Zero Hour'"
+ },
+ {
+  "file": "05_BETWEE_A2.dro",
+  "label": "Between Levels \u00b7 MAP04",
+  "named": true,
+  "hidden": false,
+  "note": "after Wolfenstein 3D \u2013 'Zero Hour'"
+ },
+ {
+  "file": "05_BETWEE_A3.dro",
+  "label": "Between Levels \u00b7 MAP04",
+  "named": true,
+  "hidden": false,
+  "note": "after Wolfenstein 3D \u2013 'Zero Hour'"
+ },
+ {
+  "file": "06_DOOM_GM.mid",
+  "label": "DOOM \u00b7 MAPS 05, 13",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "06_DOOM_MT.mid",
+  "label": "DOOM \u00b7 MAPS 05, 13",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "06_DOOM_A2.dro",
+  "label": "DOOM \u00b7 MAPS 05, 13",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "06_DOOM_A3.dro",
+  "label": "DOOM \u00b7 MAPS 05, 13",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "07_THE_DA_GM.mid",
+  "label": "In the Dark \u00b7 MAPS 06, 12, 24",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "07_THE_DA_MT.mid",
+  "label": "In the Dark \u00b7 MAPS 06, 12, 24",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "07_THE_DA_A2.dro",
+  "label": "In the Dark \u00b7 MAPS 06, 12, 24",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "07_THE_DA_A3.dro",
+  "label": "In the Dark \u00b7 MAPS 06, 12, 24",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "08_SHAWN_GM.mid",
+  "label": "Shawn's Got the Shotgun \u00b7 MAPS 07, 19, 29",
+  "named": true,
+  "hidden": false,
+  "note": "after Slayer \u2013 'South of Heaven'"
+ },
+ {
+  "file": "08_SHAWN_MT.mid",
+  "label": "Shawn's Got the Shotgun \u00b7 MAPS 07, 19, 29",
+  "named": true,
+  "hidden": false,
+  "note": "after Slayer \u2013 'South of Heaven'"
+ },
+ {
+  "file": "08_SHAWN_A2.dro",
+  "label": "Shawn's Got the Shotgun \u00b7 MAPS 07, 19, 29",
+  "named": true,
+  "hidden": false,
+  "note": "after Slayer \u2013 'South of Heaven'"
+ },
+ {
+  "file": "08_SHAWN_A3.dro",
+  "label": "Shawn's Got the Shotgun \u00b7 MAPS 07, 19, 29",
+  "named": true,
+  "hidden": false,
+  "note": "after Slayer \u2013 'South of Heaven'"
+ },
+ {
+  "file": "09_DDTBLU_GM.mid",
+  "label": "The Dave D. Taylor Blues \u00b7 MAP08",
+  "named": true,
+  "hidden": false,
+  "note": "MAP08 version (with kalimba)"
+ },
+ {
+  "file": "09_DDTBLU_MT.mid",
+  "label": "The Dave D. Taylor Blues \u00b7 MAP08",
+  "named": true,
+  "hidden": false,
+  "note": "MAP08 version (with kalimba)"
+ },
+ {
+  "file": "09_DDTBLU_A2.dro",
+  "label": "The Dave D. Taylor Blues \u00b7 MAP08",
+  "named": true,
+  "hidden": false,
+  "note": "MAP08 version (with kalimba)"
+ },
+ {
+  "file": "09_DDTBLU_A3.dro",
+  "label": "The Dave D. Taylor Blues \u00b7 MAP08",
+  "named": true,
+  "hidden": false,
+  "note": "MAP08 version (with kalimba)"
+ },
+ {
+  "file": "10_IN_CIT_GM.mid",
+  "label": "Into Sandy's City \u00b7 MAP09",
+  "named": true,
+  "hidden": false,
+  "note": "after Stone Temple Pilots \u2013 'Sex Type Thing'"
+ },
+ {
+  "file": "10_IN_CIT_MT.mid",
+  "label": "Into Sandy's City \u00b7 MAP09",
+  "named": true,
+  "hidden": false,
+  "note": "after Stone Temple Pilots \u2013 'Sex Type Thing'"
+ },
+ {
+  "file": "10_IN_CIT_A2.dro",
+  "label": "Into Sandy's City \u00b7 MAP09",
+  "named": true,
+  "hidden": false,
+  "note": "after Stone Temple Pilots \u2013 'Sex Type Thing'"
+ },
+ {
+  "file": "10_IN_CIT_A3.dro",
+  "label": "Into Sandy's City \u00b7 MAP09",
+  "named": true,
+  "hidden": false,
+  "note": "after Stone Temple Pilots \u2013 'Sex Type Thing'"
+ },
+ {
+  "file": "11_DEAD_GM.mid",
+  "label": "The Demon's Dead \u00b7 MAPS 10, 16",
+  "named": true,
+  "hidden": false,
+  "note": "after Black Sabbath \u2013 'After All (The Dead)'"
+ },
+ {
+  "file": "11_DEAD_MT.mid",
+  "label": "The Demon's Dead \u00b7 MAPS 10, 16",
+  "named": true,
+  "hidden": false,
+  "note": "after Black Sabbath \u2013 'After All (The Dead)'"
+ },
+ {
+  "file": "11_DEAD_A2.dro",
+  "label": "The Demon's Dead \u00b7 MAPS 10, 16",
+  "named": true,
+  "hidden": false,
+  "note": "after Black Sabbath \u2013 'After All (The Dead)'"
+ },
+ {
+  "file": "11_DEAD_A3.dro",
+  "label": "The Demon's Dead \u00b7 MAPS 10, 16",
+  "named": true,
+  "hidden": false,
+  "note": "after Black Sabbath \u2013 'After All (The Dead)'"
+ },
+ {
+  "file": "12_DDTBL2_GM.mid",
+  "label": "The Dave D. Taylor Blues \u00b7 MAPS 14, 22",
+  "named": true,
+  "hidden": false,
+  "note": "MAP14/22 version (cymbal crash, extra measure)"
+ },
+ {
+  "file": "12_DDTBL2_MT.mid",
+  "label": "The Dave D. Taylor Blues \u00b7 MAPS 14, 22",
+  "named": true,
+  "hidden": false,
+  "note": "MAP14/22 version (cymbal crash, extra measure)"
+ },
+ {
+  "file": "12_DDTBL2_A2.dro",
+  "label": "The Dave D. Taylor Blues \u00b7 MAPS 14, 22",
+  "named": true,
+  "hidden": false,
+  "note": "MAP14/22 version (cymbal crash, extra measure)"
+ },
+ {
+  "file": "12_DDTBL2_A3.dro",
+  "label": "The Dave D. Taylor Blues \u00b7 MAPS 14, 22",
+  "named": true,
+  "hidden": false,
+  "note": "MAP14/22 version (cymbal crash, extra measure)"
+ },
+ {
+  "file": "13_ROMERO_GM.mid",
+  "label": "Waiting for Romero to Play \u00b7 MAPS 18, 27",
+  "named": true,
+  "hidden": false,
+  "note": "after Pantera \u2013 'This Love'"
+ },
+ {
+  "file": "13_ROMERO_MT.mid",
+  "label": "Waiting for Romero to Play \u00b7 MAPS 18, 27",
+  "named": true,
+  "hidden": false,
+  "note": "after Pantera \u2013 'This Love'"
+ },
+ {
+  "file": "13_ROMERO_A2.dro",
+  "label": "Waiting for Romero to Play \u00b7 MAPS 18, 27",
+  "named": true,
+  "hidden": false,
+  "note": "after Pantera \u2013 'This Love'"
+ },
+ {
+  "file": "13_ROMERO_A3.dro",
+  "label": "Waiting for Romero to Play \u00b7 MAPS 18, 27",
+  "named": true,
+  "hidden": false,
+  "note": "after Pantera \u2013 'This Love'"
+ },
+ {
+  "file": "14_MESSAG_GM.mid",
+  "label": "Message for the Archvile \u00b7 MAPS 20, 26",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "14_MESSAG_MT.mid",
+  "label": "Message for the Archvile \u00b7 MAPS 20, 26",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "14_MESSAG_A2.dro",
+  "label": "Message for the Archvile \u00b7 MAPS 20, 26",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "14_MESSAG_A3.dro",
+  "label": "Message for the Archvile \u00b7 MAPS 20, 26",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "15_AMPIE_GM.mid",
+  "label": "Bye Bye American Pie \u00b7 MAP23",
+  "named": true,
+  "hidden": false,
+  "note": "after Alice in Chains \u2013 'Them Bones'"
+ },
+ {
+  "file": "15_AMPIE_MT.mid",
+  "label": "Bye Bye American Pie \u00b7 MAP23",
+  "named": true,
+  "hidden": false,
+  "note": "after Alice in Chains \u2013 'Them Bones'"
+ },
+ {
+  "file": "15_AMPIE_A2.dro",
+  "label": "Bye Bye American Pie \u00b7 MAP23",
+  "named": true,
+  "hidden": false,
+  "note": "after Alice in Chains \u2013 'Them Bones'"
+ },
+ {
+  "file": "15_AMPIE_A3.dro",
+  "label": "Bye Bye American Pie \u00b7 MAP23",
+  "named": true,
+  "hidden": false,
+  "note": "after Alice in Chains \u2013 'Them Bones'"
+ },
+ {
+  "file": "16_ADRIAN_GM.mid",
+  "label": "Adrian's Asleep \u00b7 MAP25",
+  "named": true,
+  "hidden": false,
+  "note": "after Alice in Chains \u2013 'Angry Chair'"
+ },
+ {
+  "file": "16_ADRIAN_MT.mid",
+  "label": "Adrian's Asleep \u00b7 MAP25",
+  "named": true,
+  "hidden": false,
+  "note": "after Alice in Chains \u2013 'Angry Chair'"
+ },
+ {
+  "file": "16_ADRIAN_A2.dro",
+  "label": "Adrian's Asleep \u00b7 MAP25",
+  "named": true,
+  "hidden": false,
+  "note": "after Alice in Chains \u2013 'Angry Chair'"
+ },
+ {
+  "file": "16_ADRIAN_A3.dro",
+  "label": "Adrian's Asleep \u00b7 MAP25",
+  "named": true,
+  "hidden": false,
+  "note": "after Alice in Chains \u2013 'Angry Chair'"
+ },
+ {
+  "file": "17_TENSE_GM.mid",
+  "label": "Getting Too Tense \u00b7 MAP28",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "17_TENSE_MT.mid",
+  "label": "Getting Too Tense \u00b7 MAP28",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "17_TENSE_A2.dro",
+  "label": "Getting Too Tense \u00b7 MAP28",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "17_TENSE_A3.dro",
+  "label": "Getting Too Tense \u00b7 MAP28",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "18_OPENIN_GM.mid",
+  "label": "Opening to Hell \u00b7 MAP30",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "18_OPENIN_MT.mid",
+  "label": "Opening to Hell \u00b7 MAP30",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "18_OPENIN_A2.dro",
+  "label": "Opening to Hell \u00b7 MAP30",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "18_OPENIN_A3.dro",
+  "label": "Opening to Hell \u00b7 MAP30",
+  "named": true,
+  "hidden": false
+ },
+ {
+  "file": "19_EVIL_GM.mid",
+  "label": "Evil Incarnate \u00b7 MAP31",
+  "named": true,
+  "hidden": false,
+  "note": "after Wolfenstein: Spear of Destiny \u2013 'Evil Incarnate'"
+ },
+ {
+  "file": "19_EVIL_MT.mid",
+  "label": "Evil Incarnate \u00b7 MAP31",
+  "named": true,
+  "hidden": false,
+  "note": "after Wolfenstein: Spear of Destiny \u2013 'Evil Incarnate'"
+ },
+ {
+  "file": "19_EVIL_A2.dro",
+  "label": "Evil Incarnate \u00b7 MAP31",
+  "named": true,
+  "hidden": false,
+  "note": "after Wolfenstein: Spear of Destiny \u2013 'Evil Incarnate'"
+ },
+ {
+  "file": "19_EVIL_A3.dro",
+  "label": "Evil Incarnate \u00b7 MAP31",
+  "named": true,
+  "hidden": false,
+  "note": "after Wolfenstein: Spear of Destiny \u2013 'Evil Incarnate'"
+ },
+ {
+  "file": "20_ULTIMA_GM.mid",
+  "label": "The Ultimate Challenge \u00b7 MAP32",
+  "named": true,
+  "hidden": false,
+  "note": "after Wolfenstein 3D \u2013 'Ultimate Conquest'"
+ },
+ {
+  "file": "20_ULTIMA_MT.mid",
+  "label": "The Ultimate Challenge \u00b7 MAP32",
+  "named": true,
+  "hidden": false,
+  "note": "after Wolfenstein 3D \u2013 'Ultimate Conquest'"
+ },
+ {
+  "file": "20_ULTIMA_A2.dro",
+  "label": "The Ultimate Challenge \u00b7 MAP32",
+  "named": true,
+  "hidden": false,
+  "note": "after Wolfenstein 3D \u2013 'Ultimate Conquest'"
+ },
+ {
+  "file": "20_ULTIMA_A3.dro",
+  "label": "The Ultimate Challenge \u00b7 MAP32",
+  "named": true,
+  "hidden": false,
+  "note": "after Wolfenstein 3D \u2013 'Ultimate Conquest'"
+ },
+ {
+  "file": "21_DM2INT_GM.mid",
+  "label": "Intermission",
+  "named": true,
+  "hidden": false,
+  "note": "between-level stat screen"
+ },
+ {
+  "file": "21_DM2INT_MT.mid",
+  "label": "Intermission",
+  "named": true,
+  "hidden": false,
+  "note": "between-level stat screen"
+ },
+ {
+  "file": "21_DM2INT_A2.dro",
+  "label": "Intermission",
+  "named": true,
+  "hidden": false,
+  "note": "between-level stat screen"
+ },
+ {
+  "file": "21_DM2INT_A3.dro",
+  "label": "Intermission",
+  "named": true,
+  "hidden": false,
+  "note": "between-level stat screen"
+ },
+ {
+  "file": "22_READ_M_GM.mid",
+  "label": "Read Me / Text Screen",
+  "named": true,
+  "hidden": false,
+  "note": "story text & cast-call screen"
+ },
+ {
+  "file": "22_READ_M_MT.mid",
+  "label": "Read Me / Text Screen",
+  "named": true,
+  "hidden": false,
+  "note": "story text & cast-call screen"
+ },
+ {
+  "file": "22_READ_M_A2.dro",
+  "label": "Read Me / Text Screen",
+  "named": true,
+  "hidden": false,
+  "note": "story text & cast-call screen"
+ },
+ {
+  "file": "22_READ_M_A3.dro",
+  "label": "Read Me / Text Screen",
+  "named": true,
+  "hidden": false,
+  "note": "story text & cast-call screen"
+ }
+]

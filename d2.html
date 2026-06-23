@@ -184,7 +184,7 @@
   #speed{width:64px}
   #speedV{display:inline-block;width:44px;text-align:right;margin-right:4px;font-variant-numeric:tabular-nums}
   #volV{display:inline-block;width:38px;text-align:right;font-variant-numeric:tabular-nums}
-  #mixV{display:inline-block;width:38px;text-align:right;font-variant-numeric:tabular-nums}
+  #mixV,#rvbV{display:inline-block;width:38px;text-align:right;font-variant-numeric:tabular-nums}
   .mlab{font-weight:400}
   .credit{margin-left:auto;display:flex;align-items:center;padding:0 12px;font-size:13px;
     color:var(--steel-emb);text-shadow:0 1px 0 rgba(255,255,255,.35);white-space:nowrap}
@@ -411,6 +411,7 @@
         <button type="button" class="gameopt" role="option" data-href="ea.html">EXTREME ASSAULT</button>
         <button type="button" class="gameopt" role="option" data-href="lba.html">LITTLE BIG ADVENTURE</button>
         <button type="button" class="gameopt sel" role="option" aria-selected="true" data-href="d2.html">DUNE II</button>
+        <button type="button" class="gameopt" role="option" data-href="dm2.html">DOOM II</button>
       </div></span><script>(function(){var nav=document.currentScript.previousElementSibling,btn=nav.querySelector('.gamesel-btn'),menu=nav.querySelector('.gamemenu');btn.addEventListener('click',function(e){e.stopPropagation();var o=menu.classList.toggle('open');btn.setAttribute('aria-expanded',o);});menu.querySelectorAll('.gameopt').forEach(function(o){o.addEventListener('click',function(){var h=o.dataset.href;if(h&&!o.classList.contains('sel'))location.href=h;});});document.addEventListener('click',function(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');});})();</script>
       <span class="hright">DUNE II: THE BUILDING OF A DYNASTY JUKEBOX</span>
     </div>
@@ -511,6 +512,7 @@
       <span class="dmeter"><b class="mlab" id="spdLab">SPEED</b> <input id="speed" type="range" min="0.25" max="2" step="0.05" value="1"><b id="speedV">100%</b></span>
       <span class="dmeter"><b class="mlab">VOL</b> <input id="vol" type="range" min="0" max="1" step="0.02" value="0.85"><b id="volV">85%</b></span>
       <span class="dmeter"><b class="mlab">MIX</b> <input id="mix" type="range" min="0" max="1" step="0.02" value="0" title="Blend L/R channels toward mono — easier on headphones"><b id="mixV">0%</b></span>
+      <span class="dmeter"><b class="mlab">RVB</b> <input id="rvb" type="range" min="0" max="100" step="1" value="0" title="Reverb — adds a post-processing reverb tail on top of the dry signal"><b id="rvbV">0%</b></span>
       </span>
       <button id="sfBtn" class="btn infobtn" title="Play the General MIDI version through the GeneralUser-GS SoundFont instead of the Roland SC-55 emulator">SOUNDFONT</button>
       <button id="lpBtn" class="btn infobtn" title="Low-performance mode: use lighter audio resampling if playback stutters on slow devices">LOW-PERF</button>
@@ -628,6 +630,7 @@ const UI = {
     $('speed').oninput=e=>{ const t=Engine.songTime(); Engine.speed=+e.target.value; $('speedV').textContent=Math.round(+e.target.value*100)+'%'; Engine.synthPos=Math.round((t/Engine.speed)*Engine.rate); Engine.frozenSong=t; Engine.anchored=false; };
     $('vol').oninput=e=>{ Engine.vol=+e.target.value; $('volV').textContent=Math.round(+e.target.value*100)+'%'; };
     $('mix').oninput=e=>{ Engine.blend=+e.target.value; $('mixV').textContent=Math.round(+e.target.value*100)+'%'; };
+    $('rvb').oninput=e=>{ Engine.setReverb(+e.target.value); $('rvbV').textContent=Math.round(+e.target.value)+'%'; };
     $('seek').oninput=e=>{ const T=(+e.target.value/1000)*Engine.duration; Engine.seekTo(T); $('seekfill').style.width=(+e.target.value/10)+'%'; $('t-cur').textContent=this.fmt(T); if(!Engine.playing) this.draw(); };
     list.onscroll=()=>this.syncScrollbar();
     window.addEventListener('keydown',e=>{

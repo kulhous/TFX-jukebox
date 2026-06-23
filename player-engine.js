@@ -279,7 +279,7 @@ const Engine = {
   onSf2Progress:null, // optional (loaded,total,done) callback the UI sets for the SF2 download bar
   events:[], notes:[], duration:0, channels:[],
   eventIdx:0, synthPos:0,
-  speed:1, vol:0.85, blend:0, playing:false, ended:false,
+  speed:1, vol:0.85, blend:0, reverb:0, playing:false, ended:false,
   ratio:1, frac:0, prevL:0,prevR:0,curL:0,curR:0,
   // hifi=true -> 8-tap Lanczos polyphase resampler. hifi=false -> cheap 2-tap
   // linear interpolation (fallback). Mobile uses the hi-fi path too now that the
@@ -341,7 +341,41 @@ const Engine = {
     this.ctx=ctx; this.ratio=this.rate/ctx.sampleRate;
     const node=ctx.createScriptProcessor(8192,0,2);
     node.onaudioprocess=e=>this.process(e);
-    node.connect(ctx.destination); this.node=node;
+    this.node=node;
+    // Reverb send: the synth node splits into a dry path (always unity) and a wet
+    // path through a ConvolverNode. The impulse response is synthesised in code
+    // (exponentially-decaying stereo noise) so there's no asset to download. The
+    // dry signal is never attenuated, so RVB=0 sounds identical to no reverb and
+    // higher values pile reverb on top (post-style send).
+    const dry=ctx.createGain(); dry.gain.value=1;
+    const wet=ctx.createGain(); wet.gain.value=0;
+    const conv=ctx.createConvolver();
+    conv.buffer=this._makeIR(ctx);
+    node.connect(dry); dry.connect(ctx.destination);
+    node.connect(conv); conv.connect(wet); wet.connect(ctx.destination);
+    this._dryGain=dry; this._wetGain=wet; this._conv=conv;
+    this.setReverb(this.reverb);
+  },
+
+  // Build a ~2.2s exponentially-decaying stereo noise impulse response for the
+  // convolution reverb. Slight L/R decorrelation gives the tail a bit of width.
+  _makeIR(ctx){
+    const sr=ctx.sampleRate, len=(sr*2.2)|0, ir=ctx.createBuffer(2,len,sr);
+    for(let c=0;c<2;c++){
+      const d=ir.getChannelData(c);
+      for(let i=0;i<len;i++){
+        const env=Math.pow(1-i/len, 2.5);   // smooth tail, ~exponential decay
+        d[i]=(Math.random()*2-1)*env;
+      }
+    }
+    return ir;
+  },
+
+  // RVB slider handler. pct is 0..100. Dry stays at unity; wet rises with pct so
+  // the reverb is added on top. pct 100 -> wet ~0.7 (strong but not drowning).
+  setReverb(pct){
+    this.reverb=pct;
+    if(this._wetGain) this._wetGain.gain.value = Math.max(0, pct/100) * 0.7;
   },
 
   loadSong(parsed){
