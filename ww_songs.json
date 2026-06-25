@@ -6,6 +6,12 @@
     "hidden": false
   },
   {
+    "file": "01_MT.mid",
+    "label": "01 - Apogee Fanfare",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "01_A2.dro",
     "label": "01 - Apogee Fanfare",
     "named": true,
@@ -13,6 +19,12 @@
   },
   {
     "file": "02_GM.mid",
+    "label": "02 - Main Menu",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "02_MT.mid",
     "label": "02 - Main Menu",
     "named": true,
     "hidden": false
@@ -30,6 +42,12 @@
     "hidden": false
   },
   {
+    "file": "03_MT.mid",
+    "label": "03 - Ashes",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "03_A2.dro",
     "label": "03 - Ashes",
     "named": true,
@@ -37,6 +55,12 @@
   },
   {
     "file": "04_GM.mid",
+    "label": "04 - Banshee",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "04_MT.mid",
     "label": "04 - Banshee",
     "named": true,
     "hidden": false
@@ -54,6 +78,12 @@
     "hidden": false
   },
   {
+    "file": "05_MT.mid",
+    "label": "05 - Bass Attack",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "05_A2.dro",
     "label": "05 - Bass Attack",
     "named": true,
@@ -61,6 +91,12 @@
   },
   {
     "file": "06_GM.mid",
+    "label": "06 - Brick Wall",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "06_MT.mid",
     "label": "06 - Brick Wall",
     "named": true,
     "hidden": false
@@ -78,6 +114,12 @@
     "hidden": false
   },
   {
+    "file": "07_MT.mid",
+    "label": "07 - Dance",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "07_A2.dro",
     "label": "07 - Dance",
     "named": true,
@@ -85,6 +127,12 @@
   },
   {
     "file": "08_GM.mid",
+    "label": "08 - Flight",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "08_MT.mid",
     "label": "08 - Flight",
     "named": true,
     "hidden": false
@@ -102,6 +150,12 @@
     "hidden": false
   },
   {
+    "file": "09_MT.mid",
+    "label": "09 - Kard",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "09_A2.dro",
     "label": "09 - Kard",
     "named": true,
@@ -109,6 +163,12 @@
   },
   {
     "file": "10_GM.mid",
+    "label": "10 - Overdrive",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "10_MT.mid",
     "label": "10 - Overdrive",
     "named": true,
     "hidden": false
@@ -126,6 +186,12 @@
     "hidden": false
   },
   {
+    "file": "11_MT.mid",
+    "label": "11 - Pumper",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "11_A2.dro",
     "label": "11 - Pumper",
     "named": true,
@@ -133,6 +199,12 @@
   },
   {
     "file": "12_GM.mid",
+    "label": "12 - Spacey",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "12_MT.mid",
     "label": "12 - Spacey",
     "named": true,
     "hidden": false
@@ -150,6 +222,12 @@
     "hidden": false
   },
   {
+    "file": "13_MT.mid",
+    "label": "13 - Star Brain",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "13_A2.dro",
     "label": "13 - Star Brain",
     "named": true,
@@ -157,6 +235,12 @@
   },
   {
     "file": "14_GM.mid",
+    "label": "14 - Turbo",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "14_MT.mid",
     "label": "14 - Turbo",
     "named": true,
     "hidden": false
@@ -174,6 +258,12 @@
     "hidden": false
   },
   {
+    "file": "15_MT.mid",
+    "label": "15 - Leaderboard",
+    "named": true,
+    "hidden": false
+  },
+  {
     "file": "15_A2.dro",
     "label": "15 - Leaderboard",
     "named": true,
@@ -181,6 +271,12 @@
   },
   {
     "file": "16_GM.mid",
+    "label": "16 - Game Over",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "16_MT.mid",
     "label": "16 - Game Over",
     "named": true,
     "hidden": false

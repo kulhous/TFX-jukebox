@@ -270,6 +270,10 @@
   @media (max-width:720px){
     body{font-size:12px;letter-spacing:0}
     .logo{font-size:18px}
+    header{padding:5px 8px 3px}
+    .htop{align-items:center;justify-content:space-between;gap:8px}
+    .hline,.hright{display:none}
+    .gamenav{margin-right:0}
     .hsub{gap:12px}
     /* show the notes/tracks switcher and collapse the split view to one pane */
     #mtabs{display:flex}
@@ -320,6 +324,8 @@
     /* condense the song-info header into one scrolling marquee line */
     .hsub{flex-wrap:nowrap;overflow:hidden;white-space:nowrap;margin-top:2px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%)}
     .hmarquee{display:inline-flex;gap:18px;padding-left:100%;animation:hmarq 24s linear infinite}
+    /* keep the track-list scrollbar clearly visible in the compact view */
+    #sbthumb{box-shadow:0 0 0 1px var(--mon-hi),0 0 6px rgba(0,0,0,.45)}
   }
 
   /* ============ MOBILE LANDSCAPE (rotated) — screen left, controls right ============ */
@@ -329,8 +335,11 @@
        control panel as a vertical strip down the right edge */
     #app{flex-direction:row;gap:7px}
     #screen{flex:1;min-width:0}
-    header{padding:5px 10px 3px}
+    header{padding:5px 8px 3px}
     .logo{font-size:16px}
+    .htop{align-items:center;justify-content:space-between;gap:8px}
+    .hline,.hright{display:none}
+    .gamenav{margin-right:0}
     /* condense song-info into a scrolling marquee */
     .hsub{flex-wrap:nowrap;overflow:hidden;white-space:nowrap;margin-top:2px;
       -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%);
