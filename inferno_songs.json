@@ -1,0 +1,320 @@
+[
+{
+"file": "INFERNO/9CU760U_RLD.mid",
+"drv": "RLD",
+"name": "9CU760U",
+"notes": 1948
+},
+{
+"file": "INFERNO/9K16M08_ADL.dro",
+"drv": "ADL",
+"name": "9K16M08",
+"notes": 57496
+},
+{
+"file": "INFERNO/9KF6604_ADL.dro",
+"drv": "ADL",
+"name": "9KF6604",
+"notes": 147353
+},
+{
+"file": "INFERNO/BADNEWS_RLD.mid",
+"drv": "RLD",
+"name": "BADNEWS",
+"notes": 3844
+},
+{
+"file": "INFERNO/BADNEWS_SCC.mid",
+"drv": "SCC",
+"name": "BADNEWS",
+"notes": 3685
+},
+{
+"file": "INFERNO/BADNEWS_ADL.dro",
+"drv": "ADL",
+"name": "BADNEWS",
+"notes": 171715
+},
+{
+"file": "INFERNO/DEATH_RLD.mid",
+"drv": "RLD",
+"name": "DEATH",
+"notes": 3283
+},
+{
+"file": "INFERNO/DEATH_SCC.mid",
+"drv": "SCC",
+"name": "DEATH",
+"notes": 3367
+},
+{
+"file": "INFERNO/DEATH_ADL.dro",
+"drv": "ADL",
+"name": "DEATH",
+"notes": 139774
+},
+{
+"file": "INFERNO/DRAMATIC_RLD.mid",
+"drv": "RLD",
+"name": "DRAMATIC",
+"notes": 879
+},
+{
+"file": "INFERNO/DRAMATIC_SCC.mid",
+"drv": "SCC",
+"name": "DRAMATIC",
+"notes": 399
+},
+{
+"file": "INFERNO/DRAMATIC_ADL.dro",
+"drv": "ADL",
+"name": "DRAMATIC",
+"notes": 92141
+},
+{
+"file": "INFERNO/HAPFINAL_RLD.mid",
+"drv": "RLD",
+"name": "HAPFINAL",
+"notes": 1948
+},
+{
+"file": "INFERNO/HAPFINAL_SCC.mid",
+"drv": "SCC",
+"name": "HAPFINAL",
+"notes": 8034
+},
+{
+"file": "INFERNO/HAPFINAL_ADL.dro",
+"drv": "ADL",
+"name": "HAPFINAL",
+"notes": 57496
+},
+{
+"file": "INFERNO/HAPPY_RLD.mid",
+"drv": "RLD",
+"name": "HAPPY",
+"notes": 4421
+},
+{
+"file": "INFERNO/HAPPY_SCC.mid",
+"drv": "SCC",
+"name": "HAPPY",
+"notes": 4675
+},
+{
+"file": "INFERNO/HAPPY_ADL.dro",
+"drv": "ADL",
+"name": "HAPPY",
+"notes": 163427
+},
+{
+"file": "INFERNO/HUMAN_RLD.mid",
+"drv": "RLD",
+"name": "HUMAN",
+"notes": 6190
+},
+{
+"file": "INFERNO/HUMAN_SCC.mid",
+"drv": "SCC",
+"name": "HUMAN",
+"notes": 6520
+},
+{
+"file": "INFERNO/HUMAN_ADL.dro",
+"drv": "ADL",
+"name": "HUMAN",
+"notes": 204244
+},
+{
+"file": "INFERNO/HUMATMOS_RLD.mid",
+"drv": "RLD",
+"name": "HUMATMOS",
+"notes": 4283
+},
+{
+"file": "INFERNO/HUMATMOS_SCC.mid",
+"drv": "SCC",
+"name": "HUMATMOS",
+"notes": 4276
+},
+{
+"file": "INFERNO/HUMATMOS_ADL.dro",
+"drv": "ADL",
+"name": "HUMATMOS",
+"notes": 161280
+},
+{
+"file": "INFERNO/MOON_RLD.mid",
+"drv": "RLD",
+"name": "MOON",
+"notes": 2700
+},
+{
+"file": "INFERNO/MOON_SCC.mid",
+"drv": "SCC",
+"name": "MOON",
+"notes": 2636
+},
+{
+"file": "INFERNO/MOON_ADL.dro",
+"drv": "ADL",
+"name": "MOON",
+"notes": 143438
+},
+{
+"file": "INFERNO/PLANET1_RLD.mid",
+"drv": "RLD",
+"name": "PLANET1",
+"notes": 6496
+},
+{
+"file": "INFERNO/PLANET1_SCC.mid",
+"drv": "SCC",
+"name": "PLANET1",
+"notes": 6665
+},
+{
+"file": "INFERNO/PLANET1_ADL.dro",
+"drv": "ADL",
+"name": "PLANET1",
+"notes": 206614
+},
+{
+"file": "INFERNO/PLANET2_RLD.mid",
+"drv": "RLD",
+"name": "PLANET2",
+"notes": 7737
+},
+{
+"file": "INFERNO/PLANET2_SCC.mid",
+"drv": "SCC",
+"name": "PLANET2",
+"notes": 8591
+},
+{
+"file": "INFERNO/PLANET2_ADL.dro",
+"drv": "ADL",
+"name": "PLANET2",
+"notes": 237717
+},
+{
+"file": "INFERNO/REXATMOS_RLD.mid",
+"drv": "RLD",
+"name": "REXATMOS",
+"notes": 4890
+},
+{
+"file": "INFERNO/REXATMOS_SCC.mid",
+"drv": "SCC",
+"name": "REXATMOS",
+"notes": 1732
+},
+{
+"file": "INFERNO/REXATMOS_ADL.dro",
+"drv": "ADL",
+"name": "REXATMOS",
+"notes": 144262
+},
+{
+"file": "INFERNO/REXXON_RLD.mid",
+"drv": "RLD",
+"name": "REXXON",
+"notes": 5935
+},
+{
+"file": "INFERNO/REXXON_SCC.mid",
+"drv": "SCC",
+"name": "REXXON",
+"notes": 5533
+},
+{
+"file": "INFERNO/REXXON_ADL.dro",
+"drv": "ADL",
+"name": "REXXON",
+"notes": 175556
+},
+{
+"file": "INFERNO/SADFINAL_RLD.mid",
+"drv": "RLD",
+"name": "SADFINAL",
+"notes": 3199
+},
+{
+"file": "INFERNO/SADFINAL_SCC.mid",
+"drv": "SCC",
+"name": "SADFINAL",
+"notes": 3047
+},
+{
+"file": "INFERNO/SADFINAL_ADL.dro",
+"drv": "ADL",
+"name": "SADFINAL",
+"notes": 128143
+},
+{
+"file": "INFERNO/SPACE1_RLD.mid",
+"drv": "RLD",
+"name": "SPACE1",
+"notes": 4822
+},
+{
+"file": "INFERNO/SPACE1_SCC.mid",
+"drv": "SCC",
+"name": "SPACE1",
+"notes": 4818
+},
+{
+"file": "INFERNO/SPACE1_ADL.dro",
+"drv": "ADL",
+"name": "SPACE1",
+"notes": 168260
+},
+{
+"file": "INFERNO/SPACE2_RLD.mid",
+"drv": "RLD",
+"name": "SPACE2",
+"notes": 2681
+},
+{
+"file": "INFERNO/SPACE2_SCC.mid",
+"drv": "SCC",
+"name": "SPACE2",
+"notes": 2697
+},
+{
+"file": "INFERNO/TAKEOFF_RLD.mid",
+"drv": "RLD",
+"name": "TAKEOFF",
+"notes": 3390
+},
+{
+"file": "INFERNO/TAKEOFF_SCC.mid",
+"drv": "SCC",
+"name": "TAKEOFF",
+"notes": 1177
+},
+{
+"file": "INFERNO/TAKEOFF_ADL.dro",
+"drv": "ADL",
+"name": "TAKEOFF",
+"notes": 149843
+},
+{
+"file": "INFERNO/TITLE_RLD.mid",
+"drv": "RLD",
+"name": "TITLE",
+"notes": 5155
+},
+{
+"file": "INFERNO/TITLE_SCC.mid",
+"drv": "SCC",
+"name": "TITLE",
+"notes": 4989
+},
+{
+"file": "INFERNO/TITLE_ADL.dro",
+"drv": "ADL",
+"name": "TITLE",
+"notes": 168500
+}
+]

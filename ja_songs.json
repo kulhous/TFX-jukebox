@@ -1,0 +1,272 @@
+[
+  {
+    "file": "01_MT.mid",
+    "label": "01 - Intro 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "01_GM.mid",
+    "label": "01 - Intro 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "01_A3.dro",
+    "label": "01 - Intro 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "02_MT.mid",
+    "label": "02 - Intro 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "02_GM.mid",
+    "label": "02 - Intro 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "02_A3.dro",
+    "label": "02 - Intro 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "03_MT.mid",
+    "label": "03 - Intro 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "03_GM.mid",
+    "label": "03 - Intro 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "03_A3.dro",
+    "label": "03 - Intro 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "04_MT.mid",
+    "label": "04 - Intro 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "04_GM.mid",
+    "label": "04 - Intro 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "04_A3.dro",
+    "label": "04 - Intro 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "05_MT.mid",
+    "label": "05 - Day 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "05_GM.mid",
+    "label": "05 - Day 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "05_A3.dro",
+    "label": "05 - Day 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "06_MT.mid",
+    "label": "06 - Day 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "06_GM.mid",
+    "label": "06 - Day 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "06_A3.dro",
+    "label": "06 - Day 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "07_MT.mid",
+    "label": "07 - Day 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "07_GM.mid",
+    "label": "07 - Day 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "07_A3.dro",
+    "label": "07 - Day 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "08_MT.mid",
+    "label": "08 - Day 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "08_GM.mid",
+    "label": "08 - Day 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "08_A3.dro",
+    "label": "08 - Day 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "09_MT.mid",
+    "label": "09 - Day 5",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "09_GM.mid",
+    "label": "09 - Day 5",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "09_A3.dro",
+    "label": "09 - Day 5",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "10_MT.mid",
+    "label": "10 - Day 6",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "10_GM.mid",
+    "label": "10 - Day 6",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "10_A3.dro",
+    "label": "10 - Day 6",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "11_MT.mid",
+    "label": "11 - Menus 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "11_GM.mid",
+    "label": "11 - Menus 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "11_A3.dro",
+    "label": "11 - Menus 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "12_MT.mid",
+    "label": "12 - Menus 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "12_GM.mid",
+    "label": "12 - Menus 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "12_A3.dro",
+    "label": "12 - Menus 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "13_MT.mid",
+    "label": "13 - Menus 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "13_GM.mid",
+    "label": "13 - Menus 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "13_A3.dro",
+    "label": "13 - Menus 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "14_MT.mid",
+    "label": "14 - Menus 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "14_GM.mid",
+    "label": "14 - Menus 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "14_A3.dro",
+    "label": "14 - Menus 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "15_MT.mid",
+    "label": "15 - Menus 5",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "15_GM.mid",
+    "label": "15 - Menus 5",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "15_A3.dro",
+    "label": "15 - Menus 5",
+    "named": true,
+    "hidden": false
+  }
+]

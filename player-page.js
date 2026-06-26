@@ -20,6 +20,15 @@ export function initPlayer(GAME) {
     backdrop: '#13180f',          // piano-roll canvas backdrop fill
     name: s => s._name,           // display name (track header + media title)
   }, GAME);
+  // Piano-roll palette (radar grid, hit line, keyboard). Defaults are the
+  // olive/khaki phosphor shared by every page; a page may override any subset
+  // via GAME.roll (e.g. inferno's red CRT) without forking the controller.
+  GAME.roll = Object.assign({
+    arc: 'rgba(115,129,90,.16)', hit: 'rgba(233,239,206,.6)', noteBorder: 'rgba(233,239,206,.85)',
+    kbBg: '#0e120a', whiteStroke: '#3a3f30',
+    white: [206, 212, 184], whiteOn: [233, 239, 206], whiteFlash: [253, 231, 120],
+    black: [28, 32, 22], blackOn: [70, 80, 55], blackFlash: [160, 200, 110],
+  }, GAME.roll || {});
   if (GAME.palette) setChannelPalette(GAME.palette);
 
   const UI = {
@@ -324,16 +333,17 @@ export function initPlayer(GAME) {
       const cx = this.cx, W = this.W, H = this.H; if (!W || !this.keys) return;
       const kbH = Math.min(120, Math.max(78, H * 0.20)), hit = H - kbH, look = 3.0;
       if (hit <= 0) return;   // roll pane hidden/too short (e.g. mobile TRACKS view) — skip drawing
+      const RC = GAME.roll;
       cx.fillStyle = GAME.backdrop; cx.fillRect(0, 0, W, H);
       // radar arcs + grid backdrop
-      cx.strokeStyle = 'rgba(115,129,90,.16)'; cx.lineWidth = 1;
+      cx.strokeStyle = RC.arc; cx.lineWidth = 1;
       const cxn = W / 2, cyn = hit * 0.52, R = Math.min(W, hit) * 0.46;
       for (let k = 1; k <= 3; k++) { cx.beginPath(); cx.arc(cxn, cyn, R * k / 3, 0, Math.PI * 2); cx.stroke(); }
       cx.beginPath(); cx.moveTo(cxn, cyn - R); cx.lineTo(cxn, cyn + R); cx.moveTo(cxn - R, cyn); cx.lineTo(cxn + R, cyn); cx.stroke();
       // black-key lane shading
       for (let p = LOW; p <= HIGH; p++) if (!isWhite(p)) { const k = this.keys[p]; cx.fillStyle = 'rgba(0,0,0,.14)'; cx.fillRect(k.x, 0, k.w, hit); }
       // hit line
-      cx.strokeStyle = 'rgba(233,239,206,.6)'; cx.lineWidth = 2; cx.beginPath(); cx.moveTo(0, hit); cx.lineTo(W, hit); cx.stroke();
+      cx.strokeStyle = RC.hit; cx.lineWidth = 2; cx.beginPath(); cx.moveTo(0, hit); cx.lineTo(W, hit); cx.stroke();
 
       const now = Engine.songTime();
       const FADE = 0.5; const flashes = {}, held = {};
@@ -355,29 +365,29 @@ export function initPlayer(GAME) {
           cx.fillStyle = this._chPat[nt.channel];
           this.rr(cx, k.x + 0.7, top, k.w - 1.4, h, 2); cx.fill();
           // light border so notes (incl. dark channel shades) stay legible on the dark roll
-          cx.globalAlpha = muted ? 0.10 : 0.9; cx.strokeStyle = 'rgba(233,239,206,.85)'; cx.lineWidth = 1;
+          cx.globalAlpha = muted ? 0.10 : 0.9; cx.strokeStyle = RC.noteBorder; cx.lineWidth = 1;
           this.rr(cx, k.x + 0.7 + 0.5, top + 0.5, k.w - 1.4 - 1, Math.max(2, h - 1), 2); cx.stroke();
         }
       }
       cx.globalAlpha = 1;
       // keyboard: white keys, then black keys on top
-      cx.fillStyle = '#0e120a'; cx.fillRect(0, hit, W, kbH);
+      cx.fillStyle = RC.kbBg; cx.fillRect(0, hit, W, kbH);
       for (let p = LOW; p <= HIGH; p++) if (isWhite(p)) {
         const k = this.keys[p];
         const f = flashes[p] || 0;
-        const sus = held[p] ? [233, 239, 206] : [206, 212, 184];
-        const fl = [253, 231, 120];
+        const sus = held[p] ? RC.whiteOn : RC.white;
+        const fl = RC.whiteFlash;
         const r = sus[0] + (fl[0] - sus[0]) * f, g = sus[1] + (fl[1] - sus[1]) * f, b = sus[2] + (fl[2] - sus[2]) * f;
         cx.fillStyle = `rgb(${r | 0},${g | 0},${b | 0})`;
         cx.fillRect(k.x + 0.5, hit + 1, k.w - 1, kbH - 2);
-        cx.strokeStyle = '#3a3f30'; cx.lineWidth = 1; cx.strokeRect(k.x + 0.5, hit + 1, k.w - 1, kbH - 2);
+        cx.strokeStyle = RC.whiteStroke; cx.lineWidth = 1; cx.strokeRect(k.x + 0.5, hit + 1, k.w - 1, kbH - 2);
       }
       const bkH = kbH * 0.62;
       for (let p = LOW; p <= HIGH; p++) if (!isWhite(p)) {
         const k = this.keys[p];
         const f = flashes[p] || 0;
-        const sus = held[p] ? [70, 80, 55] : [28, 32, 22];
-        const fl = [160, 200, 110];
+        const sus = held[p] ? RC.blackOn : RC.black;
+        const fl = RC.blackFlash;
         const r = sus[0] + (fl[0] - sus[0]) * f, g = sus[1] + (fl[1] - sus[1]) * f, b = sus[2] + (fl[2] - sus[2]) * f;
         cx.fillStyle = `rgb(${r | 0},${g | 0},${b | 0})`;
         cx.fillRect(k.x, hit, k.w, bkH);

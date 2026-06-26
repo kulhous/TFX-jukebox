@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Wacky Wheels · General MIDI / MT-32 / AdLib</title>
+<title>Jagged Alliance · Roland MT-32 / General MIDI / AdLib</title>
 <style>
   @font-face{
     font-family:"TFX Pixel";
@@ -11,9 +11,9 @@
     font-weight:normal;font-style:normal;font-display:block;
   }
   :root{
-    /* yellow-orange-on-blue (Wacky Wheels leaderboard / menu palette) */
-    --bg:#1a1aa6; --mon:#10107a; --mon-ink:#ffb22e; --mon-ink2:#cf8a24; --mon-line:#9a6a1e; --mon-hi:#ffd860;
-    --screen:#0a0a52;
+    /* olive-on-jungle UI (Jagged Alliance tactical / military palette) */
+    --bg:#161a0f; --mon:#13160c; --mon-ink:#b3c43e; --mon-ink2:#869439; --mon-line:#525d24; --mon-hi:#e4f0a4;
+    --screen:#0e1208;
     /* real brushed steel */
     --steel:#9498a0; --steel-lt:#e2e5e9; --steel-dk:#2c2f35; --steel-emb:#15171b; --steel-ink:#eef0f2;
     --steel-grad:linear-gradient(180deg,#c4c8cd 0%,#9a9ea6 46%,#6b7078 100%);
@@ -21,7 +21,7 @@
     --warn:#fde725;
   }
   *{box-sizing:border-box}
-  html,body{margin:0;height:100%;background:#06063a;overflow:hidden}
+  html,body{margin:0;height:100%;background:#081816;overflow:hidden}
   body{font-family:"TFX Pixel","Lucida Console","DejaVu Sans Mono",Consolas,monospace;
     color:var(--mon-ink);text-transform:uppercase;letter-spacing:0;font-size:13px;
     -webkit-font-smoothing:none}
@@ -29,14 +29,10 @@
   #app{position:relative;display:flex;flex-direction:column;height:100%;gap:7px;padding:7px;
     background:var(--steel-grad),repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 1px,rgba(0,0,0,.025) 1px 2px)}
   /* recessed green screen */
-  #screen{position:relative;flex:1;display:flex;flex-direction:column;min-height:0;overflow:hidden;
-    /* royal-blue checkerboard, like the in-game leaderboard / menu screens */
-    background:
-      conic-gradient(from 90deg at 50% 50%,#16168f 0 25%,#0d0d63 0 50%,#16168f 0 75%,#0d0d63 0) 0 0/40px 40px,
-      var(--bg);
+  #screen{position:relative;flex:1;display:flex;flex-direction:column;min-height:0;background:var(--bg);overflow:hidden;
     border-top:2px solid var(--steel-dk);border-left:2px solid var(--steel-dk);
     border-right:2px solid var(--steel-lt);border-bottom:2px solid var(--steel-lt);
-    box-shadow:inset 0 0 0 1px #04043a, inset 0 0 26px rgba(0,0,0,.45)}
+    box-shadow:inset 0 0 0 1px #04110d, inset 0 0 26px rgba(0,0,0,.45)}
   #screen::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:60;
     background:repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0 1px,transparent 1px 3px),
       radial-gradient(125% 125% at 50% 45%,transparent 62%,rgba(0,0,0,.4) 100%)}
@@ -54,12 +50,8 @@
   /* ---- header ---- */
   header{padding:7px 12px 4px}
   .htop{display:flex;align-items:flex-end;gap:12px}
-  .logo{position:relative;z-index:70;font-size:22px;font-weight:700;letter-spacing:0;line-height:.9;
-    /* per-letter vertical gradient like the in-game beveled text (a vertical
-       background clipped to the glyphs gives every letter the same top->bottom ramp) */
-    background:linear-gradient(180deg,#fff6c0 0%,#ffe14a 40%,#ff9e1f 70%,#d4641a 100%);
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
-    text-shadow:0 1px 0 rgba(70,30,0,.45)}
+  .logo{font-size:22px;font-weight:700;color:var(--mon-hi);letter-spacing:0;line-height:.9;
+    text-shadow:0 0 7px rgba(120,235,205,.4)}
   .hline{flex:1;height:0;border-top:1px solid var(--mon-line);box-shadow:0 1px 0 rgba(0,0,0,.35);margin-bottom:5px}
   .hright{color:var(--mon-ink2);font-size:11px;margin-bottom:1px}
   .xlink{color:var(--screen);background:var(--mon-ink2);text-decoration:none;
@@ -125,16 +117,11 @@
   #songlist::-webkit-scrollbar{display:none}
   .song{display:flex;align-items:center;gap:9px;height:24px;padding:0 10px;cursor:pointer;color:var(--mon-ink);
     border-bottom:1px solid rgba(53,125,111,.20);font-size:13px;line-height:1;white-space:nowrap;overflow:hidden}
-  .song .nm{overflow:hidden;text-overflow:ellipsis;
-    /* same per-letter yellow->orange gradient as the leaderboard names */
-    background:linear-gradient(180deg,#fff6c0 0%,#ffe14a 42%,#ff9e1f 70%,#d4641a 100%);
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+  .song .nm{overflow:hidden;text-overflow:ellipsis}
   .song .tid{flex:none;width:30px;box-sizing:border-box;font-size:13px;line-height:1;color:var(--screen);background:var(--mon-line);
     border-radius:3px;padding:3px 4px;opacity:.85;font-variant-numeric:tabular-nums;text-align:center}
   .song:hover{background:rgba(53,125,111,.20)}
   .song.sel{background:var(--mon-line);color:var(--screen)}
-  /* selected row sits on a light bar -> drop the gradient for legibility */
-  .song.sel .nm{background:none;-webkit-text-fill-color:var(--screen);color:var(--screen)}
   .song.playing{box-shadow:inset 3px 0 0 var(--warn)}
   /* driver icons / badges */
   .dchip{flex:none;width:34px;box-sizing:border-box;font-size:13px;letter-spacing:0;padding:3px 0;border-radius:2px;
@@ -255,8 +242,9 @@
   /* ---- desktop settings buttons: compact icon squares (save space) ----
      SOUNDFONT / LOW-PERF / REPEAT / AUTO / INFO collapse to single TFX-font
      icons so the transport row + credit always fit, even on smaller desktops */
-  .infobtn{margin-left:auto;font-size:0;width:34px;padding:0;text-align:center;
+  .infobtn{margin-left:0;font-size:0;width:34px;padding:0;text-align:center;
     display:inline-flex;align-items:center;justify-content:center}
+  #sfBtn.infobtn{margin-left:8px}
   .infobtn + .infobtn{margin-left:0}
   .infobtn::before{font-family:inherit;font-size:18px;line-height:1;letter-spacing:0}
   #sfBtn.infobtn::before{content:"\E003"}      /* SoundFont — music note */
@@ -264,7 +252,7 @@
   #repeatBtn.infobtn::before{content:"\E000"}  /* Repeat — loop */
   #autoBtn.infobtn::before{content:"\E001"}    /* Autoadvance — next */
   #infoBtn.infobtn::before{content:"\E004"}    /* Info — i */
-  .infobtn + .credit{margin-left:10px;padding-left:0}
+  .infobtn + .credit{margin-left:auto;padding-left:12px}
 
   /* ---- ABOUT panel: embedded in the green monitor, replaces roll + list ---- */
   /* sits inside #screen (inset:0) and uses the TFX Pixel font like everything
@@ -412,23 +400,23 @@
   <div id="screen">
   <header>
     <div class="htop">
-      <span class="logo">WACKY</span>
+      <span class="logo">JAGGED ALLIANCE</span>
       <span class="hline"></span>
-      <span class="gamenav"><button type="button" class="gamesel-btn" aria-haspopup="listbox" aria-expanded="false" title="Switch jukebox">WACKY WHEELS</button><div class="gamemenu" role="listbox">
+      <span class="gamenav"><button type="button" class="gamesel-btn" aria-haspopup="listbox" aria-expanded="false" title="Switch jukebox">JAGGED ALLIANCE</button><div class="gamemenu" role="listbox">
         <button type="button" class="gameopt" role="option" data-href="index.html">TFX</button>
         <button type="button" class="gameopt" role="option" data-href="inferno.html">INFERNO</button>
         <button type="button" class="gameopt" role="option" data-href="ufo.html">X-COM</button>
         <button type="button" class="gameopt" role="option" data-href="tftd.html">X-COM TFTD</button>
         <button type="button" class="gameopt" role="option" data-href="wc2.html">WARCRAFT II</button>
         <button type="button" class="gameopt" role="option" data-href="df.html">DARK FORCES</button>
-        <button type="button" class="gameopt sel" role="option" aria-selected="true" data-href="ww.html">WACKY WHEELS</button>
+        <button type="button" class="gameopt" role="option" data-href="ww.html">WACKY WHEELS</button>
         <button type="button" class="gameopt" role="option" data-href="ea.html">EXTREME ASSAULT</button>
         <button type="button" class="gameopt" role="option" data-href="lba.html">LITTLE BIG ADVENTURE</button>
         <button type="button" class="gameopt" role="option" data-href="d2.html">DUNE II</button>
         <button type="button" class="gameopt" role="option" data-href="dm2.html">DOOM II</button>
-        <button type="button" class="gameopt" role="option" data-href="ja.html">JAGGED ALLIANCE</button>
+        <button type="button" class="gameopt sel" role="option" aria-selected="true" data-href="ja.html">JAGGED ALLIANCE</button>
       </div></span><script>(function(){var nav=document.currentScript.previousElementSibling,btn=nav.querySelector('.gamesel-btn'),menu=nav.querySelector('.gamemenu');btn.addEventListener('click',function(e){e.stopPropagation();var o=menu.classList.toggle('open');btn.setAttribute('aria-expanded',o);});menu.querySelectorAll('.gameopt').forEach(function(o){o.addEventListener('click',function(){var h=o.dataset.href;if(h&&!o.classList.contains('sel'))location.href=h;});});document.addEventListener('click',function(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');});})();</script>
-      <span class="hright">WACKY WHEELS JUKEBOX</span>
+      <span class="hright">JAGGED ALLIANCE JUKEBOX</span>
     </div>
     <div class="hsub">
       <div class="hmarquee">
@@ -437,8 +425,8 @@
       <span>DRIVER: <b id="st-drv">—</b></span>
       <span>NOTES: <b id="st-notes">0</b></span>
       <span>CHANNELS: <b id="st-ch">0</b></span>
-      <span>SYNTH: <b id="st-synth">SC-55 v1.21 (SCC-1)</b></span>
-      <span>SOURCE: <b id="st-src">WACKY.DAT (General MIDI)</b></span>
+      <span>SYNTH: <b id="st-synth">MT-32 / CM-32L (Munt)</b></span>
+      <span>SOURCE: <b id="st-src">ja/misc (Miles XMI / MADLAB FM)</b></span>
       </div>
     </div>
   </header>
@@ -454,7 +442,7 @@
         <button class="fbtn on" data-f="ALL">ALL</button>
         <button class="fbtn" data-f="GM"><span class="dchip gm">GM</span>Gen MIDI</button>
         <button class="fbtn" data-f="MT"><span class="dchip mt">MT</span>MT-32</button>
-        <button class="fbtn" data-f="A2"><span class="dchip o2">O2</span>AdLib</button>
+        <button class="fbtn" data-f="A3"><span class="dchip o3">FM</span>AdLib</button>
       </div>
       <div id="listwrap">
         <div id="songlist"></div>
@@ -474,24 +462,26 @@
   <div id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
     <div class="imodal">
       <div class="imodal-h">
-        <span class="t" id="infoTitle">ABOUT -- WACKY WHEELS MUSIC / GENERAL MIDI / MT-32 / ADLIB</span>
+        <span class="t" id="infoTitle">ABOUT -- JAGGED ALLIANCE MUSIC / ROLAND MT-32 / GENERAL MIDI / ADLIB</span>
       </div>
       <div class="imodal-body">
-        <h2>Mark Klem's go-kart soundtrack, three ways.</h2>
-        <p>Wacky Wheels (Beavis Soft / Apogee Software, 1994) stored its music inside <strong>WACKY.DAT</strong> as two parallel sets of files, never as recorded audio: a <strong>General MIDI</strong> Standard MIDI File and a custom <strong>AdLib</strong> FM track (a <strong>.KLM</strong> file) for every cue. This jukebox plays both side by side, plus a third <strong>Roland MT-32</strong> rendition the game never shipped (see below). Use the <strong>Gen MIDI / MT-32 / AdLib</strong> filter to switch between them. The score is by <strong>Mark Klem</strong> (the KLM format is named after him).</p>
+        <h2>A mercenary war, three ways.</h2>
+        <p>Jagged Alliance (Sir-Tech, 1994) &mdash; the turn-based tactical game where you hire a squad of mercenaries to liberate the island of Metavira. Its score is stored not as recorded audio but as compact per-device event data driven by the <strong>Miles Sound System</strong> (AIL): AIL/Miles <strong>XMI</strong> for the Roland MT-32 and AdLib, and a matching <strong>General-MIDI</strong> XMI set for the Roland SC-55. The cues live in three banks &mdash; <code>INTRO</code>, <code>DAY</code> and <code>MENUS</code> &mdash; each holding several indexed sub-songs; this jukebox plays three device renditions of every cue side by side &mdash; the <strong>Roland MT-32</strong> score, the <strong>General MIDI</strong> Sound Canvas version, and the <strong>AdLib / OPL</strong> FM build. Use the <strong>MT-32 / Gen MIDI / AdLib</strong> filter to switch between them.</p>
 
-        <h2>General MIDI: the Sound Canvas mix</h2>
-        <p>The General-MIDI files are ordinary multi-timbral SMFs (one part per channel with standard GM instruments and a dedicated drum channel). We play them on a <strong>Roland SC-55 / SCC-1</strong> Sound Canvas &mdash; the synth that defined the GM sound of the mid-90s &mdash; for a cleaner, fuller rendition than the FM build. The <strong>FONT</strong> toggle re-renders the same MIDI through the GeneralUser-GS SoundFont if you prefer.</p>
+        <h2>Roland MT-32: the native AIL score</h2>
+        <p>The <code>INTRO.XMI</code>, <code>DAY.XMI</code> and <code>MENUS.XMI</code> banks carry the game's native Miles score (each sub-song includes a <code>TIMB</code> timbre list of the patches it loads). We split out each cue's sub-song, convert its XMI to a Standard MIDI File (a port of Exult's XMidiFile timing model) and render it through the <strong>Munt</strong> CM-32L emulator &mdash; the same MT-32 backend the sister TFX jukebox uses.</p>
 
-        <h2>Roland MT-32: a fan driver, emulated</h2>
-        <p>Wacky Wheels shipped no native MT-32 score, so this path is something the game never had. It is produced by the real <strong>MT32GM</strong> driver (MPU401.MDI) &mdash; a fan-made Miles Sound System&nbsp;3 driver by Mok that lets an MT-32 owner play General-MIDI-only games by translating GM into the MT-32's world. We load the actual 16-bit DOS driver into a <strong>Unicorn</strong> x86 CPU emulator, act as the Miles/AIL host, and drive it exactly as the game would: open the &ldquo;Roland MT-32 General MIDI with MPU-401&rdquo; device, preload the timbres each cue needs, then feed it the cue's GM events. The captured MT-32 byte stream is replayed through the <strong>Munt</strong> CM-32L emulator shared with the TFX jukebox &mdash; the same driver the Warcraft II jukebox uses.</p>
+        <h2>General MIDI: the Sound Canvas version</h2>
+        <p>Jagged Alliance ships a <strong>separate</strong> General-MIDI score in the <code>INTROGM.XMI</code>, <code>DAYGM.XMI</code> and <code>MENUSGM.XMI</code> banks &mdash; standard GM programs and bank-select for a Roland SC-55 / SCC-1, not the MT-32 data replayed on a GM chip. We convert each cue's GM sub-song to a Standard MIDI File and render it through WebAssembly <strong>Nuked-SC55</strong>, so the patches map as the Sound Canvas mix intended.</p>
 
-        <h2>AdLib: two-operator OPL2 FM</h2>
-        <p>The AdLib build is the game's own <strong>.KLM</strong> FM music, played on a Yamaha <strong>OPL2 (YM3812)</strong> &mdash; the two-operator FM chip in the original AdLib and Sound Blaster cards. KLM is essentially an OPL2 register script with named instruments: a header of <strong>11-byte FM patches</strong> followed by an event stream of note, frequency, volume, instrument and delay commands on six melodic channels plus the chip's five rhythm-mode percussion voices (bass drum / snare / tom / cymbal / hi-hat). We walk that stream exactly like the game driver, emit the corresponding OPL register writes, capture them as a DOSBox raw-OPL (DRO) log, and replay it through a cycle-accurate <strong>Nuked-OPL3</strong> emulator &mdash; the same FM backend the Warcraft II and Dark Forces AdLib jukeboxes use.</p>
+        <h2>AdLib: Miles OPL FM</h2>
+        <p>The AdLib build replays the same native (non-GM) XMI through the game's <strong>own Miles/AIL OPL instrument bank</strong>, <code>MADLAB.AD</code> (== <code>MADLAB.OPL</code>) &mdash; 161 melodic + 34 percussion FM timbres. We convert that AIL bank to a WOPL bank, drive each cue's XMI through <strong>libADLMIDI</strong> with it, capture every <strong>OPL</strong> register write to a DRO log, and play that log back through a cycle-accurate <strong>Nuked-OPL3</strong> emulator in your browser &mdash; exactly as a 1994 AdLib / Sound Blaster card rendered it.</p>
+
+        <h2>Which cue is which</h2>
+        <p>The first sub-song slot of every bank is an empty stub; the real cues are the remaining indices. They are grouped by source bank: the <strong>Intro</strong> cinematic themes, the in-game <strong>Day</strong> (sector / map) tracks, and the <strong>Menus</strong> / laptop themes. Exact in-game titles are not stored in the data, so cues are labelled by bank and order.</p>
 
         <h2>How this works</h2>
-        <p>Both file sets were extracted from <strong>WACKY.DAT</strong>. The GM SMFs play directly on the SC-55; each KLM is parsed (format documented by Malvineous on ModdingWiki and in Camoto/libgamemusic) into an OPL register log, then played in your browser:</p>
-        <div class="ichain"><span>1994 Wacky Wheels WACKY.DAT</span><span>-&gt; Standard MIDI File / MT32GM driver / KLM OPL register log</span><span>-&gt; SMF / DRO</span><span>-&gt; JavaScript timing</span><span>-&gt; WebAssembly Nuked-SC55 (GM) / Munt CM-32L (MT-32) / Nuked-OPL3 (AdLib)</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
+        <div class="ichain"><span>1994 Jagged Alliance ja/misc Miles XMI banks</span><span>-&gt; XMI (MT-32 / AdLib) + GM XMI (SC-55)</span><span>-&gt; per-cue single-song XMI + MADLAB AIL-&gt;WOPL bank</span><span>-&gt; SMF (Exult timing) / libADLMIDI OPL register log</span><span>-&gt; SMF / DRO</span><span>-&gt; JavaScript timing</span><span>-&gt; WebAssembly Munt CM-32L (MT-32) / Nuked-SC55 (GM) / Nuked-OPL3 (AdLib)</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
         <p>The synthesis engine, ROM images and UI are shared with the sister TFX jukebox -- only the music converters and this page are new.</p>
         <p class="sig">-- a companion to the TFX jukebox</p>
       </div>
@@ -531,8 +521,8 @@
       <button id="lpBtn" class="btn infobtn" title="Low-performance mode: use lighter audio resampling if playback stutters on slow devices">LOW-PERF</button>
       <button id="repeatBtn" class="btn infobtn" title="Repeat: when the song ends, play it again from the beginning">REPEAT</button>
       <button id="autoBtn" class="btn infobtn" title="Autoadvance: when the song ends, automatically play the next song in the list">AUTO</button>
-      <button id="infoBtn" class="btn infobtn" title="About this jukebox — General MIDI, MT-32 and AdLib">INFO</button>
-      <span class="credit"><a href="https://en.wikipedia.org/wiki/Wacky_Wheels" target="_blank" rel="noopener">MUSIC BY MARK KLEM · BEAVIS SOFT / APOGEE 1994</a></span>
+      <button id="infoBtn" class="btn infobtn" title="About this jukebox — Roland MT-32, General MIDI and AdLib">INFO</button>
+      <span class="credit"><a href="https://en.wikipedia.org/wiki/Jagged_Alliance_(1994_video_game)" target="_blank" rel="noopener">JAGGED ALLIANCE · SIR-TECH 1994</a></span>
     </div>
   </div>
 </div>
@@ -542,46 +532,45 @@
 <script src="opl3.js"></script>
 <script type="module">
 import { initPlayer } from './player-page.js';
-const DRVORD = {GM:0,MT:1,A2:2,A3:3};
+const DRVORD = {MT:0,GM:1,A3:2};
 initPlayer({
-  songsUrl: 'ww_songs.json',
-  path: s => 'ww/' + s.file,
-  palette: ['#0a0a52','#7a5616','#cf8a24','#ffb22e','#ffd860'],
-  backdrop: '#13180f',
+  songsUrl: 'ja_songs.json',
+  path: s => 'ja/' + s.file,
+  palette: ['#0e1208','#3a431a','#869439','#b3c43e','#e4f0a4'],
+  backdrop: '#11160c',
   sort: (a,b)=>
-      a._name.localeCompare(b._name,undefined,{sensitivity:'base',numeric:true}) ||
+      a._tid-b._tid ||
       (DRVORD[a._filt]??9)-(DRVORD[b._filt]??9) ||
-      a._tid-b._tid,
+      a._name.localeCompare(b._name,undefined,{sensitivity:'base',numeric:true}),
   prepare(s, i){
-      // Wacky Wheels ships two arrangements per cue (WACKY.DAT): the filename
-      // token picks the backend: _GM. -> SC-55 (SCC) General MIDI, _A2. -> OPL2
-      // AdLib (KLM rendered to a DRO register log on the Nuked-OPL3 backend).
-      const tok=(/_(GM|MT|A2|A3)\./.exec(s.file)||[,'GM'])[1];
+      // Jagged Alliance ships three Miles renditions per cue: _MT. -> the native
+      // AIL MT-32 score (Munt), _GM. -> the General-MIDI score (SC-55), _A3. ->
+      // the AdLib FM build (the non-GM XMI through the MADLAB OPL bank, Nuked-OPL3).
+      const tok=(/_(GM|MT|A3)\./.exec(s.file)||[,'GM'])[1];
       s._filt=tok;
-      s._drv={GM:'SCC',MT:'RLD',A2:'ADL',A3:'ADL'}[tok];
-      s._dev={GM:'General MIDI',MT:'Roland MT-32',A2:'AdLib (OPL2)',A3:'SoundBlaster (OPL3)'}[tok];
-      s._name=s.label.replace(/\s*\((?:GM|A2|A3)\)\s*$/,'');
+      s._drv={GM:'SCC',MT:'RLD',A3:'ADL'}[tok];
+      s._dev={GM:'General MIDI',MT:'Roland MT-32',A3:'AdLib (OPL)'}[tok];
+      s._name=s.label;
       s._tid=+(s.label.match(/^(\d+)/)||[,1e9])[1];
     s._key = s._filt;
   },
   chip(s){
     const DCH={GM:['gm','GM','General MIDI — Roland SC-55 / SCC-1'],
-                 MT:['mt','MT','Roland MT-32 — Mok\u2019s MT32GM Miles driver (MPU401.MDI), Munt CM-32L'],
-                 A2:['o2','O2','AdLib / OPL2 FM — YM3812 (Wacky Wheels KLM bank)'],
-                 A3:['o3','O3','SoundBlaster / OPL3 FM — YMF262']};
+                 MT:['mt','MT','Roland MT-32 — native AIL/Miles XMI, Munt CM-32L'],
+                 A3:['o3','FM','AdLib / OPL FM — Miles MADLAB bank, Nuked-OPL3']};
     return DCH[s._key] || DCH.GM;
   },
   status(s, sf2){
     return {
-      drv: {GM:'GEN MIDI',MT:'MT-32',A2:'ADLIB',A3:'SNDBLAST'}[s._filt]||s._filt,
+      drv: {GM:'GEN MIDI',MT:'MT-32',A3:'ADLIB'}[s._filt]||s._filt,
       synth: (sf2 && s._filt==='GM') ? 'GeneralUser-GS (SoundFont)'
-      : ({GM:'SC-55 v1.21 (SCC-1)',MT:'MT-32 / CM-32L (Munt)',A2:'OPL2 · Nuked-OPL3 (YM3812)',A3:'OPL3 · Nuked-OPL3 (YMF262)'}[s._filt]||s._filt),
-      src: {GM:'WACKY.DAT (General MIDI)',MT:'WACKY.DAT (GM \u2192 MT-32 driver)',A2:'WACKY.DAT (AdLib KLM / OPL2)',A3:'WACKY.DAT (SoundBlaster OPL3)'}[s._filt]||s._filt,
+      : ({GM:'SC-55 v1.21 (SCC-1)',MT:'MT-32 / CM-32L (Munt)',A3:'OPL3 · Nuked-OPL3 (Miles MADLAB)'}[s._filt]||s._filt),
+      src: {GM:'GM XMI bank (SC-55)',MT:'AIL XMI bank (MT-32)',A3:'AIL XMI + MADLAB FM bank (OPL)'}[s._filt]||s._filt,
     };
   },
   media(s){
-    const dev={GM:'Roland SC-55 (General MIDI)',MT:'Roland MT-32',A2:'AdLib OPL2 FM',A3:'SoundBlaster OPL3 FM'}[s._key]||s._key;
-    return { title: s._name, artist: dev, album: 'Wacky Wheels — Beavis Soft / Apogee (Mark Klem)' };
+    const dev={GM:'Roland SC-55 (General MIDI)',MT:'Roland MT-32',A3:'AdLib OPL FM'}[s._key]||s._key;
+    return { title: s._name, artist: dev, album: 'Jagged Alliance — Sir-Tech (1994)' };
   },
 });
 </script>
