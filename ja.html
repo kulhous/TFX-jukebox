@@ -1,578 +1,1862 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jagged Alliance · Roland MT-32 / General MIDI / AdLib</title>
-<style>
-  @font-face{
-    font-family:"TFX Pixel";
-    src:url("tfxfont.woff?v=3") format("woff"),url("tfxfont.ttf?v=3") format("truetype");
-    font-weight:normal;font-style:normal;font-display:block;
-  }
-  :root{
-    /* olive-on-jungle UI (Jagged Alliance tactical / military palette) */
-    --bg:#161a0f; --mon:#13160c; --mon-ink:#b3c43e; --mon-ink2:#869439; --mon-line:#525d24; --mon-hi:#e4f0a4;
-    --screen:#0e1208;
-    /* real brushed steel */
-    --steel:#9498a0; --steel-lt:#e2e5e9; --steel-dk:#2c2f35; --steel-emb:#15171b; --steel-ink:#eef0f2;
-    --steel-grad:linear-gradient(180deg,#c4c8cd 0%,#9a9ea6 46%,#6b7078 100%);
-    --steel-grad-dn:linear-gradient(180deg,#797d85 0%,#5e636b 100%);
-    --warn:#fde725;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;height:100%;background:#081816;overflow:hidden}
-  body{font-family:"TFX Pixel","Lucida Console","DejaVu Sans Mono",Consolas,monospace;
-    color:var(--mon-ink);text-transform:uppercase;letter-spacing:0;font-size:13px;
-    -webkit-font-smoothing:none}
-  /* steel chassis */
-  #app{position:relative;display:flex;flex-direction:column;height:100%;gap:7px;padding:7px;
-    background:var(--steel-grad),repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 1px,rgba(0,0,0,.025) 1px 2px)}
-  /* recessed green screen */
-  #screen{position:relative;flex:1;display:flex;flex-direction:column;min-height:0;background:var(--bg);overflow:hidden;
-    border-top:2px solid var(--steel-dk);border-left:2px solid var(--steel-dk);
-    border-right:2px solid var(--steel-lt);border-bottom:2px solid var(--steel-lt);
-    box-shadow:inset 0 0 0 1px #04110d, inset 0 0 26px rgba(0,0,0,.45)}
-  #screen::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:60;
-    background:repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0 1px,transparent 1px 3px),
-      radial-gradient(125% 125% at 50% 45%,transparent 62%,rgba(0,0,0,.4) 100%)}
-  /* bevels */
-  .raise{border-top:1px solid var(--steel-lt);border-left:1px solid var(--steel-lt);
-    border-right:1px solid var(--steel-dk);border-bottom:1px solid var(--steel-dk)}
-  .inset{border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);
-    border-right:1px solid var(--steel-lt);border-bottom:1px solid var(--steel-lt)}
-  /* green-monitor bevels for panels that sit on the screen (no steel edges) */
-  .graise{border:1px solid var(--mon-line);
-    border-top-color:var(--mon-ink2);border-left-color:var(--mon-ink2)}
-  .ginset{border:1px solid var(--mon-line);
-    border-right-color:var(--mon-ink2);border-bottom-color:var(--mon-ink2)}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jagged Alliance · Roland MT-32 / General MIDI / AdLib</title>
+  <style>
+    @font-face {
+      font-family: "TFX Pixel";
+      src: url("tfxfont.woff?v=3") format("woff"), url("tfxfont.ttf?v=3") format("truetype");
+      font-weight: normal;
+      font-style: normal;
+      font-display: block;
+    }
 
-  /* ---- header ---- */
-  header{padding:7px 12px 4px}
-  .htop{display:flex;align-items:flex-end;gap:12px}
-  .logo{font-size:22px;font-weight:700;color:var(--mon-hi);letter-spacing:0;line-height:.9;
-    text-shadow:0 0 7px rgba(120,235,205,.4)}
-  .hline{flex:1;height:0;border-top:1px solid var(--mon-line);box-shadow:0 1px 0 rgba(0,0,0,.35);margin-bottom:5px}
-  .hright{color:var(--mon-ink2);font-size:11px;margin-bottom:1px}
-  .xlink{color:var(--screen);background:var(--mon-ink2);text-decoration:none;
-    padding:2px 8px;border:1px solid var(--mon-line);font-size:11px;letter-spacing:1px;
-    margin-right:10px;white-space:nowrap}
-  .xlink:hover{background:var(--mon-hi)}
-  /* game selector dropdown — fully custom (native <select> popups can't be themed) */
-  .gamenav{position:relative;display:inline-flex;align-items:center;margin-right:10px;font-size:11px}
-  .gamesel-btn{font-family:inherit;font-size:11px;letter-spacing:1px;color:var(--screen);
-    background:var(--mon-ink2);border:1px solid var(--mon-line);padding:2px 20px 2px 8px;
-    cursor:pointer;line-height:1.5;position:relative;white-space:nowrap}
-  .gamesel-btn:hover{background:var(--mon-hi)}
-  .gamesel-btn::after{content:"\25BE";position:absolute;right:7px;top:50%;transform:translateY(-50%);
-    pointer-events:none;font-size:9px;color:var(--screen)}
-  .gamemenu{position:absolute;top:100%;left:auto;right:0;margin-top:2px;z-index:60;min-width:100%;
-    background:var(--screen);border:1px solid var(--mon-line);box-shadow:0 2px 7px rgba(0,0,0,.5);
-    display:none;flex-direction:column}
-  .gamemenu.open{display:flex}
-  .gameopt{font-family:inherit;font-size:11px;letter-spacing:1px;color:var(--mon-ink);
-    background:none;border:0;text-align:left;padding:4px 22px 4px 8px;cursor:pointer;
-    white-space:nowrap;position:relative}
-  .gameopt:hover{background:var(--mon-ink2);color:var(--screen)}
-  .gameopt.sel{color:var(--mon-hi)}
-  .gameopt.sel::after{content:"\2713";position:absolute;right:7px}
-  .hsub{display:flex;align-items:center;gap:18px;margin-top:4px;color:var(--mon-ink2);font-size:11px;flex-wrap:wrap}
-  .hsub b{color:var(--mon-hi);font-weight:400}  .meter{display:flex;align-items:center;gap:7px}
-  /* marquee track: transparent on desktop (children flow in .hsub flex) */
-  .hmarquee{display:contents}
-  @keyframes hmarq{from{transform:translate3d(0,0,0)}to{transform:translate3d(-100%,0,0)}}
-  input[type=range]{-webkit-appearance:none;appearance:none;height:9px;width:92px;background:var(--screen);
-    border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);
-    border-right:1px solid var(--steel-lt);border-bottom:1px solid var(--steel-lt)}
-  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:16px;background:var(--steel-grad);
-    border-top:1px solid var(--steel-lt);border-left:1px solid var(--steel-lt);
-    border-right:1px solid var(--steel-dk);border-bottom:1px solid var(--steel-dk);cursor:pointer}
-  input[type=range]::-moz-range-thumb{width:10px;height:16px;background:var(--steel-grad);border:1px solid var(--steel-dk);cursor:pointer}
+    :root {
+      /* olive-on-jungle UI (Jagged Alliance tactical / military palette) */
+      --bg: #161a0f;
+      --mon: #13160c;
+      --mon-ink: #b3c43e;
+      --mon-ink2: #869439;
+      --mon-line: #525d24;
+      --mon-hi: #e4f0a4;
+      --screen: #0e1208;
+      /* real brushed steel */
+      --steel: #9498a0;
+      --steel-lt: #e2e5e9;
+      --steel-dk: #2c2f35;
+      --steel-emb: #15171b;
+      --steel-ink: #eef0f2;
+      --steel-grad: linear-gradient(180deg, #c4c8cd 0%, #9a9ea6 46%, #6b7078 100%);
+      --steel-grad-dn: linear-gradient(180deg, #797d85 0%, #5e636b 100%);
+      --warn: #fde725;
+    }
 
-  /* ---- main ---- */
-  #main{flex:1;display:flex;gap:8px;min-height:0;padding:0 12px}
-  #rollWrap{flex:1;position:relative;min-width:0;background:var(--screen)}
-  canvas{display:block;width:100%;height:100%;image-rendering:pixelated}
-  #overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-    background:rgba(8,22,20,.92);color:var(--mon-ink2);text-align:center;padding:20px;font-size:12px;z-index:5}
-  #overlay.hidden{display:none}
+    * {
+      box-sizing: border-box
+    }
 
-  #side{width:420px;display:flex;flex-direction:column;min-height:0;background:var(--mon)}
-  .side-h{padding:5px 9px;color:var(--mon-ink2);font-size:13px;border-bottom:1px solid var(--mon-line);
-    display:flex;align-items:center}
-  .side-h b{color:var(--mon-hi);font-weight:400}
-  .side-h .sp{flex:1}
-  .filterbar{display:flex;gap:5px;padding:5px 9px;border-bottom:1px solid var(--mon-line);overflow-x:auto;
-    scrollbar-width:thin;scrollbar-color:var(--mon-ink2) var(--screen)}
-  .filterbar::-webkit-scrollbar{height:9px}
-  .filterbar::-webkit-scrollbar-track{background:var(--screen);box-shadow:inset 0 1px 0 rgba(0,0,0,.5)}
-  .filterbar::-webkit-scrollbar-thumb{border:1px solid var(--mon-line);border-radius:1px;
-    background:linear-gradient(180deg,var(--mon-ink2) 0%,var(--mon-hi) 50%,var(--mon-ink2) 100%)}
-  .fbtn{flex:none;white-space:nowrap;font:inherit;text-transform:uppercase;letter-spacing:0;font-size:13px;color:var(--mon-ink2);
-    background:transparent;border:1px solid var(--mon-line);padding:2px 9px;cursor:pointer;display:flex;align-items:center;gap:6px}
-  .fbtn:hover{color:var(--mon-hi)}
-  .fbtn.on{background:var(--mon-line);color:var(--screen)}
-  #listwrap{flex:1;display:flex;min-height:0}
-  #songlist{overflow-y:auto;flex:1;scrollbar-width:none}
-  #songlist::-webkit-scrollbar{display:none}
-  .song{display:flex;align-items:center;gap:9px;height:24px;padding:0 10px;cursor:pointer;color:var(--mon-ink);
-    border-bottom:1px solid rgba(53,125,111,.20);font-size:13px;line-height:1;white-space:nowrap;overflow:hidden}
-  .song .nm{overflow:hidden;text-overflow:ellipsis}
-  .song .tid{flex:none;width:30px;box-sizing:border-box;font-size:13px;line-height:1;color:var(--screen);background:var(--mon-line);
-    border-radius:3px;padding:3px 4px;opacity:.85;font-variant-numeric:tabular-nums;text-align:center}
-  .song:hover{background:rgba(53,125,111,.20)}
-  .song.sel{background:var(--mon-line);color:var(--screen)}
-  .song.playing{box-shadow:inset 3px 0 0 var(--warn)}
-  /* driver icons / badges */
-  .dchip{flex:none;width:34px;box-sizing:border-box;font-size:13px;letter-spacing:0;padding:3px 0;border-radius:2px;
-    border:1px solid;line-height:1;text-align:center;text-indent:1px}
-  /* GM (SC-55): light text on dark screen */
-  .dchip.gm{color:#ffe9a8;background:#190d07;border-color:#b8902c}
-  /* MT-32 (Munt LA synth): cool Roland blue, distinct from the gold FM/GM chips */
-  .dchip.mt{color:#cfe3ff;background:#0c1626;border-color:#3f6fb0}
-  /* OPL2 AdLib: copper FM tint */
-  .dchip.o2{color:#190d07;background:#e0934a;border-color:#a8650f}
-  /* OPL3 SoundBlaster: brighter gold FM tint */
-  .dchip.o3{color:#190d07;background:#e6c24a;border-color:#a8930f}
-  /* plasma scrollbar — lit phosphor bar */
-  #sb{width:14px;background:#150a05;position:relative;cursor:pointer;
-    box-shadow:inset 1px 0 0 rgba(0,0,0,.5),inset -1px 0 0 rgba(122,74,44,.30)}
-  #sbthumb{position:absolute;left:2px;right:2px;min-height:18px;border-radius:1px;
-    background:linear-gradient(90deg,var(--mon-ink2) 0%,var(--mon-hi) 50%,var(--mon-ink2) 100%);
-    box-shadow:0 0 6px rgba(232,178,122,.6),0 0 2px rgba(255,217,160,.9),inset 0 0 0 1px rgba(255,217,160,.4)}
+    html,
+    body {
+      margin: 0;
+      height: 100%;
+      background: #081816;
+      overflow: hidden
+    }
 
-  /* ---- bottom steel dashboard ---- */
-  #dash{padding:7px 9px 9px;
-    background:var(--steel-grad),repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0 1px,rgba(0,0,0,.03) 1px 2px);
-    border-top:2px solid var(--steel-lt);
-    box-shadow:inset 0 2px 0 rgba(255,255,255,.35), 0 -4px 12px rgba(0,0,0,.45)}
-  .statline{display:flex;gap:20px;color:var(--steel-emb);font-size:13px;padding:1px 2px 5px}
-  .statline .v{color:#11140d}
-  .statline .sp{flex:1}
-  #chanstrip{display:flex;align-items:center;gap:8px;padding:3px 2px 6px}
-  #chanstrip .lab{color:var(--steel-emb);font-size:13px;line-height:1.15;flex:none}
-  #chans{display:flex;gap:3px;flex-wrap:wrap;flex:1}
-  .ch{position:relative;width:34px;flex:none;display:flex;flex-direction:column;align-items:center;gap:3px;
-    text-align:center;text-indent:.12em;padding:3px 4px 4px;font-size:13px;color:var(--steel-emb);
-    cursor:pointer;background:var(--steel-grad);user-select:none;text-shadow:0 1px 0 rgba(255,255,255,.3);
-    border-top:1px solid var(--steel-lt);border-left:1px solid var(--steel-lt);
-    border-right:1px solid var(--steel-dk);border-bottom:1px solid var(--steel-dk)}
-  .ch::before{content:"";width:15px;height:15px;background:var(--swatch,var(--steel-dk));
-    border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);
-    border-right:1px solid var(--steel-lt);border-bottom:1px solid var(--steel-lt);
-    box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
-  .ch:hover{background:linear-gradient(180deg,#d4d8dd,#aab0b8)}
-  .ch.muted{color:#3a3d42;opacity:.85;text-decoration:line-through;background:var(--steel-grad-dn);
-    border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);border-right:1px solid var(--steel-lt)}
-  .ch.muted::before{opacity:.3}
-  .ch.solo{color:#1a1d11;background:linear-gradient(180deg,#fff08a,#e7c81e);text-shadow:none}
-  #transport{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
-  .btn{font:inherit;text-transform:uppercase;letter-spacing:0;color:var(--steel-emb);
-    background:var(--steel-grad);padding:7px 14px;cursor:pointer;white-space:nowrap;text-shadow:0 1px 0 rgba(255,255,255,.35);
-    border-top:1px solid var(--steel-lt);border-left:1px solid var(--steel-lt);
-    border-right:1px solid var(--steel-dk);border-bottom:1px solid var(--steel-dk)}
-  .btn:hover{background:linear-gradient(180deg,#d4d8dd,#a7adb5);color:#0c0e11}
-  .btn:active,.btn.on{background:var(--steel-grad-dn);border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);
-    border-right:1px solid var(--steel-lt);border-bottom:1px solid var(--steel-lt);box-shadow:inset 0 1px 3px rgba(0,0,0,.4);text-shadow:none}
-  .btn:disabled{color:#5b6068;opacity:.7;cursor:default;text-shadow:none}
-  .dmeter{display:flex;align-items:center;gap:6px;padding:0 9px;color:var(--steel-emb);font-size:13px;
-    white-space:nowrap;text-shadow:0 1px 0 rgba(255,255,255,.35);
-    background:var(--steel-grad);border-top:1px solid var(--steel-lt);
-    border-bottom:1px solid var(--steel-dk);border-right:1px solid var(--steel-dk)}
-  .dmeter b{color:#11140d}
-  #meters{display:contents}
-  #speed{width:64px}
-  #speedV{display:inline-block;width:44px;text-align:right;margin-right:4px;font-variant-numeric:tabular-nums}
-  #volV{display:inline-block;width:38px;text-align:right;font-variant-numeric:tabular-nums}
-  #mixV,#rvbV{display:inline-block;width:38px;text-align:right;font-variant-numeric:tabular-nums}
-  .mlab{font-weight:400}
-  .credit{margin-left:auto;display:flex;align-items:center;padding:0 12px;font-size:13px;
-    color:var(--steel-emb);text-shadow:0 1px 0 rgba(255,255,255,.35);white-space:nowrap}
-  .credit a{color:var(--steel-emb);text-decoration:none}
-  .credit a:hover{color:#0c0e11;text-decoration:underline}
-  #seekwrap{flex:1;display:flex;align-items:center;gap:10px;padding:0 11px;background:var(--screen);
-    border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);
-    border-right:1px solid var(--steel-lt);border-bottom:1px solid var(--steel-lt)}
-  #seek{flex:1;width:auto}
-  /* seek bar lives inside the green screen */
-  #seekbar{display:flex;align-items:center;gap:11px;margin:0 12px;padding:8px 4px 11px;color:var(--mon-ink2);
-    font-size:11px;font-variant-numeric:tabular-nums}
-  #seekbar #t-cur{color:var(--mon-hi);min-width:34px}
-  #time{color:var(--mon-ink2);font-size:11px;min-width:34px;text-align:right;font-variant-numeric:tabular-nums}
-  #seektrack{position:relative;flex:1;height:16px;background:var(--screen);overflow:hidden;
-    box-shadow:inset 0 0 0 1px #04110d, inset 0 0 10px rgba(0,0,0,.55)}
-  /* phosphor fill with a yellowish decay trailing behind the playhead */
-  #seekfill{position:absolute;left:0;top:0;bottom:0;width:0%;pointer-events:none;
-    background:linear-gradient(90deg,var(--mon-line),var(--mon-ink2));
-    box-shadow:0 0 8px rgba(253,231,37,.4);border-right:1px solid rgba(253,231,37,.9)}
-  /* fixed-width yellow decay dropped right behind the playhead (fades backward) */
-  #seekfill::after{content:"";position:absolute;top:0;bottom:0;right:0;width:48px;max-width:100%;
-    background:linear-gradient(90deg,rgba(253,231,37,0),rgba(253,231,37,.85))}
-  /* faint scanline texture, keeping the in-screen CRT feel */
-  #seektrack::after{content:"";position:absolute;inset:0;pointer-events:none;
-    background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px)}
-  /* transparent native range on top for interaction */
-  #seektrack #seek{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;
-    background:transparent;border:0;appearance:none;-webkit-appearance:none;cursor:pointer;z-index:2}
-  #seektrack #seek::-webkit-slider-thumb{-webkit-appearance:none;width:3px;height:16px;
-    background:#fffbe0;box-shadow:0 0 6px rgba(253,231,37,.9);border:0;cursor:pointer}
-  #seektrack #seek::-moz-range-thumb{width:3px;height:16px;background:#fffbe0;border:0;cursor:pointer}
-  #seektrack #seek:disabled{cursor:default}
+    body {
+      font-family: "TFX Pixel", "Lucida Console", "DejaVu Sans Mono", Consolas, monospace;
+      color: var(--mon-ink);
+      text-transform: uppercase;
+      letter-spacing: 0;
+      font-size: 13px;
+      -webkit-font-smoothing: none
+    }
 
-  /* ---- mobile tab toggle — lives in the bottom metal dash ----
+    /* steel chassis */
+    #app {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      gap: 7px;
+      padding: 7px;
+      background: var(--steel-grad), repeating-linear-gradient(90deg, rgba(255, 255, 255, .025) 0 1px, rgba(0, 0, 0, .025) 1px 2px)
+    }
+
+    /* recessed green screen */
+    #screen {
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      background: var(--bg);
+      overflow: hidden;
+      border-top: 2px solid var(--steel-dk);
+      border-left: 2px solid var(--steel-dk);
+      border-right: 2px solid var(--steel-lt);
+      border-bottom: 2px solid var(--steel-lt);
+      box-shadow: inset 0 0 0 1px #04110d, inset 0 0 26px rgba(0, 0, 0, .45)
+    }
+
+    #screen::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 60;
+      background: repeating-linear-gradient(0deg, rgba(0, 0, 0, .14) 0 1px, transparent 1px 3px),
+        radial-gradient(125% 125% at 50% 45%, transparent 62%, rgba(0, 0, 0, .4) 100%)
+    }
+
+    /* bevels */
+    .raise {
+      border-top: 1px solid var(--steel-lt);
+      border-left: 1px solid var(--steel-lt);
+      border-right: 1px solid var(--steel-dk);
+      border-bottom: 1px solid var(--steel-dk)
+    }
+
+    .inset {
+      border-top: 1px solid var(--steel-dk);
+      border-left: 1px solid var(--steel-dk);
+      border-right: 1px solid var(--steel-lt);
+      border-bottom: 1px solid var(--steel-lt)
+    }
+
+    /* green-monitor bevels for panels that sit on the screen (no steel edges) */
+    .graise {
+      border: 1px solid var(--mon-line);
+      border-top-color: var(--mon-ink2);
+      border-left-color: var(--mon-ink2)
+    }
+
+    .ginset {
+      border: 1px solid var(--mon-line);
+      border-right-color: var(--mon-ink2);
+      border-bottom-color: var(--mon-ink2)
+    }
+
+    /* ---- header ---- */
+    header {
+      padding: 7px 12px 4px
+    }
+
+    .htop {
+      display: flex;
+      align-items: flex-end;
+      gap: 12px
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--mon-hi);
+      letter-spacing: 0;
+      line-height: .9;
+      text-shadow: 0 0 7px rgba(120, 235, 205, .4)
+    }
+
+    .hline {
+      flex: 1;
+      height: 0;
+      border-top: 1px solid var(--mon-line);
+      box-shadow: 0 1px 0 rgba(0, 0, 0, .35);
+      margin-bottom: 5px
+    }
+
+    .hright {
+      color: var(--mon-ink2);
+      font-size: 11px;
+      margin-bottom: 1px
+    }
+
+    .xlink {
+      color: var(--screen);
+      background: var(--mon-ink2);
+      text-decoration: none;
+      padding: 2px 8px;
+      border: 1px solid var(--mon-line);
+      font-size: 11px;
+      letter-spacing: 1px;
+      margin-right: 10px;
+      white-space: nowrap
+    }
+
+    .xlink:hover {
+      background: var(--mon-hi)
+    }
+
+    /* game selector dropdown — fully custom (native <select> popups can't be themed) */
+    .gamenav {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      margin-right: 10px;
+      font-size: 11px
+    }
+
+    .gamesel-btn {
+      font-family: inherit;
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--screen);
+      background: var(--mon-ink2);
+      border: 1px solid var(--mon-line);
+      padding: 2px 20px 2px 8px;
+      cursor: pointer;
+      line-height: 1.5;
+      position: relative;
+      white-space: nowrap
+    }
+
+    .gamesel-btn:hover {
+      background: var(--mon-hi)
+    }
+
+    .gamesel-btn::after {
+      content: "\25BE";
+      position: absolute;
+      right: 7px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      font-size: 9px;
+      color: var(--screen)
+    }
+
+    .gamemenu {
+      position: absolute;
+      top: 100%;
+      left: auto;
+      right: 0;
+      margin-top: 2px;
+      z-index: 60;
+      min-width: 100%;
+      background: var(--screen);
+      border: 1px solid var(--mon-line);
+      box-shadow: 0 2px 7px rgba(0, 0, 0, .5);
+      display: none;
+      flex-direction: column
+    }
+
+    .gamemenu.open {
+      display: flex
+    }
+
+    .gameopt {
+      font-family: inherit;
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--mon-ink);
+      background: none;
+      border: 0;
+      text-align: left;
+      padding: 4px 22px 4px 8px;
+      cursor: pointer;
+      white-space: nowrap;
+      position: relative
+    }
+
+    .gameopt:hover {
+      background: var(--mon-ink2);
+      color: var(--screen)
+    }
+
+    .gameopt.sel {
+      color: var(--mon-hi)
+    }
+
+    .gameopt.sel::after {
+      content: "\2713";
+      position: absolute;
+      right: 7px
+    }
+
+    .hsub {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: 4px;
+      color: var(--mon-ink2);
+      font-size: 11px;
+      flex-wrap: wrap
+    }
+
+    .hsub b {
+      color: var(--mon-hi);
+      font-weight: 400
+    }
+
+    .meter {
+      display: flex;
+      align-items: center;
+      gap: 7px
+    }
+
+    /* marquee track: transparent on desktop (children flow in .hsub flex) */
+    .hmarquee {
+      display: contents
+    }
+
+    @keyframes hmarq {
+      from {
+        transform: translate3d(0, 0, 0)
+      }
+
+      to {
+        transform: translate3d(-100%, 0, 0)
+      }
+    }
+
+    input[type=range] {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 9px;
+      width: 92px;
+      background: var(--screen);
+      border-top: 1px solid var(--steel-dk);
+      border-left: 1px solid var(--steel-dk);
+      border-right: 1px solid var(--steel-lt);
+      border-bottom: 1px solid var(--steel-lt)
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 10px;
+      height: 16px;
+      background: var(--steel-grad);
+      border-top: 1px solid var(--steel-lt);
+      border-left: 1px solid var(--steel-lt);
+      border-right: 1px solid var(--steel-dk);
+      border-bottom: 1px solid var(--steel-dk);
+      cursor: pointer
+    }
+
+    input[type=range]::-moz-range-thumb {
+      width: 10px;
+      height: 16px;
+      background: var(--steel-grad);
+      border: 1px solid var(--steel-dk);
+      cursor: pointer
+    }
+
+    /* ---- main ---- */
+    #main {
+      flex: 1;
+      display: flex;
+      gap: 8px;
+      min-height: 0;
+      padding: 0 12px
+    }
+
+    #rollWrap {
+      flex: 1;
+      position: relative;
+      min-width: 0;
+      background: var(--screen)
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      image-rendering: pixelated
+    }
+
+    #overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(8, 22, 20, .92);
+      color: var(--mon-ink2);
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      z-index: 5
+    }
+
+    #overlay.hidden {
+      display: none
+    }
+
+    #side {
+      width: 420px;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      background: var(--mon)
+    }
+
+    .side-h {
+      padding: 5px 9px;
+      color: var(--mon-ink2);
+      font-size: 13px;
+      border-bottom: 1px solid var(--mon-line);
+      display: flex;
+      align-items: center
+    }
+
+    .side-h b {
+      color: var(--mon-hi);
+      font-weight: 400
+    }
+
+    .side-h .sp {
+      flex: 1
+    }
+
+    .filterbar {
+      display: flex;
+      gap: 5px;
+      padding: 5px 9px;
+      border-bottom: 1px solid var(--mon-line);
+      overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--mon-ink2) var(--screen)
+    }
+
+    .filterbar::-webkit-scrollbar {
+      height: 9px
+    }
+
+    .filterbar::-webkit-scrollbar-track {
+      background: var(--screen);
+      box-shadow: inset 0 1px 0 rgba(0, 0, 0, .5)
+    }
+
+    .filterbar::-webkit-scrollbar-thumb {
+      border: 1px solid var(--mon-line);
+      border-radius: 1px;
+      background: linear-gradient(180deg, var(--mon-ink2) 0%, var(--mon-hi) 50%, var(--mon-ink2) 100%)
+    }
+
+    .fbtn {
+      flex: none;
+      white-space: nowrap;
+      font: inherit;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      font-size: 13px;
+      color: var(--mon-ink2);
+      background: transparent;
+      border: 1px solid var(--mon-line);
+      padding: 2px 9px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    .fbtn:hover {
+      color: var(--mon-hi)
+    }
+
+    .fbtn.on {
+      background: var(--mon-line);
+      color: var(--screen)
+    }
+
+    #listwrap {
+      flex: 1;
+      display: flex;
+      min-height: 0
+    }
+
+    #songlist {
+      overflow-y: auto;
+      flex: 1;
+      scrollbar-width: none
+    }
+
+    #songlist::-webkit-scrollbar {
+      display: none
+    }
+
+    .song {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      height: 24px;
+      padding: 0 10px;
+      cursor: pointer;
+      color: var(--mon-ink);
+      border-bottom: 1px solid rgba(53, 125, 111, .20);
+      font-size: 13px;
+      line-height: 1;
+      white-space: nowrap;
+      overflow: hidden
+    }
+
+    .song .nm {
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    .song .tid {
+      flex: none;
+      width: 30px;
+      box-sizing: border-box;
+      font-size: 13px;
+      line-height: 1;
+      color: var(--screen);
+      background: var(--mon-line);
+      border-radius: 3px;
+      padding: 3px 4px;
+      opacity: .85;
+      font-variant-numeric: tabular-nums;
+      text-align: center
+    }
+
+    .song:hover {
+      background: rgba(53, 125, 111, .20)
+    }
+
+    .song.sel {
+      background: var(--mon-line);
+      color: var(--screen)
+    }
+
+    .song.playing {
+      box-shadow: inset 3px 0 0 var(--warn)
+    }
+
+    /* driver icons / badges */
+    .dchip {
+      flex: none;
+      width: 34px;
+      box-sizing: border-box;
+      font-size: 13px;
+      letter-spacing: 0;
+      padding: 3px 0;
+      border-radius: 2px;
+      border: 1px solid;
+      line-height: 1;
+      text-align: center;
+      text-indent: 1px
+    }
+
+    /* GM (SC-55): light text on dark screen */
+    .dchip.gm {
+      color: #ffe9a8;
+      background: #190d07;
+      border-color: #b8902c
+    }
+
+    /* MT-32 (Munt LA synth): cool Roland blue, distinct from the gold FM/GM chips */
+    .dchip.mt {
+      color: #cfe3ff;
+      background: #0c1626;
+      border-color: #3f6fb0
+    }
+
+    /* OPL2 AdLib: copper FM tint */
+    .dchip.o2 {
+      color: #190d07;
+      background: #e0934a;
+      border-color: #a8650f
+    }
+
+    /* OPL3 SoundBlaster: brighter gold FM tint */
+    .dchip.o3 {
+      color: #190d07;
+      background: #e6c24a;
+      border-color: #a8930f
+    }
+
+    /* plasma scrollbar — lit phosphor bar */
+    #sb {
+      width: 14px;
+      background: #150a05;
+      position: relative;
+      cursor: pointer;
+      box-shadow: inset 1px 0 0 rgba(0, 0, 0, .5), inset -1px 0 0 rgba(122, 74, 44, .30)
+    }
+
+    #sbthumb {
+      position: absolute;
+      left: 2px;
+      right: 2px;
+      min-height: 18px;
+      border-radius: 1px;
+      background: linear-gradient(90deg, var(--mon-ink2) 0%, var(--mon-hi) 50%, var(--mon-ink2) 100%);
+      box-shadow: 0 0 6px rgba(232, 178, 122, .6), 0 0 2px rgba(255, 217, 160, .9), inset 0 0 0 1px rgba(255, 217, 160, .4)
+    }
+
+    /* ---- bottom steel dashboard ---- */
+    #dash {
+      padding: 7px 9px 9px;
+      background: var(--steel-grad), repeating-linear-gradient(90deg, rgba(255, 255, 255, .03) 0 1px, rgba(0, 0, 0, .03) 1px 2px);
+      border-top: 2px solid var(--steel-lt);
+      box-shadow: inset 0 2px 0 rgba(255, 255, 255, .35), 0 -4px 12px rgba(0, 0, 0, .45)
+    }
+
+    .statline {
+      display: flex;
+      gap: 20px;
+      color: var(--steel-emb);
+      font-size: 13px;
+      padding: 1px 2px 5px
+    }
+
+    .statline .v {
+      color: #11140d
+    }
+
+    .statline .sp {
+      flex: 1
+    }
+
+    #chanstrip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 3px 2px 6px
+    }
+
+    #chanstrip .lab {
+      color: var(--steel-emb);
+      font-size: 13px;
+      line-height: 1.15;
+      flex: none
+    }
+
+    #chans {
+      display: flex;
+      gap: 3px;
+      flex-wrap: wrap;
+      flex: 1
+    }
+
+    .ch {
+      position: relative;
+      width: 34px;
+      flex: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      text-align: center;
+      text-indent: .12em;
+      padding: 3px 4px 4px;
+      font-size: 13px;
+      color: var(--steel-emb);
+      cursor: pointer;
+      background: var(--steel-grad);
+      user-select: none;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .3);
+      border-top: 1px solid var(--steel-lt);
+      border-left: 1px solid var(--steel-lt);
+      border-right: 1px solid var(--steel-dk);
+      border-bottom: 1px solid var(--steel-dk)
+    }
+
+    .ch::before {
+      content: "";
+      width: 15px;
+      height: 15px;
+      background: var(--swatch, var(--steel-dk));
+      border-top: 1px solid var(--steel-dk);
+      border-left: 1px solid var(--steel-dk);
+      border-right: 1px solid var(--steel-lt);
+      border-bottom: 1px solid var(--steel-lt);
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .25)
+    }
+
+    .ch:hover {
+      background: linear-gradient(180deg, #d4d8dd, #aab0b8)
+    }
+
+    .ch.muted {
+      color: #3a3d42;
+      opacity: .85;
+      text-decoration: line-through;
+      background: var(--steel-grad-dn);
+      border-top: 1px solid var(--steel-dk);
+      border-left: 1px solid var(--steel-dk);
+      border-right: 1px solid var(--steel-lt)
+    }
+
+    .ch.muted::before {
+      opacity: .3
+    }
+
+    .ch.solo {
+      color: #1a1d11;
+      background: linear-gradient(180deg, #fff08a, #e7c81e);
+      text-shadow: none
+    }
+
+    #transport {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      flex-wrap: wrap
+    }
+
+    .btn {
+      font: inherit;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      color: var(--steel-emb);
+      background: var(--steel-grad);
+      padding: 7px 14px;
+      cursor: pointer;
+      white-space: nowrap;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .35);
+      border-top: 1px solid var(--steel-lt);
+      border-left: 1px solid var(--steel-lt);
+      border-right: 1px solid var(--steel-dk);
+      border-bottom: 1px solid var(--steel-dk)
+    }
+
+    .btn:hover {
+      background: linear-gradient(180deg, #d4d8dd, #a7adb5);
+      color: #0c0e11
+    }
+
+    .btn:active,
+    .btn.on {
+      background: var(--steel-grad-dn);
+      border-top: 1px solid var(--steel-dk);
+      border-left: 1px solid var(--steel-dk);
+      border-right: 1px solid var(--steel-lt);
+      border-bottom: 1px solid var(--steel-lt);
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, .4);
+      text-shadow: none
+    }
+
+    .btn:disabled {
+      color: #5b6068;
+      opacity: .7;
+      cursor: default;
+      text-shadow: none
+    }
+
+    .dmeter {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 9px;
+      color: var(--steel-emb);
+      font-size: 13px;
+      white-space: nowrap;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .35);
+      background: var(--steel-grad);
+      border-top: 1px solid var(--steel-lt);
+      border-bottom: 1px solid var(--steel-dk);
+      border-right: 1px solid var(--steel-dk)
+    }
+
+    .dmeter b {
+      color: #11140d
+    }
+
+    #meters {
+      display: contents
+    }
+
+    #speed {
+      width: 64px
+    }
+
+    #speedV {
+      display: inline-block;
+      width: 44px;
+      text-align: right;
+      margin-right: 4px;
+      font-variant-numeric: tabular-nums
+    }
+
+    #volV {
+      display: inline-block;
+      width: 38px;
+      text-align: right;
+      font-variant-numeric: tabular-nums
+    }
+
+    #mixV,
+    #rvbV {
+      display: inline-block;
+      width: 38px;
+      text-align: right;
+      font-variant-numeric: tabular-nums
+    }
+
+    .mlab {
+      font-weight: 400
+    }
+
+    .credit {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      font-size: 13px;
+      color: var(--steel-emb);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .35);
+      white-space: nowrap
+    }
+
+    .credit a {
+      color: var(--steel-emb);
+      text-decoration: none
+    }
+
+    .credit a:hover {
+      color: #0c0e11;
+      text-decoration: underline
+    }
+
+    #seekwrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 11px;
+      background: var(--screen);
+      border-top: 1px solid var(--steel-dk);
+      border-left: 1px solid var(--steel-dk);
+      border-right: 1px solid var(--steel-lt);
+      border-bottom: 1px solid var(--steel-lt)
+    }
+
+    #seek {
+      flex: 1;
+      width: auto
+    }
+
+    /* seek bar lives inside the green screen */
+    #seekbar {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin: 0 12px;
+      padding: 8px 4px 11px;
+      color: var(--mon-ink2);
+      font-size: 11px;
+      font-variant-numeric: tabular-nums
+    }
+
+    #seekbar #t-cur {
+      color: var(--mon-hi);
+      min-width: 34px
+    }
+
+    #time {
+      color: var(--mon-ink2);
+      font-size: 11px;
+      min-width: 34px;
+      text-align: right;
+      font-variant-numeric: tabular-nums
+    }
+
+    #seektrack {
+      position: relative;
+      flex: 1;
+      height: 16px;
+      background: var(--screen);
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px #04110d, inset 0 0 10px rgba(0, 0, 0, .55)
+    }
+
+    /* phosphor fill with a yellowish decay trailing behind the playhead */
+    #seekfill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 0%;
+      pointer-events: none;
+      background: linear-gradient(90deg, var(--mon-line), var(--mon-ink2));
+      box-shadow: 0 0 8px rgba(253, 231, 37, .4);
+      border-right: 1px solid rgba(253, 231, 37, .9)
+    }
+
+    /* fixed-width yellow decay dropped right behind the playhead (fades backward) */
+    #seekfill::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 48px;
+      max-width: 100%;
+      background: linear-gradient(90deg, rgba(253, 231, 37, 0), rgba(253, 231, 37, .85))
+    }
+
+    /* faint scanline texture, keeping the in-screen CRT feel */
+    #seektrack::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(0deg, rgba(0, 0, 0, .22) 0 1px, transparent 1px 3px)
+    }
+
+    /* transparent native range on top for interaction */
+    #seektrack #seek {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      border: 0;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      z-index: 2
+    }
+
+    #seektrack #seek::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 3px;
+      height: 16px;
+      background: #fffbe0;
+      box-shadow: 0 0 6px rgba(253, 231, 37, .9);
+      border: 0;
+      cursor: pointer
+    }
+
+    #seektrack #seek::-moz-range-thumb {
+      width: 3px;
+      height: 16px;
+      background: #fffbe0;
+      border: 0;
+      cursor: pointer
+    }
+
+    #seektrack #seek:disabled {
+      cursor: default
+    }
+
+    /* ---- mobile tab toggle — lives in the bottom metal dash ----
      row 1 = NOTES/TRACKS/INFO 3-position segmented slider (small font);
      row 2 = REPEAT/AUTO/PERF/FONT compact square icon buttons (TFX-font icons) */
-  #mtabs{display:none;flex-direction:column;gap:6px;padding:0 0 6px}
-  .mseg{display:flex;border:1px solid var(--steel-dk)}
-  .mtab{font:inherit;text-transform:uppercase;letter-spacing:0;font-size:11px;cursor:pointer;flex:1;text-align:center;
-    color:var(--steel-emb);background:var(--steel-grad);padding:6px 2px;text-shadow:0 1px 0 rgba(255,255,255,.35);
-    border:0;border-right:1px solid var(--steel-dk)}
-  .mseg .mtab:last-child{border-right:0}
-  .mtab.on{color:#0c0e11;background:var(--steel-grad-dn);text-shadow:none;box-shadow:inset 0 1px 3px rgba(0,0,0,.4)}
-  .micons{display:flex;gap:8px;justify-content:center}
-  .micon{font:inherit;font-size:19px;line-height:1;cursor:pointer;flex:0 0 auto;width:44px;height:34px;
-    display:flex;align-items:center;justify-content:center;
-    color:var(--steel-emb);background:var(--steel-grad);text-shadow:0 1px 0 rgba(255,255,255,.35);
-    border-top:1px solid var(--steel-lt);border-left:1px solid var(--steel-lt);
-    border-right:1px solid var(--steel-dk);border-bottom:1px solid var(--steel-dk)}
-  .micon.on{color:#0c0e11;background:var(--steel-grad-dn);text-shadow:none;
-    border-top:1px solid var(--steel-dk);border-left:1px solid var(--steel-dk);
-    border-right:1px solid var(--steel-lt);border-bottom:1px solid var(--steel-lt);box-shadow:inset 0 1px 3px rgba(0,0,0,.4)}
+    #mtabs {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      padding: 0 0 6px
+    }
 
-  /* ---- desktop settings buttons: compact icon squares (save space) ----
+    .mseg {
+      display: flex;
+      border: 1px solid var(--steel-dk)
+    }
+
+    .mtab {
+      font: inherit;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      font-size: 11px;
+      cursor: pointer;
+      flex: 1;
+      text-align: center;
+      color: var(--steel-emb);
+      background: var(--steel-grad);
+      padding: 6px 2px;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .35);
+      border: 0;
+      border-right: 1px solid var(--steel-dk)
+    }
+
+    .mseg .mtab:last-child {
+      border-right: 0
+    }
+
+    .mtab.on {
+      color: #0c0e11;
+      background: var(--steel-grad-dn);
+      text-shadow: none;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, .4)
+    }
+
+    .micons {
+      display: flex;
+      gap: 8px;
+      justify-content: center
+    }
+
+    .micon {
+      font: inherit;
+      font-size: 19px;
+      line-height: 1;
+      cursor: pointer;
+      flex: 0 0 auto;
+      width: 44px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--steel-emb);
+      background: var(--steel-grad);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .35);
+      border-top: 1px solid var(--steel-lt);
+      border-left: 1px solid var(--steel-lt);
+      border-right: 1px solid var(--steel-dk);
+      border-bottom: 1px solid var(--steel-dk)
+    }
+
+    .micon.on {
+      color: #0c0e11;
+      background: var(--steel-grad-dn);
+      text-shadow: none;
+      border-top: 1px solid var(--steel-dk);
+      border-left: 1px solid var(--steel-dk);
+      border-right: 1px solid var(--steel-lt);
+      border-bottom: 1px solid var(--steel-lt);
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, .4)
+    }
+
+    /* ---- desktop settings buttons: compact icon squares (save space) ----
      SOUNDFONT / LOW-PERF / REPEAT / AUTO / INFO collapse to single TFX-font
      icons so the transport row + credit always fit, even on smaller desktops */
-  .infobtn{margin-left:0;font-size:0;width:34px;padding:0;text-align:center;
-    display:inline-flex;align-items:center;justify-content:center}
-  #sfBtn.infobtn{margin-left:8px}
-  .infobtn + .infobtn{margin-left:0}
-  .infobtn::before{font-family:inherit;font-size:18px;line-height:1;letter-spacing:0}
-  #sfBtn.infobtn::before{content:"\E003"}      /* SoundFont — music note */
-  #lpBtn.infobtn::before{content:"\E002"}      /* Low-perf — lightning */
-  #repeatBtn.infobtn::before{content:"\E000"}  /* Repeat — loop */
-  #autoBtn.infobtn::before{content:"\E001"}    /* Autoadvance — next */
-  #infoBtn.infobtn::before{content:"\E004"}    /* Info — i */
-  .infobtn + .credit{margin-left:auto;padding-left:12px}
+    .infobtn {
+      margin-left: 0;
+      font-size: 0;
+      width: 34px;
+      padding: 0;
+      text-align: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center
+    }
 
-  /* ---- ABOUT panel: embedded in the green monitor, replaces roll + list ---- */
-  /* sits inside #screen (inset:0) and uses the TFX Pixel font like everything
+    #sfBtn.infobtn {
+      margin-left: 8px
+    }
+
+    .infobtn+.infobtn {
+      margin-left: 0
+    }
+
+    .infobtn::before {
+      font-family: inherit;
+      font-size: 18px;
+      line-height: 1;
+      letter-spacing: 0
+    }
+
+    #sfBtn.infobtn::before {
+      content: "\E003"
+    }
+
+    /* SoundFont — music note */
+    #lpBtn.infobtn::before {
+      content: "\E002"
+    }
+
+    /* Low-perf — lightning */
+    #repeatBtn.infobtn::before {
+      content: "\E000"
+    }
+
+    /* Repeat — loop */
+    #autoBtn.infobtn::before {
+      content: "\E001"
+    }
+
+    /* Autoadvance — next */
+    #infoBtn.infobtn::before {
+      content: "\E004"
+    }
+
+    /* Info — i */
+    .infobtn+.credit {
+      margin-left: auto;
+      padding-left: 12px
+    }
+
+    /* ---- ABOUT panel: embedded in the green monitor, replaces roll + list ---- */
+    /* sits inside #screen (inset:0) and uses the TFX Pixel font like everything
      else on the monitor; only the body scrolls — the chassis never does */
-  #infoModal{position:absolute;inset:0;z-index:40;display:none;flex-direction:column;
-    background:var(--bg)}
-  #infoModal.show{display:flex}
-  .imodal{position:relative;flex:1;min-height:0;display:flex;flex-direction:column;background:transparent}
-  .imodal-h{display:flex;align-items:center;gap:10px;padding:7px 12px;color:var(--mon-ink2);
-    border-bottom:1px solid var(--mon-line)}
-  .imodal-h .t{font-size:14px;letter-spacing:1px;color:var(--mon-hi);
-    text-shadow:0 0 7px rgba(120,235,205,.4)}
-  .imodal-body{flex:1;min-height:0;overflow-y:auto;padding:16px 22px 22px;color:var(--mon-ink);
-    font-size:13px;line-height:1.7;
-    background:radial-gradient(130% 120% at 50% 0%,rgba(53,125,111,.12),transparent 60%)}
-  .imodal-body h2{font-size:15px;line-height:1.45;color:var(--mon-hi);margin:24px 0 10px;
-    text-shadow:0 0 8px rgba(120,235,205,.3)}
-  .imodal-body h2:first-child{margin-top:0}
-  .imodal-body p{margin:0 0 11px}
-  .imodal-body strong{color:var(--mon-hi)}
-  .imodal-body .ichain{display:flex;flex-direction:column;gap:3px;margin:0 0 14px;padding:12px 14px;
-    background:rgba(0,0,0,.32);color:var(--mon-ink2);
-    border-left:3px solid var(--mon-line);font-size:12px;line-height:1.6}
-  .imodal-body .ichain span:first-child{color:var(--mon-hi)}
-  .imodal-body .sig{margin-top:20px;color:var(--mon-ink2)}
+    #infoModal {
+      position: absolute;
+      inset: 0;
+      z-index: 40;
+      display: none;
+      flex-direction: column;
+      background: var(--bg)
+    }
 
-  /* ===================== MOBILE LAYOUT ===================== */
-  @media (max-width:720px){
-    body{font-size:12px;letter-spacing:0}
-    .logo{font-size:18px}
-    header{padding:5px 8px 3px}
-    .htop{align-items:center;justify-content:space-between;gap:8px}
-    .hline,.hright{display:none}
-    .gamenav{margin-right:0}
-    .hsub{gap:12px}
-    /* show the notes/tracks switcher and collapse the split view to one pane */
-    #mtabs{display:flex}
-    #main{padding:0 6px;gap:0}
-    #side{width:auto;flex:1;min-width:0}
-    /* roll: keys keep a real size and scroll left/right instead of squashing */
-    #rollWrap{flex:1;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;touch-action:pan-x;
-      scrollbar-width:thin;scrollbar-color:var(--mon-ink2) var(--screen)}
-    #rollWrap::-webkit-scrollbar{height:9px}
-    #rollWrap::-webkit-scrollbar-track{background:var(--screen);box-shadow:inset 0 1px 0 rgba(0,0,0,.5)}
-    #rollWrap::-webkit-scrollbar-thumb{border:1px solid var(--mon-line);border-radius:1px;
-      background:linear-gradient(180deg,var(--mon-ink2) 0%,var(--mon-hi) 50%,var(--mon-ink2) 100%)}
-    body.mnotes #side{display:none}
-    body.mtracks #rollWrap{display:none}
-    /* hide the driver / notes / channels / synth status line */
-    .statline{display:none}
-    /* channel strip: one row, horizontal scroll; tap = mute, long-press = solo */
-    #chanstrip{gap:0;padding:3px 0 5px}
-    #chanstrip .lab{display:none}
-    #chans{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
-      padding-bottom:2px;touch-action:pan-x}
-    #chans::-webkit-scrollbar{display:none}
-    .ch{width:38px}
-    /* transport: compact single-character playback buttons on the left, speed &
+    #infoModal.show {
+      display: flex
+    }
+
+    .imodal {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      background: transparent
+    }
+
+    .imodal-h {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 12px;
+      color: var(--mon-ink2);
+      border-bottom: 1px solid var(--mon-line)
+    }
+
+    .imodal-h .t {
+      font-size: 14px;
+      letter-spacing: 1px;
+      color: var(--mon-hi);
+      text-shadow: 0 0 7px rgba(120, 235, 205, .4)
+    }
+
+    .imodal-body {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      padding: 16px 22px 22px;
+      color: var(--mon-ink);
+      font-size: 13px;
+      line-height: 1.7;
+      background: radial-gradient(130% 120% at 50% 0%, rgba(53, 125, 111, .12), transparent 60%)
+    }
+
+    .imodal-body h2 {
+      font-size: 15px;
+      line-height: 1.45;
+      color: var(--mon-hi);
+      margin: 24px 0 10px;
+      text-shadow: 0 0 8px rgba(120, 235, 205, .3)
+    }
+
+    .imodal-body h2:first-child {
+      margin-top: 0
+    }
+
+    .imodal-body p {
+      margin: 0 0 11px
+    }
+
+    .imodal-body strong {
+      color: var(--mon-hi)
+    }
+
+    .imodal-body .ichain {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin: 0 0 14px;
+      padding: 12px 14px;
+      background: rgba(0, 0, 0, .32);
+      color: var(--mon-ink2);
+      border-left: 3px solid var(--mon-line);
+      font-size: 12px;
+      line-height: 1.6
+    }
+
+    .imodal-body .ichain span:first-child {
+      color: var(--mon-hi)
+    }
+
+    .imodal-body .sig {
+      margin-top: 20px;
+      color: var(--mon-ink2)
+    }
+
+    /* ===================== MOBILE LAYOUT ===================== */
+    @media (max-width:720px) {
+      body {
+        font-size: 12px;
+        letter-spacing: 0
+      }
+
+      .logo {
+        font-size: 18px
+      }
+
+      header {
+        padding: 5px 8px 3px
+      }
+
+      .htop {
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px
+      }
+
+      .hline,
+      .hright {
+        display: none
+      }
+
+      .gamenav {
+        margin-right: 0
+      }
+
+      .hsub {
+        gap: 12px
+      }
+
+      /* show the notes/tracks switcher and collapse the split view to one pane */
+      #mtabs {
+        display: flex
+      }
+
+      #main {
+        padding: 0 6px;
+        gap: 0
+      }
+
+      #side {
+        width: auto;
+        flex: 1;
+        min-width: 0
+      }
+
+      /* roll: keys keep a real size and scroll left/right instead of squashing */
+      #rollWrap {
+        flex: 1;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x;
+        scrollbar-width: thin;
+        scrollbar-color: var(--mon-ink2) var(--screen)
+      }
+
+      #rollWrap::-webkit-scrollbar {
+        height: 9px
+      }
+
+      #rollWrap::-webkit-scrollbar-track {
+        background: var(--screen);
+        box-shadow: inset 0 1px 0 rgba(0, 0, 0, .5)
+      }
+
+      #rollWrap::-webkit-scrollbar-thumb {
+        border: 1px solid var(--mon-line);
+        border-radius: 1px;
+        background: linear-gradient(180deg, var(--mon-ink2) 0%, var(--mon-hi) 50%, var(--mon-ink2) 100%)
+      }
+
+      body.mnotes #side {
+        display: none
+      }
+
+      body.mtracks #rollWrap {
+        display: none
+      }
+
+      /* hide the driver / notes / channels / synth status line */
+      .statline {
+        display: none
+      }
+
+      /* channel strip: one row, horizontal scroll; tap = mute, long-press = solo */
+      #chanstrip {
+        gap: 0;
+        padding: 3px 0 5px
+      }
+
+      #chanstrip .lab {
+        display: none
+      }
+
+      #chans {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 2px;
+        touch-action: pan-x
+      }
+
+      #chans::-webkit-scrollbar {
+        display: none
+      }
+
+      .ch {
+        width: 38px
+      }
+
+      /* transport: compact single-character playback buttons on the left, speed &
        volume stacked vertically filling the rest of the row */
-    #dash{padding:6px}
-    #transport{flex-wrap:nowrap;gap:6px;align-items:stretch}
-    .credit{display:none}
-    #transport .btn.infobtn{display:none}
-    #transport .btn{width:44px;padding:0;text-align:center;font-size:0;
-      display:flex;align-items:center;justify-content:center}
-    #transport .btn::before{font-family:inherit;font-size:20px;line-height:1;letter-spacing:0}
-    #play::before{content:"\25B6"}      /* ▶ */
-    #play.on::before{content:"\23F8"}   /* ⏸ */
-    #restart::before{content:"\21BA"}   /* ↺ */
-    #clear::before{content:"\2298"}     /* ⊘ */
-    #meters{display:flex;flex-direction:column;flex:1;gap:6px;min-width:0}
-    /* SPD / VOL / MIX rows share one grid template so all three sliders are the
+      #dash {
+        padding: 6px
+      }
+
+      #transport {
+        flex-wrap: nowrap;
+        gap: 6px;
+        align-items: stretch
+      }
+
+      .credit {
+        display: none
+      }
+
+      #transport .btn.infobtn {
+        display: none
+      }
+
+      #transport .btn {
+        width: 44px;
+        padding: 0;
+        text-align: center;
+        font-size: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center
+      }
+
+      #transport .btn::before {
+        font-family: inherit;
+        font-size: 20px;
+        line-height: 1;
+        letter-spacing: 0
+      }
+
+      #play::before {
+        content: "\25B6"
+      }
+
+      /* ▶ */
+      #play.on::before {
+        content: "\23F8"
+      }
+
+      /* ⏸ */
+      #restart::before {
+        content: "\21BA"
+      }
+
+      /* ↺ */
+      #clear::before {
+        content: "\2298"
+      }
+
+      /* ⊘ */
+      #meters {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        gap: 6px;
+        min-width: 0
+      }
+
+      /* SPD / VOL / MIX rows share one grid template so all three sliders are the
        exact same width regardless of label / percent text length */
-    #meters .dmeter{flex:1;display:grid;grid-template-columns:30px 1fr 40px;align-items:center;gap:6px;padding:4px 9px;font-size:11px}
-    #meters .dmeter input[type=range]{width:auto;min-width:0;margin:0}
-    #meters #speedV,#meters #volV,#meters #mixV{width:auto;margin:0}
-    /* compact label: SPEED -> SPD */
-    #spdLab{font-size:0}
-    #spdLab::before{content:"SPD";font-size:11px}
-    /* condense the song-info header into one scrolling marquee line */
-    .hsub{flex-wrap:nowrap;overflow:hidden;white-space:nowrap;margin-top:2px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%)}
-    .hmarquee{display:inline-flex;gap:18px;padding-left:100%;animation:hmarq 24s linear infinite}
-    /* keep the track-list scrollbar clearly visible in the compact view */
-    #sbthumb{box-shadow:0 0 0 1px var(--mon-hi),0 0 6px rgba(0,0,0,.45)}
-  }
+      #meters .dmeter {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 30px 1fr 40px;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 9px;
+        font-size: 11px
+      }
 
-  /* ============ MOBILE LANDSCAPE (rotated) — screen left, controls right ============ */
-  @media (orientation:landscape) and (max-height:540px){
-    body{font-size:12px;letter-spacing:0}
-    /* lay the chassis out horizontally: green screen on the left, the metal
+      #meters .dmeter input[type=range] {
+        width: auto;
+        min-width: 0;
+        margin: 0
+      }
+
+      #meters #speedV,
+      #meters #volV,
+      #meters #mixV {
+        width: auto;
+        margin: 0
+      }
+
+      /* compact label: SPEED -> SPD */
+      #spdLab {
+        font-size: 0
+      }
+
+      #spdLab::before {
+        content: "SPD";
+        font-size: 11px
+      }
+
+      /* condense the song-info header into one scrolling marquee line */
+      .hsub {
+        flex-wrap: nowrap;
+        overflow: hidden;
+        white-space: nowrap;
+        margin-top: 2px;
+        -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+        mask-image: linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%)
+      }
+
+      .hmarquee {
+        display: inline-flex;
+        gap: 18px;
+        padding-left: 100%;
+        animation: hmarq 24s linear infinite
+      }
+
+      /* keep the track-list scrollbar clearly visible in the compact view */
+      #sbthumb {
+        box-shadow: 0 0 0 1px var(--mon-hi), 0 0 6px rgba(0, 0, 0, .45)
+      }
+    }
+
+    /* ============ MOBILE LANDSCAPE (rotated) — screen left, controls right ============ */
+    @media (orientation:landscape) and (max-height:540px) {
+      body {
+        font-size: 12px;
+        letter-spacing: 0
+      }
+
+      /* lay the chassis out horizontally: green screen on the left, the metal
        control panel as a vertical strip down the right edge */
-    #app{flex-direction:row;gap:7px}
-    #screen{flex:1;min-width:0}
-    header{padding:5px 8px 3px}
-    .logo{font-size:16px}
-    .htop{align-items:center;justify-content:space-between;gap:8px}
-    .hline,.hright{display:none}
-    .gamenav{margin-right:0}
-    /* condense song-info into a scrolling marquee */
-    .hsub{flex-wrap:nowrap;overflow:hidden;white-space:nowrap;margin-top:2px;
-      -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%);
-      mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%)}
-    .hmarquee{display:inline-flex;gap:18px;padding-left:100%;animation:hmarq 24s linear infinite}
-    /* single pane switched by the NOTES/TRACKS tabs */
-    #main{padding:0 6px;gap:0}
-    #side{width:auto;flex:1;min-width:0}
-    #rollWrap{flex:1}
-    body.mnotes #side{display:none}
-    body.mtracks #rollWrap{display:none}
-    .statline{display:none}
-    /* right-hand metal control column */
-    #dash{width:222px;flex:none;display:flex;flex-direction:column;gap:6px;padding:6px;overflow-y:auto;
-      border-top:0;border-left:2px solid var(--steel-lt);
-      box-shadow:inset 2px 0 0 rgba(255,255,255,.35),-4px 0 12px rgba(0,0,0,.45)}
-    #mtabs{display:flex;flex-direction:column;padding:0;order:1;flex:none}
-    /* channels fill the middle, growing to push the playback controls to the
+      #app {
+        flex-direction: row;
+        gap: 7px
+      }
+
+      #screen {
+        flex: 1;
+        min-width: 0
+      }
+
+      header {
+        padding: 5px 8px 3px
+      }
+
+      .logo {
+        font-size: 16px
+      }
+
+      .htop {
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px
+      }
+
+      .hline,
+      .hright {
+        display: none
+      }
+
+      .gamenav {
+        margin-right: 0
+      }
+
+      /* condense song-info into a scrolling marquee */
+      .hsub {
+        flex-wrap: nowrap;
+        overflow: hidden;
+        white-space: nowrap;
+        margin-top: 2px;
+        -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+        mask-image: linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%)
+      }
+
+      .hmarquee {
+        display: inline-flex;
+        gap: 18px;
+        padding-left: 100%;
+        animation: hmarq 24s linear infinite
+      }
+
+      /* single pane switched by the NOTES/TRACKS tabs */
+      #main {
+        padding: 0 6px;
+        gap: 0
+      }
+
+      #side {
+        width: auto;
+        flex: 1;
+        min-width: 0
+      }
+
+      #rollWrap {
+        flex: 1
+      }
+
+      body.mnotes #side {
+        display: none
+      }
+
+      body.mtracks #rollWrap {
+        display: none
+      }
+
+      .statline {
+        display: none
+      }
+
+      /* right-hand metal control column */
+      #dash {
+        width: 222px;
+        flex: none;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 6px;
+        overflow-y: auto;
+        border-top: 0;
+        border-left: 2px solid var(--steel-lt);
+        box-shadow: inset 2px 0 0 rgba(255, 255, 255, .35), -4px 0 12px rgba(0, 0, 0, .45)
+      }
+
+      #mtabs {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        order: 1;
+        flex: none
+      }
+
+      /* channels fill the middle, growing to push the playback controls to the
        bottom; the empty area above is what gets populated as tracks load */
-    #chanstrip{order:2;flex:1 1 auto;gap:0;padding:0;align-items:flex-start}
-    #chanstrip .lab{display:none}
-    #chans{flex-wrap:wrap;gap:4px;overflow:visible;touch-action:auto;align-content:flex-start}
-    .ch{width:38px}
-    /* playback controls pinned to the bottom of the column, buttons spread to fit */
-    #transport{order:3;flex:none;flex-wrap:wrap;gap:6px;align-items:stretch;margin-top:auto}
-    .credit{display:none}
-    #transport .btn.infobtn{display:none}
-    #transport .btn{flex:1;min-width:0;padding:8px 0;text-align:center;font-size:0;
-      display:flex;align-items:center;justify-content:center;order:2}
-    #transport .btn::before{font-family:inherit;font-size:20px;line-height:1;letter-spacing:0}
-    #play::before{content:"\25B6"}      /* ▶ */
-    #play.on::before{content:"\23F8"}   /* ⏸ */
-    #restart::before{content:"\21BA"}   /* ↺ */
-    #clear::before{content:"\2298"}     /* ⊘ */
-    /* mixing sliders above the playback buttons */
-    #meters{order:1;flex:1 0 100%;display:flex;flex-direction:column;gap:6px;min-width:0}
-    #meters .dmeter{display:grid;grid-template-columns:30px 1fr 40px;align-items:center;gap:6px;padding:4px 9px;font-size:11px}
-    #meters .dmeter input[type=range]{width:auto;min-width:0;margin:0}
-    #meters #speedV,#meters #volV,#meters #mixV{width:auto;margin:0}
-    #spdLab{font-size:0}
-    #spdLab::before{content:"SPD";font-size:11px}
-  }
-</style>
+      #chanstrip {
+        order: 2;
+        flex: 1 1 auto;
+        gap: 0;
+        padding: 0;
+        align-items: flex-start
+      }
+
+      #chanstrip .lab {
+        display: none
+      }
+
+      #chans {
+        flex-wrap: wrap;
+        gap: 4px;
+        overflow: visible;
+        touch-action: auto;
+        align-content: flex-start
+      }
+
+      .ch {
+        width: 38px
+      }
+
+      /* playback controls pinned to the bottom of the column, buttons spread to fit */
+      #transport {
+        order: 3;
+        flex: none;
+        flex-wrap: wrap;
+        gap: 6px;
+        align-items: stretch;
+        margin-top: auto
+      }
+
+      .credit {
+        display: none
+      }
+
+      #transport .btn.infobtn {
+        display: none
+      }
+
+      #transport .btn {
+        flex: 1;
+        min-width: 0;
+        padding: 8px 0;
+        text-align: center;
+        font-size: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        order: 2
+      }
+
+      #transport .btn::before {
+        font-family: inherit;
+        font-size: 20px;
+        line-height: 1;
+        letter-spacing: 0
+      }
+
+      #play::before {
+        content: "\25B6"
+      }
+
+      /* ▶ */
+      #play.on::before {
+        content: "\23F8"
+      }
+
+      /* ⏸ */
+      #restart::before {
+        content: "\21BA"
+      }
+
+      /* ↺ */
+      #clear::before {
+        content: "\2298"
+      }
+
+      /* ⊘ */
+      /* mixing sliders above the playback buttons */
+      #meters {
+        order: 1;
+        flex: 1 0 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        min-width: 0
+      }
+
+      #meters .dmeter {
+        display: grid;
+        grid-template-columns: 30px 1fr 40px;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 9px;
+        font-size: 11px
+      }
+
+      #meters .dmeter input[type=range] {
+        width: auto;
+        min-width: 0;
+        margin: 0
+      }
+
+      #meters #speedV,
+      #meters #volV,
+      #meters #mixV {
+        width: auto;
+        margin: 0
+      }
+
+      #spdLab {
+        font-size: 0
+      }
+
+      #spdLab::before {
+        content: "SPD";
+        font-size: 11px
+      }
+    }
+  </style>
 </head>
+
 <body class="mnotes">
-<div id="app">
-  <div id="screen">
-  <header>
-    <div class="htop">
-      <span class="logo">JAGGED ALLIANCE</span>
-      <span class="hline"></span>
-      <span class="gamenav"><button type="button" class="gamesel-btn" aria-haspopup="listbox" aria-expanded="false" title="Switch jukebox">JAGGED ALLIANCE</button><div class="gamemenu" role="listbox">
-        <button type="button" class="gameopt" role="option" data-href="index.html">TFX</button>
-        <button type="button" class="gameopt" role="option" data-href="inferno.html">INFERNO</button>
-        <button type="button" class="gameopt" role="option" data-href="ufo.html">X-COM</button>
-        <button type="button" class="gameopt" role="option" data-href="tftd.html">X-COM TFTD</button>
-        <button type="button" class="gameopt" role="option" data-href="wc2.html">WARCRAFT II</button>
-        <button type="button" class="gameopt" role="option" data-href="df.html">DARK FORCES</button>
-        <button type="button" class="gameopt" role="option" data-href="ww.html">WACKY WHEELS</button>
-        <button type="button" class="gameopt" role="option" data-href="ea.html">EXTREME ASSAULT</button>
-        <button type="button" class="gameopt" role="option" data-href="lba.html">LITTLE BIG ADVENTURE</button>
-        <button type="button" class="gameopt" role="option" data-href="d2.html">DUNE II</button>
-        <button type="button" class="gameopt" role="option" data-href="dm2.html">DOOM II</button>
-        <button type="button" class="gameopt sel" role="option" aria-selected="true" data-href="ja.html">JAGGED ALLIANCE</button>
-      </div></span><script>(function(){var nav=document.currentScript.previousElementSibling,btn=nav.querySelector('.gamesel-btn'),menu=nav.querySelector('.gamemenu');btn.addEventListener('click',function(e){e.stopPropagation();var o=menu.classList.toggle('open');btn.setAttribute('aria-expanded',o);});menu.querySelectorAll('.gameopt').forEach(function(o){o.addEventListener('click',function(){var h=o.dataset.href;if(h&&!o.classList.contains('sel'))location.href=h;});});document.addEventListener('click',function(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');});})();</script>
-      <span class="hright">JAGGED ALLIANCE JUKEBOX</span>
-    </div>
-    <div class="hsub">
-      <div class="hmarquee">
-      <span>TRACK: <b id="trackname">—</b></span>
-      <span>STATUS: <b id="status">LOADING</b></span>
-      <span>DRIVER: <b id="st-drv">—</b></span>
-      <span>NOTES: <b id="st-notes">0</b></span>
-      <span>CHANNELS: <b id="st-ch">0</b></span>
-      <span>SYNTH: <b id="st-synth">MT-32 / CM-32L (Munt)</b></span>
-      <span>SOURCE: <b id="st-src">ja/misc (Miles XMI / MADLAB FM)</b></span>
-      </div>
-    </div>
-  </header>
+  <div id="app">
+    <div id="screen">
+      <header>
+        <div class="htop">
+          <span class="logo">JAGGED ALLIANCE</span>
+          <span class="hline"></span>
+          <span class="gamenav"><button type="button" class="gamesel-btn" aria-haspopup="listbox" aria-expanded="false"
+              title="Switch jukebox">JAGGED ALLIANCE</button>
+            <div class="gamemenu" role="listbox">
+              <button type="button" class="gameopt" role="option" data-href="index.html">TFX</button>
+              <button type="button" class="gameopt" role="option" data-href="inferno.html">INFERNO</button>
+              <button type="button" class="gameopt" role="option" data-href="ufo.html">X-COM</button>
+              <button type="button" class="gameopt" role="option" data-href="tftd.html">X-COM TFTD</button>
+              <button type="button" class="gameopt" role="option" data-href="wc2.html">WARCRAFT II</button>
+              <button type="button" class="gameopt" role="option" data-href="df.html">DARK FORCES</button>
+              <button type="button" class="gameopt" role="option" data-href="ww.html">WACKY WHEELS</button>
+              <button type="button" class="gameopt" role="option" data-href="ea.html">EXTREME ASSAULT</button>
+              <button type="button" class="gameopt" role="option" data-href="lba.html">LITTLE BIG ADVENTURE</button>
+              <button type="button" class="gameopt" role="option" data-href="d2.html">DUNE II</button>
+              <button type="button" class="gameopt" role="option" data-href="dm2.html">DOOM II</button>
+              <button type="button" class="gameopt sel" role="option" aria-selected="true" data-href="ja.html">JAGGED
+                ALLIANCE</button>
+              <button type="button" class="gameopt" role="option" data-href="ttd.html">TRANSPORT TYCOON</button>
+              <button type="button" class="gameopt" role="option" data-href="mc.html">MAGIC CARPET</button>
+            </div>
+          </span>
+          <script>(function () { var nav = document.currentScript.previousElementSibling, btn = nav.querySelector('.gamesel-btn'), menu = nav.querySelector('.gamemenu'); btn.addEventListener('click', function (e) { e.stopPropagation(); var o = menu.classList.toggle('open'); btn.setAttribute('aria-expanded', o); }); menu.querySelectorAll('.gameopt').forEach(function (o) { o.addEventListener('click', function () { var h = o.dataset.href; if (h && !o.classList.contains('sel')) location.href = h; }); }); document.addEventListener('click', function () { menu.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }); })();</script>
+          <span class="hright">JAGGED ALLIANCE JUKEBOX</span>
+        </div>
+        <div class="hsub">
+          <div class="hmarquee">
+            <span>TRACK: <b id="trackname">—</b></span>
+            <span>STATUS: <b id="status">LOADING</b></span>
+            <span>DRIVER: <b id="st-drv">—</b></span>
+            <span>NOTES: <b id="st-notes">0</b></span>
+            <span>CHANNELS: <b id="st-ch">0</b></span>
+            <span>SYNTH: <b id="st-synth">MT-32 / CM-32L (Munt)</b></span>
+            <span>SOURCE: <b id="st-src">ja/misc (Miles XMI / MADLAB FM)</b></span>
+          </div>
+        </div>
+      </header>
 
-  <div id="main">
-    <div id="rollWrap" class="ginset">
-      <canvas id="roll"></canvas>
-      <div id="overlay">INITIALISING SYNTHESIS &mdash; HARDWARE &amp; ROM IMAGES&hellip;</div>
-    </div>
-    <div id="side" class="graise">
-      <div class="side-h">TRACK SELECT<span class="sp"></span><b id="trackcount">0</b></div>
-      <div class="filterbar" id="filterbar">
-        <button class="fbtn on" data-f="ALL">ALL</button>
-        <button class="fbtn" data-f="GM"><span class="dchip gm">GM</span>Gen MIDI</button>
-        <button class="fbtn" data-f="MT"><span class="dchip mt">MT</span>MT-32</button>
-        <button class="fbtn" data-f="A3"><span class="dchip o3">FM</span>AdLib</button>
+      <div id="main">
+        <div id="rollWrap" class="ginset">
+          <canvas id="roll"></canvas>
+          <div id="overlay">INITIALISING SYNTHESIS &mdash; HARDWARE &amp; ROM IMAGES&hellip;</div>
+        </div>
+        <div id="side" class="graise">
+          <div class="side-h">TRACK SELECT<span class="sp"></span><b id="trackcount">0</b></div>
+          <div class="filterbar" id="filterbar">
+            <button class="fbtn on" data-f="ALL">ALL</button>
+            <button class="fbtn" data-f="GM"><span class="dchip gm">GM</span>Gen MIDI</button>
+            <button class="fbtn" data-f="MT"><span class="dchip mt">MT</span>MT-32</button>
+            <button class="fbtn" data-f="A3"><span class="dchip o3">FM</span>AdLib</button>
+          </div>
+          <div id="listwrap">
+            <div id="songlist"></div>
+            <div id="sb" class="ginset">
+              <div id="sbthumb"></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div id="listwrap">
-        <div id="songlist"></div>
-        <div id="sb" class="ginset"><div id="sbthumb"></div></div>
+      <div id="seekbar">
+        <span id="t-cur">0:00</span>
+        <div id="seektrack" class="ginset">
+          <div id="seekfill"></div>
+          <input id="seek" type="range" min="0" max="1000" step="1" value="0" disabled>
+        </div>
+        <span id="time">0:00 / 0:00</span>
+      </div>
+
+      <div id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
+        <div class="imodal">
+          <div class="imodal-h">
+            <span class="t" id="infoTitle">ABOUT -- JAGGED ALLIANCE MUSIC / ROLAND MT-32 / GENERAL MIDI / ADLIB</span>
+          </div>
+          <div class="imodal-body">
+            <h2>A mercenary war, three ways.</h2>
+            <p>Jagged Alliance (Sir-Tech, 1994) &mdash; the turn-based tactical game where you hire a squad of
+              mercenaries to liberate the island of Metavira. Its score is stored not as recorded audio but as compact
+              per-device event data driven by the <strong>Miles Sound System</strong> (AIL): AIL/Miles
+              <strong>XMI</strong> for the Roland MT-32 and AdLib, and a matching <strong>General-MIDI</strong> XMI set
+              for the Roland SC-55. The cues live in three banks &mdash; <code>INTRO</code>, <code>DAY</code> and
+              <code>MENUS</code> &mdash; each holding several indexed sub-songs; this jukebox plays three device
+              renditions of every cue side by side &mdash; the <strong>Roland MT-32</strong> score, the <strong>General
+                MIDI</strong> Sound Canvas version, and the <strong>AdLib / OPL</strong> FM build. Use the <strong>MT-32
+                / Gen MIDI / AdLib</strong> filter to switch between them.</p>
+
+            <h2>Roland MT-32: the native AIL score</h2>
+            <p>The <code>INTRO.XMI</code>, <code>DAY.XMI</code> and <code>MENUS.XMI</code> banks carry the game's native
+              Miles score (each sub-song includes a <code>TIMB</code> timbre list of the patches it loads). We split out
+              each cue's sub-song, convert its XMI to a Standard MIDI File (a port of Exult's XMidiFile timing model)
+              and render it through the <strong>Munt</strong> CM-32L emulator &mdash; the same MT-32 backend the sister
+              TFX jukebox uses.</p>
+
+            <h2>General MIDI: the Sound Canvas version</h2>
+            <p>Jagged Alliance ships a <strong>separate</strong> General-MIDI score in the <code>INTROGM.XMI</code>,
+              <code>DAYGM.XMI</code> and <code>MENUSGM.XMI</code> banks &mdash; standard GM programs and bank-select for
+              a Roland SC-55 / SCC-1, not the MT-32 data replayed on a GM chip. We convert each cue's GM sub-song to a
+              Standard MIDI File and render it through WebAssembly <strong>Nuked-SC55</strong>, so the patches map as
+              the Sound Canvas mix intended.</p>
+
+            <h2>AdLib: Miles OPL FM</h2>
+            <p>The AdLib build replays the same native (non-GM) XMI through the game's <strong>own Miles/AIL OPL
+                instrument bank</strong>, <code>MADLAB.AD</code> (== <code>MADLAB.OPL</code>) &mdash; 161 melodic + 34
+              percussion FM timbres. We convert that AIL bank to a WOPL bank, drive each cue's XMI through
+              <strong>libADLMIDI</strong> with it, capture every <strong>OPL</strong> register write to a DRO log, and
+              play that log back through a cycle-accurate <strong>Nuked-OPL3</strong> emulator in your browser &mdash;
+              exactly as a 1994 AdLib / Sound Blaster card rendered it.</p>
+
+            <h2>Which cue is which</h2>
+            <p>The first sub-song slot of every bank is an empty stub; the real cues are the remaining indices. They are
+              grouped by source bank: the <strong>Intro</strong> cinematic themes, the in-game <strong>Day</strong>
+              (sector / map) tracks, and the <strong>Menus</strong> / laptop themes. Exact in-game titles are not stored
+              in the data, so cues are labelled by bank and order.</p>
+
+            <h2>How this works</h2>
+            <div class="ichain"><span>1994 Jagged Alliance ja/misc Miles XMI banks</span><span>-&gt; XMI (MT-32 / AdLib)
+                + GM XMI (SC-55)</span><span>-&gt; per-cue single-song XMI + MADLAB AIL-&gt;WOPL bank</span><span>-&gt;
+                SMF (Exult timing) / libADLMIDI OPL register log</span><span>-&gt; SMF / DRO</span><span>-&gt;
+                JavaScript timing</span><span>-&gt; WebAssembly Munt CM-32L (MT-32) / Nuked-SC55 (GM) / Nuked-OPL3
+                (AdLib)</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
+            <p>The synthesis engine, ROM images and UI are shared with the sister TFX jukebox -- only the music
+              converters and this page are new.</p>
+            <p class="sig">-- a companion to the TFX jukebox</p>
+          </div>
+        </div>
+      </div>
+    </div><!-- /screen -->
+
+    <div id="dash">
+      <div id="mtabs">
+        <div class="mseg">
+          <button class="mtab on" data-v="notes">NOTES</button>
+          <button class="mtab" data-v="tracks">TRACKS</button>
+          <button class="mtab" id="minfo" title="About this jukebox">INFO</button>
+        </div>
+        <div class="micons">
+          <button class="micon" id="mrepeat" aria-label="Repeat"
+            title="Repeat: when the song ends, play it again from the beginning">&#xE000;</button>
+          <button class="micon" id="mauto" aria-label="Autoadvance"
+            title="Autoadvance: when the song ends, automatically play the next song">&#xE001;</button>
+          <button class="micon" id="mlp" aria-label="Low-performance mode"
+            title="Low-performance mode: lighter audio resampling if playback stutters">&#xE002;</button>
+          <button class="micon" id="msf" aria-label="SoundFont"
+            title="Play the General MIDI version through the GeneralUser-GS SoundFont">&#xE003;</button>
+        </div>
+      </div>
+      <div id="chanstrip">
+        <span class="lab">CHANNELS<br>L·MUTE<br>R·SOLO</span>
+        <div id="chans"></div>
+      </div>
+      <div id="transport">
+        <button id="play" class="btn" disabled>PLAY</button>
+        <button id="restart" class="btn" disabled>RESTART</button>
+        <button id="clear" class="btn" disabled>CLEAR M/S</button>
+        <span id="meters">
+          <span class="dmeter"><b class="mlab" id="spdLab">SPEED</b> <input id="speed" type="range" min="0.25" max="2"
+              step="0.05" value="1"><b id="speedV">100%</b></span>
+          <span class="dmeter"><b class="mlab">VOL</b> <input id="vol" type="range" min="0" max="1" step="0.02"
+              value="0.85"><b id="volV">85%</b></span>
+          <span class="dmeter"><b class="mlab">MIX</b> <input id="mix" type="range" min="0" max="1" step="0.02"
+              value="0" title="Blend L/R channels toward mono — easier on headphones"><b id="mixV">0%</b></span>
+          <span class="dmeter"><b class="mlab">RVB</b> <input id="rvb" type="range" min="0" max="100" step="1" value="0"
+              title="Reverb — adds a post-processing reverb tail on top of the dry signal"><b id="rvbV">0%</b></span>
+        </span>
+        <button id="sfBtn" class="btn infobtn"
+          title="Play the General MIDI version through the GeneralUser-GS SoundFont instead of the Roland SC-55 emulator">SOUNDFONT</button>
+        <button id="lpBtn" class="btn infobtn"
+          title="Low-performance mode: use lighter audio resampling if playback stutters on slow devices">LOW-PERF</button>
+        <button id="repeatBtn" class="btn infobtn"
+          title="Repeat: when the song ends, play it again from the beginning">REPEAT</button>
+        <button id="autoBtn" class="btn infobtn"
+          title="Autoadvance: when the song ends, automatically play the next song in the list">AUTO</button>
+        <button id="infoBtn" class="btn infobtn"
+          title="About this jukebox — Roland MT-32, General MIDI and AdLib">INFO</button>
+        <span class="credit"><a href="https://en.wikipedia.org/wiki/Jagged_Alliance_(1994_video_game)" target="_blank"
+            rel="noopener">JAGGED ALLIANCE · SIR-TECH 1994</a></span>
       </div>
     </div>
   </div>
-  <div id="seekbar">
-    <span id="t-cur">0:00</span>
-    <div id="seektrack" class="ginset">
-      <div id="seekfill"></div>
-      <input id="seek" type="range" min="0" max="1000" step="1" value="0" disabled>
-    </div>
-    <span id="time">0:00 / 0:00</span>
-  </div>
 
-  <div id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
-    <div class="imodal">
-      <div class="imodal-h">
-        <span class="t" id="infoTitle">ABOUT -- JAGGED ALLIANCE MUSIC / ROLAND MT-32 / GENERAL MIDI / ADLIB</span>
-      </div>
-      <div class="imodal-body">
-        <h2>A mercenary war, three ways.</h2>
-        <p>Jagged Alliance (Sir-Tech, 1994) &mdash; the turn-based tactical game where you hire a squad of mercenaries to liberate the island of Metavira. Its score is stored not as recorded audio but as compact per-device event data driven by the <strong>Miles Sound System</strong> (AIL): AIL/Miles <strong>XMI</strong> for the Roland MT-32 and AdLib, and a matching <strong>General-MIDI</strong> XMI set for the Roland SC-55. The cues live in three banks &mdash; <code>INTRO</code>, <code>DAY</code> and <code>MENUS</code> &mdash; each holding several indexed sub-songs; this jukebox plays three device renditions of every cue side by side &mdash; the <strong>Roland MT-32</strong> score, the <strong>General MIDI</strong> Sound Canvas version, and the <strong>AdLib / OPL</strong> FM build. Use the <strong>MT-32 / Gen MIDI / AdLib</strong> filter to switch between them.</p>
-
-        <h2>Roland MT-32: the native AIL score</h2>
-        <p>The <code>INTRO.XMI</code>, <code>DAY.XMI</code> and <code>MENUS.XMI</code> banks carry the game's native Miles score (each sub-song includes a <code>TIMB</code> timbre list of the patches it loads). We split out each cue's sub-song, convert its XMI to a Standard MIDI File (a port of Exult's XMidiFile timing model) and render it through the <strong>Munt</strong> CM-32L emulator &mdash; the same MT-32 backend the sister TFX jukebox uses.</p>
-
-        <h2>General MIDI: the Sound Canvas version</h2>
-        <p>Jagged Alliance ships a <strong>separate</strong> General-MIDI score in the <code>INTROGM.XMI</code>, <code>DAYGM.XMI</code> and <code>MENUSGM.XMI</code> banks &mdash; standard GM programs and bank-select for a Roland SC-55 / SCC-1, not the MT-32 data replayed on a GM chip. We convert each cue's GM sub-song to a Standard MIDI File and render it through WebAssembly <strong>Nuked-SC55</strong>, so the patches map as the Sound Canvas mix intended.</p>
-
-        <h2>AdLib: Miles OPL FM</h2>
-        <p>The AdLib build replays the same native (non-GM) XMI through the game's <strong>own Miles/AIL OPL instrument bank</strong>, <code>MADLAB.AD</code> (== <code>MADLAB.OPL</code>) &mdash; 161 melodic + 34 percussion FM timbres. We convert that AIL bank to a WOPL bank, drive each cue's XMI through <strong>libADLMIDI</strong> with it, capture every <strong>OPL</strong> register write to a DRO log, and play that log back through a cycle-accurate <strong>Nuked-OPL3</strong> emulator in your browser &mdash; exactly as a 1994 AdLib / Sound Blaster card rendered it.</p>
-
-        <h2>Which cue is which</h2>
-        <p>The first sub-song slot of every bank is an empty stub; the real cues are the remaining indices. They are grouped by source bank: the <strong>Intro</strong> cinematic themes, the in-game <strong>Day</strong> (sector / map) tracks, and the <strong>Menus</strong> / laptop themes. Exact in-game titles are not stored in the data, so cues are labelled by bank and order.</p>
-
-        <h2>How this works</h2>
-        <div class="ichain"><span>1994 Jagged Alliance ja/misc Miles XMI banks</span><span>-&gt; XMI (MT-32 / AdLib) + GM XMI (SC-55)</span><span>-&gt; per-cue single-song XMI + MADLAB AIL-&gt;WOPL bank</span><span>-&gt; SMF (Exult timing) / libADLMIDI OPL register log</span><span>-&gt; SMF / DRO</span><span>-&gt; JavaScript timing</span><span>-&gt; WebAssembly Munt CM-32L (MT-32) / Nuked-SC55 (GM) / Nuked-OPL3 (AdLib)</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
-        <p>The synthesis engine, ROM images and UI are shared with the sister TFX jukebox -- only the music converters and this page are new.</p>
-        <p class="sig">-- a companion to the TFX jukebox</p>
-      </div>
-    </div>
-  </div>
-  </div><!-- /screen -->
-
-  <div id="dash">
-    <div id="mtabs">
-      <div class="mseg">
-        <button class="mtab on" data-v="notes">NOTES</button>
-        <button class="mtab" data-v="tracks">TRACKS</button>
-        <button class="mtab" id="minfo" title="About this jukebox">INFO</button>
-      </div>
-      <div class="micons">
-        <button class="micon" id="mrepeat" aria-label="Repeat" title="Repeat: when the song ends, play it again from the beginning">&#xE000;</button>
-        <button class="micon" id="mauto" aria-label="Autoadvance" title="Autoadvance: when the song ends, automatically play the next song">&#xE001;</button>
-        <button class="micon" id="mlp" aria-label="Low-performance mode" title="Low-performance mode: lighter audio resampling if playback stutters">&#xE002;</button>
-        <button class="micon" id="msf" aria-label="SoundFont" title="Play the General MIDI version through the GeneralUser-GS SoundFont">&#xE003;</button>
-      </div>
-    </div>
-    <div id="chanstrip">
-      <span class="lab">CHANNELS<br>L·MUTE<br>R·SOLO</span>
-      <div id="chans"></div>
-    </div>
-    <div id="transport">
-      <button id="play" class="btn" disabled>PLAY</button>
-      <button id="restart" class="btn" disabled>RESTART</button>
-      <button id="clear" class="btn" disabled>CLEAR M/S</button>
-      <span id="meters">
-      <span class="dmeter"><b class="mlab" id="spdLab">SPEED</b> <input id="speed" type="range" min="0.25" max="2" step="0.05" value="1"><b id="speedV">100%</b></span>
-      <span class="dmeter"><b class="mlab">VOL</b> <input id="vol" type="range" min="0" max="1" step="0.02" value="0.85"><b id="volV">85%</b></span>
-      <span class="dmeter"><b class="mlab">MIX</b> <input id="mix" type="range" min="0" max="1" step="0.02" value="0" title="Blend L/R channels toward mono — easier on headphones"><b id="mixV">0%</b></span>
-      <span class="dmeter"><b class="mlab">RVB</b> <input id="rvb" type="range" min="0" max="100" step="1" value="0" title="Reverb — adds a post-processing reverb tail on top of the dry signal"><b id="rvbV">0%</b></span>
-      </span>
-      <button id="sfBtn" class="btn infobtn" title="Play the General MIDI version through the GeneralUser-GS SoundFont instead of the Roland SC-55 emulator">SOUNDFONT</button>
-      <button id="lpBtn" class="btn infobtn" title="Low-performance mode: use lighter audio resampling if playback stutters on slow devices">LOW-PERF</button>
-      <button id="repeatBtn" class="btn infobtn" title="Repeat: when the song ends, play it again from the beginning">REPEAT</button>
-      <button id="autoBtn" class="btn infobtn" title="Autoadvance: when the song ends, automatically play the next song in the list">AUTO</button>
-      <button id="infoBtn" class="btn infobtn" title="About this jukebox — Roland MT-32, General MIDI and AdLib">INFO</button>
-      <span class="credit"><a href="https://en.wikipedia.org/wiki/Jagged_Alliance_(1994_video_game)" target="_blank" rel="noopener">JAGGED ALLIANCE · SIR-TECH 1994</a></span>
-    </div>
-  </div>
-</div>
-
-<script src="mt32emu.js"></script>
-<script src="sc55.js"></script>
-<script src="opl3.js"></script>
-<script type="module">
-import { initPlayer } from './player-page.js';
-const DRVORD = {MT:0,GM:1,A3:2};
-initPlayer({
-  songsUrl: 'ja_songs.json',
-  path: s => 'ja/' + s.file,
-  palette: ['#0e1208','#3a431a','#869439','#b3c43e','#e4f0a4'],
-  backdrop: '#11160c',
-  sort: (a,b)=>
-      a._tid-b._tid ||
-      (DRVORD[a._filt]??9)-(DRVORD[b._filt]??9) ||
-      a._name.localeCompare(b._name,undefined,{sensitivity:'base',numeric:true}),
-  prepare(s, i){
-      // Jagged Alliance ships three Miles renditions per cue: _MT. -> the native
-      // AIL MT-32 score (Munt), _GM. -> the General-MIDI score (SC-55), _A3. ->
-      // the AdLib FM build (the non-GM XMI through the MADLAB OPL bank, Nuked-OPL3).
-      const tok=(/_(GM|MT|A3)\./.exec(s.file)||[,'GM'])[1];
-      s._filt=tok;
-      s._drv={GM:'SCC',MT:'RLD',A3:'ADL'}[tok];
-      s._dev={GM:'General MIDI',MT:'Roland MT-32',A3:'AdLib (OPL)'}[tok];
-      s._name=s.label;
-      s._tid=+(s.label.match(/^(\d+)/)||[,1e9])[1];
-    s._key = s._filt;
-  },
-  chip(s){
-    const DCH={GM:['gm','GM','General MIDI — Roland SC-55 / SCC-1'],
-                 MT:['mt','MT','Roland MT-32 — native AIL/Miles XMI, Munt CM-32L'],
-                 A3:['o3','FM','AdLib / OPL FM — Miles MADLAB bank, Nuked-OPL3']};
-    return DCH[s._key] || DCH.GM;
-  },
-  status(s, sf2){
-    return {
-      drv: {GM:'GEN MIDI',MT:'MT-32',A3:'ADLIB'}[s._filt]||s._filt,
-      synth: (sf2 && s._filt==='GM') ? 'GeneralUser-GS (SoundFont)'
-      : ({GM:'SC-55 v1.21 (SCC-1)',MT:'MT-32 / CM-32L (Munt)',A3:'OPL3 · Nuked-OPL3 (Miles MADLAB)'}[s._filt]||s._filt),
-      src: {GM:'GM XMI bank (SC-55)',MT:'AIL XMI bank (MT-32)',A3:'AIL XMI + MADLAB FM bank (OPL)'}[s._filt]||s._filt,
-    };
-  },
-  media(s){
-    const dev={GM:'Roland SC-55 (General MIDI)',MT:'Roland MT-32',A3:'AdLib OPL FM'}[s._key]||s._key;
-    return { title: s._name, artist: dev, album: 'Jagged Alliance — Sir-Tech (1994)' };
-  },
-});
-</script>
+  <script src="mt32emu.js"></script>
+  <script src="sc55.js"></script>
+  <script src="opl3.js"></script>
+  <script type="module">
+    import { initPlayer } from './player-page.js';
+    const DRVORD = { MT: 0, GM: 1, A3: 2 };
+    initPlayer({
+      songsUrl: 'ja_songs.json',
+      path: s => 'ja/' + s.file,
+      palette: ['#0e1208', '#3a431a', '#869439', '#b3c43e', '#e4f0a4'],
+      backdrop: '#11160c',
+      sort: (a, b) =>
+        a._tid - b._tid ||
+        (DRVORD[a._filt] ?? 9) - (DRVORD[b._filt] ?? 9) ||
+        a._name.localeCompare(b._name, undefined, { sensitivity: 'base', numeric: true }),
+      prepare(s, i) {
+        // Jagged Alliance ships three Miles renditions per cue: _MT. -> the native
+        // AIL MT-32 score (Munt), _GM. -> the General-MIDI score (SC-55), _A3. ->
+        // the AdLib FM build (the non-GM XMI through the MADLAB OPL bank, Nuked-OPL3).
+        const tok = (/_(GM|MT|A3)\./.exec(s.file) || [, 'GM'])[1];
+        s._filt = tok;
+        s._drv = { GM: 'SCC', MT: 'RLD', A3: 'ADL' }[tok];
+        s._dev = { GM: 'General MIDI', MT: 'Roland MT-32', A3: 'AdLib (OPL)' }[tok];
+        s._name = s.label;
+        s._tid = +(s.label.match(/^(\d+)/) || [, 1e9])[1];
+        s._key = s._filt;
+      },
+      chip(s) {
+        const DCH = {
+          GM: ['gm', 'GM', 'General MIDI — Roland SC-55 / SCC-1'],
+          MT: ['mt', 'MT', 'Roland MT-32 — native AIL/Miles XMI, Munt CM-32L'],
+          A3: ['o3', 'FM', 'AdLib / OPL FM — Miles MADLAB bank, Nuked-OPL3']
+        };
+        return DCH[s._key] || DCH.GM;
+      },
+      status(s, sf2) {
+        return {
+          drv: { GM: 'GEN MIDI', MT: 'MT-32', A3: 'ADLIB' }[s._filt] || s._filt,
+          synth: (sf2 && s._filt === 'GM') ? 'GeneralUser-GS (SoundFont)'
+            : ({ GM: 'SC-55 v1.21 (SCC-1)', MT: 'MT-32 / CM-32L (Munt)', A3: 'OPL3 · Nuked-OPL3 (Miles MADLAB)' }[s._filt] || s._filt),
+          src: { GM: 'GM XMI bank (SC-55)', MT: 'AIL XMI bank (MT-32)', A3: 'AIL XMI + MADLAB FM bank (OPL)' }[s._filt] || s._filt,
+        };
+      },
+      media(s) {
+        const dev = { GM: 'Roland SC-55 (General MIDI)', MT: 'Roland MT-32', A3: 'AdLib OPL FM' }[s._key] || s._key;
+        return { title: s._name, artist: dev, album: 'Jagged Alliance — Sir-Tech (1994)' };
+      },
+    });
+  </script>
 </body>
+
 </html>

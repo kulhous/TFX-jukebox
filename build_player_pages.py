@@ -19,7 +19,7 @@ import sys
 import pathlib
 
 HERE = pathlib.Path(__file__).resolve().parent
-STD_PAGES = ["index", "ufo", "tftd", "wc2", "df", "ww", "ea", "lba", "d2", "dm2"]
+STD_PAGES = ["index", "ufo", "tftd", "wc2", "df", "ww", "ea", "lba", "d2", "dm2", "ja", "ttd"]
 
 
 def extract_module(content):

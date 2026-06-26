@@ -1,0 +1,128 @@
+[
+  {
+    "file": "01_MT.mid",
+    "label": "01 - Intro 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "01_A3.dro",
+    "label": "01 - Intro 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "01_GM.mid",
+    "label": "01 - Intro 4",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "02_MT.mid",
+    "label": "02 - Intro 5",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "02_A3.dro",
+    "label": "02 - Intro 5",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "02_GM.mid",
+    "label": "02 - Intro 5",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "03_MT.mid",
+    "label": "03 - Intro 6",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "03_A3.dro",
+    "label": "03 - Intro 6",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "03_GM.mid",
+    "label": "03 - Intro 6",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "04_MT.mid",
+    "label": "04 - In-Game 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "04_A3.dro",
+    "label": "04 - In-Game 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "04_GM.mid",
+    "label": "04 - In-Game 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "05_MT.mid",
+    "label": "05 - In-Game 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "05_A3.dro",
+    "label": "05 - In-Game 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "05_GM.mid",
+    "label": "05 - In-Game 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "06_MT.mid",
+    "label": "06 - In-Game 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "06_A3.dro",
+    "label": "06 - In-Game 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "06_GM.mid",
+    "label": "06 - In-Game 3",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "07_MT.mid",
+    "label": "07 - Setup / Menu",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "07_A3.dro",
+    "label": "07 - Setup / Menu",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "07_GM.mid",
+    "label": "07 - Setup / Menu",
+    "named": true,
+    "hidden": false
+  }
+]
