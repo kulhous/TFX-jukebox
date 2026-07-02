@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Transport Tycoon Deluxe · General MIDI / MT-32 / AdLib</title>
+<title>Strike Commander · General MIDI / MT-32 / AdLib</title>
 <style>
   @font-face{
     font-family:"TFX Pixel";
@@ -11,17 +11,17 @@
     font-weight:normal;font-style:normal;font-display:block;
   }
   :root{
-    /* green-on-green (Transport Tycoon terrain / classic monitor palette) */
-    --bg:#0c3d22; --mon:#073018; --mon-ink:#67e08a; --mon-ink2:#3d9b5c; --mon-line:#2a6a40; --mon-hi:#bdf7c9;
-    --screen:#04210f;
+    /* cyan mech-HUD UI (Extreme Assault cockpit display) */
+    --bg:#1a1206; --mon:#1c1408; --mon-ink:#ffb24a; --mon-ink2:#a8741f; --mon-line:#5a3e14; --mon-hi:#ffe6a8;
+    --screen:#0d0904;
     /* real brushed steel */
     --steel:#9498a0; --steel-lt:#e2e5e9; --steel-dk:#2c2f35; --steel-emb:#15171b; --steel-ink:#eef0f2;
     --steel-grad:linear-gradient(180deg,#c4c8cd 0%,#9a9ea6 46%,#6b7078 100%);
     --steel-grad-dn:linear-gradient(180deg,#797d85 0%,#5e636b 100%);
-    --warn:#fde725;
+    --warn:#ff5a3c;
   }
   *{box-sizing:border-box}
-  html,body{margin:0;height:100%;background:#03190d;overflow:hidden}
+  html,body{margin:0;height:100%;background:#140d04;overflow:hidden}
   body{font-family:"TFX Pixel","Lucida Console","DejaVu Sans Mono",Consolas,monospace;
     color:var(--mon-ink);text-transform:uppercase;letter-spacing:0;font-size:13px;
     -webkit-font-smoothing:none}
@@ -29,14 +29,10 @@
   #app{position:relative;display:flex;flex-direction:column;height:100%;gap:7px;padding:7px;
     background:var(--steel-grad),repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 1px,rgba(0,0,0,.025) 1px 2px)}
   /* recessed green screen */
-  #screen{position:relative;flex:1;display:flex;flex-direction:column;min-height:0;overflow:hidden;
-    /* royal-blue checkerboard, like the in-game leaderboard / menu screens */
-    background:
-      conic-gradient(from 90deg at 50% 50%,#0c4a28 0 25%,#073418 0 50%,#0c4a28 0 75%,#073418 0) 0 0/40px 40px,
-      var(--bg);
+  #screen{position:relative;flex:1;display:flex;flex-direction:column;min-height:0;background:var(--bg);overflow:hidden;
     border-top:2px solid var(--steel-dk);border-left:2px solid var(--steel-dk);
     border-right:2px solid var(--steel-lt);border-bottom:2px solid var(--steel-lt);
-    box-shadow:inset 0 0 0 1px #04043a, inset 0 0 26px rgba(0,0,0,.45)}
+    box-shadow:inset 0 0 0 1px #04110d, inset 0 0 26px rgba(0,0,0,.45)}
   #screen::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:60;
     background:repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0 1px,transparent 1px 3px),
       radial-gradient(125% 125% at 50% 45%,transparent 62%,rgba(0,0,0,.4) 100%)}
@@ -54,12 +50,8 @@
   /* ---- header ---- */
   header{padding:7px 12px 4px}
   .htop{display:flex;align-items:flex-end;gap:12px}
-  .logo{position:relative;z-index:70;font-size:22px;font-weight:700;letter-spacing:0;line-height:.9;
-    /* per-letter vertical gradient like the in-game beveled text (a vertical
-       background clipped to the glyphs gives every letter the same top->bottom ramp) */
-    background:linear-gradient(180deg,#e8ffe0 0%,#9bf0ad 40%,#4fc46f 70%,#1a7a3e 100%);
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
-    text-shadow:0 1px 0 rgba(70,30,0,.45)}
+  .logo{font-size:22px;font-weight:700;color:var(--mon-hi);letter-spacing:0;line-height:.9;
+    text-shadow:0 0 7px rgba(120,235,205,.4)}
   .hline{flex:1;height:0;border-top:1px solid var(--mon-line);box-shadow:0 1px 0 rgba(0,0,0,.35);margin-bottom:5px}
   .hright{color:var(--mon-ink2);font-size:11px;margin-bottom:1px}
   .xlink{color:var(--screen);background:var(--mon-ink2);text-decoration:none;
@@ -125,16 +117,11 @@
   #songlist::-webkit-scrollbar{display:none}
   .song{display:flex;align-items:center;gap:9px;height:24px;padding:0 10px;cursor:pointer;color:var(--mon-ink);
     border-bottom:1px solid rgba(53,125,111,.20);font-size:13px;line-height:1;white-space:nowrap;overflow:hidden}
-  .song .nm{overflow:hidden;text-overflow:ellipsis;
-    /* same per-letter yellow->orange gradient as the leaderboard names */
-    background:linear-gradient(180deg,#e8ffe0 0%,#9bf0ad 40%,#4fc46f 70%,#1a7a3e 100%);
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+  .song .nm{overflow:hidden;text-overflow:ellipsis}
   .song .tid{flex:none;width:30px;box-sizing:border-box;font-size:13px;line-height:1;color:var(--screen);background:var(--mon-line);
     border-radius:3px;padding:3px 4px;opacity:.85;font-variant-numeric:tabular-nums;text-align:center}
   .song:hover{background:rgba(53,125,111,.20)}
   .song.sel{background:var(--mon-line);color:var(--screen)}
-  /* selected row sits on a light bar -> drop the gradient for legibility */
-  .song.sel .nm{background:none;-webkit-text-fill-color:var(--screen);color:var(--screen)}
   .song.playing{box-shadow:inset 3px 0 0 var(--warn)}
   /* driver icons / badges */
   .dchip{flex:none;width:34px;box-sizing:border-box;font-size:13px;letter-spacing:0;padding:3px 0;border-radius:2px;
@@ -412,9 +399,9 @@
   <div id="screen">
   <header>
     <div class="htop">
-      <span class="logo">TYCOON</span>
+      <span class="logo">SC</span>
       <span class="hline"></span>
-      <span class="gamenav"><button type="button" class="gamesel-btn" aria-haspopup="listbox" aria-expanded="false" title="Switch jukebox">TRANSPORT TYCOON</button><div class="gamemenu" role="listbox">
+      <span class="gamenav"><button type="button" class="gamesel-btn" aria-haspopup="listbox" aria-expanded="false" title="Switch jukebox">STRIKE COMMANDER</button><div class="gamemenu" role="listbox">
         <button type="button" class="gameopt" role="option" data-href="index.html">TFX</button>
         <button type="button" class="gameopt" role="option" data-href="inferno.html">INFERNO</button>
         <button type="button" class="gameopt" role="option" data-href="ufo.html">X-COM</button>
@@ -423,15 +410,16 @@
         <button type="button" class="gameopt" role="option" data-href="df.html">DARK FORCES</button>
         <button type="button" class="gameopt" role="option" data-href="ww.html">WACKY WHEELS</button>
         <button type="button" class="gameopt" role="option" data-href="ea.html">EXTREME ASSAULT</button>
+        <button type="button" class="gameopt sel" role="option" aria-selected="true" data-href="sc.html">STRIKE COMMANDER</button>
         <button type="button" class="gameopt" role="option" data-href="lba.html">LITTLE BIG ADVENTURE</button>
         <button type="button" class="gameopt" role="option" data-href="d2.html">DUNE II</button>
         <button type="button" class="gameopt" role="option" data-href="dm2.html">DOOM II</button>
         <button type="button" class="gameopt" role="option" data-href="ja.html">JAGGED ALLIANCE</button>
-        <button type="button" class="gameopt sel" role="option" aria-selected="true" data-href="ttd.html">TRANSPORT TYCOON</button>
+        <button type="button" class="gameopt" role="option" data-href="ttd.html">TRANSPORT TYCOON</button>
         <button type="button" class="gameopt" role="option" data-href="mc.html">MAGIC CARPET</button>
         <button type="button" class="gameopt" role="option" data-href="liii.html">LOTUS III</button>
       </div></span><script>(function(){var nav=document.currentScript.previousElementSibling,btn=nav.querySelector('.gamesel-btn'),menu=nav.querySelector('.gamemenu');btn.addEventListener('click',function(e){e.stopPropagation();var o=menu.classList.toggle('open');btn.setAttribute('aria-expanded',o);});menu.querySelectorAll('.gameopt').forEach(function(o){o.addEventListener('click',function(){var h=o.dataset.href;if(h&&!o.classList.contains('sel'))location.href=h;});});document.addEventListener('click',function(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');});})();</script>
-      <span class="hright">TRANSPORT TYCOON JUKEBOX</span>
+      <span class="hright">STRIKE COMMANDER JUKEBOX</span>
     </div>
     <div class="hsub">
       <div class="hmarquee">
@@ -441,7 +429,7 @@
       <span>NOTES: <b id="st-notes">0</b></span>
       <span>CHANNELS: <b id="st-ch">0</b></span>
       <span>SYNTH: <b id="st-synth">SC-55 v1.21 (SCC-1)</b></span>
-      <span>SOURCE: <b id="st-src">GM.CAT (General MIDI)</b></span>
+      <span>SOURCE: <b id="st-src">DATA.SFX/MUSIC (General MIDI)</b></span>
       </div>
     </div>
   </header>
@@ -457,7 +445,7 @@
         <button class="fbtn on" data-f="ALL">ALL</button>
         <button class="fbtn" data-f="GM"><span class="dchip gm">GM</span>Gen MIDI</button>
         <button class="fbtn" data-f="MT"><span class="dchip mt">MT</span>MT-32</button>
-        <button class="fbtn" data-f="A2"><span class="dchip o2">O2</span>AdLib</button>
+        <button class="fbtn" data-f="A3"><span class="dchip o3">FM</span>AdLib</button>
       </div>
       <div id="listwrap">
         <div id="songlist"></div>
@@ -477,63 +465,25 @@
   <div id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
     <div class="imodal">
       <div class="imodal-h">
-        <span class="t" id="infoTitle">ABOUT -- TRANSPORT TYCOON DELUXE MUSIC / GENERAL MIDI / MT-32 / ADLIB</span>
+        <span class="t" id="infoTitle">ABOUT -- STRIKE COMMANDER MUSIC / GENERAL MIDI / MT-32 / ADLIB</span>
       </div>
       <div class="imodal-body">
-        <h2>John Broomhall's railway soundtrack, two ways.</h2>
-        <p>Transport Tycoon Deluxe (Chris Sawyer / MicroProse, 1995) stored its
-music inside per-device <strong>CAT</strong> banks as <strong>MicroProse &ldquo;MPS
-MIDI&rdquo;</strong> data &mdash; a sequenced format, never recorded audio. There is
-one bank per sound device: <strong>GM.CAT</strong> (General MIDI), <strong>ROLAND.CAT</strong>
-(Roland MT-32 / LAPC-1) and <strong>ADLIB.CAT</strong> (AdLib FM). This jukebox plays
-all three side by side. Use the <strong>Gen MIDI / MT-32 / AdLib</strong> filter to
-switch between them. The score is by <strong>John Broomhall</strong> (the track
-&ldquo;Broomer&rsquo;s Oil Rag&rdquo; is his signature).</p>
-
-        <h2>The MPS MIDI format</h2>
-        <p>Unlike a Standard MIDI File, an MPS song is two linked lists in one blob:
-reusable &ldquo;segments&rdquo; and per-channel &ldquo;master tracks&rdquo;, with the
-events prefixed by SMF-style delays and a 148&nbsp;Hz frame clock driving playback.
-We decode it with a faithful port of <strong>OpenTTD&rsquo;s</strong> MpsMachine,
-running the same frame simulation the original driver used, and emit a Standard MIDI
-File the browser can play.</p>
+        <h2>The cockpit score, three ways.</h2>
+        <p>Extreme Assault (Blue Byte Software, 1997) keeps its in-mission soundtrack as Red Book <strong>CD audio</strong>, but the menus, briefings and FM build of the score live on disk as compact Miles Sound System <strong>XMI</strong> event data in <code>DATA.SFX/MUSIC</code> &mdash; not as recorded audio. This jukebox plays that sequenced data three ways: the <strong>General MIDI</strong> mix (for a Roland SC-55 / SCC-1 Sound Canvas), a <strong>Roland MT-32</strong> rendition, and the game's own <strong>AdLib</strong> FM build. Use the <strong>Gen MIDI / MT-32 / AdLib</strong> filter to switch between them. (The streamed CD tracks are a different recording and are not included here.)</p>
 
         <h2>General MIDI: the Sound Canvas mix</h2>
-        <p>The General-MIDI bank is multi-timbral (one part per channel with standard
-GM instruments and a drum channel). We play it on a <strong>Roland SC-55 / SCC-1</strong>
-Sound Canvas &mdash; the synth that defined the GM sound of the mid-90s. The
-<strong>FONT</strong> toggle re-renders the same MIDI through the GeneralUser-GS
-SoundFont if you prefer.</p>
+        <p>The General-MIDI arrangement targets a <strong>Roland SC-55 / SCC-1</strong>, the Sound Canvas that defined the GM sound of the mid-90s. It is fully multi-timbral, one part per MIDI channel with standard GM instruments and a dedicated drum channel, so it sounds cleaner and fuller than the FM build while staying faithful to the original cues.</p>
 
-        <h2>Roland MT-32: the game's own native score</h2>
-        <p>Unlike many games that only shipped General MIDI, Transport Tycoon Deluxe
-carried a genuine <strong>Roland MT-32</strong> arrangement in <strong>ROLAND.CAT</strong>,
-with its parts laid out the MT-32 way (melodic parts on channels&nbsp;2&ndash;9, rhythm
-on channel&nbsp;10). It decodes with the same MpsMachine and is played here through the
-<strong>Munt</strong> CM-32L emulator &mdash; the same LA-synth backend the TFX,
-Warcraft&nbsp;II and X-COM jukeboxes use &mdash; so you hear the MT-32 timbres the
-composer actually wrote for.</p>
+        <h2>Roland MT-32: the stock passthrough driver</h2>
+        <p>Extreme Assault ships a genuine MT-32 driver, <strong>MT32MPU.MDI</strong> (&ldquo;Roland MT-32 MIDI with MPU-401 MIDI Interface&rdquo;, also covering the LAPC-I). Unlike the fan driver used for the Warcraft&nbsp;II jukebox, this is the <em>stock Miles MPU-401 output driver</em>: a plain passthrough that streams the cue's MIDI straight to the synth with <strong>no GM&rarr;MT-32 translation</strong>. So this rendition is the exact same note/program data as the General-MIDI mix, played on Roland's <strong>MT-32 / CM-32L</strong> (emulated by <strong>Munt</strong>) instead of the Sound Canvas. The MT-32's preset map is its own &mdash; not GM-ordered &mdash; so the instruments differ from the SC-55 version; that is precisely what an MT-32 owner heard with this driver.</p>
 
-        <h2>AdLib: OPL FM, full polyphony</h2>
-        <p>The AdLib bank (<strong>ADLIB.CAT</strong>) is the same MPS sequence with an
-OPL <strong>instrument bank</strong> prepended &mdash; one 11-byte two-operator FM
-patch per program, and one master track per polyphonic part. We decode the per-part
-events and synthesise the Yamaha <strong>OPL</strong> register writes ourselves
-(instrument load, note frequency from F-number/block, velocity &rarr; carrier level),
-capture them as a DOSBox raw-OPL (DRO) log, and replay it on a cycle-accurate
-<strong>Nuked-OPL3</strong> emulator &mdash; the same FM backend the Warcraft&nbsp;II
-and Dark&nbsp;Forces jukeboxes use. The original AdLib card was OPL2 (9&nbsp;voices);
-because the parts are polyphonic and up to sixteen notes sound at once, we spread them
-across OPL3&rsquo;s eighteen voices so nothing is dropped (the two-operator AdLib
-timbres sound identical either way).</p>
+        <h2>AdLib: the game's own FM bank</h2>
+        <p>The AdLib build is the game's <em>own</em> FM synthesis. Extreme Assault's Miles drivers map each General-MIDI program through a custom OPL instrument bank shipped as <strong>LEVEL_X.OPL</strong> (a Miles/AIL timbre library: 128 melodic + percussion 2-operator patches). We convert that bank to WOPL, feed the original XMI through a patched build of <strong>libADLMIDI</strong> loaded with it, capture every OPL register write, and replay it through a cycle-accurate <strong>Nuked-OPL3</strong> emulator &mdash; so the timbres, voice allocation and key-scaling are the card's own, not a generic AdLib substitute.</p>
 
         <h2>How this works</h2>
-        <p>All three banks were extracted from the installed game and split into one raw
-payload per track. GM/Roland decode from MPS MIDI to a Standard MIDI File; AdLib decodes
-to an OPL register log, then plays in your browser:</p>
-        <div class="ichain"><span>1995 Transport Tycoon Deluxe GM.CAT / ROLAND.CAT / ADLIB.CAT</span><span>-&gt; MPS decoder (OpenTTD MpsMachine port) + OPL synthesis</span><span>-&gt; Standard MIDI File / DRO register log</span><span>-&gt; JavaScript timing</span><span>-&gt; WebAssembly Nuked-SC55 (GM) / Munt CM-32L (MT-32) / Nuked-OPL3 (AdLib)</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
-        <p>The synthesis engine, ROM images and UI are shared with the sister TFX
-jukebox &mdash; only the music converters and this page are new.</p>
+        <p>Each cue in <code>DATA.SFX/MUSIC</code> is an AIL/Miles XMI (XMIDI) stream. The General-MIDI XMI is converted to a Standard MIDI File (a port of Exult's XMidiFile timing model); the MT-32 path plays that same SMF through Munt; the FM XMI is rendered by libADLMIDI with the game's LEVEL_X bank, captured as a DOSBox raw-OPL (DRO) register log. All three are then played in your browser:</p>
+        <div class="ichain"><span>1997 Extreme Assault DATA.SFX/MUSIC (XMI)</span><span>-&gt; SMF / OPL register log (game LEVEL_X bank)</span><span>-&gt; SMF / DRO</span><span>-&gt; JavaScript timing</span><span>-&gt; WebAssembly Nuked-SC55 (GM) / Munt CM-32L (MT-32) / Nuked-OPL3 (AdLib)</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
+        <p>The synthesis engine, ROM images and UI are shared with the sister TFX jukebox -- only the music converters and this page are new.</p>
         <p class="sig">-- a companion to the TFX jukebox</p>
       </div>
     </div>
@@ -573,7 +523,7 @@ jukebox &mdash; only the music converters and this page are new.</p>
       <button id="repeatBtn" class="btn infobtn" title="Repeat: when the song ends, play it again from the beginning">REPEAT</button>
       <button id="autoBtn" class="btn infobtn" title="Autoadvance: when the song ends, automatically play the next song in the list">AUTO</button>
       <button id="infoBtn" class="btn infobtn" title="About this jukebox — General MIDI, MT-32 and AdLib">INFO</button>
-      <span class="credit"><a href="https://en.wikipedia.org/wiki/Transport_Tycoon" target="_blank" rel="noopener">MUSIC BY JOHN BROOMHALL · MICROPROSE / CHRIS SAWYER 1995</a></span>
+      <span class="credit"><a href="https://www.mobygames.com/game/strike-commander" target="_blank" rel="noopener">STRIKE COMMANDER · ORIGIN SYSTEMS 1993</a></span>
     </div>
   </div>
 </div>
@@ -583,43 +533,47 @@ jukebox &mdash; only the music converters and this page are new.</p>
 <script src="opl3.js"></script>
 <script type="module">
 import { initPlayer } from './player-page.js';
-const DRVORD = {GM:0,MT:1,A2:2};
+const DRVORD = {GM:0,MT:1,A2:2,A3:3};
 initPlayer({
-  songsUrl: 'ttd_songs.json',
-  path: s => 'ttd/' + s.file,
-  palette: ['#04210f','#16562e','#2e8f4f','#5fd07a','#bdf7c9'],
-  backdrop: '#0a1a10',
+  songsUrl: 'sc_songs.json',
+  path: s => 'sc/' + s.file,
+  palette: ['#1a1206','#5a3c12','#b07a1f','#ffb347','#ffe6b0'],
+  backdrop: '#17110a',
   sort: (a,b)=>
-      a._tid-b._tid ||
-      (DRVORD[a._filt]??9)-(DRVORD[b._filt]??9),
+      a._name.localeCompare(b._name,undefined,{sensitivity:'base',numeric:true}) ||
+      (DRVORD[a._filt]??9)-(DRVORD[b._filt]??9) ||
+      a._tid-b._tid,
   prepare(s, i){
-      // Transport Tycoon Deluxe ships two native banks of MicroProse MPS MIDI:
-      // _GM. -> General MIDI (Roland SC-55), _MT. -> Roland MT-32 (Munt CM-32L).
-      const tok=(/_(GM|MT|A2)\./.exec(s.file)||[,'GM'])[1];
+      // Extreme Assault ships Miles XMI cues (DATA.SFX/MUSIC); the filename token
+      // picks the backend: _GM. -> SC-55 (SCC), _A3. -> the game's own Miles/AIL
+      // OPL bank rendered on Nuked-OPL3 (ADL). _filt keeps them apart for the
+      // filter and chips.
+      const tok=(/_(GM|MT|A2|A3)\./.exec(s.file)||[,'GM'])[1];
       s._filt=tok;
-      s._drv={GM:'SCC',MT:'RLD',A2:'ADL'}[tok];
-      s._dev={GM:'General MIDI',MT:'Roland MT-32',A2:'AdLib (OPL FM)'}[tok];
-      s._name=s.label;
+      s._drv={GM:'SCC',MT:'RLD',A2:'ADL',A3:'ADL'}[tok];
+      s._dev={GM:'General MIDI',MT:'Roland MT-32',A2:'AdLib (OPL2)',A3:'AdLib (OPL3)'}[tok];
+      s._name=s.label.replace(/\s*\((?:GM|A2|A3)\)\s*$/,'');
       s._tid=+(s.label.match(/^(\d+)/)||[,1e9])[1];
     s._key = s._filt;
   },
   chip(s){
-    const DCH={GM:['gm','GM','General MIDI \u2014 Roland SC-55 / SCC-1'],
-                 MT:['mt','MT','Roland MT-32 \u2014 native ROLAND.CAT, Munt CM-32L'],
-                 A2:['o2','O2','AdLib FM \u2014 OPL2 patches rendered on Nuked-OPL3']};
+    const DCH={GM:['gm','GM','General MIDI — Roland SC-55 / SCC-1'],
+                 MT:['mt','MT','Roland MT-32 / CM-32L — the game’s own .ROL arrangement, Munt'],
+                 A2:['o2','O2','AdLib / OPL2 FM — YM3812'],
+                 A3:['o3','FM','AdLib FM — the game’s own Miles/AIL OPL bank (LEVEL_X), Nuked-OPL3']};
     return DCH[s._key] || DCH.GM;
   },
   status(s, sf2){
     return {
-      drv: {GM:'GEN MIDI',MT:'MT-32',A2:'ADLIB'}[s._filt]||s._filt,
+      drv: {GM:'GEN MIDI',MT:'MT-32',A2:'ADLIB',A3:'ADLIB'}[s._filt]||s._filt,
       synth: (sf2 && s._filt==='GM') ? 'GeneralUser-GS (SoundFont)'
-      : ({GM:'SC-55 v1.21 (SCC-1)',MT:'MT-32 / CM-32L (Munt)',A2:'OPL3 \u00b7 Nuked-OPL3 (FM)'}[s._filt]||s._filt),
-      src: {GM:'GM.CAT (General MIDI)',MT:'ROLAND.CAT (Roland MT-32)',A2:'ADLIB.CAT (AdLib FM)'}[s._filt]||s._filt,
+      : ({GM:'SC-55 v1.21 (SCC-1)',MT:'MT-32 / CM-32L (Munt)',A2:'OPL2 · Nuked-OPL3 (YM3812)',A3:'OPL3 · Nuked-OPL3 (YMF262)'}[s._filt]||s._filt),
+      src: {GM:'LILTRE.TRE (General MIDI)',MT:'LILTRE.TRE (Roland MT-32 .ROL)',A2:'LILTRE.TRE (AdLib OPL2)',A3:'LILTRE.TRE (AdLib · STRIKE.AD bank)'}[s._filt]||s._filt,
     };
   },
   media(s){
-    const dev={GM:'Roland SC-55 (General MIDI)',MT:'Roland MT-32',A2:'AdLib OPL FM'}[s._key]||s._key;
-    return { title: s._name, artist: dev, album: 'Transport Tycoon Deluxe \u2014 MicroProse (John Broomhall)' };
+    const dev={GM:'Roland SC-55 (General MIDI)',MT:'Roland MT-32 / CM-32L',A2:'AdLib OPL2 FM',A3:'AdLib FM (game bank)'}[s._key]||s._key;
+    return { title: s._name, artist: dev, album: 'Strike Commander — Origin Systems (1993)' };
   },
 });
 </script>

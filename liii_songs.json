@@ -1,0 +1,74 @@
+[
+  {
+    "file": "01_MT.mid",
+    "label": "01 - Breathless",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "01_A2.dro",
+    "label": "01 - Breathless",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "02_MT.mid",
+    "label": "02 - Metal Machine",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "02_A2.dro",
+    "label": "02 - Metal Machine",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "03_MT.mid",
+    "label": "03 - Lotus III (Title)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "03_A2.dro",
+    "label": "03 - Lotus III (Title)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "04_MT.mid",
+    "label": "04 - Space Ninja",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "04_A2.dro",
+    "label": "04 - Space Ninja",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "05_MT.mid",
+    "label": "05 - Miami Ice",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "05_A2.dro",
+    "label": "05 - Miami Ice",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "06_MT.mid",
+    "label": "06 - Sham Rip",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "06_A2.dro",
+    "label": "06 - Sham Rip",
+    "named": true,
+    "hidden": false
+  }
+]

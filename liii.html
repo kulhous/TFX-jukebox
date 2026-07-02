@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Transport Tycoon Deluxe · General MIDI / MT-32 / AdLib</title>
+<title>Lotus III: The Ultimate Challenge · MT-32 / AdLib</title>
 <style>
   @font-face{
     font-family:"TFX Pixel";
@@ -412,9 +412,9 @@
   <div id="screen">
   <header>
     <div class="htop">
-      <span class="logo">TYCOON</span>
+      <span class="logo">LOTUS III</span>
       <span class="hline"></span>
-      <span class="gamenav"><button type="button" class="gamesel-btn" aria-haspopup="listbox" aria-expanded="false" title="Switch jukebox">TRANSPORT TYCOON</button><div class="gamemenu" role="listbox">
+      <span class="gamenav"><button type="button" class="gamesel-btn" aria-haspopup="listbox" aria-expanded="false" title="Switch jukebox">LOTUS III</button><div class="gamemenu" role="listbox">
         <button type="button" class="gameopt" role="option" data-href="index.html">TFX</button>
         <button type="button" class="gameopt" role="option" data-href="inferno.html">INFERNO</button>
         <button type="button" class="gameopt" role="option" data-href="ufo.html">X-COM</button>
@@ -427,11 +427,11 @@
         <button type="button" class="gameopt" role="option" data-href="d2.html">DUNE II</button>
         <button type="button" class="gameopt" role="option" data-href="dm2.html">DOOM II</button>
         <button type="button" class="gameopt" role="option" data-href="ja.html">JAGGED ALLIANCE</button>
-        <button type="button" class="gameopt sel" role="option" aria-selected="true" data-href="ttd.html">TRANSPORT TYCOON</button>
+        <button type="button" class="gameopt" role="option" data-href="ttd.html">TRANSPORT TYCOON</button>
         <button type="button" class="gameopt" role="option" data-href="mc.html">MAGIC CARPET</button>
-        <button type="button" class="gameopt" role="option" data-href="liii.html">LOTUS III</button>
+        <button type="button" class="gameopt sel" role="option" aria-selected="true" data-href="liii.html">LOTUS III</button>
       </div></span><script>(function(){var nav=document.currentScript.previousElementSibling,btn=nav.querySelector('.gamesel-btn'),menu=nav.querySelector('.gamemenu');btn.addEventListener('click',function(e){e.stopPropagation();var o=menu.classList.toggle('open');btn.setAttribute('aria-expanded',o);});menu.querySelectorAll('.gameopt').forEach(function(o){o.addEventListener('click',function(){var h=o.dataset.href;if(h&&!o.classList.contains('sel'))location.href=h;});});document.addEventListener('click',function(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');});})();</script>
-      <span class="hright">TRANSPORT TYCOON JUKEBOX</span>
+      <span class="hright">LOTUS III JUKEBOX</span>
     </div>
     <div class="hsub">
       <div class="hmarquee">
@@ -440,8 +440,8 @@
       <span>DRIVER: <b id="st-drv">—</b></span>
       <span>NOTES: <b id="st-notes">0</b></span>
       <span>CHANNELS: <b id="st-ch">0</b></span>
-      <span>SYNTH: <b id="st-synth">SC-55 v1.21 (SCC-1)</b></span>
-      <span>SOURCE: <b id="st-src">GM.CAT (General MIDI)</b></span>
+      <span>SYNTH: <b id="st-synth">MT-32 / CM-32L (Munt)</b></span>
+      <span>SOURCE: <b id="st-src">LOTUS.DAT (native MT-32)</b></span>
       </div>
     </div>
   </header>
@@ -455,7 +455,6 @@
       <div class="side-h">TRACK SELECT<span class="sp"></span><b id="trackcount">0</b></div>
       <div class="filterbar" id="filterbar">
         <button class="fbtn on" data-f="ALL">ALL</button>
-        <button class="fbtn" data-f="GM"><span class="dchip gm">GM</span>Gen MIDI</button>
         <button class="fbtn" data-f="MT"><span class="dchip mt">MT</span>MT-32</button>
         <button class="fbtn" data-f="A2"><span class="dchip o2">O2</span>AdLib</button>
       </div>
@@ -477,63 +476,48 @@
   <div id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
     <div class="imodal">
       <div class="imodal-h">
-        <span class="t" id="infoTitle">ABOUT -- TRANSPORT TYCOON DELUXE MUSIC / GENERAL MIDI / MT-32 / ADLIB</span>
+        <span class="t" id="infoTitle">ABOUT -- LOTUS III MUSIC / ROLAND MT-32 / ADLIB</span>
       </div>
       <div class="imodal-body">
-        <h2>John Broomhall's railway soundtrack, two ways.</h2>
-        <p>Transport Tycoon Deluxe (Chris Sawyer / MicroProse, 1995) stored its
-music inside per-device <strong>CAT</strong> banks as <strong>MicroProse &ldquo;MPS
-MIDI&rdquo;</strong> data &mdash; a sequenced format, never recorded audio. There is
-one bank per sound device: <strong>GM.CAT</strong> (General MIDI), <strong>ROLAND.CAT</strong>
-(Roland MT-32 / LAPC-1) and <strong>ADLIB.CAT</strong> (AdLib FM). This jukebox plays
-all three side by side. Use the <strong>Gen MIDI / MT-32 / AdLib</strong> filter to
-switch between them. The score is by <strong>John Broomhall</strong> (the track
-&ldquo;Broomer&rsquo;s Oil Rag&rdquo; is his signature).</p>
+        <h2>Patrick Phelan's turbo soundtrack, straight from LOTUS.DAT.</h2>
+        <p><strong>Lotus III: The Ultimate Challenge</strong> (Magnetic Fields / Gremlin
+Graphics, 1992; PC port 1993) keeps everything in a single archive,
+<strong>LOTUS.DAT</strong> &mdash; a sector directory of byte-pair-encoded (BPE) +
+RLE compressed entries. The music lives as six <strong>T</strong> sequence files with
+matching per-tune instrument banks: <strong>R</strong> (Roland MT-32),
+<strong>A</strong> (AdLib OPL2) and <strong>P</strong> (PC speaker). The six tunes are
+the same set as the Amiga CD soundtrack: <em>Breathless, Metal Machine, Lotus III
+(the title theme), Space Ninja, Miami Ice</em> and <em>Sham Rip</em>, composed by
+<strong>Patrick Phelan</strong>.</p>
 
-        <h2>The MPS MIDI format</h2>
-        <p>Unlike a Standard MIDI File, an MPS song is two linked lists in one blob:
-reusable &ldquo;segments&rdquo; and per-channel &ldquo;master tracks&rdquo;, with the
-events prefixed by SMF-style delays and a 148&nbsp;Hz frame clock driving playback.
-We decode it with a faithful port of <strong>OpenTTD&rsquo;s</strong> MpsMachine,
-running the same frame simulation the original driver used, and emit a Standard MIDI
-File the browser can play.</p>
+        <h2>Native Roland MT-32 score</h2>
+        <p>The PC port carries a genuine <strong>MT-32</strong> arrangement: the driver
+sends an MT-32 reset + system-area SysEx, assigns melodic parts to MIDI channels
+1&ndash;4 plus rhythm on 10, and selects LA-synth timbres per tune from the R bank. We
+captured that exact byte stream by running the game's real music driver (extracted
+from LOTUS.DAT) inside a CPU emulator, timestamping every MPU-401 write at the
+original 280&nbsp;Hz music timer (4&times; VGA vsync), and saving it as a Standard
+MIDI File. Playback here is through <strong>Munt</strong> CM-32L &mdash; the same
+backend as the TFX and X-COM jukeboxes.</p>
 
-        <h2>General MIDI: the Sound Canvas mix</h2>
-        <p>The General-MIDI bank is multi-timbral (one part per channel with standard
-GM instruments and a drum channel). We play it on a <strong>Roland SC-55 / SCC-1</strong>
-Sound Canvas &mdash; the synth that defined the GM sound of the mid-90s. The
-<strong>FONT</strong> toggle re-renders the same MIDI through the GeneralUser-GS
-SoundFont if you prefer.</p>
-
-        <h2>Roland MT-32: the game's own native score</h2>
-        <p>Unlike many games that only shipped General MIDI, Transport Tycoon Deluxe
-carried a genuine <strong>Roland MT-32</strong> arrangement in <strong>ROLAND.CAT</strong>,
-with its parts laid out the MT-32 way (melodic parts on channels&nbsp;2&ndash;9, rhythm
-on channel&nbsp;10). It decodes with the same MpsMachine and is played here through the
-<strong>Munt</strong> CM-32L emulator &mdash; the same LA-synth backend the TFX,
-Warcraft&nbsp;II and X-COM jukeboxes use &mdash; so you hear the MT-32 timbres the
-composer actually wrote for.</p>
-
-        <h2>AdLib: OPL FM, full polyphony</h2>
-        <p>The AdLib bank (<strong>ADLIB.CAT</strong>) is the same MPS sequence with an
-OPL <strong>instrument bank</strong> prepended &mdash; one 11-byte two-operator FM
-patch per program, and one master track per polyphonic part. We decode the per-part
-events and synthesise the Yamaha <strong>OPL</strong> register writes ourselves
-(instrument load, note frequency from F-number/block, velocity &rarr; carrier level),
-capture them as a DOSBox raw-OPL (DRO) log, and replay it on a cycle-accurate
-<strong>Nuked-OPL3</strong> emulator &mdash; the same FM backend the Warcraft&nbsp;II
-and Dark&nbsp;Forces jukeboxes use. The original AdLib card was OPL2 (9&nbsp;voices);
-because the parts are polyphonic and up to sixteen notes sound at once, we spread them
-across OPL3&rsquo;s eighteen voices so nothing is dropped (the two-operator AdLib
-timbres sound identical either way).</p>
+        <h2>AdLib: the OPL2 version</h2>
+        <p>The same 4-channel sequencer drives an AdLib backend with 13-byte
+two-operator FM patches from the A bank (plus software vibrato and chord voicings the
+driver adds itself). We captured the raw <strong>OPL register writes</strong> from the
+emulated driver as a DRO log and replay them on a cycle-accurate
+<strong>Nuked-OPL3</strong>.</p>
 
         <h2>How this works</h2>
-        <p>All three banks were extracted from the installed game and split into one raw
-payload per track. GM/Roland decode from MPS MIDI to a Standard MIDI File; AdLib decodes
-to an OPL register log, then plays in your browser:</p>
-        <div class="ichain"><span>1995 Transport Tycoon Deluxe GM.CAT / ROLAND.CAT / ADLIB.CAT</span><span>-&gt; MPS decoder (OpenTTD MpsMachine port) + OPL synthesis</span><span>-&gt; Standard MIDI File / DRO register log</span><span>-&gt; JavaScript timing</span><span>-&gt; WebAssembly Nuked-SC55 (GM) / Munt CM-32L (MT-32) / Nuked-OPL3 (AdLib)</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
-        <p>The synthesis engine, ROM images and UI are shared with the sister TFX
-jukebox &mdash; only the music converters and this page are new.</p>
+        <p>The 5&nbsp;KB loader <code>lotus.exe</code> contains the archive
+decompressor; we reverse-engineered it (recursive byte-pair expansion feeding an
+RLE/literal stage), unpacked all 274 entries, then located the music driver inside
+the main program: a device-abstracted sequencer (Amiga-period pitches, four melodic
+channels) with vtables for AdLib, MT-32, PC speaker and Sound Blaster. The driver
+runs unmodified in a Unicorn 16-bit VM; only the MPU-401 / OPL ports are hooked.</p>
+        <div class="ichain"><span>1993 LOTUS.DAT (BPE+RLE archive)</span><span>-&gt; T/R/A tune + instrument banks</span><span>-&gt; original driver in Unicorn 16-bit VM</span><span>-&gt; MPU-401 / OPL port capture @ 280 Hz</span><span>-&gt; Standard MIDI File / DRO register log</span><span>-&gt; WebAssembly Munt CM-32L (MT-32) / Nuked-OPL3 (AdLib)</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
+        <p>Tune 3 is what the game boots into &mdash; the title theme. The synthesis
+engine, ROM images and UI are shared with the sister TFX jukebox &mdash; only the
+extractor, driver capture and this page are new.</p>
         <p class="sig">-- a companion to the TFX jukebox</p>
       </div>
     </div>
@@ -551,8 +535,8 @@ jukebox &mdash; only the music converters and this page are new.</p>
         <button class="micon" id="mrepeat" aria-label="Repeat" title="Repeat: when the song ends, play it again from the beginning">&#xE000;</button>
         <button class="micon" id="mauto" aria-label="Autoadvance" title="Autoadvance: when the song ends, automatically play the next song">&#xE001;</button>
         <button class="micon" id="mlp" aria-label="Low-performance mode" title="Low-performance mode: lighter audio resampling if playback stutters">&#xE002;</button>
-        <button class="micon" id="msf" aria-label="SoundFont" title="Play the General MIDI version through the GeneralUser-GS SoundFont">&#xE003;</button>
-      </div>
+        <button class="micon" id="msf" style="display:none" aria-hidden="true">&#xE003;</button>
+              </div>
     </div>
     <div id="chanstrip">
       <span class="lab">CHANNELS<br>L·MUTE<br>R·SOLO</span>
@@ -568,12 +552,12 @@ jukebox &mdash; only the music converters and this page are new.</p>
       <span class="dmeter"><b class="mlab">MIX</b> <input id="mix" type="range" min="0" max="1" step="0.02" value="0" title="Blend L/R channels toward mono — easier on headphones"><b id="mixV">0%</b></span>
       <span class="dmeter"><b class="mlab">RVB</b> <input id="rvb" type="range" min="0" max="100" step="1" value="0" title="Reverb — adds a post-processing reverb tail on top of the dry signal"><b id="rvbV">0%</b></span>
       </span>
-      <button id="sfBtn" class="btn infobtn" title="Play the General MIDI version through the GeneralUser-GS SoundFont instead of the Roland SC-55 emulator">SOUNDFONT</button>
+            <button id="sfBtn" class="btn infobtn" style="display:none" aria-hidden="true">SOUNDFONT</button>
       <button id="lpBtn" class="btn infobtn" title="Low-performance mode: use lighter audio resampling if playback stutters on slow devices">LOW-PERF</button>
       <button id="repeatBtn" class="btn infobtn" title="Repeat: when the song ends, play it again from the beginning">REPEAT</button>
       <button id="autoBtn" class="btn infobtn" title="Autoadvance: when the song ends, automatically play the next song in the list">AUTO</button>
-      <button id="infoBtn" class="btn infobtn" title="About this jukebox — General MIDI, MT-32 and AdLib">INFO</button>
-      <span class="credit"><a href="https://en.wikipedia.org/wiki/Transport_Tycoon" target="_blank" rel="noopener">MUSIC BY JOHN BROOMHALL · MICROPROSE / CHRIS SAWYER 1995</a></span>
+      <button id="infoBtn" class="btn infobtn" title="About this jukebox — MT-32 and AdLib">INFO</button>
+      <span class="credit"><a href="https://en.wikipedia.org/wiki/Lotus_III:_The_Ultimate_Challenge" target="_blank" rel="noopener">MUSIC BY PATRICK PHELAN · MAGNETIC FIELDS / GREMLIN 1992</a></span>
     </div>
   </div>
 </div>
@@ -583,43 +567,40 @@ jukebox &mdash; only the music converters and this page are new.</p>
 <script src="opl3.js"></script>
 <script type="module">
 import { initPlayer } from './player-page.js';
-const DRVORD = {GM:0,MT:1,A2:2};
+const DRVORD = {MT:0,A2:1};
 initPlayer({
-  songsUrl: 'ttd_songs.json',
-  path: s => 'ttd/' + s.file,
-  palette: ['#04210f','#16562e','#2e8f4f','#5fd07a','#bdf7c9'],
-  backdrop: '#0a1a10',
+  songsUrl: 'liii_songs.json',
+  path: s => 'liii/' + s.file,
+  palette: ['#1a0b21','#4d1e5e','#8a3aa0','#c76ee0','#f0c4fa'],
+  backdrop: '#140a18',
   sort: (a,b)=>
       a._tid-b._tid ||
       (DRVORD[a._filt]??9)-(DRVORD[b._filt]??9),
   prepare(s, i){
-      // Transport Tycoon Deluxe ships two native banks of MicroProse MPS MIDI:
-      // _GM. -> General MIDI (Roland SC-55), _MT. -> Roland MT-32 (Munt CM-32L).
-      const tok=(/_(GM|MT|A2)\./.exec(s.file)||[,'GM'])[1];
+      // Lotus III PC: native MT-32 (R bank) and AdLib OPL2 (A bank) renditions
+      const tok=(/_(MT|A2)\./.exec(s.file)||[,'MT'])[1];
       s._filt=tok;
-      s._drv={GM:'SCC',MT:'RLD',A2:'ADL'}[tok];
-      s._dev={GM:'General MIDI',MT:'Roland MT-32',A2:'AdLib (OPL FM)'}[tok];
+      s._drv={MT:'RLD',A2:'ADL'}[tok];
+      s._dev={MT:'Roland MT-32',A2:'AdLib (OPL FM)'}[tok];
       s._name=s.label;
       s._tid=+(s.label.match(/^(\d+)/)||[,1e9])[1];
     s._key = s._filt;
   },
   chip(s){
-    const DCH={GM:['gm','GM','General MIDI \u2014 Roland SC-55 / SCC-1'],
-                 MT:['mt','MT','Roland MT-32 \u2014 native ROLAND.CAT, Munt CM-32L'],
-                 A2:['o2','O2','AdLib FM \u2014 OPL2 patches rendered on Nuked-OPL3']};
-    return DCH[s._key] || DCH.GM;
+    const DCH={MT:['mt','MT','Roland MT-32 \u2014 native driver capture, Munt CM-32L'],
+                 A2:['o2','O2','AdLib FM \u2014 native OPL2 driver capture, Nuked-OPL3']};
+    return DCH[s._key] || DCH.MT;
   },
   status(s, sf2){
     return {
-      drv: {GM:'GEN MIDI',MT:'MT-32',A2:'ADLIB'}[s._filt]||s._filt,
-      synth: (sf2 && s._filt==='GM') ? 'GeneralUser-GS (SoundFont)'
-      : ({GM:'SC-55 v1.21 (SCC-1)',MT:'MT-32 / CM-32L (Munt)',A2:'OPL3 \u00b7 Nuked-OPL3 (FM)'}[s._filt]||s._filt),
-      src: {GM:'GM.CAT (General MIDI)',MT:'ROLAND.CAT (Roland MT-32)',A2:'ADLIB.CAT (AdLib FM)'}[s._filt]||s._filt,
+      drv: {MT:'MT-32',A2:'ADLIB'}[s._filt]||s._filt,
+      synth: {MT:'MT-32 / CM-32L (Munt)',A2:'OPL3 \u00b7 Nuked-OPL3 (FM)'}[s._filt]||s._filt,
+      src: {MT:'LOTUS.DAT (native MT-32)',A2:'LOTUS.DAT (native AdLib)'}[s._filt]||s._filt,
     };
   },
   media(s){
-    const dev={GM:'Roland SC-55 (General MIDI)',MT:'Roland MT-32',A2:'AdLib OPL FM'}[s._key]||s._key;
-    return { title: s._name, artist: dev, album: 'Transport Tycoon Deluxe \u2014 MicroProse (John Broomhall)' };
+    const dev={MT:'Roland MT-32',A2:'AdLib OPL FM'}[s._key]||s._key;
+    return { title: s._name, artist: dev, album: 'Lotus III: The Ultimate Challenge \u2014 Gremlin (Patrick Phelan)' };
   },
 });
 </script>
