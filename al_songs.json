@@ -1,0 +1,122 @@
+[
+  {
+    "file": "01_STORYLIN_GM.mid",
+    "label": "01 - Storyline",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "02_TITLE_GM.mid",
+    "label": "02 - A Whole New World (Title)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "03_ARNIGHTS_GM.mid",
+    "label": "03 - Arabian Nights",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "04_ONEJUMP_GM.mid",
+    "label": "04 - One Jump Ahead",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "05_PRINCEAL_GM.mid",
+    "label": "05 - Prince Ali",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "06_FRIEND_GM.mid",
+    "label": "06 - Friend Like Me",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "07_CAMELJAZ_GM.mid",
+    "label": "07 - Camel Jazz",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "08_TURBNJAZ_GM.mid",
+    "label": "08 - Turban Jazz",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "09_GLOOMY_GM.mid",
+    "label": "09 - Gloomy Tune",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "10_ARROCK1_GM.mid",
+    "label": "10 - Arab Rock 1",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "11_ARROCK2_GM.mid",
+    "label": "11 - Arab Rock 2",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "12_RUGRIDE_GM.mid",
+    "label": "12 - Rug Ride",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "13_BOSSTUNE_GM.mid",
+    "label": "13 - Boss Tune",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "14_NENAW_GM.mid",
+    "label": "14 - Ne Naw Tune",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "15_MUSHYONE_GM.mid",
+    "label": "15 - Mushy One",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "16_DRAMA_GM.mid",
+    "label": "16 - Drama",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "17_COMPLETE_GM.mid",
+    "label": "17 - Level Complete",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "18_CONTINUE_GM.mid",
+    "label": "18 - Continue",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "19_BONUS_GM.mid",
+    "label": "19 - Bonus",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "20_GAMEOVER_GM.mid",
+    "label": "20 - Game Over",
+    "named": true,
+    "hidden": false
+  }
+]
