@@ -1,0 +1,62 @@
+[
+  {
+    "file": "intro_MT.mid",
+    "label": "Intro",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "intro_A2.dro",
+    "label": "Intro",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "game_00_MT.mid",
+    "label": "Game 01",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "game_00_A2.dro",
+    "label": "Game 01",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "game_01_MT.mid",
+    "label": "Game 01 (drums)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "game_01_A2.dro",
+    "label": "Game 01 (drums)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "game_02_MT.mid",
+    "label": "Game 02",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "game_02_A2.dro",
+    "label": "Game 02",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "game_03_MT.mid",
+    "label": "Game 02 (drums)",
+    "named": true,
+    "hidden": false
+  },
+  {
+    "file": "game_03_A2.dro",
+    "label": "Game 02 (drums)",
+    "named": true,
+    "hidden": false
+  }
+]

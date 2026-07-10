@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Star Wars: Dark Forces · General MIDI / MT-32 / AdLib / SoundBlaster</title>
+<title>The Settlers · MT-32 / AdLib</title>
 <style>
   @font-face{
     font-family:"TFX Pixel";
@@ -11,17 +11,17 @@
     font-weight:normal;font-style:normal;font-display:block;
   }
   :root{
-    /* green/red phosphor cockpit monitor (Star Wars: Dark Forces HUD palette) */
-    --bg:#081a0e; --mon:#0a1c10; --mon-ink:#5ce049; --mon-ink2:#2f9e2c; --mon-line:#1f6e22; --mon-hi:#a6ff8c;
-    --screen:#02130a;
+    /* cyan mech-HUD UI (Extreme Assault cockpit display) */
+    --bg:#0c1408; --mon:#0e180a; --mon-ink:#9ed46a; --mon-ink2:#5f8f3a; --mon-line:#2c5518; --mon-hi:#e2f8c8;
+    --screen:#060d04;
     /* real brushed steel */
     --steel:#9498a0; --steel-lt:#e2e5e9; --steel-dk:#2c2f35; --steel-emb:#15171b; --steel-ink:#eef0f2;
     --steel-grad:linear-gradient(180deg,#c4c8cd 0%,#9a9ea6 46%,#6b7078 100%);
     --steel-grad-dn:linear-gradient(180deg,#797d85 0%,#5e636b 100%);
-    --warn:#ff3a2a;
+    --warn:#ff5a3c;
   }
   *{box-sizing:border-box}
-  html,body{margin:0;height:100%;background:#081816;overflow:hidden}
+  html,body{margin:0;height:100%;background:#0a1206;overflow:hidden}
   body{font-family:"TFX Pixel","Lucida Console","DejaVu Sans Mono",Consolas,monospace;
     color:var(--mon-ink);text-transform:uppercase;letter-spacing:0;font-size:13px;
     -webkit-font-smoothing:none}
@@ -126,22 +126,20 @@
   /* driver icons / badges */
   .dchip{flex:none;width:34px;box-sizing:border-box;font-size:13px;letter-spacing:0;padding:3px 0;border-radius:2px;
     border:1px solid;line-height:1;text-align:center;text-indent:1px}
-  /* GM (SC-55): bright green readout on dark screen */
-  .dchip.gm{color:var(--mon-hi);background:#02130a;border-color:#2f9e2c}
-  /* MT-32 (Munt): solid green LA-synth tint */
-  .dchip.mt{color:#02130a;background:#43c23a;border-color:#1f6e22}
-  /* OPL2 AdLib: red FM tint (HUD alert red) */
-  .dchip.o2{color:#1a0402;background:#e0431f;border-color:#a8200f}
-  /* OPL3 SoundBlaster: brighter red FM tint */
-  .dchip.o3{color:#1a0402;background:#ff5a3a;border-color:#c0300f}
-  /* AdLib (OPL2): red FM tint */
-  .dchip.o2{color:#1a0402;background:#e0431f;border-color:#a8200f}
+  /* GM (SC-55): light text on dark screen */
+  .dchip.gm{color:#ffe9a8;background:#190d07;border-color:#b8902c}
+  /* MT-32 (Munt LA synth): cool Roland blue, distinct from the gold FM/GM chips */
+  .dchip.mt{color:#cfe3ff;background:#0c1626;border-color:#3f6fb0}
+  /* OPL2 AdLib: copper FM tint */
+  .dchip.o2{color:#190d07;background:#e0934a;border-color:#a8650f}
+  /* OPL3 SoundBlaster: brighter gold FM tint */
+  .dchip.o3{color:#190d07;background:#e6c24a;border-color:#a8930f}
   /* plasma scrollbar — lit phosphor bar */
-  #sb{width:14px;background:#05130a;position:relative;cursor:pointer;
-    box-shadow:inset 1px 0 0 rgba(0,0,0,.5),inset -1px 0 0 rgba(47,158,44,.30)}
+  #sb{width:14px;background:#150a05;position:relative;cursor:pointer;
+    box-shadow:inset 1px 0 0 rgba(0,0,0,.5),inset -1px 0 0 rgba(122,74,44,.30)}
   #sbthumb{position:absolute;left:2px;right:2px;min-height:18px;border-radius:1px;
     background:linear-gradient(90deg,var(--mon-ink2) 0%,var(--mon-hi) 50%,var(--mon-ink2) 100%);
-    box-shadow:0 0 6px rgba(92,224,73,.6),0 0 2px rgba(166,255,140,.9),inset 0 0 0 1px rgba(166,255,140,.4)}
+    box-shadow:0 0 6px rgba(232,178,122,.6),0 0 2px rgba(255,217,160,.9),inset 0 0 0 1px rgba(255,217,160,.4)}
 
   /* ---- bottom steel dashboard ---- */
   #dash{padding:7px 9px 9px;
@@ -203,13 +201,13 @@
   #time{color:var(--mon-ink2);font-size:11px;min-width:34px;text-align:right;font-variant-numeric:tabular-nums}
   #seektrack{position:relative;flex:1;height:16px;background:var(--screen);overflow:hidden;
     box-shadow:inset 0 0 0 1px #04110d, inset 0 0 10px rgba(0,0,0,.55)}
-  /* green phosphor fill with a red decay trailing behind the playhead */
+  /* phosphor fill with a yellowish decay trailing behind the playhead */
   #seekfill{position:absolute;left:0;top:0;bottom:0;width:0%;pointer-events:none;
     background:linear-gradient(90deg,var(--mon-line),var(--mon-ink2));
-    box-shadow:0 0 8px rgba(255,58,42,.4);border-right:1px solid rgba(255,58,42,.9)}
-  /* fixed-width red decay dropped right behind the playhead (fades backward) */
+    box-shadow:0 0 8px rgba(253,231,37,.4);border-right:1px solid rgba(253,231,37,.9)}
+  /* fixed-width yellow decay dropped right behind the playhead (fades backward) */
   #seekfill::after{content:"";position:absolute;top:0;bottom:0;right:0;width:48px;max-width:100%;
-    background:linear-gradient(90deg,rgba(255,58,42,0),rgba(255,58,42,.85))}
+    background:linear-gradient(90deg,rgba(253,231,37,0),rgba(253,231,37,.85))}
   /* faint scanline texture, keeping the in-screen CRT feel */
   #seektrack::after{content:"";position:absolute;inset:0;pointer-events:none;
     background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px)}
@@ -217,8 +215,8 @@
   #seektrack #seek{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;
     background:transparent;border:0;appearance:none;-webkit-appearance:none;cursor:pointer;z-index:2}
   #seektrack #seek::-webkit-slider-thumb{-webkit-appearance:none;width:3px;height:16px;
-    background:#ffe9e2;box-shadow:0 0 6px rgba(255,58,42,.9);border:0;cursor:pointer}
-  #seektrack #seek::-moz-range-thumb{width:3px;height:16px;background:#ffe9e2;border:0;cursor:pointer}
+    background:#fffbe0;box-shadow:0 0 6px rgba(253,231,37,.9);border:0;cursor:pointer}
+  #seektrack #seek::-moz-range-thumb{width:3px;height:16px;background:#fffbe0;border:0;cursor:pointer}
   #seektrack #seek:disabled{cursor:default}
 
   /* ---- mobile tab toggle — lives in the bottom metal dash ----
@@ -401,15 +399,15 @@
   <div id="screen">
   <header>
     <div class="htop">
-      <span class="logo">DARK F.</span>
+      <span class="logo">SE</span>
       <span class="hline"></span>
-      <span class="gamenav"><button type="button" class="gamesel-btn" aria-haspopup="listbox" aria-expanded="false" title="Switch jukebox">DARK FORCES</button><div class="gamemenu" role="listbox">
+      <span class="gamenav"><button type="button" class="gamesel-btn" aria-haspopup="listbox" aria-expanded="false" title="Switch jukebox">THE SETTLERS</button><div class="gamemenu" role="listbox">
         <button type="button" class="gameopt" role="option" data-href="index.html">TFX</button>
         <button type="button" class="gameopt" role="option" data-href="inferno.html">INFERNO</button>
         <button type="button" class="gameopt" role="option" data-href="ufo.html">X-COM</button>
         <button type="button" class="gameopt" role="option" data-href="tftd.html">X-COM TFTD</button>
         <button type="button" class="gameopt" role="option" data-href="wc2.html">WARCRAFT II</button>
-        <button type="button" class="gameopt sel" role="option" aria-selected="true" data-href="df.html">DARK FORCES</button>
+        <button type="button" class="gameopt" role="option" data-href="df.html">DARK FORCES</button>
         <button type="button" class="gameopt" role="option" data-href="ww.html">WACKY WHEELS</button>
         <button type="button" class="gameopt" role="option" data-href="ea.html">EXTREME ASSAULT</button>
         <button type="button" class="gameopt" role="option" data-href="sc.html">STRIKE COMMANDER</button>
@@ -421,9 +419,9 @@
         <button type="button" class="gameopt" role="option" data-href="mc.html">MAGIC CARPET</button>
         <button type="button" class="gameopt" role="option" data-href="liii.html">LOTUS III</button>
         <button type="button" class="gameopt" role="option" data-href="al.html">ALADDIN</button>
-        <button type="button" class="gameopt" role="option" data-href="settlers.html">SETTLERS</button>
+        <button type="button" class="gameopt sel" role="option" aria-selected="true" data-href="settlers.html">SETTLERS</button>
       </div></span><script>(function(){var nav=document.currentScript.previousElementSibling,btn=nav.querySelector('.gamesel-btn'),menu=nav.querySelector('.gamemenu');btn.addEventListener('click',function(e){e.stopPropagation();var o=menu.classList.toggle('open');btn.setAttribute('aria-expanded',o);});menu.querySelectorAll('.gameopt').forEach(function(o){o.addEventListener('click',function(){var h=o.dataset.href;if(h&&!o.classList.contains('sel'))location.href=h;});});document.addEventListener('click',function(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');});})();</script>
-      <span class="hright">STAR WARS: DARK FORCES iMUSE JUKEBOX</span>
+      <span class="hright">THE SETTLERS JUKEBOX</span>
     </div>
     <div class="hsub">
       <div class="hmarquee">
@@ -433,7 +431,7 @@
       <span>NOTES: <b id="st-notes">0</b></span>
       <span>CHANNELS: <b id="st-ch">0</b></span>
       <span>SYNTH: <b id="st-synth">SC-55 v1.21 (SCC-1)</b></span>
-      <span>SOURCE: <b id="st-src">SOUNDS.GOB (.GMD / General MIDI)</b></span>
+      <span>SOURCE: <b id="st-src">DATA.SFX/MUSIC (General MIDI)</b></span>
       </div>
     </div>
   </header>
@@ -447,10 +445,8 @@
       <div class="side-h">TRACK SELECT<span class="sp"></span><b id="trackcount">0</b></div>
       <div class="filterbar" id="filterbar">
         <button class="fbtn on" data-f="ALL">ALL</button>
-        <button class="fbtn" data-f="GM"><span class="dchip gm">GM</span>Gen MIDI</button>
         <button class="fbtn" data-f="MT"><span class="dchip mt">MT</span>MT-32</button>
-        <button class="fbtn" data-f="A2"><span class="dchip o2">O2</span>AdLib</button>
-        <button class="fbtn" data-f="A3"><span class="dchip o3">O3</span>SoundBlaster</button>
+        <button class="fbtn" data-f="A2"><span class="dchip o2">FM</span>AdLib</button>
       </div>
       <div id="listwrap">
         <div id="songlist"></div>
@@ -470,26 +466,25 @@
   <div id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
     <div class="imodal">
       <div class="imodal-h">
-        <span class="t" id="infoTitle">ABOUT -- STAR WARS: DARK FORCES MUSIC / GENERAL MIDI / MT-32 / ADLIB / SOUNDBLASTER</span>
+        <span class="t" id="infoTitle">ABOUT -- THE SETTLERS MUSIC / MT-32 / ADLIB</span>
       </div>
       <div class="imodal-body">
-        <h2>One iMUSE score, four original devices.</h2>
-        <p>Star Wars: Dark Forces (LucasArts, 1995) drove its music with the <strong>iMUSE</strong> system. Every cue lives in SOUNDS.GOB as a <strong>.GMD</strong> file &mdash; a LucasArts wrapper around a standard MIDI file, sprinkled with private 0x7D SysEx commands that iMUSE used for loops, jumps and gameplay transitions. The original setup menu let you pick a sound device, and the same underlying score was re-interpreted by a different driver for each one. This jukebox plays four of those device paths side by side: <strong>General MIDI</strong> (Roland SC-55), <strong>Roland MT-32</strong>, <strong>AdLib</strong> (OPL2 FM) and <strong>Sound Blaster</strong> (OPL3 FM). Use the <strong>Gen MIDI / MT-32 / AdLib / SoundBlaster</strong> filter to switch.</p>
+        <h2>The cockpit score, three ways.</h2>
+        <p>Extreme Assault (Blue Byte Software, 1997) keeps its in-mission soundtrack as Red Book <strong>CD audio</strong>, but the menus, briefings and FM build of the score live on disk as compact Miles Sound System <strong>XMI</strong> event data in <code>DATA.SFX/MUSIC</code> &mdash; not as recorded audio. This jukebox plays that sequenced data three ways: the <strong>General MIDI</strong> mix (for a Roland SC-55 / SCC-1 Sound Canvas), a <strong>Roland MT-32</strong> rendition, and the game's own <strong>AdLib</strong> FM build. Use the <strong>Gen MIDI / MT-32 / AdLib</strong> filter to switch between them. (The streamed CD tracks are a different recording and are not included here.)</p>
 
-        <h2>General MIDI: the Sound Canvas mix (premium path)</h2>
-        <p>The General-MIDI path (GMIDI.MDR in the original game) sends the score straight to a <strong>Roland SC-55 / SCC-1</strong> Sound Canvas. It is fully multi-timbral &mdash; up to sixteen parts at once with standard GM instruments and a dedicated drum channel &mdash; so it is the cleanest, fullest version Dark Forces offers. For each cue we take track&nbsp;0 of the embedded MIDI (the canonical full sequence), strip the private iMUSE control SysEx, and render it through a cycle-accurate WebAssembly Nuked-SC55.</p>
+        <h2>General MIDI: the Sound Canvas mix</h2>
+        <p>The General-MIDI arrangement targets a <strong>Roland SC-55 / SCC-1</strong>, the Sound Canvas that defined the GM sound of the mid-90s. It is fully multi-timbral, one part per MIDI channel with standard GM instruments and a dedicated drum channel, so it sounds cleaner and fuller than the FM build while staying faithful to the original cues.</p>
 
-        <h2>Roland MT-32: a clever, constrained adaptation</h2>
-        <p>The MT-32 path (ROLAND.MDR) is not just &ldquo;General MIDI on a Roland.&rdquo; A real <strong>MT-32 / LAPC-I</strong> has only <strong>8 melodic parts plus one rhythm part</strong>, but the Dark Forces score uses around a dozen logical channels. The driver solves this with <strong>dynamic part-stealing</strong>: it keeps state for all 16 logical channels, but assigns only 8 physical MT-32 parts at any moment. When a new channel needs to play and all 8 parts are busy, it steals the least-recently-used part &mdash; sending All&nbsp;Notes&nbsp;Off, then restoring program, volume, pan and pitch-bend for the new channel before the note. Percussion has its own quirks (high notes dropped, a couple of drums remapped). The result is a faithful but <strong>lossy</strong> re-creation &mdash; exactly what the hardware option sounded like in 1995.</p>
-        <p>We reproduce that algorithm here, mapping GM programs to MT-32 patches with the program table recovered from ROLAND.MDR, and play the result through the <strong>Munt</strong> CM-32L emulator shared with the TFX jukebox.</p>
+        <h2>Roland MT-32: the stock passthrough driver</h2>
+        <p>Extreme Assault ships a genuine MT-32 driver, <strong>MT32MPU.MDI</strong> (&ldquo;Roland MT-32 MIDI with MPU-401 MIDI Interface&rdquo;, also covering the LAPC-I). Unlike the fan driver used for the Warcraft&nbsp;II jukebox, this is the <em>stock Miles MPU-401 output driver</em>: a plain passthrough that streams the cue's MIDI straight to the synth with <strong>no GM&rarr;MT-32 translation</strong>. So this rendition is the exact same note/program data as the General-MIDI mix, played on Roland's <strong>MT-32 / CM-32L</strong> (emulated by <strong>Munt</strong>) instead of the Sound Canvas. The MT-32's preset map is its own &mdash; not GM-ordered &mdash; so the instruments differ from the SC-55 version; that is precisely what an MT-32 owner heard with this driver.</p>
 
-        <h2>AdLib &amp; Sound Blaster: the authentic FM, byte for byte</h2>
-        <p>The two FM builds are not a generic GM-on-OPL approximation &mdash; they are the game's own synthesis. We run the original 32-bit DOS FM drivers, <strong>FM2.MDR</strong> (2-operator OPL2, AdLib) and <strong>FM4.MDR</strong> (4-operator OPL3, Sound Blaster), inside a CPU emulator. Acting as the iMUSE sequencer, we feed each cue's MIDI events &mdash; program changes, note-ons and offs, controllers, pitch bend &mdash; straight into the real driver, and capture the exact stream of OPL register writes it produces, including its own instrument bank, voice allocation, key-scaling and percussion handling. That register log is replayed through a cycle-accurate <strong>Nuked-OPL3</strong> emulator, so the result is sample-for-sample what the original driver would have sent to a real AdLib or Sound Blaster card in 1995. The OPL3 build additionally uses the chip's second register array (18 channels / 4-operator voices) for a thicker, wider sound than plain AdLib.</p>
+        <h2>AdLib: the game's own FM bank</h2>
+        <p>The AdLib build is the game's <em>own</em> FM synthesis. Extreme Assault's Miles drivers map each General-MIDI program through a custom OPL instrument bank shipped as <strong>LEVEL_X.OPL</strong> (a Miles/AIL timbre library: 128 melodic + percussion 2-operator patches). We convert that bank to WOPL, feed the original XMI through a patched build of <strong>libADLMIDI</strong> loaded with it, capture every OPL register write, and replay it through a cycle-accurate <strong>Nuked-OPL3</strong> emulator &mdash; so the timbres, voice allocation and key-scaling are the card's own, not a generic AdLib substitute.</p>
 
         <h2>How this works</h2>
-        <p>The chain from the 1995 game data to your headphones:</p>
-        <div class="ichain"><span>SOUNDS.GOB .GMD (iMUSE / MIDI)</span><span>-&gt; track-0 SMF</span><span>-&gt; GM / MT-32 fold / real FM2.MDR + FM4.MDR drivers</span><span>-&gt; JavaScript timing</span><span>-&gt; Nuked-SC55 (GM) / Munt CM-32L (MT-32) / Nuked-OPL3 (AdLib + SoundBlaster)</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
-        <p>The synthesis engine, ROM images and UI are shared with the sister TFX jukebox &mdash; only the iMUSE converters, the FM-driver emulator and this page are new.</p>
+        <p>Each cue in <code>DATA.SFX/MUSIC</code> is an AIL/Miles XMI (XMIDI) stream. The General-MIDI XMI is converted to a Standard MIDI File (a port of Exult's XMidiFile timing model); the MT-32 path plays that same SMF through Munt; the FM XMI is rendered by libADLMIDI with the game's LEVEL_X bank, captured as a DOSBox raw-OPL (DRO) register log. All three are then played in your browser:</p>
+        <div class="ichain"><span>1997 Extreme Assault DATA.SFX/MUSIC (XMI)</span><span>-&gt; SMF / OPL register log (game LEVEL_X bank)</span><span>-&gt; SMF / DRO</span><span>-&gt; JavaScript timing</span><span>-&gt; WebAssembly Nuked-SC55 (GM) / Munt CM-32L (MT-32) / Nuked-OPL3 (AdLib)</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
+        <p>The synthesis engine, ROM images and UI are shared with the sister TFX jukebox -- only the music converters and this page are new.</p>
         <p class="sig">-- a companion to the TFX jukebox</p>
       </div>
     </div>
@@ -528,8 +523,8 @@
       <button id="lpBtn" class="btn infobtn" title="Low-performance mode: use lighter audio resampling if playback stutters on slow devices">LOW-PERF</button>
       <button id="repeatBtn" class="btn infobtn" title="Repeat: when the song ends, play it again from the beginning">REPEAT</button>
       <button id="autoBtn" class="btn infobtn" title="Autoadvance: when the song ends, automatically play the next song in the list">AUTO</button>
-      <button id="infoBtn" class="btn infobtn" title="About this jukebox — General MIDI and MT-32">INFO</button>
-      <span class="credit"><a href="https://en.wikipedia.org/wiki/Star_Wars:_Dark_Forces" target="_blank" rel="noopener">MUSIC ADAPTED FROM JOHN WILLIAMS · iMUSE · LUCASARTS 1995</a></span>
+      <button id="infoBtn" class="btn infobtn" title="About this jukebox — General MIDI, MT-32 and AdLib">INFO</button>
+      <span class="credit"><a href="https://www.mobygames.com/game/the-settlers" target="_blank" rel="noopener">THE SETTLERS · BLUE BYTE SOFTWARE 1993</a></span>
     </div>
   </div>
 </div>
@@ -541,43 +536,45 @@
 import { initPlayer } from './player-page.js';
 const DRVORD = {GM:0,MT:1,A2:2,A3:3};
 initPlayer({
-  songsUrl: 'df_songs.json',
-  path: s => 'df/' + s.file,
-  palette: ['#0a1a0c','#1f6e22','#3fb03a','#7fe06a','#d8ffc0'],
-  backdrop: '#13180f',
-  sort: (a,b)=> a._ord-b._ord,
+  songsUrl: 'settlers_songs.json',
+  path: s => 'settlers/' + s.file,
+  palette: ['#0a1405','#28470f','#4f8a1d','#8fd047','#dcf8b0'],
+  backdrop: '#101708',
+  sort: (a,b)=>
+      a._name.localeCompare(b._name,undefined,{sensitivity:'base',numeric:true}) ||
+      (DRVORD[a._filt]??9)-(DRVORD[b._filt]??9) ||
+      a._tid-b._tid,
   prepare(s, i){
-      // Dark Forces ships four device renditions per cue (.GMD -> track-0 SMF);
-      // the filename token picks the backend: _GM. -> SC-55 (SCC, General MIDI),
-      // _MT. -> MT-32 (RLD, Munt CM-32L, ROLAND.MDR 8-part adaptation),
-      // _A2. -> AdLib OPL2 (FM2.MDR) and _A3. -> SoundBlaster OPL3 (FM4.MDR),
-      // both via the Nuked-OPL3 (ADL) backend; _filt keeps them apart.
+      // Extreme Assault ships Miles XMI cues (DATA.SFX/MUSIC); the filename token
+      // picks the backend: _GM. -> SC-55 (SCC), _A3. -> the game's own Miles/AIL
+      // OPL bank rendered on Nuked-OPL3 (ADL). _filt keeps them apart for the
+      // filter and chips.
       const tok=(/_(GM|MT|A2|A3)\./.exec(s.file)||[,'GM'])[1];
       s._filt=tok;
       s._drv={GM:'SCC',MT:'RLD',A2:'ADL',A3:'ADL'}[tok];
-      s._dev={GM:'General MIDI',MT:'Roland MT-32',A2:'AdLib (OPL2)',A3:'SoundBlaster (OPL3)'}[tok];
-      s._name=s.label.replace(/\s*\((?:GM|MT|A2|A3)\)\s*$/,'');
-      s._ord=i;   // df_songs.json is already in game-progression order
+      s._dev={GM:'General MIDI',MT:'Roland MT-32',A2:'AdLib (OPL2)',A3:'AdLib (OPL3)'}[tok];
+      s._name=s.label.replace(/\s*\((?:GM|A2|A3)\)\s*$/,'');
+      s._tid=+(s.label.match(/^(\d+)/)||[,1e9])[1];
     s._key = s._filt;
   },
   chip(s){
     const DCH={GM:['gm','GM','General MIDI — Roland SC-55 / SCC-1'],
-                 MT:['mt','MT','Roland MT-32 / LAPC-I — ROLAND.MDR 8-part adaptation'],
-                 A2:['o2','O2','AdLib / OPL2 FM — YM3812 (authentic FM2.MDR driver + bank)'],
-                 A3:['o3','O3','SoundBlaster / OPL3 FM — YMF262 (authentic FM4.MDR driver + bank)']};
+                 MT:['mt','MT','Roland MT-32 / CM-32L — the game’s native Miles MPU-401 driver (A32MT32.DLL), Munt'],
+                 A2:['o2','FM','AdLib FM — the game’s Miles/AIL OPL bank (SAMPLE.AD), Nuked-OPL3'],
+                 A3:['o3','FM','AdLib FM — the game’s own Miles/AIL OPL bank (LEVEL_X), Nuked-OPL3']};
     return DCH[s._key] || DCH.GM;
   },
   status(s, sf2){
     return {
-      drv: {GM:'GEN MIDI',MT:'MT-32',A2:'ADLIB',A3:'SNDBLAST'}[s._filt]||s._filt,
+      drv: {GM:'GEN MIDI',MT:'MT-32',A2:'ADLIB',A3:'ADLIB'}[s._filt]||s._filt,
       synth: (sf2 && s._filt==='GM') ? 'GeneralUser-GS (SoundFont)'
       : ({GM:'SC-55 v1.21 (SCC-1)',MT:'MT-32 / CM-32L (Munt)',A2:'OPL2 · Nuked-OPL3 (YM3812)',A3:'OPL3 · Nuked-OPL3 (YMF262)'}[s._filt]||s._filt),
-      src: {GM:'SOUNDS.GOB (.GMD General MIDI)',MT:'SOUNDS.GOB (ROLAND.MDR adaptation)',A2:'SOUNDS.GOB (FM2.MDR OPL2 driver)',A3:'SOUNDS.GOB (FM4.MDR OPL3 driver)'}[s._filt]||s._filt,
+      src: {MT:'SPAU.PA / MPUINTRO.XMI (MT-32 passthrough)',A2:'SPAU.PA / ADLINTRO.XMI (AdLib · SAMPLE.AD bank)'}[s._filt]||s._filt,
     };
   },
   media(s){
-    const dev={GM:'Roland SC-55 (General MIDI)',MT:'Roland MT-32 / LAPC-I',A2:'AdLib OPL2 FM',A3:'SoundBlaster OPL3 FM'}[s._key]||s._key;
-    return { title: s._name, artist: dev, album: 'Star Wars: Dark Forces — LucasArts (Clint Bajakian · iMUSE)' };
+    const dev={GM:'Roland SC-55 (General MIDI)',MT:'Roland MT-32 / CM-32L',A2:'AdLib OPL2 FM',A3:'AdLib FM (game bank)'}[s._key]||s._key;
+    return { title: s._name, artist: dev, album: 'The Settlers — Blue Byte Software (1993)' };
   },
 });
 </script>
