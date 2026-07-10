@@ -459,6 +459,7 @@
       <div class="filterbar" id="filterbar">
         <button class="fbtn on" data-f="ALL">ALL</button>
         <button class="fbtn" data-f="GM"><span class="dchip gm">GM</span>GEN MIDI</button>
+        <button class="fbtn" data-f="MT"><span class="dchip mt">MT</span>MT-32</button>
       </div>
       <div id="listwrap">
         <div id="songlist"></div>
@@ -495,8 +496,18 @@ the reference Sound Canvas behind the early General MIDI sound. The SoundFont
 button offers the same MIDI data through GeneralUser-GS as an optional alternate
 rendering; no notes, programs, controllers or tempo events are rewritten.</p>
 
+        <h2>MT-32: translated by the MT32GM driver</h2>
+        <p>The game did not ship a native MT-32 arrangement. For the companion
+rendition we use the same period-minded approach as the Warcraft II and Wacky
+Wheels jukeboxes: Mok's fan-made <strong>MT32GM</strong> Miles driver. The real
+16-bit DOS driver runs inside an x86 emulator, preloads its GM-compatible custom
+timbres into MT-32 memory, dynamically assigns the synth's eight melodic parts,
+and translates the original GM events. We capture its SysEx and MIDI output and
+play it through Munt's CM-32L emulator. This is an added MT-32 interpretation,
+clearly separate from the authentic Windows General MIDI path.</p>
+
         <h2>How this works</h2>
-        <div class="ichain"><span>1997 Disney Classic CD-ROM</span><span>-&gt; 20 original .MID files</span><span>-&gt; Standard MIDI event parser</span><span>-&gt; JavaScript timing</span><span>-&gt; WebAssembly Nuked-SC55</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
+        <div class="ichain"><span>1997 Disney Classic CD-ROM</span><span>-&gt; 20 original .MID files</span><span>-&gt; original GM / emulated MT32GM translation</span><span>-&gt; Standard MIDI + SysEx</span><span>-&gt; JavaScript timing</span><span>-&gt; WebAssembly Nuked-SC55 / Munt CM-32L</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
         <p>The falling-note display is derived directly from each MIDI file, so
 channel mute/solo, seeking and tempo changes operate on the score rather than on
 a recording. The player engine and hardware emulation are shared with the other
@@ -550,19 +561,21 @@ jukebox pages.</p>
 <script src="opl3.js"></script>
 <script type="module">
 import { initPlayer } from './player-page.js';
+const DRVORD={GM:0,MT:1};
 initPlayer({
   songsUrl: 'al_songs.json',
   path: s => 'al/' + s.file,
   palette: ['#190c2b','#5b247f','#a84bb5','#e0a12c','#ffe79a'],
   backdrop: '#12091f',
-  sort: (a,b) => a._tid-b._tid,
+  sort: (a,b) => a._tid-b._tid || DRVORD[a._key]-DRVORD[b._key],
   prepare(s, i){
-    s._drv='SCC'; s._key='GM'; s._name=s.label;
+    const tok=(/_(GM|MT)\./.exec(s.file)||[,'GM'])[1];
+    s._drv={GM:'SCC',MT:'RLD'}[tok]; s._key=tok; s._name=s.label;
     s._tid=+(s.label.match(/^(\d+)/)||[,i])[1];
   },
-  chip(){ return ['gm','GM','General MIDI — Windows 1997 score, Roland SC-55']; },
-  status(s, sf2){ return { drv:'GENERAL MIDI', synth:sf2?'SOUNDFONT · GENERALUSER-GS':'SC-55 · Nuked-SC55', src:'DISNEY CLASSIC 1997 CD (.MID)' }; },
-  media(s){ return { title:s._name, artist:'Tommy Tallarico / Donald Griffin / Alan Menken', album:"Disney's Aladdin — Windows General MIDI (1997)" }; },
+  chip(s){ return s._key==='MT' ? ['mt','MT','Roland MT-32 — Mok\'s MT32GM Miles driver, Munt CM-32L'] : ['gm','GM','General MIDI — Windows 1997 score, Roland SC-55']; },
+  status(s, sf2){ return s._key==='MT' ? { drv:'MT-32', synth:'MT-32 / CM-32L · Munt', src:'WINDOWS GM → MT32GM DRIVER' } : { drv:'GENERAL MIDI', synth:sf2?'SOUNDFONT · GENERALUSER-GS':'SC-55 · Nuked-SC55', src:'DISNEY CLASSIC 1997 CD (.MID)' }; },
+  media(s){ const dev=s._key==='MT'?'Roland MT-32 (MT32GM)':'Roland SC-55 (General MIDI)'; return { title:s._name, artist:dev, album:"Disney's Aladdin — Windows MIDI (1997)" }; },
 });
 </script>
 </body>
