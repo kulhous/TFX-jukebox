@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Disney's Aladdin · DOS AMF</title>
+<title>Disney's Aladdin · Windows MIDI</title>
 <style>
   @font-face{
     font-family:"TFX Pixel";
@@ -147,7 +147,6 @@
   .dchip.o2{color:#190d07;background:#e0934a;border-color:#a8650f}
   /* OPL3 SoundBlaster: brighter gold FM tint */
   .dchip.o3{color:#190d07;background:#e6c24a;border-color:#a8930f}
-  .dchip.mod{color:#190d07;background:#e0a12c;border-color:#ffe79a}
   /* plasma scrollbar — lit phosphor bar */
   #sb{width:14px;background:#150a05;position:relative;cursor:pointer;
     box-shadow:inset 1px 0 0 rgba(0,0,0,.5),inset -1px 0 0 rgba(122,74,44,.30)}
@@ -435,7 +434,7 @@
         <button type="button" class="gameopt sel" role="option" aria-selected="true" data-href="al.html">ALADDIN</button>
         <button type="button" class="gameopt" role="option" data-href="settlers.html">SETTLERS</button>
       </div></span><script>(function(){var nav=document.currentScript.previousElementSibling,btn=nav.querySelector('.gamesel-btn'),menu=nav.querySelector('.gamemenu');btn.addEventListener('click',function(e){e.stopPropagation();var o=menu.classList.toggle('open');btn.setAttribute('aria-expanded',o);});menu.querySelectorAll('.gameopt').forEach(function(o){o.addEventListener('click',function(){var h=o.dataset.href;if(h&&!o.classList.contains('sel'))location.href=h;});});document.addEventListener('click',function(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');});})();</script>
-      <span class="hright">DOS AMF JUKEBOX</span>
+      <span class="hright">WINDOWS MIDI JUKEBOX</span>
     </div>
     <div class="hsub">
       <div class="hmarquee">
@@ -444,8 +443,8 @@
       <span>DRIVER: <b id="st-drv">—</b></span>
       <span>NOTES: <b id="st-notes">0</b></span>
       <span>CHANNELS: <b id="st-ch">0</b></span>
-      <span>SYNTH: <b id="st-synth">4-CHANNEL PCM TRACKER</b></span>
-      <span>SOURCE: <b id="st-src">WNW.AMF / LEVEL.AMF</b></span>
+      <span>SYNTH: <b id="st-synth">SC-55 · Nuked-SC55</b></span>
+      <span>SOURCE: <b id="st-src">DISNEY CLASSIC 1997 CD</b></span>
       </div>
     </div>
   </header>
@@ -453,13 +452,13 @@
   <div id="main">
     <div id="rollWrap" class="ginset">
       <canvas id="roll"></canvas>
-      <div id="overlay">INITIALISING AMF TRACKER PLAYBACK&hellip;</div>
+      <div id="overlay">INITIALISING SYNTHESIS &mdash; HARDWARE &amp; ROM IMAGES&hellip;</div>
     </div>
     <div id="side" class="graise">
       <div class="side-h">TRACK SELECT<span class="sp"></span><b id="trackcount">0</b></div>
       <div class="filterbar" id="filterbar">
         <button class="fbtn on" data-f="ALL">ALL</button>
-        <button class="fbtn" data-f="MOD"><span class="dchip mod">AMF</span>TRACKER</button>
+        <button class="fbtn" data-f="GM"><span class="dchip gm">GM</span>GEN MIDI</button>
       </div>
       <div id="listwrap">
         <div id="songlist"></div>
@@ -479,37 +478,29 @@
   <div id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
     <div class="imodal">
       <div class="imodal-h">
-        <span class="t" id="infoTitle">ABOUT -- ALADDIN DOS TRACKER MUSIC</span>
+        <span class="t" id="infoTitle">ABOUT -- ALADDIN WINDOWS GENERAL MIDI</span>
       </div>
       <div class="imodal-body">
-        <h2>The DOS soundtrack, straight from its original tracker modules.</h2>
-        <p><strong>Disney's Aladdin</strong> (Virgin Games / Disney Software, 1994)
-stores its music as DSMI <strong>Advanced Module Format</strong> data: sampled
-instruments and four tracker channels, rather than MIDI commands or pre-recorded
-audio. <strong>WNW.AMF</strong> contains the title arrangement of <em>A Whole New
-World</em>; <strong>LEVEL.AMF</strong> is one large 122-pattern module whose eleven
-loop regions supply the levels and intermissions.</p>
+        <h2>The complete Windows MIDI score from the 1997 Disney Classic CD.</h2>
+        <p><strong>Disney's Aladdin</strong> stores twenty Standard MIDI Files in
+the root of the Windows release disc. They include the full-length arrangements
+&mdash; <em>A Whole New World, Arabian Nights, One Jump Ahead, Prince Ali, Friend
+Like Me, Camel Jazz, Turban Jazz, Gloomy Tune, Arab Rock</em> and <em>Rug Ride</em>
+&mdash; together with the story, boss and short game-state cues.</p>
 
-        <h2>Four sampled voices, kept separate</h2>
-        <p>Each piece is decoded from the original AMF samples with
-<strong>libopenmpt</strong>. The four tracker channels are stored as separate
-lossy-compressed stems and mixed live by the player, so channel mute and solo work
-the same way as they do for MIDI and AdLib tracks. The falling-note display comes
-from the actual AMF pattern rows; the audio remains the native sampled score.</p>
-
-        <h2>The unusual LEVEL.AMF song bank</h2>
-        <p>The module has no conventional track titles or playlist. Aladdin's
-executable passes a start and end pattern to the DSMI player for each level, and
-the module's backward pattern jumps form the loops. The jukebox follows those
-independent loop regions, presenting each distinct composition once. The DOS port
-famously assigns several tunes to different levels than the Genesis original;
-the labels include the placement heard in this DOS release.</p>
+        <h2>General MIDI on a Roland SC-55</h2>
+        <p>The Windows edition targets <strong>General MIDI</strong>. This page sends
+the original events to an emulated first-generation <strong>Roland SC-55</strong>,
+the reference Sound Canvas behind the early General MIDI sound. The SoundFont
+button offers the same MIDI data through GeneralUser-GS as an optional alternate
+rendering; no notes, programs, controllers or tempo events are rewritten.</p>
 
         <h2>How this works</h2>
-        <div class="ichain"><span>1994 WNW.AMF / LEVEL.AMF</span><span>-&gt; DSMI AMF pattern + sample data</span><span>-&gt; libopenmpt per-channel render</span><span>-&gt; four Vorbis stems + pattern-note timeline</span><span>-&gt; live Web Audio mixing</span><span>-&gt; modern headphones</span></div>
-        <p>The synthesis ROMs used by the MIDI pages are not needed here: every
-instrument sample is already inside the two game modules. The shared jukebox UI
-still provides speed, stereo blend, reverb, seeking, repeat and auto-advance.</p>
+        <div class="ichain"><span>1997 Disney Classic CD-ROM</span><span>-&gt; 20 original .MID files</span><span>-&gt; Standard MIDI event parser</span><span>-&gt; JavaScript timing</span><span>-&gt; WebAssembly Nuked-SC55</span><span>-&gt; synthesized sound</span><span>-&gt; modern headphones</span></div>
+        <p>The falling-note display is derived directly from each MIDI file, so
+channel mute/solo, seeking and tempo changes operate on the score rather than on
+a recording. The player engine and hardware emulation are shared with the other
+jukebox pages.</p>
         <p class="sig">-- a companion to the TFX jukebox</p>
       </div>
     </div>
@@ -527,7 +518,7 @@ still provides speed, stereo blend, reverb, seeking, repeat and auto-advance.</p
         <button class="micon" id="mrepeat" aria-label="Repeat" title="Repeat: when the song ends, play it again from the beginning">&#xE000;</button>
         <button class="micon" id="mauto" aria-label="Autoadvance" title="Autoadvance: when the song ends, automatically play the next song">&#xE001;</button>
         <button class="micon" id="mlp" aria-label="Low-performance mode" title="Low-performance mode: lighter audio resampling if playback stutters">&#xE002;</button>
-        <button class="micon" id="msf" style="display:none" aria-hidden="true">&#xE003;</button>
+        <button class="micon" id="msf" aria-label="SoundFont" title="Play SC-55 / General MIDI songs through the GeneralUser-GS SoundFont">&#xE003;</button>
               </div>
     </div>
     <div id="chanstrip">
@@ -544,31 +535,34 @@ still provides speed, stereo blend, reverb, seeking, repeat and auto-advance.</p
       <span class="dmeter"><b class="mlab">MIX</b> <input id="mix" type="range" min="0" max="1" step="0.02" value="0" title="Blend L/R channels toward mono — easier on headphones"><b id="mixV">0%</b></span>
       <span class="dmeter"><b class="mlab">RVB</b> <input id="rvb" type="range" min="0" max="100" step="1" value="0" title="Reverb — adds a post-processing reverb tail on top of the dry signal"><b id="rvbV">0%</b></span>
       </span>
-            <button id="sfBtn" class="btn infobtn" style="display:none" aria-hidden="true">SOUNDFONT</button>
+      <button id="sfBtn" class="btn infobtn" title="Play SC-55 / General MIDI songs through the GeneralUser-GS SoundFont instead of the Roland SC-55 emulator">SOUNDFONT</button>
       <button id="lpBtn" class="btn infobtn" title="Low-performance mode: use lighter audio resampling if playback stutters on slow devices">LOW-PERF</button>
       <button id="repeatBtn" class="btn infobtn" title="Repeat: when the song ends, play it again from the beginning">REPEAT</button>
       <button id="autoBtn" class="btn infobtn" title="Autoadvance: when the song ends, automatically play the next song in the list">AUTO</button>
-      <button id="infoBtn" class="btn infobtn" title="About this jukebox — MT-32 and AdLib">INFO</button>
-      <span class="credit">DISNEY'S ALADDIN · VIRGIN GAMES / DISNEY SOFTWARE 1994</span>
+      <button id="infoBtn" class="btn infobtn" title="About this jukebox — Windows General MIDI">INFO</button>
+      <span class="credit">DISNEY'S ALADDIN · DISNEY CLASSIC 1997 · GENERAL MIDI</span>
     </div>
   </div>
 </div>
 
+<script src="mt32emu.js"></script>
+<script src="sc55.js"></script>
+<script src="opl3.js"></script>
 <script type="module">
 import { initPlayer } from './player-page.js';
 initPlayer({
-  initialDevice: 'PCM',
   songsUrl: 'al_songs.json',
-  paths: s => s.files.map(f => 'al/' + f),
+  path: s => 'al/' + s.file,
   palette: ['#190c2b','#5b247f','#a84bb5','#e0a12c','#ffe79a'],
   backdrop: '#12091f',
   sort: (a,b) => a._tid-b._tid,
   prepare(s, i){
-    s._drv='PCM'; s._key='MOD'; s._name=s.label; s._tid=i;
+    s._drv='SCC'; s._key='GM'; s._name=s.label;
+    s._tid=+(s.label.match(/^(\d+)/)||[,i])[1];
   },
-  chip(){ return ['mod','AMF','DSMI AMF sampled tracker module — original four-channel DOS score']; },
-  status(){ return { drv:'AMF', synth:'4-CHANNEL PCM TRACKER', src:'WNW.AMF / LEVEL.AMF' }; },
-  media(s){ return { title:s._name, artist:'Tommy Tallarico / Donald Griffin / Alan Menken', album:"Disney's Aladdin — DOS (1994)" }; },
+  chip(){ return ['gm','GM','General MIDI — Windows 1997 score, Roland SC-55']; },
+  status(s, sf2){ return { drv:'GENERAL MIDI', synth:sf2?'SOUNDFONT · GENERALUSER-GS':'SC-55 · Nuked-SC55', src:'DISNEY CLASSIC 1997 CD (.MID)' }; },
+  media(s){ return { title:s._name, artist:'Tommy Tallarico / Donald Griffin / Alan Menken', album:"Disney's Aladdin — Windows General MIDI (1997)" }; },
 });
 </script>
 </body>
