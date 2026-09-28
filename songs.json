@@ -3,37 +3,43 @@
     "file": "tune_37_at0340858_SCC_dec35902.mid",
     "label": "02 - Intro ANARCHY (SCC)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\intro.scc"
   },
   {
     "file": "tune_36_at033dc87_RLD_dec41088.mid",
     "label": "02 - Intro ANARCHY (RLD)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\intro.rld"
   },
   {
     "file": "tune_27_at0330a0e_RLD_dec8762.mid",
     "label": "03 - Intermission (RLD)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\inter.rld"
   },
   {
     "file": "tune_28_at03312b9_SCC_dec8100.mid",
     "label": "03 - Intermission (SCC)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\inter.scc"
   },
   {
     "file": "tune_47_at034e48d_RLD_dec9060.mid",
     "label": "04 - News Briefing (RLD)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\news.rld"
   },
   {
     "file": "tune_48_at034ed72_SCC_dec8890.mid",
     "label": "04 - News Briefing (SCC)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\news.scc"
   },
   {
     "file": "tune_31_at033538d_RLD_dec31198.mid",
@@ -45,43 +51,50 @@
     "file": "tune_66_at035d611_SCC_dec31354.mid",
     "label": "05 - Interception Mission (SCC)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\xntercep.scc"
   },
   {
     "file": "tune_65_at035c5cb_SCC_dec19364.mid",
     "label": "06 - Closeair Support Mission (SCC)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\xloseair.scc"
   },
   {
     "file": "tune_75_mission_RLD.mid",
     "label": "06 - Closeair Support Mission (RLD)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\closeair\\clean.lap"
   },
   {
     "file": "tune_62_at035969a_SCC_dec21198.mid",
     "label": "07 - Defence Suppression Mission (SCC)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\xefsupp.scc"
   },
   {
     "file": "tune_76_mission_RLD.mid",
     "label": "07 - Defence Suppression Mission (RLD)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\defssupr\\clean.lap"
   },
   {
     "file": "tune_68_at035fda7_SCC_dec17520.mid",
     "label": "08 - Anti Armour Mission (SCC)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\xntiarmr.scc"
   },
   {
     "file": "tune_80_mission_RLD.mid",
     "label": "08 - Anti Armour Mission (RLD)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\antiarm\\clean.lap"
   },
   {
     "file": "antiarm_inprog_ADL_.dro",
@@ -101,20 +114,23 @@
     "file": "tune_09_mission_RLD.mid",
     "label": "09 - Air Superiority Mission (RLD)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\clean.lap"
   },
   {
     "file": "tune_64_at035b364_SCC_dec24838.mid",
     "label": "09 - Air Superiority Mission (SCC)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\xirsuper.scc"
   },
   {
     "file": "tune_03_mission_RLD.mid",
     "label": "09 - Air Superiority Mission (alt) (RLD)",
     "named": true,
     "hidden": false,
-    "hiddenReason": "Air Superiority variant (= tune_09 family)"
+    "hiddenReason": "Air Superiority variant (= tune_09 family)",
+    "didName": "tunes\\air.rld"
   },
   {
     "file": "tune_45_at034c884_RLD_dec36614.mid",
@@ -126,31 +142,36 @@
     "file": "tune_44_mission_RLD.mid",
     "label": "10 - Maritime Mission (alt) (RLD)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\maritime.lap"
   },
   {
     "file": "tune_61_at0358187_SCC_dec34422.mid",
     "label": "10 - Maritime Mission (SCC)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\xaritime.scc"
   },
   {
     "file": "tune_08_at032071f_RLD_dec6284.mid",
-    "label": "11 - Ocean Mission (RLD)",
+    "label": "11 - Ocean Mission (briefing.rld copy) (RLD)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\briefing.rld"
   },
   {
     "file": "tune_51_at035007b_SCC_dec5782.mid",
     "label": "11 - Ocean Mission (SCC)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\ocean.scc"
   },
   {
     "file": "tune_50_at034f9e5_RLD_dec6284.mid",
-    "label": "11 - Ocean Mission (alt) (RLD)",
+    "label": "11 - Ocean Mission (RLD)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\ocean.rld"
   },
   {
     "file": "tune_53_at0351590_SCC_dec24400.mid",
@@ -163,58 +184,67 @@
     "label": "13 - The Battle (alt) (RLD)",
     "named": true,
     "hidden": false,
-    "note": "user ID by ear: this standalone render is the ALT arrangement of The Battle (the version whose back-half diverges). Canonical 'The Battle (RLD)' = bank 6 @52 render."
+    "note": "user ID by ear: this standalone render is the ALT arrangement of The Battle (the version whose back-half diverges). Canonical 'The Battle (RLD)' = bank 6 @52 render.",
+    "didName": "tunes\\battle.rld"
   },
   {
     "file": "tune_63_at035a560_SCC_dec20884.mid",
     "label": "13 - The Battle (SCC)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\xirbattl.scc"
   },
   {
     "file": "tune_58_at0354b77_RLD_dec13770.mid",
     "label": "14 - Victorious Flight Home (RLD)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\success.rld"
   },
   {
     "file": "tune_69_at0360df7_SCC_dec22418.mid",
     "label": "14 - Victorious Flight Home (SCC)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\xsucc.scc"
   },
   {
     "file": "tune_22_at032d617_RLD_dec19380.mid",
     "label": "15 - Unsuccessful Flight Home (RLD)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\failed.rld"
   },
   {
     "file": "tune_70_at0362574_SCC_dec16524.mid",
     "label": "15 - Unsuccessful Flight Home (SCC)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\xunsuc.scc"
   },
   {
     "file": "tune_03_at0316016_RLD_dec57648.mid",
     "label": "TFX 15 - Unsuccessful Flight Home (alt 2) [shared intro; mission theme is separate] (RLD)",
     "named": true,
     "hidden": true,
-    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate \"Mission Theme/named\" entry"
+    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate \"Mission Theme/named\" entry",
+    "didName": "tunes\\air.rld"
   },
   {
     "file": "tune_34_at0338f1b_RLD_dec61214.mid",
     "label": "15 - Unsuccessful Flight Home (alt 2) [shared intro; mission theme is separate] (RLD)",
     "named": true,
     "hidden": true,
-    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate \"Mission Theme/named\" entry"
+    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate \"Mission Theme/named\" entry",
+    "didName": "tunes\\interdic.lap"
   },
   {
     "file": "tune_09_at0320db2_RLD_dec81994.mid",
     "label": "15 - Unsuccessful Flight Home (alt 3) [shared intro; mission theme is separate] (RLD)",
     "named": true,
     "hidden": true,
-    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate \"Mission Theme/named\" entry"
+    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate \"Mission Theme/named\" entry",
+    "didName": "tunes\\clean.lap"
   },
   {
     "file": "tune_30_at0332cae_RLD_dec66166.mid",
@@ -228,50 +258,58 @@
     "label": "15 - Unsuccessful Flight Home (alt 4) [shared intro; mission theme is separate] (RLD)",
     "named": true,
     "hidden": true,
-    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate \"Mission Theme/named\" entry"
+    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate \"Mission Theme/named\" entry",
+    "didName": "tunes\\maritime.lap"
   },
   {
     "file": "tune_74_at03663cc_RLD_dec81994.mid",
     "label": "TFX 15 - Unsuccessful Flight Home (alt 5) [shared intro; mission theme is separate] (RLD)",
     "named": true,
     "hidden": true,
-    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate \"Mission Theme/named\" entry"
+    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate \"Mission Theme/named\" entry",
+    "didName": "tunes\\airsuper\\clean.lap"
   },
   {
     "file": "tune_15_at03284e1_RLD_dec10952.mid",
     "label": "16 - Death (RLD)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\death.rld"
   },
   {
     "file": "tune_16_at0329398_SCC_dec10636.mid",
     "label": "16 - Death (SCC)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\death.scc"
   },
   {
     "file": "tune_12_at032631c_RLD_dec12896.mid",
     "label": "17 - Columbia (RLD)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\columbia.rld"
   },
   {
     "file": "tune_13_at0326fdc_SCC_dec14618.mid",
     "label": "17 - Columbia (SCC)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\columbia.scc"
   },
   {
     "file": "tune_72_at0363dda_RLD_dec18512.mid",
     "label": "18 - Yugoslavia (RLD)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\yugo.rld"
   },
   {
     "file": "tune_73_at03650a3_SCC_dec23642.mid",
     "label": "18 - Yugoslavia (SCC)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\yugo.scc"
   },
   {
     "file": "libya_inprog_RLD_.mid",
@@ -291,20 +329,23 @@
     "file": "tune_56_at03536da_RLD_dec9012.mid",
     "label": "20 - Somalia (RLD)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\somalia.rld"
   },
   {
     "file": "tune_57_at0354202_SCC_dec8720.mid",
     "label": "20 - Somalia (SCC)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\somalia.scc"
   },
   {
     "file": "tune_59_at0355a1c_SCC_dec20792.mid",
     "label": "23 - Jingle 3 - Parachuting Thru The Clouds (SCC) [full bank]",
     "named": true,
     "hidden": true,
-    "hiddenReason": "confirmed correct content but full-bank dump; superseded by clean section renders (sec05/sec06)"
+    "hiddenReason": "confirmed correct content but full-bank dump; superseded by clean section renders (sec05/sec06)",
+    "didName": "tunes\\x-9tunes.scc"
   },
   {
     "file": "tune_60_at035716a_SCC_dec21084.mid",
@@ -318,38 +359,44 @@
     "label": "Enrolment / Training (RLD)",
     "named": true,
     "hidden": false,
-    "note": "not on album"
+    "note": "not on album",
+    "didName": "tunes\\enrol.rld"
   },
   {
     "file": "tune_21_at032c99a_SCC_dec11012.mid",
     "label": "Enrolment / Training (SCC)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\enrol.scc"
   },
   {
     "file": "tune_33_at0337816_RLD_dec26582.mid",
     "label": "Interdiction Mission (RLD)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\interdct.rld"
   },
   {
     "file": "tune_67_at035e99c_SCC_dec26598.mid",
     "label": "Interdiction Mission (SCC)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\xnterdct.scc"
   },
   {
     "file": "tune_78_mission_RLD.mid",
     "label": "Interdiction Mission (alt / = tune_33) (RLD)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\interdic\\clean.lap"
   },
   {
     "file": "tune_34_mission_RLD.mid",
     "label": "Interdiction Mission (subset/variant of tune_78) (RLD)",
     "named": true,
     "hidden": true,
-    "hiddenReason": "subset/variant of tune_78 Interdiction; differs mainly in CC7 master volume (note content same) -> fluke alt"
+    "hiddenReason": "subset/variant of tune_78 Interdiction; differs mainly in CC7 master volume (note content same) -> fluke alt",
+    "didName": "tunes\\interdic.lap"
   },
   {
     "file": "mt32_jingle_pos21_RLD.mid",
@@ -362,7 +409,8 @@
     "file": "tune_59_at0355a1c_SCC_dec20792_sec01.mid",
     "label": "25 - Jingle 5 - Bad Kill (SCC)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\x-9tunes.scc"
   },
   {
     "file": "mt32_jingle_pos24_RLD.mid",
@@ -376,7 +424,8 @@
     "label": "21 - Jingle 1 - Close to Death (long) (SCC)",
     "named": true,
     "hidden": false,
-    "hiddenReason": "offline-rendered jingle bank section (audition)"
+    "hiddenReason": "offline-rendered jingle bank section (audition)",
+    "didName": "tunes\\x-9tunes.scc"
   },
   {
     "file": "mt32_jingle_pos23_RLD.mid",
@@ -390,14 +439,16 @@
     "label": "21 - Jingle 1 - Close to Death (short) (SCC)",
     "named": true,
     "hidden": false,
-    "hiddenReason": "offline-rendered jingle bank section (audition)"
+    "hiddenReason": "offline-rendered jingle bank section (audition)",
+    "didName": "tunes\\x-9tunes.scc"
   },
   {
     "file": "tune_59_at0355a1c_SCC_dec20792_sec07.mid",
     "label": "22 - Jingle 2 - Close to Winning (SCC)",
     "named": true,
     "hidden": false,
-    "hiddenReason": "offline-rendered jingle bank section (audition)"
+    "hiddenReason": "offline-rendered jingle bank section (audition)",
+    "didName": "tunes\\x-9tunes.scc"
   },
   {
     "file": "mt32_jingle_pos20_RLD.mid",
@@ -411,7 +462,8 @@
     "label": "24 - Jingle 4 - Good Kill (SCC)",
     "named": true,
     "hidden": false,
-    "hiddenReason": "offline-rendered jingle bank section (audition)"
+    "hiddenReason": "offline-rendered jingle bank section (audition)",
+    "didName": "tunes\\x-9tunes.scc"
   },
   {
     "file": "mt32_pos25_RLD.mid",
@@ -425,7 +477,8 @@
     "label": "23 - Jingle 3 - Parachuting Thru The Clouds (SCC)",
     "named": true,
     "hidden": false,
-    "hiddenReason": "offline-rendered jingle bank section (audition)"
+    "hiddenReason": "offline-rendered jingle bank section (audition)",
+    "didName": "tunes\\x-9tunes.scc"
   },
   {
     "file": "mt32_jingle_pos28_RLD.mid",
@@ -444,18 +497,18 @@
   },
   {
     "file": "mt32_pos27_RLD.mid",
-    "label": "23 - Jingle 3 - Parachuting Thru The Clouds (alt) (RLD)",
+    "label": "22 - Jingle 2 - Close to Winning (RLD)",
     "named": true,
     "hidden": false,
-    "note": "User ID: the MT-32 'unknown extra' (order block 27) is an alternate take of Jingle 3 Parachuting."
+    "note": "User ID by ear: the MT-32 'unknown extra' (order block 27), previously guessed a Parachuting alt, is actually Jingle 2 Close to Winning. This is the MT-32/RLD Close to Winning (SCC/ADL carry it as bank section 7)."
   },
   {
     "file": "x9tunes_extra_medit_SCC_o9.mid",
-    "label": "23 - Jingle 3 - Parachuting Thru The Clouds (alt) (SCC)",
+    "label": "22 - Jingle 2 - Close to Winning (alt) (SCC)",
     "named": true,
     "hidden": false,
-    "hiddenReason": "alternate Parachuting jingle (X-9TUNES order 9)",
-    "note": "Clean isolated render from medit/SCC1MUSI/TFX/FLYING/X-9TUNES.SCC (order entry 9, --orderspan=1): one jingle (255 notes/13.6s) instead of the bloated ~83s runtime window. Cold-start piano channels restored to the verified palette (MusicBox/Strings1/Strings1/FretlessBass/OrchHit/Timpani)."
+    "hiddenReason": "alternate Close to Winning jingle (X-9TUNES order 9)",
+    "note": "User ID by ear: this (X-9TUNES order 9) is Jingle 2 Close to Winning, not a Parachuting alt. Second SCC take alongside tune_59 sec07. Clean isolated render from medit/SCC1MUSI/TFX/FLYING/X-9TUNES.SCC (order entry 9, --orderspan=1): one jingle (255 notes/13.6s) instead of the bloated ~83s runtime window. Cold-start piano channels restored to the verified palette (MusicBox/Strings1/Strings1/FretlessBass/OrchHit/Timpani)."
   },
   {
     "file": "mt32_jingle_pos22_RLD.mid",
@@ -469,7 +522,8 @@
     "label": "26 - Jingle 6 - Wingman Down (SCC)",
     "named": true,
     "hidden": false,
-    "hiddenReason": "offline-rendered jingle bank section (audition)"
+    "hiddenReason": "offline-rendered jingle bank section (audition)",
+    "didName": "tunes\\x-9tunes.scc"
   },
   {
     "file": "tune_06_at031b396_RLD_dec84496.mid",
@@ -480,50 +534,57 @@
   },
   {
     "file": "tune_23_at032e3e2_RLD_dec9736.mid",
-    "label": "Tune 23 (RLD) — near-silent in-game (1 notes)",
+    "label": "fx.rld — SFX bank (RLD)",
     "named": false,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\fx.rld"
   },
   {
     "file": "tune_25_at032f600_RLD_dec12830.mid",
-    "label": "Tune 25 (RLD) — near-silent in-game (41 notes)",
+    "label": "fxonly.rld — SFX bank (RLD)",
     "named": false,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\fxonly.rld"
   },
   {
     "file": "tune_75_at036a3f2_RLD_dec89212.mid",
     "label": "Tune 75 (RLD) — shared flight-home intro (dup)",
     "named": false,
     "hidden": true,
-    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate mission entry"
+    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate mission entry",
+    "didName": "tunes\\closeair\\clean.lap"
   },
   {
     "file": "tune_76_at036e5b4_RLD_dec85906.mid",
     "label": "Tune 76 (RLD) — shared flight-home intro (dup)",
     "named": false,
     "hidden": true,
-    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate mission entry"
+    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate mission entry",
+    "didName": "tunes\\defssupr\\clean.lap"
   },
   {
     "file": "tune_78_at0376700_RLD_dec89454.mid",
     "label": "Tune 78 (RLD) — shared flight-home intro (dup)",
     "named": false,
     "hidden": true,
-    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate mission entry"
+    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate mission entry",
+    "didName": "tunes\\interdic\\clean.lap"
   },
   {
     "file": "tune_79_at037aa1e_RLD_dec104710.mid",
     "label": "Tune 79 (RLD) — shared flight-home intro (dup)",
     "named": false,
     "hidden": true,
-    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate mission entry"
+    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate mission entry",
+    "didName": "tunes\\maritime\\clean.lap"
   },
   {
     "file": "tune_80_at037edbe_RLD_dec84496.mid",
     "label": "Tune 80 (RLD) — shared flight-home intro (dup)",
     "named": false,
     "hidden": true,
-    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate mission entry"
+    "hiddenReason": "shared Unsuccessful Flight Home intro (duplicate); unique mission theme is the separate mission entry",
+    "didName": "tunes\\antiarm\\clean.lap"
   },
   {
     "file": "tune_80_deep_s65_RLD.mid",
@@ -531,21 +592,24 @@
     "named": true,
     "hidden": true,
     "note": "found by exhaustive order-list scan (scan_all_sections.py); deep mission block beyond the order-29 theme; distinct interval fingerprint",
-    "hiddenReason": "same as tune_75 Unused Battle Theme (user-confirmed)"
+    "hiddenReason": "same as tune_75 Unused Battle Theme (user-confirmed)",
+    "didName": "tunes\\antiarm\\clean.lap"
   },
   {
     "file": "tune_44_deep_s55_RLD.mid",
     "label": "Land Battle (RLD)",
     "named": true,
     "hidden": false,
-    "note": "found by exhaustive order-list scan; deep mission block (order 55); user-identified as Land Battle (formerly labeled Unused Mission)"
+    "note": "found by exhaustive order-list scan; deep mission block (order 55); user-identified as Land Battle (formerly labeled Unused Mission)",
+    "didName": "tunes\\maritime.lap"
   },
   {
     "file": "tune_75_deep_s70_RLD.mid",
     "label": "Unused Battle Theme (RLD)",
     "named": true,
     "hidden": false,
-    "note": "deep block (order 70); user-identified 'boss fight' -> Unused Battle Theme"
+    "note": "deep block (order 70); user-identified 'boss fight' -> Unused Battle Theme",
+    "didName": "tunes\\closeair\\clean.lap"
   },
   {
     "file": "tune_78_deep_s62_RLD.mid",
@@ -553,7 +617,8 @@
     "named": true,
     "hidden": true,
     "note": "found by exhaustive order-list scan (scan_all_sections.py); deep mission block beyond the order-29 theme; distinct interval fingerprint",
-    "hiddenReason": "same as tune_75 Unused Battle Theme (user-confirmed)"
+    "hiddenReason": "same as tune_75 Unused Battle Theme (user-confirmed)",
+    "didName": "tunes\\interdic\\clean.lap"
   },
   {
     "file": "tune_79_deep_s55_RLD.mid",
@@ -561,7 +626,8 @@
     "named": true,
     "hidden": true,
     "note": "user ID: Land Battle copy. (Byte-interval fingerprint diverged 0.19 from tune_44 deep but user confirms same composition.)",
-    "hiddenReason": "user ear ID 2026-06-17: a copy/variant of Land Battle (tune_44 deep); hidden as alt"
+    "hiddenReason": "user ear ID 2026-06-17: a copy/variant of Land Battle (tune_44 deep); hidden as alt",
+    "didName": "tunes\\maritime\\clean.lap"
   },
   {
     "file": "tune_00_at03127a7_ADL_dec16006.module.dro",
@@ -575,60 +641,69 @@
     "label": "14 - Victorious Flight Home (ADL)",
     "named": true,
     "hidden": false,
-    "note": "rhythm IOI match vs RLD 1.000"
+    "note": "rhythm IOI match vs RLD 1.000",
+    "didName": "tunes\\2succ.adl"
   },
   {
     "file": "tune_02_at0314952_ADL_dec18328.module.dro",
     "label": "24 - Jingle 4 - Good Kill (ADL)",
     "named": true,
     "hidden": false,
-    "note": "user ID; jingle-bank module, base start-0 render = Good Kill section"
+    "note": "user ID; jingle-bank module, base start-0 render = Good Kill section",
+    "didName": "tunes\\3-9tunes.adl"
   },
   {
     "file": "tune_04_at0319155_ADL_dec18218.module.dro",
     "label": "13 - The Battle (ADL)",
     "named": true,
     "hidden": false,
-    "note": "rhythm IOI match vs RLD 1.000"
+    "note": "rhythm IOI match vs RLD 1.000",
+    "didName": "tunes\\airbatle.adl"
   },
   {
     "file": "tune_05_at0319fec_ADL_dec22710.module.dro",
     "label": "09 - Air Superiority Mission (ADL)",
     "named": true,
     "hidden": false,
-    "note": "rhythm IOI match vs RLD 0.79 (alt 0.65 same song)"
+    "note": "rhythm IOI match vs RLD 0.79 (alt 0.65 same song)",
+    "didName": "tunes\\airsuper.adl"
   },
   {
     "file": "tune_10_at0324ddd_ADL_dec13016.module.dro",
     "label": "06 - Closeair Support Mission (ADL)",
     "named": true,
     "hidden": false,
-    "note": "user ID"
+    "note": "user ID",
+    "didName": "tunes\\closeair.adl"
   },
   {
     "file": "tune_11_at03259a8_ADL_dec9496.module.dro",
     "label": "17 - Columbia (ADL)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\columbia.adl"
   },
   {
     "file": "tune_14_at0327a30_ADL_dec7092.module.dro",
     "label": "16 - Death (ADL)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\death.adl"
   },
   {
     "file": "tune_17_at0329f1a_ADL_dec12492.module.dro",
     "label": "07 - Defence Suppression Mission (ADL)",
     "named": true,
     "hidden": false,
-    "note": "rhythm IOI match vs RLD 0.68, gap to .37"
+    "note": "rhythm IOI match vs RLD 0.68, gap to .37",
+    "didName": "tunes\\defsupp.adl"
   },
   {
     "file": "tune_19_at032af58_ADL_dec9842.module.dro",
     "label": "Enrolment / Training (ADL)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\enrol.adl"
   },
   {
     "file": "tune_24_at032ed93_ADL_dec8278.module.dro",
@@ -636,32 +711,37 @@
     "named": false,
     "hidden": true,
     "hiddenReason": "ignition/engine SFX bank (near-silent)",
-    "note": "base render plays all 33 SFX patterns linearly = noise; use the split stings below"
+    "note": "base render plays all 33 SFX patterns linearly = noise; use the split stings below",
+    "didName": "tunes\\fxonly.adl"
   },
   {
     "file": "tune_26_at0330211_ADL_dec8462.module.dro",
     "label": "03 - Intermission (ADL)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\inter.adl"
   },
   {
     "file": "tune_29_at0331913_ADL_dec26294.module.dro",
     "label": "05 - Interception Mission (ADL)",
     "named": true,
     "hidden": false,
-    "note": "rhythm IOI match vs RLD 0.79, gap to .09"
+    "note": "rhythm IOI match vs RLD 0.79, gap to .09",
+    "didName": "tunes\\intercep.adl"
   },
   {
     "file": "tune_32_at0336604_ADL_dec20498.module.dro",
     "label": "Interdiction Mission (ADL)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\interdct.adl"
   },
   {
     "file": "tune_35_at033bac8_ADL_dec32262.module.dro",
     "label": "02 - Intro ANARCHY (ADL)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\intro.adl"
   },
   {
     "file": "tune_38_at034299b_ADL_dec18412.module.dro",
@@ -689,19 +769,22 @@
     "label": "10 - Maritime (ADL)",
     "named": true,
     "hidden": false,
-    "note": "user ID"
+    "note": "user ID",
+    "didName": "tunes\\maritime.adl"
   },
   {
     "file": "tune_46_at034dde5_ADL_dec6488.module.dro",
     "label": "04 - News Briefing (ADL)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\news.adl"
   },
   {
     "file": "tune_49_at034f53f_ADL_dec4160.module.dro",
     "label": "11 - Ocean Mission (ADL)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\ocean.adl"
   },
   {
     "file": "tune_52_at0350572_ADL_dec21798.module.dro",
@@ -716,82 +799,93 @@
     "named": true,
     "hidden": true,
     "hiddenReason": "byte-identical duplicate",
-    "note": "byte-identical dup of tune_55 = Somalia ADL"
+    "note": "byte-identical dup of tune_55 = Somalia ADL",
+    "didName": "tunes\\somalia.adl"
   },
   {
     "file": "tune_55_at0352e13_ADL_dec8556.module.dro",
     "label": "20 - Somalia (ADL)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\somalia.ald"
   },
   {
     "file": "tune_71_at0362fd5_ADL_dec13014.module.dro",
     "label": "18 - Yugoslavia (ADL)",
     "named": true,
-    "hidden": false
+    "hidden": false,
+    "didName": "tunes\\yugo.adl"
   },
   {
     "file": "tune_77_at03726d5_ADL_dec98959.module.dro",
     "label": "15 - Unsuccessful Flight Home (ADL)",
     "named": true,
     "hidden": false,
-    "note": "3-9tunes.adl BANK: bundles 7+ themes but ALL are duplicates of existing standalone ADL tracks (Victorious Flight, Parachuting x2, Interception, The Battle, Unused Battle). base render = flight-home intro. No NEW/missing song. Section renders tune_77_secNN below (hidden, cold-start timbres)."
+    "note": "tunes\\intercep\\clean.lap BANK (ADL data shipped under the MT-32 mission filename; 3-9tunes.adl is tune_02): bundles 7+ themes but ALL are duplicates of existing standalone ADL tracks (Victorious Flight, Parachuting x2, Interception, The Battle, Unused Battle). base render = flight-home intro. No NEW/missing song. Section renders tune_77_secNN below (hidden, cold-start timbres).",
+    "didName": "tunes\\intercep\\clean.lap"
   },
   {
     "file": "tune_77_sec10_ADL_bank.dro",
-    "label": "14 - Victorious Flight Home (3-9tunes bank section) (ADL)",
+    "label": "14 - Victorious Flight Home (intercep\\clean.lap bank section) (ADL)",
     "named": true,
     "hidden": true,
     "note": "user ID: Victorious Flight; bank-section alt of standalone tune_01; cold-start timbres imperfect",
-    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (kept for completeness; cold-start timbres)"
+    "hiddenReason": "intercep\\clean.lap bank section = duplicate of an existing standalone ADL track (kept for completeness; cold-start timbres)",
+    "didName": "tunes\\intercep\\clean.lap"
   },
   {
     "file": "tune_77_sec17_ADL_bank.dro",
-    "label": "14 - Victorious Flight Home (continuation) (3-9tunes bank section) (ADL)",
+    "label": "14 - Victorious Flight Home (continuation) (intercep\\clean.lap bank section) (ADL)",
     "named": true,
     "hidden": true,
     "note": "user ID: continuation of Victorious Flight (sec10); bank-section, cold-start timbres imperfect",
-    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (kept for completeness; cold-start timbres)"
+    "hiddenReason": "intercep\\clean.lap bank section = duplicate of an existing standalone ADL track (kept for completeness; cold-start timbres)",
+    "didName": "tunes\\intercep\\clean.lap"
   },
   {
     "file": "tune_77_sec25_ADL_bank.dro",
-    "label": "23 - Jingle 3 - Parachuting (3-9tunes bank section) (ADL)",
+    "label": "23 - Jingle 3 - Parachuting (intercep\\clean.lap bank section) (ADL)",
     "named": true,
     "hidden": true,
     "note": "user ID: Parachuting; bank-section alt of the ADL Parachuting jingle; cold-start timbres imperfect",
-    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (kept for completeness; cold-start timbres)"
+    "hiddenReason": "intercep\\clean.lap bank section = duplicate of an existing standalone ADL track (kept for completeness; cold-start timbres)",
+    "didName": "tunes\\intercep\\clean.lap"
   },
   {
     "file": "tune_77_sec27_ADL_bank.dro",
-    "label": "23 - Jingle 3 - Parachuting (alt) (3-9tunes bank section) (ADL)",
+    "label": "22 - Jingle 2 - Close to Winning (intercep\\clean.lap bank section) (ADL)",
     "named": true,
     "hidden": true,
-    "note": "user ID: alternative Parachuting jingle; bank-section, cold-start timbres imperfect",
-    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (kept for completeness; cold-start timbres)"
+    "note": "user ID by ear: Jingle 2 Close to Winning (was guessed Parachuting alt); bank-section, cold-start timbres imperfect",
+    "hiddenReason": "intercep\\clean.lap bank section = duplicate of an existing standalone ADL track (kept for completeness; cold-start timbres)",
+    "didName": "tunes\\intercep\\clean.lap"
   },
   {
     "file": "tune_77_sec29_ADL_bank.dro",
-    "label": "05 - Interception Mission (3-9tunes bank section) (ADL)",
+    "label": "05 - Interception Mission (intercep\\clean.lap bank section) (ADL)",
     "named": true,
     "hidden": true,
     "note": "user ID: Interception; bank-section alt of standalone tune_29; cold-start timbres imperfect",
-    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (kept for completeness; cold-start timbres)"
+    "hiddenReason": "intercep\\clean.lap bank section = duplicate of an existing standalone ADL track (kept for completeness; cold-start timbres)",
+    "didName": "tunes\\intercep\\clean.lap"
   },
   {
     "file": "tune_77_sec44_ADL_bank.dro",
-    "label": "13 - The Battle (3-9tunes bank section) (ADL)",
+    "label": "13 - The Battle (intercep\\clean.lap bank section) (ADL)",
     "named": true,
     "hidden": true,
     "note": "user ID: The Battle; bank-section alt of standalone tune_04; cold-start timbres imperfect",
-    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (kept for completeness; cold-start timbres)"
+    "hiddenReason": "intercep\\clean.lap bank section = duplicate of an existing standalone ADL track (kept for completeness; cold-start timbres)",
+    "didName": "tunes\\intercep\\clean.lap"
   },
   {
     "file": "tune_77_sec57_ADL_bank.dro",
-    "label": "Unused Battle Theme (3-9tunes bank section) (ADL)",
+    "label": "Unused Battle Theme (intercep\\clean.lap bank section) (ADL)",
     "named": true,
     "hidden": true,
     "note": "user ID: Unused Battle; bank-section alt of standalone tune_38; cold-start timbres imperfect",
-    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (kept for completeness; cold-start timbres)"
+    "hiddenReason": "intercep\\clean.lap bank section = duplicate of an existing standalone ADL track (kept for completeness; cold-start timbres)",
+    "didName": "tunes\\intercep\\clean.lap"
   },
   {
     "file": "adl_jingle_sec03_ADL_bank.dro",
@@ -823,10 +917,10 @@
   },
   {
     "file": "parachuting_alt_39tunes_s07_ADL_.dro",
-    "label": "23 - Jingle 3 - Parachuting Thru The Clouds (alt) (ADL)",
+    "label": "22 - Jingle 2 - Close to Winning (alt) (ADL)",
     "named": true,
     "hidden": false,
-    "note": "Replaced 2026-06-19 with TFX-INPROGRESS 39tunes_s07 (ADLMUSIC/TFX/FLYING/3-9TUNES.ADL start 7, 8557 notes, 6 channels, OPL3)."
+    "note": "User ID by ear: order 7 = Jingle 2 Close to Winning (was mislabeled Parachuting alt); matches SCC sec07/ADL sec07 = section 7. Render from TFX-INPROGRESS 39tunes_s07 (ADLMUSIC/TFX/FLYING/3-9TUNES.ADL start 7, 8557 notes, 6 channels, OPL3)."
   },
   {
     "file": "adl_jingle_sec00_ADL_bank.dro",
@@ -862,54 +956,61 @@
     "label": "13 - The Battle (first half) (RLD)",
     "named": true,
     "hidden": true,
-    "note": "user ID: first half of The Battle (=tune_07); bank tune_76 order60 section. tune_09 carries a quieter volume variant."
+    "note": "user ID: first half of The Battle (=tune_07); bank tune_76 order60 section. tune_09 carries a quieter volume variant.",
+    "didName": "tunes\\defssupr\\clean.lap"
   },
   {
     "file": "tune_76_deep_s65_RLD.mid",
     "label": "13 - The Battle (second half) (RLD)",
     "named": true,
     "hidden": true,
-    "note": "user ID: second half of The Battle (=tune_07); bank tune_76 order65 section."
+    "note": "user ID: second half of The Battle (=tune_07); bank tune_76 order65 section.",
+    "didName": "tunes\\defssupr\\clean.lap"
   },
   {
     "file": "tune_77_sec20_ADL_bank.dro",
-    "label": "24 - Jingle 4 - Good Kill (3-9tunes bank section) (ADL)",
+    "label": "24 - Jingle 4 - Good Kill (intercep\\clean.lap bank section) (ADL)",
     "named": true,
     "hidden": true,
     "note": "exhaustive scan: order pos 20 = Good Kill jingle region; dup of canonical ADL jingle bank tune_02",
-    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (bank-section completeness; cold-start timbres)"
+    "hiddenReason": "intercep\\clean.lap bank section = duplicate of an existing standalone ADL track (bank-section completeness; cold-start timbres)",
+    "didName": "tunes\\intercep\\clean.lap"
   },
   {
     "file": "tune_77_sec22_ADL_bank.dro",
-    "label": "26 - Jingle 6 - Wingman Down (3-9tunes bank section) (ADL)",
+    "label": "26 - Jingle 6 - Wingman Down (intercep\\clean.lap bank section) (ADL)",
     "named": true,
     "hidden": true,
     "note": "exhaustive scan: order pos 22 = Wingman Down jingle region; dup of canonical ADL jingle bank tune_02",
-    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (bank-section completeness; cold-start timbres)"
+    "hiddenReason": "intercep\\clean.lap bank section = duplicate of an existing standalone ADL track (bank-section completeness; cold-start timbres)",
+    "didName": "tunes\\intercep\\clean.lap"
   },
   {
     "file": "tune_77_sec23_ADL_bank.dro",
-    "label": "Jingle - Close to Death (3-9tunes bank section) (ADL)",
+    "label": "Jingle - Close to Death (intercep\\clean.lap bank section) (ADL)",
     "named": true,
     "hidden": true,
     "note": "exhaustive scan: order pos 23 = Close-to-Death jingle region; dup of canonical ADL jingle bank tune_02",
-    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (bank-section completeness; cold-start timbres)"
+    "hiddenReason": "intercep\\clean.lap bank section = duplicate of an existing standalone ADL track (bank-section completeness; cold-start timbres)",
+    "didName": "tunes\\intercep\\clean.lap"
   },
   {
     "file": "tune_77_sec28_ADL_bank.dro",
-    "label": "Jingle separator (3-9tunes bank section) (ADL)",
+    "label": "Jingle separator (intercep\\clean.lap bank section) (ADL)",
     "named": true,
     "hidden": true,
     "note": "exhaustive scan: order pos 28 = inter-jingle separator (sim 0.19 to canonical separator sec08)",
-    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (bank-section completeness; cold-start timbres)"
+    "hiddenReason": "intercep\\clean.lap bank section = duplicate of an existing standalone ADL track (bank-section completeness; cold-start timbres)",
+    "didName": "tunes\\intercep\\clean.lap"
   },
   {
     "file": "tune_77_sec50_ADL_bank.dro",
-    "label": "13 - The Battle (continuation) (3-9tunes bank section) (ADL)",
+    "label": "13 - The Battle (continuation) (intercep\\clean.lap bank section) (ADL)",
     "named": true,
     "hidden": true,
     "note": "exhaustive scan: order pos 50 = The Battle 2nd half (pitch 4-gram 0.44 to sec44 The Battle); dup of standalone tune_04",
-    "hiddenReason": "3-9tunes bank section = duplicate of an existing standalone ADL track (bank-section completeness; cold-start timbres)"
+    "hiddenReason": "intercep\\clean.lap bank section = duplicate of an existing standalone ADL track (bank-section completeness; cold-start timbres)",
+    "didName": "tunes\\intercep\\clean.lap"
   },
   {
     "file": "tune_06_battle_RLD_s52.mid",
@@ -924,7 +1025,8 @@
     "named": true,
     "hidden": true,
     "note": "BATTLE-COMPARE (temp): same composition rendered from each bank's Battle order-start; for A/B listening",
-    "hiddenReason": "duplicate Battle render (same composition as canonical bank6/standalone); kept hidden after A/B comparison"
+    "hiddenReason": "duplicate Battle render (same composition as canonical bank6/standalone); kept hidden after A/B comparison",
+    "didName": "tunes\\clean.lap"
   },
   {
     "file": "tune_74_battle_RLD_s49.mid",
@@ -932,7 +1034,8 @@
     "named": true,
     "hidden": true,
     "note": "BATTLE-COMPARE (temp): same composition rendered from each bank's Battle order-start; for A/B listening",
-    "hiddenReason": "duplicate Battle render (same composition as canonical bank6/standalone); kept hidden after A/B comparison"
+    "hiddenReason": "duplicate Battle render (same composition as canonical bank6/standalone); kept hidden after A/B comparison",
+    "didName": "tunes\\airsuper\\clean.lap"
   },
   {
     "file": "tune_30_battle_RLD_s11.mid",
@@ -948,7 +1051,8 @@
     "named": true,
     "hidden": true,
     "note": "BATTLE-COMPARE (temp): same composition rendered from each bank's Battle order-start; for A/B listening",
-    "hiddenReason": "duplicate Battle render (same composition as canonical bank6/standalone); kept hidden after A/B comparison"
+    "hiddenReason": "duplicate Battle render (same composition as canonical bank6/standalone); kept hidden after A/B comparison",
+    "didName": "tunes\\closeair\\clean.lap"
   },
   {
     "file": "tune_76_battle_RLD_s60.mid",
@@ -956,7 +1060,8 @@
     "named": true,
     "hidden": true,
     "note": "BATTLE-COMPARE (temp): same composition rendered from each bank's Battle order-start; for A/B listening",
-    "hiddenReason": "duplicate Battle render (same composition as canonical bank6/standalone); kept hidden after A/B comparison"
+    "hiddenReason": "duplicate Battle render (same composition as canonical bank6/standalone); kept hidden after A/B comparison",
+    "didName": "tunes\\defssupr\\clean.lap"
   },
   {
     "file": "tune_77_battle_ADL_s44.dro",
@@ -964,6 +1069,7 @@
     "named": true,
     "hidden": true,
     "note": "BATTLE-COMPARE (temp): same composition rendered from each bank's Battle order-start; for A/B listening",
-    "hiddenReason": "duplicate Battle render (same composition as canonical bank6/standalone); kept hidden after A/B comparison"
+    "hiddenReason": "duplicate Battle render (same composition as canonical bank6/standalone); kept hidden after A/B comparison",
+    "didName": "tunes\\intercep\\clean.lap"
   }
 ]
